@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Security Impact Levels</title>
+  </properties>
+
+<body>
+  <section name="Summary of security impact levels for Apache Tomcat">
+    <p>The Apache Tomcat Security Team rates the impact of each security flaw
+       that affects Tomcat. We've chosen a rating scale quite similar to those
+       used by other major vendors in order to be consistent. Basically the goal
+       of the rating system is to answer the question "How worried should I be
+       about this vulnerability?".</p>
+
+    <p>Note that the rating chosen for each flaw is the worst possible case
+       across all architectures. To determine the exact impact of a particular
+       vulnerability on your own systems you will still need to read the security
+       advisories to find out more about the flaw.</p>
+
+    <p>We use the following descriptions to decide on the impact rating to give
+       each vulnerability:</p>
+
+  </section>
+
+  <section name="Critical">
+    <p>A vulnerability rated with a Critical impact is one which could
+       potentially be exploited by a remote attacker to get Tomcat to execute
+       arbitrary code (either as the user the server is running as, or root).
+       These are the sorts of vulnerabilities that could be exploited
+       automatically by worms.</p>
+  </section>
+
+  <section name="Important">
+    <p>A vulnerability rated as Important impact is one which could result in
+       the compromise of data or availability of the server. For Tomcat this
+       includes issues that allow an easy remote denial of service (something
+       that is out of proportion to the attack or with a lasting consequence),
+       access to arbitrary files outside of the context root, or access to files
+       that should be otherwise prevented by limits or authentication.</p>
+  </section>
+
+  <section name="Moderate">
+    <p>A vulnerability is likely to be rated as Moderate if there is significant
+       mitigation to make the issue less of an impact. This might be because the
+       flaw does not affect likely configurations, or it is a configuration that
+       isn't widely used, or where a remote user must be authenticated in order
+       to exploit the issue. Flaws that allow Tomcat to serve directory listings
+       instead of index files and cross-site scripting issues are included here.
+       </p>
+  </section>
+
+  <section name="Low">
+    <p>All other security flaws are classed as a Low impact. This rating is used
+       for issues that are believed to be extremely hard to exploit, or where an
+       exploit gives minimal consequences.</p>
+  </section>
+
+</body>
+</document>
+

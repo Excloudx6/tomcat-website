@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Migration Guide - Tomcat 8.0.x</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="General">
+
+<p>Please read general <a href="migration.html">Migration Guide page</a> first,
+for common considerations that apply to migration or upgrade between versions
+of Apache Tomcat.</p>
+
+</section>
+
+<section name="Migrating from 7.0.x to 8.0.x">
+
+  <p> This section lists all the known changes between 7.0.x and 8.0.x which may
+  cause backwards compatibility problems when upgrading.</p>
+
+  <subsection name="Java 7 required">
+
+    <p>Apache Tomcat 8.0.x requires Java 7 or later. Apache Tomcat 7.0.x
+    required Java 6.</p>
+
+  </subsection>
+
+  <subsection name="Specification APIs">
+
+    <p>Apache Tomcat 8 supports the Java Servlet 3.1, JavaServer Pages 2.3,
+    Java Unified Expression Language 3.0 and Java API for WebSocket 1.1
+    <a href="https://wiki.apache.org/tomcat/Specifications">specifications</a>.
+    The changes between versions of specifications may be found in the
+    <em>Changes</em> appendix in each of specification documents.
+    </p>
+
+  </subsection>
+  
+  <subsection name="Servlet 3.1 API">
+  
+    <p>In JSP pages that use wildcard import syntax the new classes added in
+    Servlet API may conflict with ones in web applications.
+    For example, if package <code>"a"</code> contains class
+    <code>ReadListener</code>, the following JSP page will cease to compile in
+    Tomcat 8:</p>
+
+    <source><![CDATA[<%@page import="a.*"%>
+<% ReadListener listener = new ReadListener(); %>]]></source>
+
+    <p>This happens because implicit import of <code>javax.servlet.*</code>
+    and explicit import of <code>a.*</code> will provide conflicting
+    definitions of class <code>ReadListener</code> that was added in Servlet
+    3.1. The solution is to use the explicit import,
+    <code>import="a.ReadListener"</code>.</p>
+
+  </subsection>
+
+  <subsection name="JavaServer Pages 2.3">
+  
+    <p>Unified Expression Language 3.0 added support for referencing static
+    fields and methods. Supporting this feature in JSPs required changing the
+    <code>javax.servlet.jsp.el.ScopedAttributeELResolver</code> implementation
+    so that it also checked identifiers to see if they were names of imported
+    classes or fields. In some circumstances, this change triggers significant
+    slow down. This affects identifiers that may refer to a page, request,
+    session or application scoped variable or may be undefined. When undefined,
+    it takes significantly longer to resolve the identifier since it is now also
+    checked to see if it is an imported class or field. To avoid this slow down,
+    code such as:</p>
+
+    <source><![CDATA[${undefined}]]></source>
+
+    <p>should be replaced with:</p>
+    
+    <source><![CDATA[${requestScope.undefined}]]></source>
+    
+    <p>or similar, using the appropriate scope for where the variable is
+    defined.</p>
+
+  </subsection>
+
+  <subsection name="Jar Scanning">
+
+    <p>During the implementation of Servlet 3.1 a number of errors were
+    identified in Tomcat 7's Servlet 3.0 pluggability implementation.
+    Specifically:</p>
+
+    <ul>
+    <li>the SCI scan did not obey class loader ordering;</li>
+    <li>fragments in container JARs were processed rather than ignored;</li>
+    <li>container provided SCIs were sometimes ignored.</li>
+    </ul>
+
+    <p>These issues were corrected for Tomcat 8 but not back-ported to Tomcat 7
+    because the fixed required significant API changes to the
+    <code>JarScanner</code> component as well as changes to the configuration
+    options.</p>
+
+    <p>When migrating to Tomcat 8, Jar scanning configurations will need to be
+    reviewed and adjusted for the new configuration options and custom
+    <code>JarScanner</code> implementations will need to be updated to implement
+    the new API.</p>    
+  </subsection>
+
+  <subsection name="Default connector implementation">
+
+    <p>The default HTTP and AJP connector implementation has switched from the
+    Java blocking IO implementation (BIO) to the Java non-blocking IO
+    implementation (NIO). BIO may still be used but Servlet 3.1 and WebSocket
+    1.0 features that use non-blocking IO will then use blocking IO instead
+    which may cause unexpected application behavior.</p>
+
+  </subsection>
+
+  <subsection name="Default URL encoding" anchor="URIEncoding">
+
+    <p>The default value of <code>URIEncoding</code> attribute for HTTP and
+    AJP connectors has been changed from "ISO-8859-1" to be "UTF-8" (if
+    "strict servlet compliance" mode is off, which is the default). This
+    setting specifies what character encoding is used to decode '%xx'-encoded
+    bytes in path and query of a request URI.
+    </p>
+
+    <p>If server is configured with "strict servlet compliance" on, the
+    default value of <code>URIEncoding</code> attribute of connectors is
+    "ISO-8859-1", the same as in older versions of Tomcat.
+    </p>
+
+    <p>Reference: <a href="tomcat-8.0-doc/config/http.html">HTTP connector</a>,
+    <a href="tomcat-8.0-doc/config/ajp.html">AJP connector</a>.
+    </p>
+
+  </subsection>
+
+  <subsection name="Realms">
+
+    <p>The handling of digested passwords has been moved to the new
+    <a href="tomcat-8.0-doc/config/credentialhandler.html">CredentialHandler</a>
+    component. The associated <code>Realm</code> attributes will still work in
+    8.0.x but they have been deprecated and have been removed for Tomcat 8.5.x
+    onwards.</p>
+
+  </subsection>
+
+  <subsection name="Web application resources">
+
+    <p>The Aliases, VirtualLoader, VirtualDirContext, JAR resources and external
+    repositories features that all provided a way to add resources to a web
+    application have been replaced with a single framework rather than each
+    being implemented separately (this was becoming increasingly difficult to
+    maintain). The <a href="tomcat-8.0-doc/config/resources.html">resources</a>
+    documentation provides details on how the new implementation may be used.
+    </p>
+
+    <p>The refactoring of resources has also resulted in a number of attributes
+    being removed from the default Context implementation
+    (org.apache.catalina.core.StandardContext). The following attributes may now
+    be configured via the
+    <a href="tomcat-8.0-doc/config/resources.html">resources</a> implementation
+    used by the web application:</p>
+    <ul>
+      <li>allowLinking</li>
+      <li>cachingAllowed</li>
+      <li>cacheMaxSize</li>
+      <li>cacheObjectMaxSize</li>
+      <li>cacheTtl (renamed: it was cacheTTL in Tomcat 7)</li>
+    </ul>
+
+    <p>For example, configurations in Tomcat 7 and Tomcat 8:</p>
+
+    <source><![CDATA[<!-- Tomcat 7: -->
+<Context allowLinking="true" />
+
+<!-- Tomcat 8: -->
+<Context>
+  <Resources allowLinking="true" />
+</Context>]]></source>
+
+  </subsection>
+
+  <subsection name="Database Connection Pooling">
+
+    <p>Tomcat 8, as well as Tomcat 7, is shipped with two implementations
+    of a database connection pool. The
+    <a href="tomcat-8.0-doc/jndi-datasource-examples-howto.html"
+    >first implementation</a> (the default one; though technically this can
+    be changed via <code>javax.sql.DataSource.Factory</code>
+    system property) is a copy of <a
+    href="http://commons.apache.org/proper/commons-dbcp/"
+    >Apache Commons DBCP</a> 2.x project, renamed to a different package.
+    The <a href="tomcat-8.0-doc/jdbc-pool.html">second implementation</a>
+    is Tomcat JDBC Connection Pool, a separate project.</p>
+
+    <p>There are a number of notable changes between Apache Commons DBCP 1.x
+    (used by Tomcat 7 and earlier) and Apache Commons DBCP 2.x
+    which are likely to require configuration changes.</p>
+    <ul>
+      <li>The <code>maxActive</code> configuration option has been renamed
+          to <code>maxTotal</code></li>
+      <li>The <code>maxWait</code> configuration option has been renamed to
+          <code>maxWaitMillis</code></li>
+      <li>The JDBC driver JAR may be placed in WEB-INF/lib as an alternative to
+          $CATALINA_BASE/lib provided that the driver class is only used by that
+          web application.</li>
+      <li>Connection validation no longer requires both a validation query and
+          at least one of the testXxx attributes to be set to true. If no
+          validation query is defined and at least one of the testxxx attributes
+          is true, connections will be validated using Connection.isValid().
+          </li>
+      <li>The <code>removeAbandoned</code> configuration option has been
+          replaced by <code>removeAbandonedOnBorrow</code> and
+          <code>removeAbandonedOnMaintenance</code>.</li>
+    </ul>
+
+    <p>Additionally, Commons DBCP has added a number of new configuration
+    options. These should be reviewed to determine which, if any, should be
+    used.</p>
+
+    <p>Note that the above changes are not needed if you are using
+    Tomcat JDBC Connection Pool (or any 3-rd party database connection
+    pool implementation).</p>
+
+  </subsection>
+
+  <subsection name="Clustering">
+
+    <p>The addition of the <code>HttpServletRequest.changeSessionId()</code>
+    method in Servlet 3.1 made the
+    <code>org.apache.catalina.ha.session.JvmRouteSessionIDBinderListener</code>
+    unnecessary so it has been removed. It must be removed from cluster
+    configurations when upgrading to Tomcat 8.</p>
+
+  </subsection>
+  
+  <subsection name="Debugging">
+
+    <p>When starting Tomcat with the <code>jpda</code> option to enable remote
+    debugging, Tomcat 8 listens on <code>localhost:8000</code> by default.
+    Earlier versions listened on <code>*:8000</code>. If required, this default
+    can be overridden by setting the <code>JPDA_ADDRESS</code> environment
+    variable in, for example, <code>setenv.[bat|sh]</code>.</p>
+
+  </subsection>
+
+  <subsection name="Internal APIs">
+  
+    <p>Whilst the Tomcat 8 internal API is broadly compatible with Tomcat 7
+    there have been many changes at the detail level and they are not binary
+    compatible. Developers of custom components that interact with Tomcat&apos;s
+    internals should review the JavaDoc for the relevant API.</p>
+
+    <p>Of particular note are:</p>
+    <ul>
+      <li>The Manager, Loader and Resources have moved from Container to Context
+          since Context is the only place they are used.</li>
+      <li>The Mapper has moved from the Connector to the Service since the
+          Mapper is identical for all Connectors of a given Service.</li>
+      <li>A new Resources implementation that merges Aliases, VirtualLoader,
+          VirtualDirContext, JAR resources and external repositories into a
+          single framework rather than a separate one for each feature.</li>
+      <li>A new interface SessionIdGenerator has been added making session
+          id generation extensible. Methods to get and set the id generator
+          class name have been added to the Manager interface.</li>
+    </ul>
+
+  </subsection>
+
+  <subsection name="Deployment">
+
+    <p>Deployment of a web application as a WAR file and with Tomcat configured
+    not to unpack WARs will result in significantly slower startup times and
+    slower runtime performance. Start-up times have been measured between three
+    and ten times slower. Runtime impact will depend significantly on the
+    application structure.</p>
+    
+    <p>It is strongly recommended not to set <code>unpackWARs="false"</code> on
+    a Host or <code>unpackWAR="false"</code> on a Context. Below is a list of
+    common reasons for disabling unpacking and the recommended alternative for
+    Tomcat 8:</p>
+    
+    <ul>
+      <li><i>Security (appBase is readOnly to Tomcat user)</i> - Deploy (as a
+      different user) an unpacked directory to the appBase rather than a WAR
+      file.</li>
+      <li><i>Sharing an appBase between multiple hosts</i> - Deploy WAR files
+      to a common location and then use context.xml files to add the web
+      applications to the hosts as required. Note sharing an appBase between
+      multiple hosts is strongly discouraged in all circumstances.</li>
+      <li><i>Off-line deployment</i> - As of Tomcat 8.0.21, Tomcat will detect
+      when a WAR has been updated while it is not running and, when next
+      started, remove the out of date expanded directory and deploy the updated
+      WAR file so simply use <code>unpackWAR="true"</code> and continue to
+      deploy WARs when Tomcat is not running.</li>
+    </ul>
+
+  </subsection>
+
+</section>
+
+<section name="Upgrading 8.0.x">
+  <p>When upgrading instances of Apache Tomcat from one version of Tomcat 8 to
+  another, particularly when using separate locations for $CATALINA_HOME and
+  $CATALINA_BASE, it is necessary to ensure that any changes in the
+  configuration files such as new attributes and changes to defaults are applied
+  as part of the upgrade. To assist with the identification of these changes,
+  the form below may be used to view the differences between the configuration
+  files in different versions of Tomcat 8.</p>
+
+  <subsection name="Tomcat 8.0.x noteable changes">
+    <p>The Tomcat developers aim for each patch release to be fully backwards
+       compatible with the previous release.  Occasionally, it is necessary to
+       break backwards compatibility in order to fix a bug. In most cases, these
+       changes will go unnoticed. This section lists changes that are not fully
+       backwards compatible and might cause breakage when upgrading.</p>
+    <ul>
+      <li><p>In 8.0.24 onwards, the meaning of value 0 for <code>maxPostSize</code>
+        attribute on connectors was changed to mean a limit of zero rather
+        than no limit to align it with <code>maxSavePostSize</code> and to
+        be more intuitive.</p>
+        <p>Reference: <a href="tomcat-8.0-doc/config/http.html">HTTP connector</a>,
+        <a href="tomcat-8.0-doc/config/ajp.html">AJP connector</a>.</p>
+      </li>
+    </ul>
+  </subsection>
+  
+  <subsection name="Tomcat 8.0.x configuration file differences">
+
+    <p>Select a configuration file, old version and new version from the boxes
+    below and then click &quot;View differences&quot; to see the differences.
+    The differences will be shown in a new tab/window.</p>
+
+    <script type="text/javascript"><![CDATA[
+    "use strict"; // Enable strict mode
+
+    document.addEventListener("DOMContentLoaded", function() {
+    var formSubmit = document.getElementById("tc8Submit");
+      formSubmit.addEventListener("submit", function() {
+        var revisions = {
+          "HEAD":"HEAD",
+          "8.0.0-RC1":"1509411",
+          "8.0.0-RC3":"1524767",
+          "8.0.0-RC5":"1532762",
+          "8.0.0-RC10":"1552353",
+          "8.0.1":"1562630",
+          "8.0.3":"1565729",
+          "8.0.5":"1580930",
+          "8.0.8":"1595294",
+          "8.0.9":"1603862",
+          "8.0.11":"1618261",
+          "8.0.12":"1621315",
+          "8.0.14":"1627408",
+          "8.0.15":"1636170",
+          "8.0.17":"1650582",
+          "8.0.18":"1654179",
+          "8.0.20":"1659926",
+          "8.0.21":"1668647",
+          "8.0.22":"1676715",
+          "8.0.23":"1680308",
+          "8.0.24":"1688727",
+          "8.0.26":"1696400",
+          "8.0.27":"1704937",
+          "8.0.28":"1707356",
+          "8.0.29":"1715254",
+          "8.0.30":"1717548",
+          "8.0.32":"1728180",
+          "8.0.33":"1735674",
+          "8.0.35":"1743442",
+          "8.0.36":"1747548",
+          "8.0.37":"1758752",
+          "8.0.38":"1763661",
+          "8.0.39":"1768639",
+          "8.0.41":"1779395",
+          "8.0.42":"1786068",
+          "8.0.43":"1789153",
+          "8.0.44":"1794740",
+          "8.0.45":"1799975",
+          "8.0.46":"1804653",
+          "8.0.47":"1810101",
+          "8.0.48":"1816714",
+          "8.0.49":"1821703",
+          "8.0.50":"1823520",
+          "8.0.51":"1828775",
+          "8.0.52":"1830460",
+          "8.0.53":"1834688"
+        };
+
+        formSubmit.action = "http://svn.apache.org/viewvc/tomcat/tc8.0.x/trunk/" +
+          document.getElementById('select-filename').value;
+        formSubmit.elements['r1'].value = revisions[document.getElementById('select-r1').value]; 
+        formSubmit.elements['r2'].value = revisions[document.getElementById('select-r2').value]; 
+        return true;
+      }, false);
+    }, false);
+    ]]></script>
+
+
+    <p><label>Configuration file:
+    <select id="select-filename">
+    <option value="conf/catalina.policy">catalina.policy</option>
+    <option value="conf/catalina.properties">catalina.properties</option>
+    <option value="conf/context.xml">context.xml</option>
+    <option value="conf/logging.properties">logging.properties</option>
+    <option value="conf/server.xml">server.xml</option>
+    <option value="conf/tomcat-users.xml">tomcat-users.xml</option>
+    <option value="conf/web.xml">web.xml</option>
+    </select></label>
+    </p>
+    <p><label>Old version:
+    <select id="select-r1">
+    <option value="8.0.0-RC1">8.0.0-RC1</option>
+    <option value="8.0.0-RC3">8.0.0-RC3</option>
+    <option value="8.0.0-RC5">8.0.0-RC5</option>
+    <option value="8.0.0-RC10">8.0.0-RC10</option>
+    <option value="8.0.1">8.0.1</option>
+    <option value="8.0.3">8.0.3</option>
+    <option value="8.0.5">8.0.5</option>
+    <option value="8.0.8">8.0.8</option>
+    <option value="8.0.9">8.0.9</option>
+    <option value="8.0.11">8.0.11</option>
+    <option value="8.0.12">8.0.12</option>
+    <option value="8.0.14">8.0.14</option>
+    <option value="8.0.15">8.0.15</option>
+    <option value="8.0.17">8.0.17</option>
+    <option value="8.0.18">8.0.18</option>
+    <option value="8.0.20">8.0.20</option>
+    <option value="8.0.21">8.0.21</option>
+    <option value="8.0.22">8.0.22</option>
+    <option value="8.0.23">8.0.23</option>
+    <option value="8.0.24">8.0.24</option>
+    <option value="8.0.26">8.0.26</option>
+    <option value="8.0.27">8.0.27</option>
+    <option value="8.0.28">8.0.28</option>
+    <option value="8.0.29">8.0.29</option>
+    <option value="8.0.30">8.0.30</option>
+    <option value="8.0.32">8.0.32</option>
+    <option value="8.0.33">8.0.33</option>
+    <option value="8.0.35">8.0.35</option>
+    <option value="8.0.36">8.0.36</option>
+    <option value="8.0.37">8.0.37</option>
+    <option value="8.0.38">8.0.38</option>
+    <option value="8.0.39">8.0.39</option>
+    <option value="8.0.41">8.0.41</option>
+    <option value="8.0.42">8.0.42</option>
+    <option value="8.0.43">8.0.43</option>
+    <option value="8.0.44">8.0.44</option>
+    <option value="8.0.45">8.0.45</option>
+    <option value="8.0.46">8.0.46</option>
+    <option value="8.0.47">8.0.47</option>
+    <option value="8.0.48">8.0.48</option>
+    <option value="8.0.49">8.0.49</option>
+    <option value="8.0.50">8.0.50</option>
+    <option value="8.0.51">8.0.51</option>
+    <option value="8.0.52" selected="selected">8.0.52</option>
+    <option value="8.0.53">8.0.53</option>
+    </select>,</label> <label>new version:
+    <select id="select-r2">
+    <option value="8.0.0-RC1">8.0.0-RC1</option>
+    <option value="8.0.0-RC3">8.0.0-RC3</option>
+    <option value="8.0.0-RC5">8.0.0-RC5</option>
+    <option value="8.0.0-RC10">8.0.0-RC10</option>
+    <option value="8.0.1">8.0.1</option>
+    <option value="8.0.3">8.0.3</option>
+    <option value="8.0.5">8.0.5</option>
+    <option value="8.0.8">8.0.8</option>
+    <option value="8.0.9">8.0.9</option>
+    <option value="8.0.11">8.0.11</option>
+    <option value="8.0.12">8.0.12</option>
+    <option value="8.0.14">8.0.14</option>
+    <option value="8.0.15">8.0.15</option>
+    <option value="8.0.17">8.0.17</option>
+    <option value="8.0.18">8.0.18</option>
+    <option value="8.0.20">8.0.20</option>
+    <option value="8.0.21">8.0.21</option>
+    <option value="8.0.22">8.0.22</option>
+    <option value="8.0.23">8.0.23</option>
+    <option value="8.0.24">8.0.24</option>
+    <option value="8.0.26">8.0.26</option>
+    <option value="8.0.27">8.0.27</option>
+    <option value="8.0.28">8.0.28</option>
+    <option value="8.0.29">8.0.29</option>
+    <option value="8.0.30">8.0.30</option>
+    <option value="8.0.32">8.0.32</option>
+    <option value="8.0.33">8.0.33</option>
+    <option value="8.0.35">8.0.35</option>
+    <option value="8.0.36">8.0.36</option>
+    <option value="8.0.37">8.0.37</option>
+    <option value="8.0.38">8.0.38</option>
+    <option value="8.0.39">8.0.39</option>
+    <option value="8.0.41">8.0.41</option>
+    <option value="8.0.42">8.0.42</option>
+    <option value="8.0.43">8.0.43</option>
+    <option value="8.0.44">8.0.44</option>
+    <option value="8.0.45">8.0.45</option>
+    <option value="8.0.46">8.0.46</option>
+    <option value="8.0.47">8.0.47</option>
+    <option value="8.0.48">8.0.48</option>
+    <option value="8.0.49">8.0.49</option>
+    <option value="8.0.50">8.0.50</option>
+    <option value="8.0.51">8.0.51</option>
+    <option value="8.0.52">8.0.52</option>
+    <option value="8.0.53" selected="selected">8.0.53</option>
+    <option value="HEAD">trunk (unreleased)</option>
+    </select></label>
+    </p>
+
+    <form id="tc8Submit" action="to-be-replaced" method="get"
+          target="_blank">
+    <p>
+    <input type="hidden" name="diff_format" value="h"/>
+    <input type="hidden" name="r1"/><input type="hidden" name="r2"/>
+    <button>View Differences</button>
+    </p>
+    </form>
+    <p>You can also use Subversion command similar to the following (all on one line):</p>
+    <source>svn diff
+  --old=http://svn.apache.org/repos/asf/tomcat/tc8.0.x/tags/TOMCAT_8_0_1/conf/
+  --new=http://svn.apache.org/repos/asf/tomcat/tc8.0.x/tags/TOMCAT_8_0_3/conf/</source>
+  </subsection>
+  
+</section>
+
+</body>
+</document>

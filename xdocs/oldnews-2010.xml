@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Old news! - 2010</title>
+  </properties>
+
+<body>
+
+<section name="Other news">
+<p>Announcements from other years can be found here:</p>
+<ul>
+  <li><a href="oldnews.html">year 2018</a></li>
+  <li><a href="oldnews-2017.html">year 2017</a></li>
+  <li><a href="oldnews-2016.html">year 2016</a></li>
+  <li><a href="oldnews-2015.html">year 2015</a></li>
+  <li><a href="oldnews-2014.html">year 2014</a></li>
+  <li><a href="oldnews-2013.html">year 2013</a></li>
+  <li><a href="oldnews-2012.html">year 2012</a></li>
+  <li><a href="oldnews-2011.html">year 2011</a></li>
+  <li>year 2010</li>
+</ul>
+</section>
+
+<section name="Tomcat 7.0.5 Released" rtext="2010-12-01">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.5 beta
+of Apache Tomcat. This release contains a number of bug fixes, performance
+improvements in session management, a number of new features including support
+for parallel deployment of multiple versions of the same web application and a
+redesigned welcome page.</p>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.5_(markt)">Tomcat 7
+changelog</a>.
+</p>
+</section>
+
+<section name="Tomcat Connectors 1.2.31 Released" rtext="2010-11-01">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.2.31 of
+Apache Tomcat Connectors.
+This release includes mainly bug fixes and some small improvements over Apache Tomcat Connectors 1.2.30.
+</p>
+</section>
+
+<section name="Tomcat 7.0.4 Released" rtext="2010-10-21">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.4 beta
+of Apache Tomcat. This version of Apache Tomcat supports the
+Servlet 3.0, JSP 2.2 and EL 2.2 specifications. In addition, it includes
+numerous other improvements such as web application memory leak detection and
+prevention, extensive internal code clean-up and support for including external
+content directly in a web application (aliases). This release includes many
+bug fixes over Apache Tomcat 7.0.2.</p>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.4_(markt)">Tomcat 7
+changelog</a>.
+</p>
+</section>
+
+<section name="Tomcat 5.5.31 Released" rtext="2010-09-16">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 5.5.31 of
+Apache Tomcat. This release includes many bug fixes and a number of security
+fixes over Apache Tomcat 5.5.30.
+</p>
+</section>
+
+<section name="Tomcat 7.0.2 Released" rtext="2010-08-11">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.2 beta
+of Apache Tomcat. This version of Apache Tomcat supports the
+Servlet 3.0, JSP 2.2 and EL 2.2 specifications. In addition, it includes
+numerous other improvements such as web application memory leak detection and
+prevention, extensive internal code clean-up and support for including external
+content directly in a web application (aliases).</p>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.2_(markt)">Tomcat 7
+changelog</a>.
+</p>
+</section>
+
+<section name="Tomcat 6.0.29 Released" rtext="2010-07-22">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 6.0.29 of
+Apache Tomcat. This release includes bug fixes over Apache Tomcat 6.0.28.
+</p>
+<p style="text-align: center;">
+<a href="download-60.cgi">Download</a> |
+<a href="tomcat-6.0-doc/changelog.html#Tomcat_6.0.29_(jfclere)">ChangeLog for 6.0.29</a>
+</p>
+</section>
+
+<section name="Tomcat 6.0.28 Released" rtext="2010-07-09">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 6.0.28 of
+Apache Tomcat. This release includes many bug fixes and a number of security
+fixes over Apache Tomcat 6.0.26.</p>
+<p style="text-align: center;">
+<a href="download-60.cgi">Download</a> |
+<a href="tomcat-6.0-doc/changelog.html#Tomcat_6.0.28_(jfclere)">ChangeLog for 6.0.28</a>
+</p>
+</section>
+
+<section name="Tomcat 5.5.30 Released" rtext="2010-07-09">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 5.5.30 of
+Apache Tomcat. This release includes many bug fixes and a number of security
+fixes over Apache Tomcat 5.5.29.
+</p>
+</section>
+
+<section name="Tomcat 7.0.0 Released" rtext="2010-06-29">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.0 beta
+of Apache Tomcat. This release is the first Apache Tomcat release to support the
+Servlet 3.0, JSP 2.2 and EL 2.2 specifications. In addition, it includes
+numerous other improvements such as web application memory leak detection and
+prevention, extensive internal code clean-up and support for including external
+content directly in a web application (aliases).</p>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.0_(markt)">Tomcat 7
+changelog</a>.
+</p>
+</section>
+
+<section name="Apache Tomcat Track at ApacheCon North America 2010" rtext="2010-05-27">
+<p>
+<a href="http://archive.apachecon.com/c/acna2010/">ApacheCon
+North America 2010</a> will be held 1-5 November 2010, at the Westin
+Peachtree in Atlanta, Georgia, USA.</p>
+<p>
+The official conference, trainings and expo of the Apache Software
+Foundation (ASF) will run to Atlanta this November, with dozens of
+sessions on Servers, Cloud Computing, Search NoSQL, Incubating projects,
+innovations, emerging technologies, and more.</p>
+<p>
+The Tomcat Project Management Committee (PMC) have solicited session proposals from the
+Tomcat community and beyond.
+The Tomcat track will
+take place on <a href="http://archive.apachecon.com/c/acna2010/schedule/2010/11/05">Friday the 5th</a> and is a whole day track.
+Additionally we have a meetup on Thursday the 4th and sessions during the barcamp.
+</p>
+<p>See also:
+<a href="http://archive.apachecon.com/c/">Apache Conferences Archive</a></p>
+<div style="clear: right;"/>
+</section>
+
+<section name="Tomcat 5.5.29 Released" rtext="2010-04-20">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 5.5.29 of
+Apache Tomcat. This release includes many bug fixes and a number of security
+fixes over Apache Tomcat 5.5.28.
+</p>
+</section>
+
+<section name="Tomcat 6.0.26 Released" rtext="2010-03-11">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 6.0.26 of
+Apache Tomcat. This release includes many bug fixes over Apache Tomcat 6.0.24.
+</p>
+<p style="text-align: center;">
+<a href="download-60.cgi">Download</a> |
+<a href="tomcat-6.0-doc/changelog.html#Tomcat_6.0.26_(jfclere)">ChangeLog for 6.0.26</a>
+</p>
+</section>
+
+<section name="Tomcat Connectors 1.2.30 Released" rtext="2010-03-01">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.2.30 of
+Apache Tomcat Connectors.
+This release includes mainly bug fixes and some small improvements over Apache Tomcat Connectors 1.2.28.
+</p>
+<p>
+<b>Notice:</b> Apache Tomcat Connectors version 1.2.29 was withdrawn from the release due to
+regression with Microsoft IIS connector.
+</p>
+</section>
+
+<section name="Tomcat Native 1.1.20 Released" rtext="2010-02-17">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.1.20 of Tomcat Native.
+This version is principally a bugfix release.
+</p>
+</section>
+
+<section name="Tomcat 6.0.24 Released" rtext="2010-01-21">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 6.0.24 of
+Apache Tomcat. This release includes many bugfixes over Apache Tomcat 6.0.20.
+</p>
+<p style="text-align: center;">
+<a href="download-60.cgi">Download</a> |
+<a href="tomcat-6.0-doc/changelog.html#Tomcat_6.0.24_(jfclere)">ChangeLog for 6.0.24</a>
+</p>
+</section>
+
+<section name="Tomcat tracks at ApacheCon US 2009" rtext="2009-11">
+<p><a href="http://archive.apachecon.com/c/acus2009/">ApacheCon US 2009</a>,
+   2-6 November 2009 in Oakland, CA, will have a dedicated track about Tomcat topics.
+   We will celebrate our 10th anniversary as an Apache project, explain the future developements: Tomcat7, asynchrounous servlets,
+   show how to get the best of Tomcat and how to front-end Tomcat clusters.
+   We also have a meetup on Monday evening where you can get hands-on advice and really join the ranks of the Tomcat initiated!
+</p><p>
+   Join us in Oakland!
+</p>
+<p>See also:
+<a href="http://archive.apachecon.com/c/">Apache Conferences Archive</a></p>
+
+</section>
+
+<section name="Live Video Streaming of Tomcat Talks at ApacheCon Europe 2009" rtext="2009-03">
+ <p><a href="http://archive.apachecon.com/c/aceu2009/">ApacheCon Europe 2009</a>,
+ 23-27 March in Amsterdam, has a dedicated track about Tomcat topics.
+ If you cannot make it to Amsterdam this time, you can
+ <a href="http://archive.apachecon.com/c/aceu2009/about/videoStreaming">watch
+ all Tomcat talks online</a>.</p>
+ <p>In addition to the various keynote sessions, and other technical talks,
+ the following talks related to Tomcat will be streamed on Thursday,
+ the 26th of March.
+ </p>
+<ul>
+<li>Securing Apache Tomcat for your Environment (Mark Thomas)</li>
+<li>What's new in Servlet 3.0 (Filip Hanik)</li>
+<li>Performance Tuning Apache Tomcat for Production (Filip Hanik)</li>
+<li>mod_proxy versus mod_jk (Jean-Frederic Clere)</li>
+<li>Introduction to NIO2 (Jean-Francois Arcand)</li>
+<li>What is Bayeux? (Filip Hanik)</li>
+</ul>
+<p>See also:
+<a href="http://archive.apachecon.com/c/">Apache Conferences Archive</a></p>
+</section>
+
+</body>
+</document>

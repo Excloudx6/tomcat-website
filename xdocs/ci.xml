@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <title>Continuous Integration</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Overview">
+<p>Apache Tomcat project uses several
+<a href="http://ci.apache.org/">automated build services</a> provided by
+Apache Software Foundation. In short, those are:</p>
+
+<ul>
+  <li><a href="#Gump">Apache Gump</a></li>
+  <li><a href="#Buildbot">Buildbot</a></li>
+  <li><a href="#Jenkins">Jenkins</a></li>
+</ul>
+
+<p><a href="http://gump.apache.org/">Apache Gump</a> is used to test
+integration of Tomcat with latest versions of libraries it depends on.
+<a href="http://ci.apache.org/buildbot.html">Buildbot</a> and
+<a href="https://builds.apache.org/">Jenkins</a>
+are used to perform the usual nighty builds.
+The Buildbot also builds and publishes documentation snapshots for the
+currently developed not yet released versions of Tomcat.</p>
+</section>
+
+<section name="Documentation snapshots">
+<p>The following are links to snapshots of Apache Tomcat documentation,
+prepared and published by ASF Buildbot, using the latest source code.</p>
+
+<ul>
+  <li><a href="http://ci.apache.org/projects/tomcat/tomcat9/docs/index.html" rel="nofollow">Tomcat 9.0.x</a> (trunk)</li>
+  <li><a href="http://ci.apache.org/projects/tomcat/tomcat85/docs/index.html" rel="nofollow">Tomcat 8.5.x</a></li>
+  <li><a href="http://ci.apache.org/projects/tomcat/tomcat7/docs/index.html" rel="nofollow">Tomcat 7.0.x</a></li>
+</ul>
+
+</section>
+
+<section name="Build results">
+
+<subsection name="Buildbot">
+<p>The following are projects built by
+  <a href="http://ci.apache.org/buildbot.html">ASF Buildbot</a>:</p>
+
+<table>
+<tbody>
+<tr style="vertical-align:top">
+  <td><strong>tomcat-trunk</strong></td>
+  <td>
+    <ul>
+      <li>Source path: <code>/tomcat/trunk</code></li>
+      <li><a href="http://ci.apache.org/builders/tomcat-trunk">Build status page</a> for <strong>tomcat-trunk</strong><br/>This builder is triggered after each commit. It does a release build and runs tests (using multiple parallel threads).</li>
+      <li><a href="https://ci.apache.org/builders/tomcat-trunk-periodic">Build status page</a> for <strong>tomcat-trunk-periodic</strong><br/>This builder is triggered once a day. It runs tests serially and generates a coverage report.</li>
+      <li><a href="http://ci.apache.org/projects/tomcat/tomcat9/" rel="nofollow">Published files</a>:
+        <ul>
+          <li><a href="http://ci.apache.org/projects/tomcat/tomcat9/docs/index.html" rel="nofollow">Documentation</a></li>
+          <li><a href="http://ci.apache.org/projects/tomcat/tomcat9/logs/" rel="nofollow">JUnit logs</a>
+           by revision number. The recent ones are at the bottom.</li>
+          <li><a href="http://ci.apache.org/projects/tomcat/tomcat9/coverage/" rel="nofollow">Coverage report</a></li>
+          <li><a href="http://ci.apache.org/projects/tomcat/tomcat9/rat-output.html" rel="nofollow">RAT report</a></li>
+        </ul>
+      </li>
+    </ul>
+  </td>
+</tr>
+<tr style="vertical-align:top">
+  <td><strong>tomcat-85-trunk</strong></td>
+  <td>
+    <ul>
+      <li>Source path: <code>/tomcat/tc8.5.x/trunk</code></li>
+      <li><a href="http://ci.apache.org/builders/tomcat-85-trunk">Build status page</a> for <strong>tomcat-85-trunk</strong><br/>This builder is triggered after each commit. It does a release build and runs tests (using multiple parallel threads).</li>
+      <li><a href="https://ci.apache.org/builders/tomcat-85-trunk-periodic">Build status page</a> for <strong>tomcat-85-trunk-periodic</strong><br/>This builder is triggered once a day. It runs tests serially and generates a coverage report.</li>
+      <li><a href="http://ci.apache.org/projects/tomcat/tomcat85/" rel="nofollow">Published files</a>:
+        <ul>
+          <li><a href="http://ci.apache.org/projects/tomcat/tomcat85/docs/index.html" rel="nofollow">Documentation</a></li>
+          <li><a href="http://ci.apache.org/projects/tomcat/tomcat85/logs/" rel="nofollow">JUnit logs</a>
+           by revision number. The recent ones are at the bottom.</li>
+          <li><a href="http://ci.apache.org/projects/tomcat/tomcat85/coverage/" rel="nofollow">Coverage report</a></li>
+          <li><a href="http://ci.apache.org/projects/tomcat/tomcat85/rat-output.html" rel="nofollow">RAT report</a></li>
+        </ul>
+      </li>
+    </ul>
+  </td>
+</tr>
+<tr style="vertical-align:top">
+  <td><strong>tomcat-7-trunk</strong></td>
+  <td>
+    <ul>
+      <li>Source path: <code>/tomcat/tc7.0.x/trunk</code></li>
+      <li><a href="http://ci.apache.org/builders/tomcat-7-trunk">Build status page</a></li>
+      <li><a href="http://ci.apache.org/projects/tomcat/tomcat7/" rel="nofollow">Published files</a>:
+        <ul>
+          <li><a href="http://ci.apache.org/projects/tomcat/tomcat7/docs/index.html" rel="nofollow">Documentation</a></li>
+          <li><a href="http://ci.apache.org/projects/tomcat/tomcat7/logs/" rel="nofollow">JUnit logs</a>
+           by revision number. The recent ones are at the bottom.</li>
+          <li><a href="http://ci.apache.org/projects/tomcat/tomcat7/rat-output.html" rel="nofollow">RAT report</a></li>
+        </ul>
+      </li>
+    </ul>
+  </td>
+</tr>
+</tbody>
+</table>
+</subsection>
+
+<subsection name="Gump">
+<p>The following are projects built by
+  <a href="http://gump.apache.org/">Apache Gump</a>:</p>
+<table>
+<thead>
+<tr><th>Module</th><th>Links</th></tr>
+</thead>
+<tbody>
+<tr style="vertical-align:top">
+  <td><a href="http://vmgump.apache.org/tomcat-trunk/">tomcat-trunk</a><br/>Tomcat 9.0.x</td>
+  <td>
+    <ul>
+      <li>Source path: <code>/tomcat/trunk</code></li>
+      <li><strong>Projects:</strong>
+        <ul>
+          <li><a href="http://vmgump.apache.org/tomcat-trunk/tomcat-trunk/">tomcat-trunk</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-trunk/tomcat-trunk-test-apr/">tomcat-trunk-test-apr</a> (with Tomcat Native 1.2.x and OpenSSL master)</li>
+          <li><a href="http://vmgump.apache.org/tomcat-trunk/tomcat-trunk-test-nio/">tomcat-trunk-test-nio</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-trunk/tomcat-trunk-test-nio2/">tomcat-trunk-test-nio2</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-trunk/tomcat-trunk-validate/">tomcat-trunk-validate</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-trunk/tomcat-trunk-validate-eoln/">tomcat-trunk-validate-eoln</a></li>
+        </ul>
+      </li>
+      <li><a href="http://vmgump.apache.org/tomcat-trunk/tomcat-trunk-test-nio/gump_file/TEST-org.apache.catalina.util.TestServerInfo.NIO.txt.html" rel="nofollow">TestServerInfo</a> result</li>
+    </ul>
+  </td>
+</tr>
+<tr style="vertical-align:top">
+  <td><a href="http://vmgump.apache.org/tomcat-8.5.x/">tomcat-8.5.x</a><br/>Tomcat 8.5.x</td>
+  <td>
+    <ul>
+      <li>Source path: <code>/tomcat/tc8.5.x/trunk</code></li>
+      <li><strong>Projects:</strong>
+        <ul>
+          <li><a href="http://vmgump.apache.org/tomcat-8.5.x/tomcat-tc8.5.x/">tomcat-tc8.5.x</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-8.5.x/tomcat-tc8.5.x-test-apr/">tomcat-tc8.5.x-test-apr</a> (with Tomcat Native 1.2.x and OpenSSL 1.1.1[x])</li>
+          <li><a href="http://vmgump.apache.org/tomcat-8.5.x/tomcat-tc8.5.x-test-nio/">tomcat-tc8.5.x-test-nio</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-8.5.x/tomcat-tc8.5.x-test-nio2/">tomcat-tc8.5.x-test-nio2</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-8.5.x/tomcat-tc8.5.x-validate/">tomcat-tc8.5.x-validate</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-8.5.x/tomcat-tc8.5.x-validate-eoln/">tomcat-tc8.5.x-validate-eoln</a></li>
+        </ul>
+      </li>
+      <li><a href="http://vmgump.apache.org/tomcat-8.5.x/tomcat-tc8.5.x-test-nio/gump_file/TEST-org.apache.catalina.util.TestServerInfo.NIO.txt.html" rel="nofollow">TestServerInfo</a> result</li>
+    </ul>
+  </td>
+</tr>
+<tr style="vertical-align:top">
+  <td><a href="http://vmgump.apache.org/tomcat-7.0.x/">tomcat-7.0.x</a><br/>Tomcat 7.0.x</td>
+  <td>
+    <ul>
+      <li>Source path: <code>/tomcat/tc7.0.x/trunk</code></li>
+      <li><strong>Projects:</strong>
+        <ul>
+          <li><a href="http://vmgump.apache.org/tomcat-7.0.x/tomcat-tc7.0.x/">tomcat-tc7.0.x</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-7.0.x/tomcat-tc7.0.x-dbcp/">tomcat-tc7.0.x-dbcp</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-7.0.x/tomcat-tc7.0.x-test-apr/">tomcat-tc7.0.x-test-apr</a> (with Tomcat Native 1.2.x and OpenSSL 1.0.2[x])</li>
+          <li><a href="http://vmgump.apache.org/tomcat-7.0.x/tomcat-tc7.0.x-test-bio/">tomcat-tc7.0.x-test-bio</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-7.0.x/tomcat-tc7.0.x-test-nio/">tomcat-tc7.0.x-test-nio</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-7.0.x/tomcat-tc7.0.x-validate/">tomcat-tc7.0.x-validate</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-7.0.x/tomcat-tc7.0.x-validate-eoln/">tomcat-tc7.0.x-validate-eoln</a></li>
+        </ul>
+      </li>
+      <li><a href="http://vmgump.apache.org/tomcat-7.0.x/tomcat-tc7.0.x-test-bio/gump_file/TEST-org.apache.catalina.util.TestServerInfo.BIO.txt.html" rel="nofollow">TestServerInfo</a> result</li>
+    </ul>
+  </td>
+</tr>
+<tr style="vertical-align:top">
+  <td><a href="http://vmgump.apache.org/tomcat-native-1.2-1.0.2/">tomcat-native-1.2-1.0.2</a><br/>Tomcat Native 1.2.x<br/>uses:<br/>OpenSSL 1.0.2[x]<br/>APR 1.6.x</td>
+  <td>
+    <ul>
+      <li>Source path: <code>/tomcat/native/trunk</code></li>
+      <li><strong>Projects:</strong>
+        <ul>
+          <li><a href="http://vmgump.apache.org/tomcat-native-1.2-1.0.2/tomcat-native-1.2-1.0.2-buildconf/">tomcat-native-1.2-1.0.2-buildconf</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-native-1.2-1.0.2/tomcat-native-1.2-1.0.2-configure/">tomcat-native-1.2-1.0.2-configure</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-native-1.2-1.0.2/tomcat-native-1.2-1.0.2-make/">tomcat-native-1.2-1.0.2-make</a> - performs the actual build</li>
+          <li><a href="http://vmgump.apache.org/tomcat-native-1.2-1.0.2/tomcat-native-1.2-1.0.2-make-install/">tomcat-native-1.2-1.0.2-make-install</a></li>
+        </ul>
+      </li>
+    </ul>
+  </td>
+</tr>
+<tr style="vertical-align:top">
+  <td><a href="http://vmgump.apache.org/tomcat-native-1.2-1.1.0/">tomcat-native-1.2-1.1.0</a><br/>Tomcat Native 1.2.x<br/>uses:<br/>OpenSSL 1.1.0[x]<br/>APR 1.6.x</td>
+  <td>
+    <ul>
+      <li>Source path: <code>/tomcat/native/trunk</code></li>
+      <li><strong>Projects:</strong>
+        <ul>
+          <li><a href="http://vmgump.apache.org/tomcat-native-1.2-1.1.0/tomcat-native-1.2-1.1.0-buildconf/">tomcat-native-1.2-1.1.0-buildconf</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-native-1.2-1.1.0/tomcat-native-1.2-1.1.0-configure/">tomcat-native-1.2-1.1.0-configure</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-native-1.2-1.1.0/tomcat-native-1.2-1.1.0-make/">tomcat-native-1.2-1.1.0-make</a> - performs the actual build</li>
+          <li><a href="http://vmgump.apache.org/tomcat-native-1.2-1.1.0/tomcat-native-1.2-1.1.0-make-install/">tomcat-native-1.2-1.1.0-make-install</a></li>
+        </ul>
+      </li>
+    </ul>
+  </td>
+</tr>
+<tr style="vertical-align:top">
+  <td><a href="http://vmgump.apache.org/tomcat-native-1.2-1.1.1/">tomcat-native-1.2-1.1.1</a><br/>Tomcat Native 1.2.x<br/>uses:<br/>OpenSSL 1.1.1[x]<br/>APR 1.6.x</td>
+  <td>
+    <ul>
+      <li>Source path: <code>/tomcat/native/trunk</code></li>
+      <li><strong>Projects:</strong>
+        <ul>
+          <li><a href="http://vmgump.apache.org/tomcat-native-1.2-1.1.1/tomcat-native-1.2-1.1.1-buildconf/">tomcat-native-1.2-1.1.1-buildconf</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-native-1.2-1.1.1/tomcat-native-1.2-1.1.1-configure/">tomcat-native-1.2-1.1.1-configure</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-native-1.2-1.1.1/tomcat-native-1.2-1.1.1-make/">tomcat-native-1.2-1.1.1-make</a> - performs the actual build</li>
+          <li><a href="http://vmgump.apache.org/tomcat-native-1.2-1.1.1/tomcat-native-1.2-1.1.1-make-install/">tomcat-native-1.2-1.1.1-make-install</a></li>
+        </ul>
+      </li>
+    </ul>
+  </td>
+</tr>
+<tr style="vertical-align:top">
+  <td><a href="http://vmgump.apache.org/tomcat-native-trunk/">tomcat-native-trunk</a><br/>Tomcat Native 1.2.x<br/>uses:<br/>OpenSSL master<br/>APR 1.6.x</td>
+  <td>
+    <ul>
+      <li>Source path: <code>/tomcat/native/trunk</code></li>
+      <li><strong>Projects:</strong>
+        <ul>
+          <li><a href="http://vmgump.apache.org/tomcat-native-trunk/tomcat-native-trunk-buildconf/">tomcat-native-trunk-buildconf</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-native-trunk/tomcat-native-trunk-configure/">tomcat-native-trunk-configure</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-native-trunk/tomcat-native-trunk-make/">tomcat-native-trunk-make</a> - performs the actual build</li>
+          <li><a href="http://vmgump.apache.org/tomcat-native-trunk/tomcat-native-trunk-make-install/">tomcat-native-trunk-make-install</a></li>
+        </ul>
+      </li>
+    </ul>
+  </td>
+</tr>
+<tr style="vertical-align:top">
+  <td><a href="http://vmgump.apache.org/tomcat-connectors-native/">tomcat-connectors-native</a><br/>Tomcat Connectors (mod_jk)<br/>uses:<br/>Apache HTTP Server trunk</td>
+  <td>
+    <ul>
+      <li>Source path: <code>/tomcat/jk/trunk</code></li>
+      <li><strong>Projects:</strong>
+        <ul>
+          <li><a href="http://vmgump.apache.org/tomcat-connectors-native/tomcat-connectors-native/">tomcat-connectors-native</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-connectors-native/tomcat-jk-native-buildconf/">tomcat-jk-native-buildconf</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-connectors-native/tomcat-jk-native-configure/">tomcat-jk-native-configure</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-connectors-native/tomcat-jk-native/">tomcat-jk-native</a> - performs the actual build</li>
+        </ul>
+      </li>
+    </ul>
+  </td>
+</tr>
+<tr style="vertical-align:top">
+  <td><a href="http://vmgump.apache.org/tomcat-taglibs/">tomcat-taglibs</a><br/>Standard Taglib (JSTL 1.2)</td>
+  <td>
+    <ul>
+      <li>Source path: <code>/tomcat/taglibs/trunks</code></li>
+      <li><strong>Projects:</strong>
+        <ul>
+          <li><a href="http://vmgump.apache.org/tomcat-taglibs/taglibs-parent/">taglibs-parent</a></li>
+          <li><a href="http://vmgump.apache.org/tomcat-taglibs/taglibs-standard-spec/">taglibs-standard-spec</a></li>
+        </ul>
+      </li>
+    </ul>
+  </td>
+</tr>
+</tbody>
+</table>
+
+</subsection>
+
+<subsection name="Jenkins">
+<p>The following are projects built by
+  <a href="https://builds.apache.org/">Jenkins</a>:</p>
+<ul>
+  <li><a href="https://builds.apache.org/job/TomcatMavenPlugin-mvn2.x/">TomcatMavenPlugin-mvn2.x</a></li>
+  <li><a href="https://builds.apache.org/job/TomcatMavenPlugin-mvn3.x/">TomcatMavenPlugin-mvn3.x</a></li>
+  <li><a href="https://builds.apache.org/job/Tomcat-7.x/">Tomcat-7.x</a> (experimental)</li>
+  <li><a href="https://builds.apache.org/job/taglib-standard/">taglib-standard</a></li>
+  <li><a href="https://builds.apache.org/job/taglib-parent/">taglib-parent</a></li>
+  <li><a href="https://builds.apache.org/job/taglib-rdc/">taglib-rdc</a></li>
+</ul>
+</subsection>
+
+</section>
+
+</body>
+</document>

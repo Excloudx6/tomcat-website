@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Migration Guide - Tomcat 6.0.x</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="General">
+
+<p>Please read general <a href="migration.html">Migration Guide page</a> first,
+for common considerations that apply to migration or upgrade between versions
+of Apache Tomcat.</p>
+
+</section>
+
+<section name="Migrating from 5.5.x to 6.0.x">
+
+  <p> This section lists all the known changes between 5.5.x and 6.0.x which may
+  cause backwards compatibility problems when upgrading.</p>
+  
+  <subsection name="Java 5 required">
+
+    <p>Apache Tomcat 6.0.x requires Java 5 or later, unlike Apache Tomcat 5.5.x which
+    could use a compatibility package to run on JRE 1.4.</p>
+
+  </subsection>
+
+  <subsection name="Modified directory structure">
+
+    <subsection name="Shared libraries">
+
+    <p>Apache Tomcat 5.5.x used, by default, a directory structure including
+    <code>common</code>, <code>shared</code> and <code>server</code> subdirectories.
+    Apache Tomcat 6.0.x uses a single <code>lib</code> directory.</p>
+
+    <p>The <code>lib</code> directory is the direct replacement for both
+    <code>common/lib</code> and <code>common/classes</code> subdirectories:
+    it accepts both JARs and exploded class hierarchies.</p>
+
+    <p>The <code>conf/catalina.properties</code> file can be used to modify
+    the directory structure.</p>
+
+    <p>Starting with version 6.0.21, Apache Tomcat supports both the
+    <code>$CATALINA_BASE/lib</code> and <code>$CATALINA_HOME/lib</code>
+    directories. The jars and classes in <code>$CATALINA_BASE/lib</code>
+    are earlier on the class path and thus take precedence.</p>
+
+    </subsection>
+
+    <subsection name="Endorsed libraries">
+
+    <p>The <code>$CATALINA_HOME/common/endorsed</code> subdirectory is replaced
+    by the <code>$CATALINA_HOME/endorsed</code> directory. This directory is
+    absent by default.</p>
+
+    <p>The <code>JAVA_ENDORSED_DIRS</code> environment variable can be used
+    with <code>setenv.bat</code>|<code>sh</code> scripts to provide alternative
+    location of this directory.</p>
+    </subsection>
+
+    <subsection name="Default web applications">
+
+    <p>The Manager and Host Manager web applications are no longer in
+    <code>server/webapps</code>. All of the default web applications
+    are now located in the <code>webapps</code> directory.</p>
+
+    <p>Note, that if <code>deployOnStartup</code> or <code>autoDeploy</code>
+    options on the <strong>Host</strong> are enabled, the
+    <code>META-INF/context.xml</code> files of manager and host-manager
+    applications will be copied into the
+    <code>$CATALINA_BASE/conf/[engine_name]/[host_name]</code>
+    directory when Tomcat starts for the first time.</p>
+
+    <p>When using a shared webhosting environment, it is recommended to forbid
+    the use of context.xml inside the web applications (using the
+    <code>deployXML</code> attribute of the <strong>Host</strong> element).
+    (This option is also available in Tomcat 5.5).</p>
+
+    </subsection>
+
+  </subsection>
+
+  <subsection name="Modified classloading">
+
+    <p>As a result of the modification of the directory structure, the
+    common, shared and server classloaders have been merged into one.
+    Effectively, the shared and server classloaders are not configured by
+    default and the common classloader is mapped to the <code>lib</code>
+    directory, as described above.</p>
+    <p>This behavior and structure can be modified using the 
+    <code>conf/catalina.properties</code> file.</p>
+
+  </subsection>
+
+  <subsection name="Internal Logging API package renaming">
+
+    <p>Apache Tomcat 5.5.x relied on the
+    <a href="http://commons.apache.org/logging/">Apache Commons Logging</a>
+    library for its internal logging. Apache Tomcat 6.0.x and later no more
+    uses the library directly, but uses a private copy of it. The classes are
+    in the <code>org.apache.juli.logging</code> package.
+    </p>
+
+    <p>The rationale behind this change is that so that application logging
+    can be as independent as possible from the container, while still having
+    the possibility of being unified.</p>
+
+    <p>By default only a subset of Apache Commons Logging classes that are
+    needed to perform logging to <code>java.util.logging</code> is included
+    with Tomcat. If you want to configure Tomcat to redirect its logging into
+    <a href="http://logging.apache.org/log4j/">Log4J</a>, or any other logging
+    framework supported by the full Apache Commons Logging library, you will
+    have to replace one of Tomcat JARs with the full implementation. The JAR
+    is available as an extras component. See the logging and extras
+    documentation for more details.</p>
+
+  </subsection>
+
+  <subsection name="commons-logging.jar">
+
+    <p>As Apache Tomcat no longer directly uses the
+    <a href="http://commons.apache.org/logging/">Apache Commons Logging</a>
+    library, the <code>commons-logging-api.jar</code> library is no longer
+    provided for the web applications. The web applications that use
+    Apache Commons Logging have to provide their own copy of that library.
+    It is recommended to put it into their <code>WEB-INF/lib</code> directory,
+    like any other JAR.</p>
+
+  </subsection>
+
+  <subsection name="SSLEnabled attribute on Connector">
+
+    <p>For all SSL enabled connectors, the <code>SSLEnabled</code> flag must be set
+    to <code>true</code> to enable encryption. Tomcat no longer relies on using
+    the protocol and other parameters to determine if the transport should be
+    encrypted, to give maximum flexibility in proxied scenarios.</p>
+
+  </subsection>
+
+  <subsection name="Connector thread pools">
+
+    <p>The <strong>Connector</strong> thread pools have been simplified. They
+    now grow to the maximum size specified but never shrink. The attributes
+    associated with shrinking the thread pool (e.g. <code>minSpareThreads</code>)
+    will be ignored. If you require a thread pool that grows and shrinks with
+    demand you'll need to configure an <strong>Executor</strong> and then
+    configure your <strong>Connector</strong> to use it.</p>
+
+  </subsection>
+
+  <subsection name="Clustering configuration changes">
+
+    <p>Clustering configuration was refactored. See the clustering documentation
+    for more details.</p>
+
+  </subsection>
+
+</section>
+
+<section name="Upgrading 6.0.x">
+
+  <p>When upgrading instances of Apache Tomcat from one version of Tomcat 6 to
+  another, particularly when using separate locations for $CATALINA_HOME and
+  $CATALINA_BASE, it is necessary to ensure that any changes in the
+  configuration files such as new attributes and changes to defaults are applied
+  as part of the upgrade. To assist with the identification of these changes,
+  the form below may be used to view the differences between the configuration
+  files in different versions of Tomcat 6.</p>
+  
+  <subsection name="Tomcat 6.0.x configuration file differences">
+
+    <p>Select a configuration file, old version and new version from the boxes
+    below and then click &quot;View differences&quot; to see the differences.
+    The differences will be shown in a new tab/window.</p>
+
+    <script type="text/javascript"><![CDATA[
+    "use strict"; // Enable strict mode
+
+    document.addEventListener("DOMContentLoaded", function() {
+    var formSubmit = document.getElementById("tc6Submit");
+      formSubmit.addEventListener("submit", function() {
+        var revisions = {
+          "HEAD":"HEAD",
+          "6.0.0":"466306",
+          "6.0.1":"472328",
+          "6.0.2":"475489",
+          "6.0.4":"483285",
+          "6.0.6":"487720",
+          "6.0.7":"489812",
+          "6.0.8":"496554",
+          "6.0.9":"502060",
+          "6.0.10":"506975",
+          "6.0.13":"535436",
+          "6.0.14":"557842",
+          "6.0.16":"616101",
+          "6.0.19":"751136",
+          "6.0.20":"802250",
+          "6.0.24":"900772",
+          "6.0.26":"920929",
+          "6.0.28":"958987",
+          "6.0.29":"965461",
+          "6.0.30":"1057276",
+          "6.0.32":"1066582",
+          "6.0.33":"1158221",
+          "6.0.35":"1207053",
+          "6.0.36":"1398690",
+          "6.0.37":"1476938",
+          "6.0.39":"1561893",
+          "6.0.41":"1595825",
+          "6.0.43":"1639591",
+          "6.0.44":"1678328",
+          "6.0.45":"1727983",
+          "6.0.47":"1764645",
+          "6.0.48":"1768577",
+          "6.0.51":"1786231",
+          "6.0.53":"1789860"
+        };
+
+        formSubmit.action = "http://svn.apache.org/viewvc/tomcat/tc6.0.x/trunk/" +
+          document.getElementById('select-filename').value;
+        formSubmit.elements['r1'].value = revisions[document.getElementById('select-r1').value]; 
+        formSubmit.elements['r2'].value = revisions[document.getElementById('select-r2').value]; 
+        return true;
+      }, false);
+    }, false);
+    ]]></script>
+
+    
+    <p><label>Configuration file:
+    <select id="select-filename">
+    <option value="conf/catalina.policy">catalina.policy</option>
+    <option value="conf/catalina.properties">catalina.properties</option>
+    <option value="conf/context.xml">context.xml</option>
+    <option value="conf/logging.properties">logging.properties</option>
+    <option value="conf/server.xml">server.xml</option>
+    <option value="conf/tomcat-users.xml">tomcat-users.xml</option>
+    <option value="conf/web.xml">web.xml</option>
+    </select></label>
+    </p>
+    <p><label>Old version:
+    <select id="select-r1">
+    <option value="6.0.0">6.0.0</option>
+    <option value="6.0.1">6.0.1</option>
+    <option value="6.0.2">6.0.2</option>
+    <option value="6.0.4">6.0.4</option>
+    <option value="6.0.6">6.0.6</option>
+    <option value="6.0.7">6.0.7</option>
+    <option value="6.0.8">6.0.8</option>
+    <option value="6.0.9">6.0.9</option>
+    <option value="6.0.10">6.0.10</option>
+    <option value="6.0.13">6.0.13</option>
+    <option value="6.0.14">6.0.14</option>
+    <option value="6.0.16">6.0.16</option>
+    <option value="6.0.19">6.0.19</option>
+    <option value="6.0.20">6.0.20</option>
+    <option value="6.0.24">6.0.24</option>
+    <option value="6.0.26">6.0.26</option>
+    <option value="6.0.28">6.0.28</option>
+    <option value="6.0.29">6.0.29</option>
+    <option value="6.0.30">6.0.30</option>
+    <option value="6.0.32">6.0.32</option>
+    <option value="6.0.33">6.0.33</option>
+    <option value="6.0.35">6.0.35</option>
+    <option value="6.0.36">6.0.36</option>
+    <option value="6.0.37">6.0.37</option>
+    <option value="6.0.39">6.0.39</option>
+    <option value="6.0.41">6.0.41</option>
+    <option value="6.0.43">6.0.43</option>
+    <option value="6.0.44">6.0.44</option>
+    <option value="6.0.45">6.0.45</option>
+    <option value="6.0.47">6.0.47</option>
+    <option value="6.0.48">6.0.48</option>
+    <option value="6.0.51" selected="selected">6.0.51</option>
+    <option value="6.0.53">6.0.53</option>
+    </select>,</label> <label>new version:
+    <select id="select-r2">
+    <option value="6.0.0">6.0.0</option>
+    <option value="6.0.1">6.0.1</option>
+    <option value="6.0.2">6.0.2</option>
+    <option value="6.0.4">6.0.4</option>
+    <option value="6.0.6">6.0.6</option>
+    <option value="6.0.7">6.0.7</option>
+    <option value="6.0.8">6.0.8</option>
+    <option value="6.0.9">6.0.9</option>
+    <option value="6.0.10">6.0.10</option>
+    <option value="6.0.13">6.0.13</option>
+    <option value="6.0.14">6.0.14</option>
+    <option value="6.0.16">6.0.16</option>
+    <option value="6.0.19">6.0.19</option>
+    <option value="6.0.20">6.0.20</option>
+    <option value="6.0.24">6.0.24</option>
+    <option value="6.0.26">6.0.26</option>
+    <option value="6.0.28">6.0.28</option>
+    <option value="6.0.29">6.0.29</option>
+    <option value="6.0.30">6.0.30</option>
+    <option value="6.0.32">6.0.32</option>
+    <option value="6.0.33">6.0.33</option>
+    <option value="6.0.35">6.0.35</option>
+    <option value="6.0.36">6.0.36</option>
+    <option value="6.0.37">6.0.37</option>
+    <option value="6.0.39">6.0.39</option>
+    <option value="6.0.41">6.0.41</option>
+    <option value="6.0.43">6.0.43</option>
+    <option value="6.0.44">6.0.44</option>
+    <option value="6.0.45">6.0.45</option>
+    <option value="6.0.47">6.0.47</option>
+    <option value="6.0.48">6.0.48</option>
+    <option value="6.0.51">6.0.51</option>
+    <option value="6.0.53" selected="selected">6.0.53</option>
+    <option value="HEAD">trunk (unreleased)</option>
+    </select></label>
+    </p>
+
+    <form id="tc6Submit" action="to-be-replaced" method="get"
+          target="_blank">
+    <p>
+    <input type="hidden" name="diff_format" value="h"/>
+    <input type="hidden" name="r1"/><input type="hidden" name="r2"/>
+    <button>View Differences</button>
+    </p>
+    </form>
+    <p>You can also use Subversion command similar to the following (all on one line):</p>
+    <source>svn diff
+  --old=http://svn.apache.org/repos/asf/tomcat/tc6.0.x/tags/TOMCAT_6_0_36/conf/
+  --new=http://svn.apache.org/repos/asf/tomcat/tc6.0.x/tags/TOMCAT_6_0_37/conf/</source>
+  </subsection>
+  
+</section>
+
+</body>
+</document>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <title>Contact Information</title>
+  </properties>
+
+<body>
+
+<section name="Product Support">
+<p>
+If you have questions or comments about the software or documentation on this site, 
+please subscribe to the appropriate <a href="lists.html">mailing list</a>.
+</p>
+</section>
+
+<section name="Security Issues">
+<p>
+If you would like to report a security issue with Apache Tomcat,
+please contact <a href="mailto:security@tomcat.apache.org">security@tomcat.apache.org</a>.
+<strong>Only</strong> security issues should be sent to this address.
+</p>
+</section>
+
+<section name="General Apache Issues">
+<p>
+The Tomcat Project is an effort of the 
+<a href="http://apache.org/foundation/">Apache Software Foundation</a>. The 
+address for general ASF correspondence and licensing questions is:
+</p>
+
+<p>
+<a href="mailto:apache.AT.apache.DOT.org">apache.AT.apache.DOT.org</a>
+</p>
+
+<p>
+You can find more contact information for the Apache Software Foundation 
+on the <a href="http://www.apache.org/foundation/contact.html">contact 
+page of the main Apache site</a>.
+</p>
+
+<p>
+You may also use 
+<a href="http://search.apache.org/">Apache Site Search</a> to scan all the 
+Apache sites at once. 
+</p>
+
+</section>
+
+</body>
+</document>

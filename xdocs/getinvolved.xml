@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <title>Get Involved</title>
+  </properties>
+
+<body>
+
+<section name="Get Involved">
+
+<p>If you would like to become involved in the development and support of Apache
+Tomcat there are many different ways in which you can contribute. The first step
+is to <a href="lists.html">join the mailing lists</a>. The following are just a
+few areas ways in which you can help:</p>
+
+<ul>
+  <li>Answer questions posted to the <a href="lists.html">mailing lists</a>.
+      </li>
+  <li>Contribute to the <a href="https://wiki.apache.org/tomcat/FAQ">FAQ</a> or
+      <a href="https://wiki.apache.org/tomcat/FrontPage">Wiki</a>.</li>
+  <li>Contribute other documentation patches, either for the website or for the
+      Apache Tomcat user documentation.</li>
+  <li><a href="https://bz.apache.org/bugzilla/">Investigate bugs</a> that have
+      been reported and provide patches where appropriate.</li>
+  <li>Help with development for the next release of the Servlet and JSP
+      specifications.</li>
+</ul>
+
+You should also read
+<a href="http://www.apache.org/foundation/how-it-works.html">How Apache Works
+</a>.
+
+</section>
+
+<section name="Contributing Changes">
+
+<p>
+If you want to start contributing changes, then the first step is to checkout the source
+code and build Apache Tomcat. See the <em>Building</em> page in the documentation area for the
+version of Apache Tomcat you want to work with for detailed instructions.
+</p>
+
+<p>
+When making a contribution, minimize unnecessary or unrelated changes (such as formatting).
+Apache Tomcat has many contributors, and being able to diff changes throughout the source history is important.
+Making small gradual changes and respecting the conventions of the existing source code
+will make it much more likely that your patch will be accepted.
+</p>
+
+<p>
+Once you've got Apache Tomcat up and running, then the Apache 
+<a href="http://www.apache.org/dev/contributors.html">Contributors Tech Guide</a> is a good place
+to learn how to create and submit patches.
+</p>
+
+</section>
+
+<section name="Coding Conventions">
+Apache Tomcat has very loosely defined coding conventions, but the following guidelines will be useful:
+<ul>
+  <li>Use spaces for indenting, not tabs</li>
+  <li>100 char line width for Java source, 80 char line width for
+      documentation source (.txt, .xml)</li>
+  <li>Java source: { at end of line, 4 space indents</li>
+  <li>XML source: 2 space indents</li>
+</ul>
+</section>
+
+</body>
+</document>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties><title>Tomcat Native Downloads</title></properties>
+  <body>
+    <section name="Tomcat Native Downloads">
+
+      <p>Use the links below to download the Apache Tomcat<sup>&#174;</sup> Native software
+      from one of our mirrors. You <strong>must</strong>
+      <a href="#Verify_the_Integrity_of_the_Files">verify the integrity</a> of
+      the downloaded files using signatures downloaded from our main
+      distribution directory.</p>
+
+      <p>Only current recommended releases are available on the main
+      distribution site and its mirrors.  Older releases are available from the
+      <a href="https://archive.apache.org/dist/tomcat/tomcat-connectors/native/">
+      archive download site</a>.</p>
+
+      <p>Recent releases (48 hours) may not yet be available from the mirrors.</p>
+
+      <subsection name="Choose a Mirror">
+        <p>You are currently using <b>[preferred]</b>.  If you
+        encounter a problem with this mirror, please select another
+        mirror.  If all mirrors are failing, there are <i>backup</i>
+        mirrors (at the end of the mirrors list) that should be
+        available.<br/>
+        [if-any logo]
+          <a href="[link]" rel="nofollow"><img alt="Logo" src="[logo]"/></a>
+        [end]
+        </p><form action="[location]" method="get" id="SelectMirror"><p>
+        Other mirrors: <select name="Preferred">
+        [if-any http]
+          [for http]<option value="[http]">[http]</option>[end]
+        [end]
+        [if-any ftp]
+          [for ftp]<option value="[ftp]">[ftp]</option>[end]
+        [end]
+        [if-any backup]
+          [for backup]<option value="[backup]">[backup] (backup)</option>[end]
+        [end]
+        </select><input type="submit" value="Change"/></p></form>
+        <p>You may also consult the <a href="http://www.apache.org/mirrors/">complete
+        list of mirrors</a>.</p>
+      </subsection>
+
+      <subsection name="Tomcat Native Connector - 1.2">
+        <p>For more information concerning Tomcat Native, see the
+        <a href="http://tomcat.apache.org/native-doc/" class="name">Tomcat Native</a> site.</p>
+        <ul class="downloads">
+          <li class="download">
+          <div class="links"><span class="label">Source (please choose the correct format for your platform)</span></div>
+          <ul>
+            <li class="download">
+              <a href="[preferred]tomcat/tomcat-connectors/native/1.2.21/source/tomcat-native-1.2.21-src.tar.gz" rel="nofollow">
+                Native 1.2.21 Source Release tar.gz</a> (e.g. Unix, Linux, Mac OS)
+            <ul class="attributes">
+              <li>
+                [<a href="https://www.apache.org/dist/tomcat/tomcat-connectors/native/1.2.21/source/tomcat-native-1.2.21-src.tar.gz.asc">PGP</a>],
+                [<a href="https://www.apache.org/dist/tomcat/tomcat-connectors/native/1.2.21/source/tomcat-native-1.2.21-src.tar.gz.sha512">SHA512</a>]
+              </li>
+            </ul>
+            </li>
+            <li class="download">
+              <a href="[preferred]tomcat/tomcat-connectors/native/1.2.21/source/tomcat-native-1.2.21-win32-src.zip" rel="nofollow">
+                Native 1.2.21 Source Release zip</a> (e.g. Windows)
+            <ul class="attributes">
+              <li>
+                [<a href="https://www.apache.org/dist/tomcat/tomcat-connectors/native/1.2.21/source/tomcat-native-1.2.21-win32-src.zip.asc">PGP</a>],
+                [<a href="https://www.apache.org/dist/tomcat/tomcat-connectors/native/1.2.21/source/tomcat-native-1.2.21-win32-src.zip.sha512">SHA512</a>]
+              </li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+        </ul>
+        <p>You can find binaries release too.
+        You may download them from
+          <a href="[preferred]tomcat/tomcat-connectors/native/1.2.21/binaries" rel="nofollow">HERE</a>
+        </p>
+        <ul class="downloads">
+          <li class="download">
+            <div class="links">Binaries for Microsoft Windows</div>
+            <div class="links"><p>The Windows binaries are available in two
+              variants. a) Default. This is what people usually use. This
+              version of library is included in Apache Tomcat distributions.
+              b) OCSP-enabled. This one has enabled (experimental)
+              support for verification of client SSL certificates via OCSP
+              protocol (<bug>45392</bug>).
+              </p>
+              <p>Each archive contains <code>tcnative-1.dll</code> for 32-bit
+              and 64-bit (x64) CPU architectures. You have to use the DLL that
+              matches CPU architecture of JVM that you use to run Tomcat.</p>
+            </div>
+            <div class="links">Binaries for Microsoft Windows build with OpenSSL 1.0.2q</div>
+            <ul>
+              <li class="download">
+                <a href="[preferred]tomcat/tomcat-connectors/native/1.2.21/binaries/tomcat-native-1.2.21-openssl-1.0.2q-win32-bin.zip" rel="nofollow">
+                  Native 1.2.21 Windows Binaries zip</a> (recommended)
+              <ul class="attributes">
+                <li>
+                  [<a href="https://www.apache.org/dist/tomcat/tomcat-connectors/native/1.2.21/binaries/tomcat-native-1.2.21-openssl-1.0.2q-win32-bin.zip.asc">PGP</a>],
+                  [<a href="https://www.apache.org/dist/tomcat/tomcat-connectors/native/1.2.21/binaries/tomcat-native-1.2.21-openssl-1.0.2q-win32-bin.zip.sha512">SHA512</a>]
+                </li>
+              </ul>
+              </li>
+              <li class="download">
+                <a href="[preferred]tomcat/tomcat-connectors/native/1.2.21/binaries/tomcat-native-1.2.21-openssl-1.0.2q-ocsp-win32-bin.zip" rel="nofollow">
+                  Native 1.2.21 Windows OCSP-enabled Binaries zip</a>
+              <ul class="attributes">
+                <li>
+                  [<a href="https://www.apache.org/dist/tomcat/tomcat-connectors/native/1.2.21/binaries/tomcat-native-1.2.21-openssl-1.0.2q-ocsp-win32-bin.zip.asc">PGP</a>],
+                  [<a href="https://www.apache.org/dist/tomcat/tomcat-connectors/native/1.2.21/binaries/tomcat-native-1.2.21-openssl-1.0.2q-ocsp-win32-bin.zip.sha512">SHA512</a>]
+                </li>
+              </ul>
+              </li>
+            </ul>
+            <div class="links">Binaries for Microsoft Windows build with OpenSSL 1.1.1a</div>
+            <ul>
+              <li class="download">
+                <a href="[preferred]tomcat/tomcat-connectors/native/1.2.21/binaries/tomcat-native-1.2.21-openssl-1.1.1a-win32-bin.zip" rel="nofollow">
+                  Native 1.2.21 Windows Binaries zip</a> (recommended)
+              <ul class="attributes">
+                <li>
+                  [<a href="https://www.apache.org/dist/tomcat/tomcat-connectors/native/1.2.21/binaries/tomcat-native-1.2.21-openssl-1.1.1a-win32-bin.zip.asc">PGP</a>],
+                  [<a href="https://www.apache.org/dist/tomcat/tomcat-connectors/native/1.2.21/binaries/tomcat-native-1.2.21-openssl-1.1.1a-win32-bin.zip.sha512">SHA512</a>]
+                </li>
+              </ul>
+              </li>
+              <li class="download">
+                <a href="[preferred]tomcat/tomcat-connectors/native/1.2.21/binaries/tomcat-native-1.2.21-openssl-1.1.1a-ocsp-win32-bin.zip" rel="nofollow">
+                  Native 1.2.21 Windows OCSP-enabled Binaries zip</a>
+              <ul class="attributes">
+                <li>
+                  [<a href="https://www.apache.org/dist/tomcat/tomcat-connectors/native/1.2.21/binaries/tomcat-native-1.2.21-openssl-1.1.1a-ocsp-win32-bin.zip.asc">PGP</a>],
+                  [<a href="https://www.apache.org/dist/tomcat/tomcat-connectors/native/1.2.21/binaries/tomcat-native-1.2.21-openssl-1.1.1a-ocsp-win32-bin.zip.sha512">SHA512</a>]
+                </li>
+              </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+      </subsection>
+
+      <subsection name="Verify the Integrity of the Files">
+        <p>You <strong>must</strong>
+        <a href="https://www.apache.org/info/verification.html">verify</a> the
+        integrity of the downloaded files. We provide OpenPGP signatures for
+        every release file. This signature should be matched against the
+        <a href="https://www.apache.org/dist/tomcat/tomcat-connectors/KEYS">KEYS</a>
+        file which contains the OpenPGP keys of Tomcat's Release Managers. We
+        also provide <code>SHA512</code> checksums for every release file. After
+        you download the file, you should calculate a checksum for your
+        download, and make sure it is the same as ours.
+        </p>
+      </subsection>
+
+    </section>
+  </body>
+</document>
+

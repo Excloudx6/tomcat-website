@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Old news! - 2011</title>
+  </properties>
+
+<body>
+
+<section name="Other news">
+<p>Announcements from other years can be found here:</p>
+<ul>
+  <li><a href="oldnews.html">year 2018</a></li>
+  <li><a href="oldnews-2017.html">year 2017</a></li>
+  <li><a href="oldnews-2016.html">year 2016</a></li>
+  <li><a href="oldnews-2015.html">year 2015</a></li>
+  <li><a href="oldnews-2014.html">year 2014</a></li>
+  <li><a href="oldnews-2013.html">year 2013</a></li>
+  <li><a href="oldnews-2012.html">year 2012</a></li>
+  <li>year 2011</li>
+  <li><a href="oldnews-2010.html">year 2010</a></li>
+</ul>
+</section>
+
+<section name="Tomcat 6.0.35 Released" rtext="2011-12-05">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 6.0.35 of
+Apache Tomcat. This release includes security and bug fixes over Apache Tomcat 6.0.33.
+
+</p>
+<p style="text-align: center;">
+<a href="download-60.cgi">Download</a> |
+<a href="tomcat-6.0-doc/changelog.html#Tomcat_6.0.35_(jfclere)">ChangeLog for 6.0.35</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.23 Released" rtext="2011-11-25">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.23 of
+Apache Tomcat. This release includes numerous bug fixes and several new features
+compared to version 7.0.22. The notable new features include:
+</p>
+<ul>
+<li>The ability to start and stop child containers (primarily Contexts - i.e.
+    web applications) in parallel which can significantly improve start times.
+    This is disabled by default but can be enabled by setting the
+    <code>startStopThreads</code> attribute of a <strong>Host</strong> to a
+    value greater than one.</li>
+<li>Cache the results of parsing the global and host level context.xml files to
+    improve start times.</li>
+<li>Improve the handling of failed deployments so that a broken application
+    can be fixed (e.g. via JMX) and another attempt made to start it rather than
+    it having to be removed.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.23_(markt)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.23_(markt)">ChangeLog for 7.0.23</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.22 Released" rtext="2011-10-01">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.22 of
+Apache Tomcat. This release includes bug fixes and new features compared to
+version 7.0.21 including:
+</p>
+<ul>
+<li>Further improvements to the memory leak detection and prevention
+    features.</li>
+<li>Fix issue that prevented using SSL with the HTTP BIO connector and Java 7.
+    </li>
+<li>Add support for controlling which session attributes are replicated when
+    using session replication (a.k.a clustering).</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.22_(markt)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.22_(markt)">ChangeLog for 7.0.22</a>
+</p>
+</section>
+
+<section name="Tomcat 5.5.34 Released" rtext="2011-09-22">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 5.5.34 of
+Apache Tomcat. This release includes many bug fixes and a number of security
+fixes over Apache Tomcat 5.5.33.
+</p>
+<p><strong>Note:</strong> End of life date for Apache Tomcat 5.5.x is announced.
+<a href="tomcat-55-eol.html">Read more...</a>
+</p>
+<p style="text-align: center;">
+<a href="download-55.cgi">Download</a> |
+<a href="tomcat-5.5-doc/changelog.html#Tomcat_5.5.34_(jim)">ChangeLog for 5.5.34</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.21 Released" rtext="2011-09-01">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.21 of
+Apache Tomcat. This release includes security fixes, bug fixes and new features
+compared to version 7.0.20 including:
+</p>
+<ul>
+<li>A fix for CVE-2011-3190 that allowed an attacker to inject requests when
+    Tomcat was configured behind a reverse proxy using the AJP protocol.</li>
+<li>Multiple additionals and improvements to the memory leak
+    detection/prevention features.</li>
+<li>Improved validation of received AJP messages.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.21_(markt)">Tomcat 7
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.21_(markt)">ChangeLog for
+7.0.21</a>
+</p>
+</section>
+
+<section name="Tomcat 6.0.33 Released" rtext="2011-08-18">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 6.0.33 of
+Apache Tomcat. This release includes security and bug fixes over Apache Tomcat 6.0.32.
+</p>
+<p style="text-align: center;">
+<a href="download-60.cgi">Download</a> |
+<a href="tomcat-6.0-doc/changelog.html#Tomcat_6.0.33_(jfclere)">ChangeLog for 6.0.33</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.20 Released" rtext="2011-08-11">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.20 of
+Apache Tomcat. This release includes bug fixes and the following new features
+compared to version 7.0.19 including:
+</p>
+<ul>
+<li>JSP files with dependencies in JARs are no longer recompiled on every access
+    thereby improving performance.</li>
+<li>Update to version 1.1.22 of the native component of the AJP and HTTP
+    APR/native connectors.</li>
+<li>Update to Commons Daemon 1.0.7.</li>
+<li>Converted unit tests to JUnit 4.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.20_(markt)">Tomcat 7
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.20_(markt)">ChangeLog for
+7.0.20</a>
+</p>
+</section>
+
+<section name="End of life for Apache Tomcat 5.5.x" rtext="2011-08-10">
+<p>End of life date for Apache Tomcat 5.5.x is announced.
+<a href="tomcat-55-eol.html">Read more...</a>
+</p>
+</section>
+
+<section name="Tomcat Native 1.1.22 Released" rtext="2011-08-08">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.1.22 of Tomcat Native.
+This version is principally a bugfix release.
+</p>
+</section>
+
+<section name="Tomcat 7.0.19 Released" rtext="2011-07-19">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.19 of
+Apache Tomcat. This release includes security fixes, bug fixes and the following
+new features compared to version 7.0.16:
+</p>
+<ul>
+<li>JSP recompilation is now triggered by any change (backwards as well as
+    forwards) in the last modified time of the JSP or any of its
+    dependencies</li>
+<li>Support for installing multiple instances with the Windows Installer</li>
+<li>Include jdbc-pool (an alternative database connection pool)</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.19_(markt)">Tomcat 7
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.19_(markt)">ChangeLog for
+7.0.19</a>
+</p>
+</section>
+
+<section name="Tomcat Connectors 1.2.32 Released" rtext="2011-07-08">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.2.32 of
+Apache Tomcat Connectors. This release includes both bug fixes and new features
+compared to version 1.2.31.
+</p>
+</section>
+
+<section name="Tomcat 7.0.16 Released" rtext="2011-06-17">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.16 of
+Apache Tomcat. This release includes bug fixes and the following new features
+compared to version 7.0.14:
+</p>
+<ul>
+<li>NIO implementation of the AJP connector.</li>
+<li>Enable Servlet 3 asynchronous processing support when using clustering.</li>
+<li>Add parallel deployment support to the Manager&apos;s Ant tasks.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.16_(markt)">Tomcat 7
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.16_(markt)">ChangeLog for
+7.0.16</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.14 Released" rtext="2011-05-12">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.14 of
+Apache Tomcat. This release includes bug fixes and the following new features
+compared to version 7.0.12:
+</p>
+<ul>
+<li>The StuckThreadDetectionValve to identify long running requests.</li>
+<li>JAAS authentication support to the JMXRemoteLifecycleListener.</li>
+<li>Updated MIME type mappings to align with those of Apache httpd.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.14_(markt)">Tomcat 7
+changelog</a>.
+</p>
+</section>
+
+<section name="Tomcat 7.0.12 Released" rtext="2011-04-06">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.12 of
+Apache Tomcat. This release includes bug fixes, security fixes and the following
+new features compared to version 7.0.11:</p>
+<ul>
+<li>initial support for SPNEGO/Kerberos authentication (also referred to as
+    Windows authentication);</li>
+<li>provide a new configuration option to define a close method to call on a
+    JNDI resource when it is no longer required;</li>
+<li>optional support for pre-emptive authentication.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.12_(markt)">Tomcat 7
+changelog</a>.
+</p>
+</section>
+
+<section name="Tomcat 7.0.11 Released" rtext="2011-03-11">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.11 of
+Apache Tomcat. This release includes bug fixes and a security fix over Apache
+Tomcat 7.0.10.</p>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.11_(markt)">Tomcat 7
+changelog</a>.
+</p>
+</section>
+
+<section name="Tomcat 7.0.10 Released" rtext="2011-03-07">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.10 of
+Apache Tomcat. This release includes bug fixes and a security fix over Apache
+Tomcat 7.0.8.</p>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.10_(markt)">Tomcat 7
+changelog</a>.
+</p>
+</section>
+
+<section name="Tomcat 5.5.33 Released" rtext="2011-02-10">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 5.5.33 of
+Apache Tomcat. This release includes many bug fixes and a number of security
+fixes over Apache Tomcat 5.5.32.</p>
+</section>
+
+<section name="Tomcat 7.0.8 Released" rtext="2011-02-05">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.8 of
+Apache Tomcat. This release includes security and bug fixes over Apache Tomcat
+7.0.6.</p>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.8_(markt)">Tomcat 7
+changelog</a>.
+</p>
+</section>
+
+<section name="Tomcat 6.0.32 Released" rtext="2011-02-04">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 6.0.32 of
+Apache Tomcat. This release includes security and bug fixes over Apache Tomcat 6.0.30.
+<p style="text-align: center;">
+<a href="download-60.cgi">Download</a> |
+<a href="tomcat-6.0-doc/changelog.html#Tomcat_6.0.32_(jfclere)">ChangeLog for 6.0.32</a>
+</p>
+</p>
+</section>
+
+<section name="Tomcat 5.5.32 Released" rtext="2011-02-01">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 5.5.32 of
+Apache Tomcat. This release includes many bug fixes and a number of security
+fixes over Apache Tomcat 5.5.31.
+</p>
+</section>
+
+<section name="Tomcat 7.0.6 Released" rtext="2011-01-14">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.6 of
+Apache Tomcat. This is the first stable release of the Tomcat 7 branch. This
+release contains a number of bug fixes, further performance improvements in
+session management and several enhancements to the memory leak detection and
+prevention features.</p>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.6_(markt)">Tomcat 7
+changelog</a>.
+</p>
+</section>
+
+<section name="Tomcat 6.0.30 Released" rtext="2011-01-13">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 6.0.30 of
+Apache Tomcat. This release includes bug fixes over Apache Tomcat 6.0.29.
+</p>
+<p style="text-align: center;">
+<a href="download-60.cgi">Download</a> |
+<a href="tomcat-6.0-doc/changelog.html#Tomcat_6.0.30_(jfclere)">ChangeLog for 6.0.30</a>
+</p>
+</section>
+
+<section name="Older news">
+<p>Announcements from previous years can be found here:</p>
+<ul>
+  <li><a href="oldnews-2010.html">year 2010</a></li>
+</ul>
+</section>
+
+</body>
+</document>

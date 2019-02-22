@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Migration Guide - Tomcat 9.0.x</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="General">
+
+<p>Please read general <a href="migration.html">Migration Guide page</a> first,
+for common considerations that apply to migration or upgrade between versions
+of Apache Tomcat.</p>
+
+</section>
+
+<section name="Migrating from 8.0.x or 8.5.x to 9.0.x">
+
+  <p>This section lists all the known changes between 8.0.x / 8.5.x and 9.0.x
+  which may cause backwards compatibility problems when upgrading. Some of
+  these changes and new features are already present in Apache Tomcat 8.5.x.</p>
+
+  <subsection name="Java 8 required">
+
+    <p>Apache Tomcat 9.0.x requires Java 8 or later. Apache Tomcat 8.0.x and 8.5.x
+    required Java 7.</p>
+
+  </subsection>
+
+  <subsection name="Specification APIs">
+
+    <p>Apache Tomcat 9 supports the Java Servlet 4.0, JavaServer Pages 2.4,
+    Java Unified Expression Language 3.1 and Java API for WebSocket 2.0
+    <a href="https://wiki.apache.org/tomcat/Specifications">specifications</a>.
+    The changes between versions of specifications may be found in the
+    <em>Changes</em> appendix in each of specification documents.
+    </p>
+
+  </subsection>
+  
+  <subsection name="Servlet 4.0 API">
+  
+    <p>In JSP pages that use wildcard import syntax the new classes added in
+    Servlet API may conflict with ones in web applications.
+    For example, if package <code>"a"</code> contains class
+    <code>PushBuilder</code>, the following JSP page will cease to compile in
+    Tomcat 9:</p>
+
+    <source><![CDATA[<%@page import="a.*"%>
+<% PushBuilder pushBuilder = new PushBuilder(); %>]]></source>
+
+    <p>This happens because the implicit import of
+    <code>javax.servlet.http.*</code> and the explicit import of
+    <code>a.*</code> will provide conflicting definitions of class
+    <code>PushBuilder</code> that was added in Servlet 4.0. The solution is to
+    use the explicit import, <code>import="a.PushBuilder"</code>.</p>
+
+  </subsection>
+
+  <subsection name="JavaServer Pages 2.4">
+  
+    <p>No information is currently available. It is anticipated that Java EE 8
+    will include a maintenance release of JSP with a version of 2.4.</p>
+
+  </subsection>
+
+  <subsection name="Expression Language 3.1">
+  
+    <p>No information is currently available. It is anticipated that Java EE 8
+    will include a maintenance release of expression language with a version of
+    3.1.</p>
+
+  </subsection>
+
+  <subsection name="WebSocket 2.0">
+  
+    <p>No information is currently available. It is anticipated that Java EE 8
+    will include an updated Java API for WebSocket specification with a
+    version of 2.0.</p>
+
+  </subsection>
+
+  <subsection name="BIO connector removed">
+
+    <p><em>The following change is present in 8.5.0 onwards.</em></p>
+
+    <p>The Java blocking IO implementation (BIO) for both HTTP and AJP has been
+    removed. Users are recommended to switch to the Java non-blocking IO
+    implementation (NIO).</p>
+
+  </subsection>
+
+  <subsection name="Comet support removed">
+
+    <p><em>The following change is present in 8.5.0 onwards.</em></p>
+
+    <p>Comet support has been removed without a direct replacement. Applications
+    using Comet are recommended to migrate to WebSockets.</p>
+
+  </subsection>
+
+  <subsection name="HTTP/2 support added">
+
+    <p><em>The following feature is available since 8.5.0 onwards.</em></p>
+
+    <p>HTTP/2 is supported for h2 (over TLS, negotiated via ALPN) and h2c (clear
+    text, negotiated via HTTP/1.1 upgrade). HTTP/2 needs to be explicitly
+    enabled for a connector. To enable it, insert
+    <source><![CDATA[<UpgradeProtocol className="org.apache.coyote.http2.Http2Protocol" />]]></source>
+    inside the connector for which you wish to enable HTTP/2. Note that to
+    enable HTTP/2 for a secure NIO or NIO2 connector, those connectors must be
+    using the OpenSSL engine for TLS.</p>
+
+  </subsection>
+
+  <subsection name="TLS virtual hosting and multiple certificate support added">
+
+    <p><em>The following feature is available since 8.5.0 onwards.</em></p>
+
+    <p>Tomcat 9 supports multiple TLS virtual hosts for a single connector with
+    each virtual host able to support multiple certificates. Virtual host
+    definitions are nested inside the Connector element with the default
+    specified using the <strong>defaultSSLHostConfigName</strong> attribute on the
+    Connector if more than one virtual host is specified. Certificate
+    definitions are nested inside the virtual host.</p>
+    
+    <p>The following example shows how to use this to configure a single
+    APR/native connector for multiple TLS virtual hosts with each host having
+    both an RSA and EC certificate.
+    
+<source><![CDATA[
+<Connector port="8443"
+           protocol="org.apache.coyote.http11.Http11AprProtocol"
+           maxThreads="150"
+           SSLEnabled="true"
+           defaultSSLHostConfigName="openoffice.apache.org" >
+    <SSLHostConfig hostName="openoffice.apache.org" >
+        <Certificate certificateKeyFile="conf/openoffice.apache.org-rsa-key.pem"
+                     certificateFile="conf/openoffice.apache.org-rsa-cert.pem"
+                     type="RSA" />
+        <Certificate certificateKeyFile="conf/openoffice.apache.org-ec-key.pem"
+                     certificateFile="conf/openoffice.apache.org-ec-cert.pem"
+                     type="EC" />
+    </SSLHostConfig>
+    <SSLHostConfig hostName="www.openoffice.org" >
+        <Certificate certificateKeyFile="conf/www.openoffice.org-rsa-key.pem"
+                     certificateFile="conf/www.openoffice.org-rsa-cert.pem"
+                     type="RSA" />
+        <Certificate certificateKeyFile="conf/www.openoffice.org-ec-key.pem"
+                     certificateFile="conf/www.openoffice.org-ec-cert.pem"
+                     type="EC" />
+    </SSLHostConfig>
+</Connector>
+]]></source></p>
+
+  </subsection>
+
+  <subsection name="Internal APIs">
+  
+    <p>Whilst the Tomcat 9 internal API is broadly compatible with Tomcat 8
+    there have been many changes at the detail level and they are not binary
+    compatible. Developers of custom components that interact with Tomcat&apos;s
+    internals should review the JavaDoc for the relevant API.</p>
+
+    <p>Of particular note are:</p>
+    <ul>
+      <li>Significant refactoring has taken place throughout the connectors to
+          reduce duplicate code and to align behaviour across
+          implementations. (<em>This change is present in 8.5.x.</em>)</li>
+      <li>The deprecated <code>digest</code> attribute has been removed from the
+          <code>Realm</code>. (<em>This change is present in 8.5.x.</em>)</li>
+    </ul>
+
+  </subsection>
+
+  <subsection name="JSR-77 implementation removed">
+
+    <p><em>The following change is present in 8.5.0 onwards.</em></p>
+
+    <p>The JSR-77 implementation is incomplete and has been removed in 8.5.x and 9.0.x.
+    Specifically, the following methods that exposed to JMX have been removed.
+    </p>
+
+    <ul>
+      <li><code>StandardContext.getServlets()</code></li>
+      <li><code>StandardContext.isStateManageable()</code></li>
+      <li><code>StandardContext.getDeploymentDescriptor()</code></li>
+      <li><code>StandardWrapper.isStateManageable()</code></li>
+    </ul>
+  </subsection>
+
+  <subsection name="Clustering">
+
+    <p><em>The following change is present in 8.5.0 onwards.</em></p>
+
+    <p><code>MessageDispatch15Interceptor</code> had been used to add the Java 5
+    features to MessageDispatchInterceptor.
+    <code>MessageDispatch15Interceptor</code> has been removed in Tomcat 8.5.x and 9.0.x
+    by merging the Java 5 features to <code>MessageDispatchInterceptor</code>.
+    </p>
+
+  </subsection>
+
+  <subsection name="InstanceListener removed">
+
+    <p><em>The following change is present in 8.5.0 onwards.</em></p>
+
+    <p>The support of InstanceListener has been removed in 8.5.x and 9.0.x.
+    Specifically, the following classes have been removed.
+    </p>
+
+    <ul>
+      <li><code>org.apache.catalina.InstanceListener</code></li>
+      <li><code>org.apache.catalina.InstanceEvent</code></li>
+      <li><code>org.apache.catalina.util.InstanceSupport</code></li>
+    </ul>
+  </subsection>
+
+  <subsection name="SessionManager">
+
+    <p><em>The following change is present in 8.5.0 onwards.</em></p>
+
+    <p>The following session manager attributes have been completely removed in
+    8.5.x and 9.0.x.</p>
+
+    <ul>
+      <li><code>distributable</code></li>
+      <li><code>maxInactiveInterval</code></li>
+      <li><code>sessionIdLength</code></li>
+    </ul>
+
+    <p>The replacements are as follows:</p>
+    <ul>
+      <li>The <code>distributable</code> attribute has been deprecated in 8.0
+          and specified value is ignored. This should be configured via the
+          Context. The value is inherited based on the presence or absence of
+          the <code>&lt;distributable /&gt;</code> element in
+          <code>/WEB-INF/web.xml.</code></li>
+      <li>The <code>maxInactiveInterval</code> attribute has been deprecated in
+          8.0. If the value is specified, a warning log is issued. This should
+          be configured via the Context. The value is inherited based on the
+          value of the <code>&lt;session-timeout&gt;</code> element in
+          <code>/WEB-INF/web.xml</code>.</li>
+      <li>The <code>sessionIdLength</code> attribute of <code>Manager</code> has
+          been replaced by <code>sessionIdLength</code> attribute of
+          <code>SessionIdGenerator</code>.</li>
+    </ul>
+  </subsection>
+
+  <subsection name="Cookies">
+  
+    <p>The default <code>CookieProcessor</code> is now the
+    <code>Rfc6265CookieProcessor</code>. The <code>CookieProcessor</code> is
+    configurable per <code>Context</code> and the
+    <code>LegacyCookieProcessor</code> may be used to obtain the 8.0.x
+    behaviour.</p>
+
+  </subsection>
+
+  <subsection name="Web applications">
+  
+    <p>The Manager and HostManager web applications are configured by default
+       with a <code>RemoteAddrValve</code> that limits access to those
+       applications to connections from localhost.</p>
+
+  </subsection>
+
+  <subsection name="Engine and Host configurations">
+
+    <p>The behaviour for <code>startStopThreads</code> has changed when the
+    effective value is 1. In this case, children will be started on the current
+    thread rather than via an <code>ExecutorService</code> configured with a
+    single thread.</p>
+
+  </subsection>
+
+  <subsection name="Context configurations">
+
+    <p>The <code>clearReferencesStatic</code> attribute has been removed in
+    8.5.x and 9.0.x.</p>
+
+  </subsection>
+
+  <subsection name="Logging">
+
+    <p>By default the log files will be kept 90 days and then removed from the
+    file system.</p>
+
+  </subsection>
+
+</section>
+
+<section name="Upgrading 9.0.x">
+  <p>When upgrading instances of Apache Tomcat from one version of Tomcat 9 to
+  another, particularly when using separate locations for $CATALINA_HOME and
+  $CATALINA_BASE, it is necessary to ensure that any changes in the
+  configuration files such as new attributes and changes to defaults are applied
+  as part of the upgrade. To assist with the identification of these changes,
+  the form below may be used to view the differences between the configuration
+  files in different versions of Tomcat 9.</p>
+
+  <subsection name="Tomcat 9.0.x configuration file differences">
+
+    <p>Select a configuration file, old version and new version from the boxes
+    below and then click &quot;View differences&quot; to see the differences.
+    The differences will be shown in a new tab/window.</p>
+
+    <script type="text/javascript"><![CDATA[
+    "use strict"; // Enable strict mode
+
+    document.addEventListener("DOMContentLoaded", function() {
+    var formSubmit = document.getElementById("tc9Submit");
+      formSubmit.addEventListener("submit", function() {
+        var revisions = {
+          "HEAD":"HEAD",
+          "9.0.0.M1":"1714130",
+          "9.0.0.M3":"1728005",
+          "9.0.0.M4":"1734692",
+          "9.0.0.M6":"1743436",
+          "9.0.0.M8":"1747242",
+          "9.0.0.M9":"1751366",
+          "9.0.0.M10":"1758617",
+          "9.0.0.M11":"1763638",
+          "9.0.0.M13":"1767969",
+          "9.0.0.M15":"1772668",
+          "9.0.0.M17":"1778197",
+          "9.0.0.M18":"1785983",
+          "9.0.0.M19":"1788896",
+          "9.0.0.M20":"1791176",
+          "9.0.0.M21":"1793917",
+          "9.0.0.M22":"1799415",
+          "9.0.0.M26":"1803915",
+          "9.0.1":"1809848",
+          "9.0.2":"1816351",
+          "9.0.4":"1821547",
+          "9.0.5":"1823394",
+          "9.0.6":"1825860",
+          "9.0.7":"1828274",
+          "9.0.8":"1830389",
+          "9.0.10":"1833930",
+          "9.0.11":"1837880",
+          "9.0.12":"1840069",
+          "9.0.13":"1845587",
+          "9.0.14":"1848363",
+          "9.0.16":"1852937"
+        };
+
+        formSubmit.action = "http://svn.apache.org/viewvc/tomcat/trunk/" +
+          document.getElementById('select-filename').value;
+        formSubmit.elements['r1'].value = revisions[document.getElementById('select-r1').value]; 
+        formSubmit.elements['r2'].value = revisions[document.getElementById('select-r2').value]; 
+        return true;
+      }, false);
+    }, false);
+    ]]></script>
+
+
+    <p><label>Configuration file:
+    <select id="select-filename">
+    <option value="conf/catalina.policy">catalina.policy</option>
+    <option value="conf/catalina.properties">catalina.properties</option>
+    <option value="conf/context.xml">context.xml</option>
+    <option value="conf/logging.properties">logging.properties</option>
+    <option value="conf/server.xml">server.xml</option>
+    <option value="conf/tomcat-users.xml">tomcat-users.xml</option>
+    <option value="conf/web.xml">web.xml</option>
+    </select></label>
+    </p>
+    <p><label>Old version:
+    <select id="select-r1">
+    <option value="9.0.0.M1">9.0.0.M1</option>
+    <option value="9.0.0.M3">9.0.0.M3</option>
+    <option value="9.0.0.M4">9.0.0.M4</option>
+    <option value="9.0.0.M6">9.0.0.M6</option>
+    <option value="9.0.0.M8">9.0.0.M8</option>
+    <option value="9.0.0.M9">9.0.0.M9</option>
+    <option value="9.0.0.M10">9.0.0.M10</option>
+    <option value="9.0.0.M11">9.0.0.M11</option>
+    <option value="9.0.0.M13">9.0.0.M13</option>
+    <option value="9.0.0.M15">9.0.0.M15</option>
+    <option value="9.0.0.M17">9.0.0.M17</option>
+    <option value="9.0.0.M18">9.0.0.M18</option>
+    <option value="9.0.0.M19">9.0.0.M19</option>
+    <option value="9.0.0.M20">9.0.0.M20</option>
+    <option value="9.0.0.M21">9.0.0.M21</option>
+    <option value="9.0.0.M22">9.0.0.M22</option>
+    <option value="9.0.0.M26">9.0.0.M26</option>
+    <option value="9.0.1">9.0.1</option>
+    <option value="9.0.2">9.0.2</option>
+    <option value="9.0.4">9.0.4</option>
+    <option value="9.0.5">9.0.5</option>
+    <option value="9.0.6">9.0.6</option>
+    <option value="9.0.7">9.0.7</option>
+    <option value="9.0.8">9.0.8</option>
+    <option value="9.0.10">9.0.10</option>
+    <option value="9.0.11">9.0.11</option>
+    <option value="9.0.12">9.0.12</option>
+    <option value="9.0.13">9.0.13</option>
+    <option value="9.0.14" selected="selected">9.0.14</option>
+    <option value="9.0.16">9.0.16</option>
+    </select>,</label> <label>new version:
+    <select id="select-r2">
+    <option value="9.0.0.M1">9.0.0.M1</option>
+    <option value="9.0.0.M3">9.0.0.M3</option>
+    <option value="9.0.0.M4">9.0.0.M4</option>
+    <option value="9.0.0.M6">9.0.0.M6</option>
+    <option value="9.0.0.M8">9.0.0.M8</option>
+    <option value="9.0.0.M9">9.0.0.M9</option>
+    <option value="9.0.0.M10">9.0.0.M10</option>
+    <option value="9.0.0.M11">9.0.0.M11</option>
+    <option value="9.0.0.M13">9.0.0.M13</option>
+    <option value="9.0.0.M15">9.0.0.M15</option>
+    <option value="9.0.0.M17">9.0.0.M17</option>
+    <option value="9.0.0.M18">9.0.0.M18</option>
+    <option value="9.0.0.M19">9.0.0.M19</option>
+    <option value="9.0.0.M20">9.0.0.M20</option>
+    <option value="9.0.0.M21">9.0.0.M21</option>
+    <option value="9.0.0.M22">9.0.0.M22</option>
+    <option value="9.0.0.M26">9.0.0.M26</option>
+    <option value="9.0.1">9.0.1</option>
+    <option value="9.0.2">9.0.2</option>
+    <option value="9.0.4">9.0.4</option>
+    <option value="9.0.5">9.0.5</option>
+    <option value="9.0.6">9.0.6</option>
+    <option value="9.0.7">9.0.7</option>
+    <option value="9.0.8">9.0.8</option>
+    <option value="9.0.10">9.0.10</option>
+    <option value="9.0.11">9.0.11</option>
+    <option value="9.0.12">9.0.12</option>
+    <option value="9.0.13">9.0.13</option>
+    <option value="9.0.14">9.0.14</option>
+    <option value="9.0.16" selected="selected">9.0.16</option>
+    <option value="HEAD">trunk (unreleased)</option>
+    </select></label>
+    </p>
+
+    <form id="tc9Submit" action="to-be-replaced" method="get"
+          target="_blank">
+    <p>
+    <input type="hidden" name="diff_format" value="h"/>
+    <input type="hidden" name="r1"/><input type="hidden" name="r2"/>
+    <button>View Differences</button>
+    </p>
+    </form>
+    <p>You can also use Subversion command similar to the following (all on one line):</p>
+    <source>svn diff
+  --old=http://svn.apache.org/repos/asf/tomcat/tags/TOMCAT_9_0_2/conf/
+  --new=http://svn.apache.org/repos/asf/tomcat/tags/TOMCAT_9_0_4/conf/</source>
+  </subsection>
+  
+</section>
+
+</body>
+</document>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Apache Tomcat 3.x vulnerabilities</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+  <section name="Apache Tomcat 3.x vulnerabilities">
+    <p>This page lists all security vulnerabilities fixed in released versions
+       of Apache Tomcat 3.x. Each vulnerability is given a
+       <a href="security-impact.html">security impact rating</a> by the Apache
+       Tomcat security team &#x2014; please note that this rating may vary from
+       platform to platform. We also list the versions of Apache Tomcat the flaw
+       is known to affect, and where a flaw has not been verified list the
+       version with a question mark.</p>
+
+    <p>Please note that Tomcat 3 is no longer supported. Further vulnerabilities
+       in the 3.x branches will not be fixed. Users should upgrade to 7.x or
+       later to obtain security fixes.</p>
+
+    <p>Please send comments or corrections for these vulnerabilities to the
+       <a href="security.html">Tomcat Security Team</a>.</p>
+
+  </section>
+
+  <section name="Not fixed in Apache Tomcat 3.x">
+    <p><strong>Important: Denial of service</strong>
+       <cve>CVE-2005-0808</cve></p>
+
+    <p>Tomcat 3.x can be remotely caused to crash or shutdown by a connection
+       sending the right sequence of bytes to the AJP12 protocol port (TCP 8007
+       by default). Tomcat 3.x users are advised to ensure that this port is
+       adequately firewalled to ensure it is not accessible to remote attackers.
+       There are no plans to issue a an update to Tomcat 3.x for this issue.</p>
+
+    <p>Affects: 3.0, 3.1-3.1.1, 3.2-3.2.4, 3.3a-3.3.2</p>
+
+    <p><strong>Low: Session hi-jacking</strong>
+       <cve>CVE-2007-3382</cve></p>
+
+    <p>Tomcat incorrectly treated a single quote character (') in a cookie
+       value as a delimiter. In some circumstances this lead to the leaking of
+       information such as session ID to an attacker.</p>
+
+    <p>Affects: 3.3-3.3.2</p>
+
+    <p><strong>Low: Cross site scripting</strong>
+       <cve>CVE-2007-3384</cve></p>
+
+    <p>When reporting error messages, Tomcat does not filter user supplied data
+       before display. This enables an XSS attack. A source patch is available
+       from the <a
+       href="https://archive.apache.org/dist/tomcat/tomcat-3/v3.3.2-patches/src/">
+       archives</a>.</p>
+
+    <p>Affects: 3.3-3.3.2</p>
+
+    <p><strong>Low: Session hi-jacking</strong>
+       <cve>CVE-2007-3385</cve></p>
+
+    <p>Tomcat incorrectly handled the character sequence \" in a cookie value.
+       In some circumstances this lead to the leaking of information such as
+       session ID to an attacker.</p>
+
+    <p>Affects: 3.3-3.3.2</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 3.3.2">
+    <p><strong>Moderate: Cross site scripting</strong>
+       <cve>CVE-2003-0044</cve></p>
+
+    <p>The root web application and the examples web application contained a
+       number a cross-site scripting vulnerabilities. Note that is it
+       recommended that the examples web application is not installed on
+       production servers.</p>
+
+    <p>Affects: 3.0, 3.1-3.1.1, 3.2-3.2.4, 3.3a-3.3.1a</p>
+  </section>
+
+  <section name="Fixed in Apache Tomcat 3.3.1a">
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2003-0043</cve></p>
+
+    <p>When used with JDK 1.3.1 or earlier, web.xml files were read with
+       trusted privileges enabling files outside of the web application to be
+       read even when running under a security manager.</p>
+
+    <p>Affects: 3.0, 3.1-3.1.1, 3.2-3.2.4, 3.3a-3.3.1</p>
+
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2003-0042</cve></p>
+
+    <p>URLs containing null characters could result in file contents being
+       returned or a directory listing being returned even when a welcome file
+       was defined.</p>
+
+    <p>Affects: 3.0, 3.1-3.1.1, 3.2-3.2.4, 3.3a-3.3.1</p>
+  </section>
+
+  <section name="Fixed in Apache Tomcat 3.3.1">
+    <p><strong>Important: Denial of service</strong>
+       <cve>CVE-2003-0045</cve></p>
+
+    <p>JSP page names that match a Windows DOS device name, such as aux.jsp, may
+       cause the thread processing the request to become unresponsive. A
+       sequence of such requests may cause all request processing threads, and
+       hence Tomcat, to become unresponsive.</p>
+
+    <p>Affects: 3.0, 3.1-3.1.1, 3.2-3.2.4, 3.3a</p>
+  </section>
+
+  <section name="Fixed in Apache Tomcat 3.3a">
+    <p><strong>Moderate: Information disclosure</strong>
+       <cve>CVE-2002-2007</cve></p>
+
+    <p>Non-standard requests to the sample applications installed by default
+       could result in unexpected directory listings or disclosure of the full
+       file system path for a JSP.</p>
+
+    <p>Affects: 3.2.3-3.2.4</p>
+
+    <p><strong>Low: Information disclosure</strong>
+       <cve>CVE-2002-2006</cve>,
+       <cve>CVE-2000-0760</cve></p>
+
+    <p>The snoop servlet installed as part of the examples includes output that
+       identifies the Tomcat installation path. There are no plans to issue a an
+       update to Tomcat 3.x for this issue.</p>
+
+    <p>Affects:3.1-3.1.1, 3.2-3.2.4</p>
+  </section>
+
+  <section name="Fixed in Apache Tomcat 3.2.4">
+    <p><strong>Moderate: Information disclosure</strong>
+       <cve>CVE-2001-1563</cve><br/></p>
+
+    <p>No specifics are provided in the vulnerability report. This may be a
+       summary of other issues reported against 3.2.x</p>
+
+    <p>Affects: 3.2?, 3.2.1, 3.2.2-3.2.3?</p>
+  </section>
+
+  <section name="Fixed in Apache Tomcat 3.2.2">
+    <p><strong>Moderate: Cross site scripting</strong>
+       <cve>CVE-2001-0829</cve></p>
+
+    <p>The default 404 error page does not escape URLs. This allows XSS
+       attacks using specially crafted URLs.</p>
+
+    <p>Affects: 3.0, 3.1-3.1.1, 3.2-3.2.1</p>
+
+    <p><strong>Moderate: Information disclosure</strong>
+       <cve>CVE-2001-0590</cve></p>
+
+    <p>A specially crafted URL can be used to obtain the source for JSPs.</p>
+
+    <p>Affects: 3.0, 3.1-3.1.1, 3.2-3.2.1</p>
+  </section>
+
+  <section name="Fixed in Apache Tomcat 3.2">
+    <p><strong>Low: Information disclosure</strong>
+       <cve>CVE-2000-0759</cve></p>
+
+    <p>Requesting a JSP that does not exist results in an error page that
+       includes the full file system page of the current context.</p>
+
+    <p>Affects: 3.1</p>
+
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2000-0672</cve></p>
+
+    <p>Access to the admin context is not protected. This context allows an
+       attacker to mount an arbitary file system path as a context. Any files
+       accessible from this file sytem path to the account under which Tomcat
+       is running are then visible to the attacker.</p>
+
+    <p>Affects: 3.1</p>
+  </section>
+
+  <section name="Fixed in Apache Tomcat 3.1">
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2000-1210</cve></p>
+
+    <p>source.jsp, provided as part of the examples, allows an attacker to read
+       arbitrary files via a .. (dot dot) in the argument to source.jsp.</p>
+
+    <p>Affects: 3.0</p>
+  </section>
+
+</body>
+</document>
+

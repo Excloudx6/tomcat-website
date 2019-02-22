@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>End of life for Apache Tomcat 8.0.x</title>
+  </properties>
+
+<body>
+
+<section name="End of life for Apache Tomcat 8.0.x" rtext="2017-06-30">
+<p>The Apache Tomcat team announces that support for Apache Tomcat 8.0.x
+will end on 30 June 2018.</p>
+
+<p>This means that after 30 June 2018:</p>
+<ul>
+  <li>releases from the 8.0.x branch are highly unlikely</li>
+  <li>bugs affecting only the 8.0.x branch will not be addressed</li>
+  <li>security vulnerability reports will not be checked against the 8.0.x
+    branch</li>
+</ul>
+
+<p>Three months later (i.e. after 30 September 2018)</p>
+<ul>
+  <li>the 8.0.x download links will be removed</li>
+  <li>the latest 8.0.x release will be removed from the mirror system</li>
+  <li>the 8.0.x branch in svn will move from <code>/tomcat/tc8.0.x</code> to
+    <code>/tomcat/archive/tc8.0.x</code></li>
+  <li>the links to the 8.0.x documentation will be removed from
+    tomcat.apache.org</li>
+</ul>
+
+<p>Note that all 8.0.x releases will always be available from the archive.</p>
+
+<p>It is anticipated that the final 8.0.x release will be made shortly
+before 30 June 2018.</p>
+
+</section>
+
+</body>
+</document>
+

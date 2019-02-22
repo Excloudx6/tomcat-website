@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Apache Tomcat 4.x vulnerabilities</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+  <section name="Apache Tomcat 4.x vulnerabilities">
+    <p>This page lists all security vulnerabilities fixed in released versions
+       of Apache Tomcat 4.x. Each vulnerability is given a
+       <a href="security-impact.html">security impact rating</a> by the Apache
+       Tomcat security team &#x2014; please note that this rating may vary from
+       platform to platform. We also list the versions of Apache Tomcat the flaw
+       is known to affect, and where a flaw has not been verified list the
+       version with a question mark.</p>
+
+    <p><strong>Note:</strong> Vulnerabilities that are not Tomcat vulnerabilities
+       but have either been incorrectly reported against Tomcat or where Tomcat
+       provides a workaround are listed at the end of this page.</p>
+
+    <p>Please note that Tomcat 4.0.x and 4.1.x are no longer supported. Further
+       vulnerabilities in the 4.0.x and 4.1.x branches will not be fixed. Users
+       should upgrade to 7.x or later to obtain security fixes.</p>
+
+    <p>Please send comments or corrections for these vulnerabilities to the
+       <a href="security.html">Tomcat Security Team</a>.</p>
+
+  </section>
+
+  <section name="Will not be fixed in Apache Tomcat 4.1.x">
+    <p><strong>Moderate: Information disclosure</strong>
+       <cve>CVE-2005-4836</cve></p>
+
+    <p>The deprecated HTTP/1.1 connector does not reject request URIs containing
+       null bytes when used with contexts that are configured with
+       allowLinking="true". Failure to reject the null byte enables an attacker
+       to obtain the source for any JSP page in these contexts. Users of Tomcat
+       4.1.x are advised to use the default, supported Coyote HTTP/1.1 connector
+       which does not exhibit this issue. There are no plans to issue an update
+       to Tomcat 4.1.x for this issue.</p>
+
+    <p>Affects: 4.1.15-4.1.SVN</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 4.1.40">
+    <p><strong>Important: Information Disclosure</strong>
+       <cve>CVE-2008-5515</cve></p>
+
+    <p>When using a RequestDispatcher obtained from the Request, the target path
+       was normalised before the query string was removed. A request that
+       included a specially crafted request parameter could be used to access
+       content that would otherwise be protected by a security constraint or by
+       locating it in under the WEB-INF directory.</p>
+
+    <p>This was fixed in revisions <revlink rev="782763">782763</revlink> and
+       <revlink rev="783292">783292</revlink>.</p>
+
+    <p>Affects: 4.1.0-4.1.39</p>
+
+    <p><strong>Important: Denial of Service</strong>
+       <cve>CVE-2009-0033</cve></p>
+
+    <p>If Tomcat receives a request with invalid headers via the Java AJP
+       connector, it does not return an error and instead closes the AJP
+       connection. In case this connector is member of a mod_jk load balancing
+       worker, this member will be put into an error state and will be blocked
+       from use for approximately one minute. Thus the behaviour can be used for
+       a denial of service attack using a carefully crafted request.</p>
+
+    <p>This was fixed in <revlink rev="781362">revision 781362</revlink>.</p>
+
+    <p>Affects: 4.1.0-4.1.39</p>
+ 
+    <p><strong>Low: Information disclosure</strong>
+       <cve>CVE-2009-0580</cve></p>
+
+    <p>Due to insufficient error checking in some authentication classes, Tomcat
+       allows for the enumeration (brute force testing) of user names by
+       supplying illegally URL encoded passwords. The attack is possible if FORM
+       based authentication (j_security_check) is used with the MemoryRealm.
+       Note that in early versions, the DataSourceRealm and JDBCRealm were also
+       affected.</p>
+
+    <p>This was fixed in <revlink rev="781382">revision 781382</revlink>.</p>
+
+    <p>Affects: 4.1.0-4.1.39 (Memory Realm), 4.1.0-4.1.31 (JDBC Realm),
+                4.1.17-4.1.31 (DataSource Realm)</p>
+       
+    <p><strong>Low: Cross-site scripting</strong>
+       <cve>CVE-2009-0781</cve></p>
+
+    <p>The calendar application in the examples web application contains an
+       XSS flaw due to invalid HTML which renders the XSS filtering protection
+       ineffective.</p>
+
+    <p>This was fixed in <revlink rev="750927">revision 750927</revlink>.</p>
+
+    <p>Affects: 4.1.0-4.1.39</p>
+
+    <p><strong>Low: Information disclosure</strong>
+       <cve>CVE-2009-0783</cve></p>
+
+    <p>Bugs <bug>29936</bug> and <bug>45933</bug>
+       allowed a web application to replace the XML parser used by
+       Tomcat to process web.xml and tld files. In limited circumstances these
+       bugs may allow a rogue web application to view and/or alter the web.xml
+       and tld files of other web applications deployed on the Tomcat instance.
+       </p>
+
+    <p>This was fixed in <revlink rev="781708">revision 781708</revlink>.</p>
+
+    <p>Affects: 4.1.0-4.1.39</p>
+       
+  </section>
+  
+  <section name="Fixed in Apache Tomcat 4.1.39">
+
+    <p><strong>Moderate: Session hi-jacking</strong>
+       <cve>CVE-2008-0128</cve></p>
+
+    <p>When using the SingleSignOn Valve via https the Cookie JSESSIONIDSSO is
+       transmitted without the "secure" attribute, resulting in it being
+       transmitted to any content that is - by purpose or error - requested via
+       http from the same server. </p>
+
+    <p>This was fixed in <revlink rev="684900">revision 684900</revlink>.</p>
+
+    <p>Affects: 4.1.0-4.1.37</p>
+
+    <p><strong>Low: Cross-site scripting</strong>
+       <cve>CVE-2008-1232</cve></p>
+
+    <p>The message argument of HttpServletResponse.sendError() call is not only
+       displayed on the error page, but is also used for the reason-phrase of
+       HTTP response. This may include characters that are illegal in HTTP
+       headers. It is possible for a specially crafted message to result in
+       arbitrary content being injected into the HTTP response. For a successful
+       XSS attack, unfiltered user supplied data must be included in the message
+       argument.</p>
+
+    <p>This was fixed in <revlink rev="680947">revision 680947</revlink>.</p>
+
+    <p>Affects: 4.1.0-4.1.37</p>
+
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2008-2370</cve></p>
+
+    <p>When using a RequestDispatcher the target path was normalised before the 
+       query string was removed. A request that included a specially crafted 
+       request parameter could be used to access content that would otherwise be 
+       protected by a security constraint or by locating it in under the WEB-INF 
+       directory.</p>
+
+       <p>This was fixed in <revlink rev="680950">revision 680950</revlink>.</p>
+
+    <p>Affects: 4.1.0-4.1.37</p>
+    
+  </section>
+
+  <section name="Fixed in Apache Tomcat 4.1.37">
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2005-3164</cve></p>
+
+    <p>If a client specifies a Content-Length but disconnects before sending
+       any of the request body, the deprecated AJP connector processes the
+       request using the request body of the previous request. Users are advised
+       to use the default, supported Coyote AJP connector which does not exhibit
+       this issue.</p>
+
+    <p>Affects: 4.0.1-4.0.6, 4.1.0-4.1.36</p>
+
+    <p><strong>Moderate: Cross-site scripting</strong>
+       <cve>CVE-2007-1355</cve></p>
+
+    <p>The JSP and Servlet included in the sample application within the Tomcat
+       documentation webapp did not escape user provided data before including
+       it in the output. This enabled a XSS attack. These pages have been
+       simplified not to use any user provided data in the output.</p>
+
+    <p>Affects: 4.0.1-4.0.6, 4.1.0-4.1.36</p>
+
+    <p><strong>Low: Cross-site scripting</strong>
+       <cve>CVE-2007-2449</cve></p>
+
+    <p>JSPs within the examples web application did not escape user provided
+       data before including it in the output. This enabled a XSS attack. These
+       JSPs now filter the data before use. This issue may be mitigated by
+       undeploying the examples web application. Note that it is recommended
+       that the examples web application is not installed on a production
+       system.
+       </p>
+
+    <p>Affects: 4.0.0-4.0.6, 4.1.0-4.1.36</p>
+
+    <p><strong>Low: Cross-site scripting</strong>
+       <cve>CVE-2007-2450</cve></p>
+
+    <p>The Manager web application did not escape user provided data before
+       including it in the output. This enabled a XSS attack. This application
+       now filters the data before use. This issue may be mitigated by logging
+       out (closing the browser) of the application once the management tasks
+       have been completed.</p>
+
+    <p>Affects: 4.0.1-4.0.6, 4.1.0-4.1.36</p>
+
+    <p><strong>Low: Session hi-jacking</strong>
+       <cve>CVE-2007-3382</cve></p>
+
+    <p>Tomcat incorrectly treated a single quote character (') in a cookie
+       value as a delimiter. In some circumstances this lead to the leaking of
+       information such as session ID to an attacker.</p>
+
+    <p>Affects: 4.1.0-4.1.36</p>
+
+    <p><strong>Low: Cross-site scripting</strong>
+       <cve>CVE-2007-3383</cve></p>
+
+    <p>When reporting error messages, the SendMailServlet (part of the examples
+       web application) did not escape user provided data before including it in
+       the output. This enabled a XSS attack. This Servlet now filters the data
+       before use. This issue may be mitigated by undeploying the examples web
+       application. Note that it is recommended that the examples web
+       application is not installed on a production system.
+       </p>
+
+    <p>Affects: 4.0.0-4.0.6, 4.1.0-4.1.36</p>
+
+    <p><strong>Low: Session hi-jacking</strong>
+       <cve>CVE-2007-3385</cve></p>
+
+    <p>Tomcat incorrectly handled the character sequence \" in a cookie value.
+       In some circumstances this lead to the leaking of information such as
+       session ID to an attacker.</p>
+
+    <p>Affects: 4.1.0-4.1.36</p>
+
+    <p><strong>Low: Session hi-jacking</strong>
+       <cve>CVE-2007-5333</cve></p>
+
+    <p>The previous fix for
+       <cve>CVE-2007-3385</cve> was incomplete. It did not consider the
+       use of quotes or %5C within a cookie value.</p>
+
+    <p>Affects: 4.1.0-4.1.36</p>
+
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2007-5461</cve></p>
+
+    <p>When Tomcat's WebDAV servlet is configured for use with a context and
+       has been enabled for write, some WebDAV requests that specify an entity
+       with a SYSTEM tag can result in the contents of arbitary files being
+       returned to the client.</p>
+
+    <p>Affects: 4.0.0-4.0.6, 4.1.0-4.1.36</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 4.1.36">
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2005-2090</cve></p>
+
+    <p>Requests with multiple content-length headers should be rejected as
+       invalid. When multiple components (firewalls, caches, proxies and Tomcat)
+       process a sequence of requests where one or more requests contain
+       multiple content-length headers and several components do not
+       reject the request and make different decisions as to which
+       content-length header to use an attacker can poison a web-cache, perform
+       an XSS attack and obtain sensitive information from requests other then
+       their own. Tomcat now returns 400 for requests with multiple
+       content-length headers.
+       </p>
+
+    <p>Affects: 4.0.0-4.0.6, 4.1.0-4.1.34</p>
+
+    <p><strong>Important: Directory traversal</strong>
+       <cve>CVE-2007-0450</cve></p>
+
+    <p>The fix for this issue was insufficient. A fix was also required in the
+       JK connector module for httpd. See 
+       <cve>CVE-2007-1860</cve> for further information.</p>
+
+    <p>Tomcat permits '\', '%2F' and '%5C' as path delimiters. When Tomcat is
+       used behind a proxy (including, but not limited to, Apache HTTP server
+       with mod_proxy and mod_jk) configured to only proxy some contexts, a HTTP
+       request containing strings like "/\../" may allow attackers to work
+       around the context restriction of the proxy, and access the non-proxied
+       contexts.
+    </p>
+
+    <p>The following Java system properties have been added to Tomcat to provide 
+       additional control of the handling of path delimiters in URLs (both
+       options default to false):</p>
+       <ul>
+         <li>
+           <code>org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH</code>:
+           <code>true|false</code>
+         </li>
+         <li>
+           <code>org.apache.catalina.connector.CoyoteAdapter.ALLOW_BACKSLASH</code>:
+           <code>true|false</code>
+         </li>
+       </ul>
+
+    <p>Due to the impossibility to guarantee that all URLs are handled by Tomcat
+       as they are in proxy servers, Tomcat should always be secured as if no
+       proxy restricting context access was used.
+    </p>
+
+    <p>Affects: 4.0.0-4.0.6, 4.1.0-4.1.34</p>
+
+    <p><strong>Low: Cross-site scripting</strong>
+       <cve>CVE-2007-1358</cve></p>
+
+    <p>Web pages that display the Accept-Language header value sent by the
+       client are susceptible to a cross-site scripting attack if they assume
+       the Accept-Language header value conforms to RFC 2616. Under normal
+       circumstances this would not be possible to exploit, however older
+       versions of Flash player were known to allow carefully crafted malicious
+       Flash files to make requests with such custom headers. When generating
+       the response for <code>getLocale()</code> and <code>getLocales()</code>,
+       Tomcat now ignores values for Accept-Language headers that do not conform
+       to RFC 2616. Applications that use the raw header values directly should
+       not assume that the headers conform to RFC 2616 and should filter the
+       values appropriately.</p>
+
+    <p>Affects: 4.0.0-4.0.6, 4.1.0-4.1.34</p>
+  </section>
+
+  <section name="Fixed in Apache Tomcat 4.1.35">
+
+    <p><strong>Low: Information disclosure</strong>
+       <cve>CVE-2008-4308</cve></p>
+
+    <p><a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=40771">Bug
+    40771</a> may result in the disclosure of POSTed content from a previous
+    request. For a vulnerability to exist, the content read from the input
+    stream must be disclosed, eg via writing it to the response and committing
+    the response, before the ArrayIndexOutOfBoundsException occurs which will
+    halt processing of the request.</p>
+
+    <p>Affects: 4.1.32-4.1.34 (4.0.x unknown)</p>
+  </section>
+
+  <section name="Fixed in Apache Tomcat 4.1.32">
+
+    <p><strong>Low: Information disclosure</strong>
+       <cve>CVE-2008-3271</cve></p>
+
+    <p><a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=25835">
+    Bug 25835</a> can, in rare circumstances - this has only been reproduced
+    using a debugger to force a particular processing sequence for two threads -
+    allow a user from a non-permitted IP address to gain access to a context
+    that is protected with a valve that extends RequestFilterValve. This includes
+    the standard RemoteAddrValve and RemoteHostValve implementations.</p>
+
+    <p>Affects: 4.1.0-4.1.31</p>
+
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2007-1858</cve></p>
+
+    <p>The default SSL configuration permitted the use of insecure cipher suites
+       including the anonymous cipher suite. The default configuration no
+       longer permits the use of insecure cipher suites.</p>
+
+    <p>Affects: 4.1.28-4.1.31</p>
+
+    <p><strong>Low: Cross-site scripting</strong>
+       <cve>CVE-2006-7196</cve></p>
+
+    <p>The calendar application included as part of the JSP examples is
+       susceptible to a cross-site scripting attack as it does not escape
+       user provided data before including it in the returned page.</p>
+
+    <p>Affects: 4.0.0-4.0.6, 4.1.0-4.1.31</p>
+
+    <p><strong>Low: Directory listing</strong>
+       <cve>CVE-2006-3835</cve></p>
+
+    <p>This is expected behaviour when directory listings are enabled. The
+       semicolon (;) is the separator for path parameters so inserting one
+       before a file name changes the request into a request for a directory
+       with a path parameter. If directory listings are enabled, a diretcory
+       listing will be shown. In response to this and other directory listing
+       issues, directory listings were changed to be disabled by default.</p>
+
+    <p>Affects: 4.0.0-4.0.6, 4.1.0-4.1.31</p>
+
+    <p><strong>Low: Cross-site scripting</strong>
+       <cve>CVE-2005-4838</cve></p>
+
+    <p>Various JSPs included as part of the JSP examples and the Tomcat Manager
+       are susceptible to a cross-site scripting attack as they do not escape
+       user provided data before including it in the returned page.</p>
+
+    <p>Affects: 4.0.0-4.0.6, 4.1.0-4.1.31</p>
+
+    <p><strong>Important: Denial of service</strong>
+       <cve>CVE-2005-3510</cve></p>
+
+    <p>The root cause is the relatively expensive calls required to generate
+       the content for the directory listings. If directory listings are
+       enabled, the number of files in each directory should be kepp to a
+       minimum. In response to this issue, directory listings were changed to
+       be disabled by default. Additionally, a
+       <a href="http://marc.info/?l=tomcat-dev&amp;m=113356822719767&amp;w=2">
+       patch</a> has been proposed that would improve performance, particularly
+       for large directories, by caching directory listings.</p>
+
+    <p>Affects: 4.0.0-4.0.6, 4.1.0-4.1.31</p>
+  </section>
+
+  <section name="Fixed in Apache Tomcat 4.1.29">
+    <p><strong>Moderate: Cross-site scripting</strong>
+       <cve>CVE-2002-1567</cve></p>
+
+    <p>The unmodified requested URL is included in the 404 response header. The
+       new lines in this URL appear to the client to be the end of the header
+       section. The remaining part of the URL, including the script elements, is
+       treated as part of the response body and the client executes the script.
+       Tomcat now replaces potentially unsafe characters in the response
+       headers with spaces.</p>
+
+    <p>Affects: 4.1.0-4.1.28</p>
+  </section>
+
+  <section name="Fixed in Apache Tomcat 4.1.13, 4.0.6">
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2002-1394</cve></p>
+
+    <p>A specially crafted URL using the invoker servlet in conjunction with the
+       default servlet can enable an attacker to obtain the source of JSP pages
+       or, under special circumstances, a static resource that would otherwise
+       have been protected by a security constraint without the need to be
+       properly authenticated. This is a variation of
+       <cve>CVE-2002-1148</cve></p>
+
+    <p>Affects: 4.0.0-4.0.5, 4.1.0-4.1.12</p>
+
+    <p><strong>Moderate: Cross-site scripting</strong>
+       <cve>CVE-2002-0682</cve></p>
+
+    <p>A specially crafted URL using the invoker servlet and various internal
+       classess causes Tomcat to throw an exception that includes unescaped
+       information from the malformed request. This allows the XSS attack.</p>
+
+    <p>Affects: 4.0.0-4.0.5, 4.1.0-4.1.12</p>
+  </section>
+
+  <section name="Fixed in Apache Tomcat 4.1.12, 4.0.5">
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2002-1148</cve></p>
+
+    <p>A specially crafted URL using the default servlet can enable an attacker
+       to obtain the source of JSP pages.</p>
+
+    <p>Affects: 4.0.0-4.0.4, 4.1.0-4.1.11</p>
+  </section>
+
+  <section name="Fixed in Apache Tomcat 4.1.3">
+    <p><strong>Important: Denial of service</strong>
+       <cve>CVE-2002-0935</cve></p>
+
+    <p>A malformed HTTP request can cause the request processing thread to
+       become unresponsive. A sequence of such requests will cause all request
+       processing threads, and hence Tomcat as a whole, to become unresponsive.</p>
+
+    <p>Affects: 4.0.0-4.0.2?, 4.0.3, 4.0.4-4.0.6?, 4.1.0-4.1.2?</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 4.1.0">
+    <p><strong>Important: Denial of service</strong>
+       <cve>CVE-2003-0866</cve></p>
+
+    <p>A malformed HTTP request can cause the request processing thread to
+       become unresponsive. A sequence of such requests will cause all request
+       processing threads, and hence Tomcat as a whole, to become unresponsive.</p>
+
+    <p>Affects: 4.0.0-4.0.6</p>
+
+    <p><strong>Low: Information disclosure</strong>
+       <cve>CVE-2002-2006</cve></p>
+
+    <p>The snoop and trouble shooting servlets installed as part of the examples
+       include output that identifies the Tomcat installation path.</p>
+
+    <p>Affects: 4.0.0-4.0.6</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 4.0.2">
+    <p><strong>Low: Information disclosure</strong>
+       <cve>CVE-2002-2009</cve>,
+       <cve>CVE-2001-0917</cve></p>
+
+    <p>Requests for JSP files where the file name is preceded by '+/', '&gt;/',
+       '&lt;/' or '%20/' or a request for a JSP with a long file name would
+       result in in an error page that included the full file system path to
+       the JSP file.</p>
+
+    <p>Affects: 4.0.0-4.0.1</p>
+  </section>
+
+  <section name="Fixed in Apache Tomcat 4.0.0">
+    <p><strong>Moderate: Security manager bypass</strong>
+       <cve>CVE-2002-0493</cve></p>
+
+    <p>If errors are encountered during the parsing of web.xml and Tomcat is
+       configured to use a security manager it is possible for Tomcat to start
+       without the security manager in place.</p> 
+
+    <p>Affects: Pre-release builds of 4.0.0</p>
+  </section>
+
+  <section name="Unverified">
+    <p><strong>Low: Installation path disclosure</strong>
+       <cve>CVE-2005-4703</cve>, 
+       <cve>CVE-2002-2008</cve></p>
+
+    <p>This issue only affects Windows operating systems. It can not be
+       reproduced on Windows XP Home with JDKs 1.3.1, 1.4.2, 1.5.0 or 1.6.0.
+       Further investigation is required to determine the Windows operating
+       system and JDK combinations that do exhibit this issue. The
+       vulnerability reports for this issue state that it is fixed in 4.1.3
+       onwards.</p>
+
+    <p>Affects: 4.0.3?</p>
+
+    <p><strong>Important: Denial of service</strong>
+       <cve>CVE-2002-1895</cve></p>
+
+    <p>This issue only affects configurations that use IIS in conjunction with
+       Tomcat and the AJP1.3 connector. It can not be reproduced using Windows
+       2000 SP4 with latest patches and Tomcat 4.0.4 with JDK 1.3.1. The
+       vulnerability reports for this issue state that it is fixed in 4.1.10
+       onwards.</p>
+
+    <p>Affects: 4.0.4?</p>
+  </section>
+
+  <section name="Not a vulnerability in Tomcat">
+    <p><strong>Important: Directory traversal</strong>
+       <cve>CVE-2008-2938</cve></p>
+
+    <p>Originally reported as a Tomcat vulnerability the root cause of this
+       issue is that the JVM does not correctly decode UTF-8 encoded URLs to
+       UTF-8. This exposes a directory traversal vulnerability when the
+       connector uses <code>URIEncoding="UTF-8"</code>. This directory traversal
+       is limited to the docBase of the web application.</p>
+       
+    <p>If a context is configured with <code>allowLinking="true"</code> then the
+       directory traversal vulnerability is extended to the entire file system
+       of the host server.</p>
+       
+    <p>It should also be noted that setting
+       <code>useBodyEncodingForURI="true"</code> has the same effect as setting
+       <code>URIEncoding="UTF-8"</code> when processing requests with bodies
+       encoded with UTF-8.</p>
+
+    <p>Although the root cause was quickly identified as a JVM issue and that it
+       affected multiple JVMs from multiple vendors, it was decided to report
+       this as a Tomcat vulnerability until such time as the JVM vendors
+       provided updates to resolve this issue. For further information on the
+       status of this issue for your JVM, contact your JVM vendor.</p>
+       
+    <p>A workaround was implemented in
+       <revlink rev="681065">revision 681065</revlink>
+       that protects against this and any similar character
+       encoding issues that may still exist in the JVM. This work around is
+       included in Tomcat 4.1.39 onwards.</p>
+
+    <p><strong>Denial of service vulnerability</strong>
+       <cve>CVE-2002-0936</cve></p>
+
+    <p>The issue described requires an attacker to be able to plant a JSP page
+       on the Tomcat server. If an attacker can do this then the server is
+       already compromised. In this case an attacker could just as easily add a
+       page that called System.exit(1) rather than relying on a bug in an
+       internal Sun class.</p>
+
+  </section>
+
+</body>
+</document>
+

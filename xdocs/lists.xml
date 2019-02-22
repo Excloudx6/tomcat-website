@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author>Apache Tomcat Team</author>
+    <title>Mailing Lists</title>
+  </properties>
+<body>
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Apache Tomcat Mailing Lists">
+
+<p>Before you can send a message to one of the Tomcat lists, you must subscribe
+to that list. If you try to send a message to a list from an e-mail address that
+is not subscribed to the list, it will be rejected.</p>
+
+<p>All messages to the Tomcat lists are filtered for spam. To avoid your valid
+message being marked as spam:</p>
+<ul>
+  <li>send your message in plain text, not HTML;</li>
+  <li>include a subject.</li>
+</ul>
+
+<p>The following lists are available:</p>
+
+<dl>
+  <dt><a href="#tomcat-users">tomcat-users</a></dt>
+  <dd>User support and discussion</dd>
+
+  <dt><a href="#taglibs-user">taglibs-user</a></dt>
+  <dd>User support and discussion for
+   <a href="http://tomcat.apache.org/taglibs/">Apache Taglibs</a></dd>
+
+  <dt><a href="#tomcat-announce">tomcat-announce</a></dt>
+  <dd>Low volume announcements including all releases and security
+   vulnerabilities</dd>
+
+   <dt><a href="#tomcat-dev">tomcat-dev</a></dt>
+   <dd>Development mailing list, including commit messages</dd>
+</dl>
+
+<p>Users should consider subscribing to the
+<a href="#tomcat-users">User Support</a> and the
+<a href="#tomcat-announce">Announcements</a> mailing lists.
+
+The <a href="#tomcat-dev">Developer</a> list is for people interested in
+helping with the development and debugging of the server.</p>
+
+<p>Formatted archives are available in several places including <a
+href="http://mail-archives.apache.org/mod_mbox/">the Apache Mail
+Archives</a>, <a href="http://marc.info/" rel="nofollow">MARC</a>,
+<a href="http://www.nabble.com/" rel="nofollow">Nabble</a>, and
+<a href="http://tomcat.markmail.org/" rel="nofollow">MarkMail</a>. The raw mbox
+files are also <a href="http://tomcat.apache.org/mail/">available</a>.
+</p>
+
+<p>You can also use the mail-to-news
+<a href="nntp://news.gmane.org/" rel="nofollow">gateway</a> offered by
+<a href="http://news.gmane.org/index.php?match=gmane.comp.apache"
+rel="nofollow">GMANE</a> to access most of the lists with a news reader.</p>
+
+</section>
+
+<section name="tomcat-users">
+
+<p>The list listed here is the <strong>only</strong> place that configuration
+and how-to questions belong, ever.  Every day, users become frustrated, not
+with Apache Tomcat, but how nobody will help them understand how to get
+started. 95% of the time, it's not for lack of helpers, but for lack of
+effort and well stated questions.</p>
+
+<p>Before you go further, please read Eric S. Raymond and Rick Moen's
+explanation of
+<a href="http://www.catb.org/~esr/faqs/smart-questions.html" rel="nofollow">
+"How To Ask Questions The Smart Way"</a>.  If you follow their advice, you
+will discover that these forums have dozens of helpers ready to provide you
+with guidance on using Apache Tomcat! <strong>Note: Do not send your Apache
+Tomcat questions to Eric or Rick themselves!</strong></p>
+
+<p><strong>Important:</strong></p>
+
+<ol>
+  <li>When asking questions on the list, please state your exact Tomcat version
+  (which is three numbers, 9.0.xx, 8.5.yy, 8.0.zz or 7.0.vv), your operating
+  system, and essential bits of your configuration.
+  </li>
+  <li>Note, that Tomcat Documentation is provided on this site and is searchable
+  (see links and search box at the left). Add "Tomcat 9.0", "Tomcat 8.5",
+  "Tomcat 8.0" or "Tomcat 7.0" to your query to refine your results. The
+  tomcat-users mailing list archives (links are below) are also searchable.</li>
+  <li>The <a href="https://wiki.apache.org/tomcat/FAQ">FAQ</a> and
+  <a href="https://wiki.apache.org/tomcat/HowTo">How To</a> pages
+  are available at the <a href="https://wiki.apache.org/tomcat/FrontPage">Tomcat Wiki</a>.</li>
+  <li>Usage of these mailing lists is subject to the
+  <a href="http://www.apache.org/foundation/public-archives.html">Public Forum Archive Policy</a>.</li>
+  <li>To post a question, start a new thread by sending your mail
+  to the "Posting questions" address below. Do not reply to an existing e-mail.
+  To be able to post to the mailing list, you have to be subscribed.</li>
+  <li>When replying, please write your text below the quoted one.
+  <a href="http://en.wikipedia.org/wiki/Posting_style#Choosing_the_proper_posting_style" rel="nofollow">Top-posting</a>
+  is bad.<br/>
+  (Hint: when replying in GMail, click on "..." button to show the text
+  of original e-mail. Other mail clients have similar features.)</li>
+  <li>Please format your messages as plain text, not HTML. Do not send
+  attachments, as they are likely to be removed and ignored by the mailing list
+  server.</li>
+</ol>
+
+<table class="defaultTable">
+ <tr>
+  <td>Volume:</td>
+  <td>High</td>
+ </tr>
+ <tr>
+  <td>Subscription:</td>
+  <td>Send a blank email to <a href="mailto:users-subscribe@tomcat.apache.org">
+      users-subscribe@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Digest subscription:</td>
+  <td>Send a blank email to <a href="mailto:users-digest-subscribe@tomcat.apache.org">
+      users-digest-subscribe@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Posting questions to the list:</td>
+  <td>Send your question to <a href="mailto:users@tomcat.apache.org">
+      users@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Getting help with how to use the list:</td>
+  <td>Send a blank email to <a href="mailto:users-help@tomcat.apache.org">
+      users-help@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Unsubscription:</td>
+  <td>Send a blank email to <a href="mailto:users-unsubscribe@tomcat.apache.org">
+      users-unsubscribe@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Digest unsubscription:</td>
+  <td>Send a blank email to
+      <a href="mailto:users-digest-unsubscribe@tomcat.apache.org">
+      users-digest-unsubscribe@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>List owner address:</td>
+  <td>Send your message to
+      <a href="mailto:users-owner@tomcat.apache.org">
+      users-owner@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Archives:</td>
+  <td>
+    at <a href="http://mail-archives.apache.org/mod_mbox/tomcat-users/">Apache</a>
+    , or searchable archives at
+    <a href="http://marc.info/?l=tomcat-user" rel="nofollow">MARC</a>,
+    <a href="http://markmail.org/list/org.apache.tomcat.user/" rel="nofollow">MarkMail</a>,
+    <a href="http://tomcat.10.x6.nabble.com/Tomcat-User-f1968778.html" rel="nofollow">Nabble</a>
+    and <a href="http://www.mail-archive.com/users@tomcat.apache.org/" rel="nofollow">Mail Archive</a>
+  </td>
+ </tr>
+ <tr>
+   <td>RSS:</td>
+   <td>at <a
+     href="http://tomcat.markmail.org/atom/+list:org%2Eapache%2Etomcat%2Eusers"
+     rel="nofollow">MarkMail</a>
+   </td>
+ </tr>
+</table>
+
+</section>
+
+<section name="tomcat-announce">
+
+<p>The list is used to announce Tomcat releases, security vulnerabilities and
+other project announcements.</p>
+
+<p><em>Note</em>: You may be also interested in
+<a href="https://www.apache.org/foundation/mailinglists.html#foundation-announce">ASF news and announcements list</a>.</p>
+
+<table class="defaultTable">
+ <tr>
+  <td>Volume:</td>
+  <td>Low</td>
+ </tr>
+ <tr>
+  <td>Subscription:</td>
+  <td>Send a blank email to <a href="mailto:announce-subscribe@tomcat.apache.org">
+      announce-subscribe@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Posting announcements to the list:</td>
+  <td>This is only available to Tomcat committers.</td>
+ </tr>
+ <tr>
+  <td>Getting help with how to use the list:</td>
+  <td>Send a blank email to <a href="mailto:announce-help@tomcat.apache.org">
+      announce-help@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Unsubscription:</td>
+  <td>Send a blank email to <a href="mailto:announce-unsubscribe@tomcat.apache.org">
+      announce-unsubscribe@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>List owner address:</td>
+  <td>Send your message to
+      <a href="mailto:announce-owner@tomcat.apache.org">
+      announce-owner@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Archives:</td>
+  <td>
+    at <a href="http://mail-archives.apache.org/mod_mbox/tomcat-announce/">
+    Apache</a>,
+    at <a href="http://markmail.org/list/org.apache.tomcat.announce/"
+    rel="nofollow">MarkMail</a> and
+    at <a href="http://www.mail-archive.com/announce@tomcat.apache.org/"
+    rel="nofollow">Mail Archive</a>
+  </td>
+ </tr>
+ <tr>
+   <td>RSS:</td>
+   <td>at <a
+     href="http://tomcat.markmail.org/atom/+list:org%2Eapache%2Etomcat%2Eannounce"
+     rel="nofollow">MarkMail</a>
+   </td>
+ </tr>
+</table>
+
+</section>
+
+<section name="tomcat-dev">
+
+<p>
+The <code>dev@tomcat.apache.org</code> mailing list
+is used for discussions about the actual development of the server. It is not
+the place to ask about problems writing JSPs, servlets or web applications.
+</p>
+
+<p>Configuration and support questions should be addressed to the
+<a href="#tomcat-user">user mailing list</a>.  This development list is only
+for discussion of changes to the Apache Tomcat source code and related
+issues. Other questions will be ignored.</p>
+
+<table class="defaultTable">
+ <tr>
+  <td>Volume:</td>
+  <td>High</td>
+ </tr>
+ <tr>
+  <td>Subscription:</td>
+  <td>Send a blank email to <a href="mailto:dev-subscribe@tomcat.apache.org">
+      dev-subscribe@tomcat.apache.org</a>
+      (<strong>Not a user support list!</strong>)</td>
+ </tr>
+ <tr>
+  <td>Digest subscription:</td>
+  <td>Send a blank email to
+      <a href="mailto:dev-digest-subscribe@tomcat.apache.org">
+      dev-digest-subscribe@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Posting questions to the list:</td>
+  <td>Send your question to <a href="mailto:dev@tomcat.apache.org">
+      dev@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Getting help with how to use the list:</td>
+  <td>Send a blank email to <a href="mailto:dev-help@tomcat.apache.org">
+      dev-help@tomcat.apache.org</a>,
+      <a href="mailto:dev-digest-help@tomcat.apache.org">
+      dev-digest-help@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Unsubscription:</td>
+  <td>Send a blank email to <a href="mailto:dev-unsubscribe@tomcat.apache.org">
+      dev-unsubscribe@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Digest unsubscription:</td>
+  <td>Send a blank email to
+      <a href="mailto:dev-digest-unsubscribe@tomcat.apache.org">
+      dev-digest-unsubscribe@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>List owner address:</td>
+  <td>Send your message to
+      <a href="mailto:dev-owner@tomcat.apache.org">
+      dev-owner@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Archives:</td>
+  <td>
+    at <a href="http://mail-archives.apache.org/mod_mbox/tomcat-dev/">Apache</a>
+    , or searchable archives at
+    <a href="http://marc.info/?l=tomcat-dev" rel="nofollow">MARC</a>,
+    <a href="http://markmail.org/list/org.apache.tomcat.dev/" rel="nofollow">MarkMail</a>,
+    <a href="http://tomcat.10.x6.nabble.com/Tomcat-Dev-f2176423.html" rel="nofollow">Nabble</a>
+    and <a href="http://www.mail-archive.com/dev@tomcat.apache.org/" rel="nofollow">Mail Archive</a>
+  </td>
+ </tr>
+ <tr>
+   <td>RSS:</td>
+   <td>at <a
+     href="http://tomcat.markmail.org/atom/+list:org%2Eapache%2Etomcat%2Edev"
+     rel="nofollow">MarkMail</a>
+   </td>
+ </tr>
+</table>
+</section>
+
+<section name="taglibs-user">
+
+<p>
+The <code>taglibs-user@tomcat.apache.org</code>
+mailing list is for users of the custom tag libraries found in
+<a href="http://tomcat.apache.org/taglibs/">Apache Taglibs</a>. It is also
+a good forum for asking questions about how custom tag libraries operate,
+and how they can be used.
+</p>
+
+<table class="defaultTable">
+ <tr>
+  <td>Volume:</td>
+  <td>Low</td>
+ </tr>
+ <tr>
+  <td>Subscription:</td>
+  <td>Send a blank email to <a href="mailto:taglibs-user-subscribe@tomcat.apache.org">
+      taglibs-user-subscribe@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Digest subscription:</td>
+  <td>Send a blank email to
+      <a href="mailto:taglibs-user-digest-subscribe@tomcat.apache.org">
+      taglibs-user-digest-subscribe@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Posting questions to the list:</td>
+  <td>Send your question to <a href="mailto:taglibs-user@tomcat.apache.org">
+      taglibs-user@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Getting help with how to use the list:</td>
+  <td>Send a blank email to <a href="mailto:taglibs-user-help@tomcat.apache.org">
+      taglibs-user-help@tomcat.apache.org</a>,
+      <a href="mailto:taglibs-user-digest-help@tomcat.apache.org">
+      taglibs-user-digest-help@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Unsubscription:</td>
+  <td>Send a blank email to <a href="mailto:taglibs-user-unsubscribe@tomcat.apache.org">
+      taglibs-user-unsubscribe@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Digest unsubscription:</td>
+  <td>Send a blank email to
+      <a href="mailto:taglibs-user-digest-unsubscribe@tomcat.apache.org">
+      taglibs-user-digest-unsubscribe@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>List owner address:</td>
+  <td>Send your message to
+      <a href="mailto:taglibs-user-owner@tomcat.apache.org">
+      taglibs-user-owner@tomcat.apache.org</a></td>
+ </tr>
+ <tr>
+  <td>Archives:</td>
+  <td>
+    at <a href="http://mail-archives.apache.org/mod_mbox/tomcat-taglibs-user/">
+    Apache</a> (see
+    <a href="http://mail-archives.apache.org/mod_mbox/jakarta-taglibs-user/">
+    older archives</a>), at
+    <a href="http://markmail.org/list/org.apache.jakarta.taglibs-user/"
+    rel="nofollow">MarkMail</a> (both old and new) and at
+    <a href="http://www.mail-archive.com/taglibs-user@tomcat.apache.org/"
+    rel="nofollow">Mail Archive</a> (also
+    <a href="http://www.mail-archive.com/taglibs-user@jakarta.apache.org/"
+    rel="nofollow">older archives</a>)
+  </td>
+ </tr>
+ <tr>
+   <td>RSS:</td>
+   <td>at <a
+     href="http://jakarta.markmail.org/atom/+list:org%2Eapache%2Ejakarta%2Etaglibs-user"
+     rel="nofollow">MarkMail</a>
+   </td>
+ </tr>
+</table>
+</section>
+
+</body>
+</document>

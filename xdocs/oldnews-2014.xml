@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Old news!</title>
+  </properties>
+
+<body>
+
+<section name="Other news">
+<p>Announcements from other years can be found here:</p>
+<ul>
+  <li><a href="oldnews.html">year 2018</a></li>
+  <li><a href="oldnews-2017.html">year 2017</a></li>
+  <li><a href="oldnews-2016.html">year 2016</a></li>
+  <li><a href="oldnews-2015.html">year 2015</a></li>
+  <li>year 2014</li>
+  <li><a href="oldnews-2013.html">year 2013</a></li>
+  <li><a href="oldnews-2012.html">year 2012</a></li>
+  <li><a href="oldnews-2011.html">year 2011</a></li>
+  <li><a href="oldnews-2010.html">year 2010</a></li>
+</ul>
+</section>
+
+<section name="Tomcat 6.0.43 Released" rtext="2014-11-22">
+ <p>
+The Apache Tomcat Project is proud to announce the release of version 6.0.43 of
+Apache Tomcat. This release includes a number of bug fixes over Apache Tomcat
+6.0.41. The notable changes include:</p>
+ <ul>
+  <li>Update to Tomcat Native Library version 1.1.32 to pick up the Windows
+      binaries that are based on OpenSSL 1.0.1j and APR 1.5.1.</li>
+  <li>Add support for TLSv1.1 and TLSv1.2 for APR connector. Based upon a patch
+      by Marcel Šebek. This feature requires Tomcat Native library 1.1.32 or
+      later.</li>
+  <li>Disable SSLv3 by default for all HTTPS connectors.</li>
+ </ul>
+
+<p style="text-align: center;">
+<a href="download-60.cgi">Download</a> |
+<a href="tomcat-6.0-doc/changelog.html#Tomcat_6.0.43_(jfclere)">ChangeLog for 6.0.43</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.57 Released" rtext="2014-11-11">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.57 of
+Apache Tomcat. This release contains a number of bug fixes
+and improvements compared to version 7.0.56. The notable changes
+since 7.0.56 include:
+</p>
+<ul>
+  <li>Update to Tomcat Native Library version 1.1.32 to pick up the Windows
+      binaries that are based on OpenSSL 1.0.1j and APR 1.5.1.</li>
+  <li>Add support for TLSv1.1 and TLSv1.2 for APR connector. Based upon a patch
+      by Marcel Šebek. This feature requires Tomcat Native library 1.1.32 or
+      later.</li>
+  <li>Disable SSLv3 by default for all HTTPS connectors.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.57_(violetagg)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.57_(violetagg)">ChangeLog for 7.0.57</a>
+</p>
+</section>
+
+<section name="Tomcat 8.0.15 Released" rtext="2014-11-07">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.0.15
+of Apache Tomcat. Apache Tomcat 8.0.15 includes numerous fixes for issues
+identified in 8.0.14 as well as a number of other enhancements and changes. The
+notable changes since 8.0.14 include:</p>
+<ul>
+  <li>Add support for RFC6265 cookie parsing and generation. This is currently
+      disabled by default and may be enabled via the CookieProcessor element of
+      a Context.</li>
+  <li>Add pluggable password derivation support to the Realms via the new
+      CredentialHandler interface.</li>
+  <li>Add support for TLSv1.1 and TLSv1.2 for APR connector. Based upon a patch
+      by Marcel Šebek. This feature requires Tomcat Native library 1.1.32 or
+      later.</li>
+  <li>Disable SSLv3 by default for all HTTPS connectors.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.0-doc/changelog.html#Tomcat_8.0.15_(markt)">Tomcat 8 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat Native 1.1.32 Released" rtext="2014-10-23">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.1.32 of
+Tomcat Native. The notable changes since 1.1.31 include:
+</p>
+<ul>
+  <li>Added support for TLSv1.1 and TLSv1.2</li>
+  <li>Windows binaries are linked with OpenSSL 1.0.1j and APR 1.5.1</li>
+</ul>
+<p style="text-align: center;">
+<a href="download-native.cgi">Download</a> |
+<a href="native-doc/miscellaneous/changelog.html">ChangeLog for 1.1.32</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.56 Released" rtext="2014-10-06">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.56 of
+Apache Tomcat. This release contains a number of bug fixes
+and improvements compared to version 7.0.55. The notable changes
+since 7.0.55 include:
+</p>
+<ul>
+  <li>Update the Java WebSocket support to version 1.1 of the Java WebSocket
+      specification.</li>
+  <li>Add support for the WebSocket permessage-deflate extension.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.56_(violetagg)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.56_(violetagg)">ChangeLog for 7.0.56</a>
+</p>
+</section>
+
+<section name="Tomcat 8.0.14 Released" rtext="2014-09-29">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.0.14
+of Apache Tomcat. Apache Tomcat 8.0.14 includes numerous fixes for issues
+identified in 8.0.12 as well as a number of other enhancements and changes. The
+notable changes since 8.0.12 include:</p>
+<ul>
+  <li>Update the Java WebSocket support to version 1.1 of the Java WebSocket
+      specification.</li>
+  <li>The Windows installer, the Windows service and the Windows service
+      management application are all digitally signed.</li>
+  <li>Experimental support for Cookie parsing using RFC 6265. Note that the
+      configuration options associated with this feature are not stable and
+      <strong>will</strong> change in the next release.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.0-doc/changelog.html#Tomcat_8.0.14_(markt)">Tomcat 8 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 8.0.12 Released" rtext="2014-09-03">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.0.12
+of Apache Tomcat. Apache Tomcat 8.0.12 includes numerous fixes for issues
+identified in 8.0.11 as well as a number of other enhancements and changes. The
+notable changes since 8.0.11 include:</p>
+<ul>
+  <li>Fix a regression in the processing of includes and forwards when
+      Contexts had been reloaded.</li>
+  <li>Session ID generation is now extensible</li>
+  <li>Extend support for the WebSocket permessage-deflate extension to
+      compression of outgoing messages on the server side</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.0-doc/changelog.html#Tomcat_8.0.12_(markt)">Tomcat 8 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 8.0.11 Released" rtext="2014-08-22">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.0.11
+of Apache Tomcat. Apache Tomcat 8.0.11 includes numerous fixes for issues
+identified in 8.0.9 as well as a number of other enhancements and changes. The
+notable changes since 8.0.9 include:</p>
+<ul>
+  <li>Update to Tomcat Native Library version 1.1.31 to pick up the Windows
+  binaries that are based on OpenSSL 1.0.1h.</li>
+  <li>Add support for OpenSSL syntax for ciphers when using JSSE SSL
+  connectors.</li>
+  <li>Add support for the WebSocket permessage-deflate extension. This is
+  currently limited to decompressing incoming messages on the server
+  side.</li>
+</ul>
+<p>
+Please refer to the change log for the complete list of changes:
+http://tomcat.apache.org/tomcat-8.0-doc/changelog.html
+</p>
+<p>
+NOTE: A regression has been reported in 8.0.11 (
+<a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=56882">bug
+56882</a>). A 8.0.12 release is expected in the next week or so to address this.
+</p>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.0-doc/changelog.html#Tomcat_8.0.11_(markt)">Tomcat 8 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.55 Released" rtext="2014-07-27">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.55 of
+Apache Tomcat. This release contains a number of bug fixes
+and improvements compared to version 7.0.54. The notable changes
+since 7.0.54 include:
+</p>
+<ul>
+  <li>Update to the Eclipse JDT Compiler 4.4</li>
+  <li>Better error handling when the error occurs after the response has been committed</li>
+  <li>Various improvements to the Mapper including fixing some concurrency bugs</li>
+  <li>Update to Tomcat Native Library version 1.1.31 to pick up the Windows binaries that
+  are based on OpenSSL 1.0.1h</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.55_(violetagg)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.55_(violetagg)">ChangeLog for 7.0.55</a>
+</p>
+</section>
+
+<section name="Tomcat Native 1.1.31 Released" rtext="2014-07-07">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.1.31 of
+Tomcat Native. The notable changes since 1.1.30 include:
+</p>
+<ul>
+  <li>Windows binaries are linked with OpenSSL 1.0.1h. This provides a fix
+   for <cve>CVE-2014-0224</cve>, an OpenSSL MITM vulnerability.
+   (<bug>56596</bug>)</li>
+  <li>Resolve an issue when using FIPS mode. (<bug>56396</bug>)</li>
+</ul>
+<p style="text-align: center;">
+<a href="download-native.cgi">Download</a> |
+<a href="native-doc/miscellaneous/changelog.html">ChangeLog for 1.1.31</a>
+</p>
+</section>
+
+<section name="Tomcat 8.0.9 Released" rtext="2014-06-25">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.0.9
+of Apache Tomcat. This is the first stable release of the 8.0.x series. Tomcat 8
+is aligned with Java EE 7. In addition to supporting updated versions of the
+Java EE specifications, Tomcat 8 includes a number of improvements compared to
+Tomcat 7. The notable changes include:</p>
+<ul>
+  <li>Support for Java Servlet 3.1, JavaServer Pages 2.3, Java Unified
+      Expression Language 3.0 and Java WebSocket 1.0.</li>
+  <li>The default connector implementation is now the Java non-blocking
+      implementation (NIO) for both HTTP and AJP.</li>
+  <li>A new resources implementation that replaces Aliases, VirtualLoader, 
+      VirtualDirContext, JAR resources and external repositories with a single,
+      consistent approach for configuring additional web application resources.
+      The new resources implementation can also be used to implement overlays
+      (using a master WAR as the basis for multiple web applications that each
+      have their own customizations).</li>
+</ul>
+<p>
+Apache Tomcat 8.0.9 includes numerous fixes for issues identified in 8.0.8
+(beta) as well as a number of other enhancements and changes. The notable
+changes since 8.0.8 include:</p>
+<ul>
+  <li>Start to move towards RFC6265 for cookie handling</li>
+  <li>Better error handling when the error occurs after the response has been
+      committed</li>
+  <li>Various Jasper improvements to make it easier for other containers (e.g.
+      Jetty) to consume</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.0-doc/changelog.html#Tomcat_8.0.9_(markt)">Tomcat 8 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 6.0.41 Released" rtext="2014-05-23">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 6.0.41 of
+Apache Tomcat. This release includes a number of bug fixes over Apache Tomcat
+6.0.39. The notable changes include:</p>
+<ul>
+<li>Add support for using ecj-P20140317-1600.jar to use Java 8 syntax in JSPs
+    </li>
+<li>Update native library to 1.1.30</li>
+<li>Various improvements to XML processing</li>
+</ul>
+
+<p style="text-align: center;">
+<a href="download-60.cgi">Download</a> |
+<a href="tomcat-6.0-doc/changelog.html#Tomcat_6.0.41_(markt)">ChangeLog for 6.0.41</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.54 Released" rtext="2014-05-22">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.54 of
+Apache Tomcat. This release contains a number of bug fixes
+and improvements compared to version 7.0.53. The notable changes
+since 7.0.53 include:
+</p>
+<ul>
+  <li>Extend and improve memory leak protection and fix a few leaks that crept
+      in during the various refactorings</li>
+  <li>Add additional protection against a failure to correctly recycle the
+      request and response objects</li>
+  <li>APR/native library version updated to 1.1.30.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.54_(violetagg)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.54_(violetagg)">ChangeLog for 7.0.54</a>
+</p>
+</section>
+
+<section name="Tomcat 8.0.8 (beta) Released" rtext="2014-05-21">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.0.8
+(beta) of Apache Tomcat. Tomcat 8 is aligned with Java EE 7. In addition to
+supporting updated versions of the Java EE specifications, Tomcat 8
+includes a number of improvements compared to Tomcat 7. The notable changes
+include:</p>
+<ul>
+  <li>Support for Java Servlet 3.1, JavaServer Pages 2.3, Java Unified
+      Expression Language 3.0 and Java WebSocket 1.0.</li>
+  <li>The default connector implementation is now the Java non-blocking
+      implementation (NIO) for both HTTP and AJP.</li>
+  <li>A new resources implementation that replaces Aliases, VirtualLoader, 
+      VirtualDirContext, JAR resources and external repositories with a single,
+      consistent approach for configuring additional web application resources.
+      The new resources implementation can also be used to implement overlays
+      (using a master WAR as the basis for multiple web applications that each
+      have their own customizations).</li>
+</ul>
+<p>
+Apache Tomcat 8.0.8 (beta) includes numerous fixes for issues identified in
+8.0.5 as well as a number of other enhancements and changes. The notable changes
+since 8.0.5 include:</p>
+<ul>
+  <li>Further NIO2 fixes which is now considered BETA</li>
+  <li>Extend and improve memory leak protection and fix a few leaks that crept
+      in during the various refactorings</li>
+  <li>Add additional protection against a failure to correctly recycle the
+      request and response objects</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.0-doc/changelog.html#Tomcat_8.0.8_(markt)">Tomcat 8 changelog</a>.
+</p>
+
+<p>The purpose of this beta release is to give users an opportunity to test
+Tomcat 8 and to provide feedback to the Tomcat community. Although it is a beta
+release, it is expected to run stably and is being used in production at the
+ASF for the ASF&apos;s Jira instance. The beta status is primarily because the
+Tomcat developers feel more feedback is required before a stable release and
+because there may be a small amount of further refactoring.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat Native 1.1.30 Released" rtext="2014-04-15">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.1.30 of
+Tomcat Native. The notable changes since 1.1.29 include:
+</p>
+<ul>
+  <li>Windows binaries are linked with OpenSSL 1.0.1g. This provides a fix
+   for <cve>CVE-2014-0160</cve>
+   (<a href="https://wiki.apache.org/tomcat/Security/Heartbleed">Heartbleed</a>)
+   SSL vulnerability.</li>
+  <li>Add support for ECDHE ciphers. (<bug>55915</bug>)</li>
+</ul>
+<p style="text-align: center;">
+<a href="download-native.cgi">Download</a> |
+<a href="native-doc/miscellaneous/changelog.html">ChangeLog for 1.1.30</a>
+</p>
+</section>
+
+<section name="Tomcat Connectors 1.2.40 Released" rtext="2014-04-15">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.2.40 of
+Apache Tomcat Connectors.
+This version fixes few bugs found in previous releases.
+</p>
+<p style="text-align: center;">
+<a href="download-connectors.cgi">Download</a> |
+<a href="connectors-doc/miscellaneous/changelog.html">ChangeLog for 1.2.40</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.53 Released" rtext="2014-03-30">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.53 of
+Apache Tomcat. This release contains a number of bug fixes
+and improvements compared to version 7.0.52. The notable changes
+since 7.0.52 include:
+</p>
+<ul>
+  <li>Update the Eclipse JDT compiler to enable full Java 8 support in JSPs.
+  </li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.53_(violetagg)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.53_(violetagg)">ChangeLog for 7.0.53</a>
+</p>
+</section>
+
+<section name="Tomcat 8.0.5 (beta) Released" rtext="2014-03-27">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.0.5
+(beta) of Apache Tomcat. Tomcat 8 is aligned with Java EE 7. In addition to
+supporting updated versions of the Java EE specifications, Tomcat 8
+includes a number of improvements compared to Tomcat 7. The notable changes
+include:</p>
+<ul>
+  <li>Support for Java Servlet 3.1, JavaServer Pages 2.3, Java Unified
+      Expression Language 3.0 and Java WebSocket 1.0.</li>
+  <li>The default connector implementation is now the Java non-blocking
+      implementation (NIO) for both HTTP and AJP.</li>
+  <li>A new resources implementation that replaces Aliases, VirtualLoader, 
+      VirtualDirContext, JAR resources and external repositories with a single,
+      consistent approach for configuring additional web application resources.
+      The new resources implementation can also be used to implement overlays
+      (using a master WAR as the basis for multiple web applications that each
+      have their own customizations).</li>
+</ul>
+<p>
+Apache Tomcat 8.0.5 (beta) includes numerous fixes for issues identified in
+8.0.3 as well as a number of other enhancements and changes. The notable changes
+since 8.0.3 include:</p>
+<ul>
+  <li>Update the Eclipse JDT compiler to enable full Java 8 support in JSPs.
+      </li>
+  <li>Update the default database connection pool implementation based on a
+      repackaged Apache Commons DBCP to use the DBCP 2.0 release.</li>
+  <li>Add new, experimental HTTP and AJP connectors based on NIO2.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.0-doc/changelog.html#Tomcat_8.0.5_(markt)">Tomcat 8 changelog</a>.
+</p>
+
+<p>The purpose of this beta release is to give users an opportunity to test
+Tomcat 8 and to provide feedback to the Tomcat community. Although it is a beta
+release, it is expected to run stably and is being used in production at the
+ASF for the ASF&apos;s Jira instance. The beta status is primarily because the
+Tomcat developers feel more feedback is required before a stable release and
+because there may be a small amount of further refactoring.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat Connectors 1.2.39 Released" rtext="2014-03-11">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.2.39 of
+Apache Tomcat Connectors.
+This version fixes few bugs found in previous releases and adds some new
+features like IPV6 support.
+</p>
+<p style="text-align: center;">
+<a href="download-connectors.cgi">Download</a> |
+<a href="connectors-doc/miscellaneous/changelog.html">ChangeLog for 1.2.39</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.52 Released" rtext="2014-02-17">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.52 of
+Apache Tomcat. This release contains a number of bug fixes
+and improvements compared to version 7.0.50. The notable changes
+since 7.0.50 include:
+</p>
+<ul>
+  <li>Fix CVE-2014-0050, a DoS vulnerability related to multi-part processing.
+  </li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.52_(violetagg)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.52_(violetagg)">ChangeLog for 7.0.52</a>
+</p>
+</section>
+
+<section name="Tomcat 8.0.3 (beta) Released" rtext="2014-02-11">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.0.3
+(beta) of Apache Tomcat. Tomcat 8 is aligned with Java EE 7. In addition to
+supporting updated versions of the Java EE specifications, Tomcat 8
+includes a number of improvements compared to Tomcat 7. The notable changes
+include:</p>
+<ul>
+  <li>Support for Java Servlet 3.1, JavaServer Pages 2.3, Java Unified
+      Expression Language 3.0 and Java WebSocket 1.0.</li>
+  <li>The default connector implementation is now the Java non-blocking
+      implementation (NIO) for both HTTP and AJP.</li>
+  <li>A new resources implementation that replaces Aliases, VirtualLoader, 
+      VirtualDirContext, JAR resources and external repositories with a single,
+      consistent approach for configuring additional web application resources.
+      The new resources implementation can also be used to implement overlays
+      (using a master WAR as the basis for multiple web applications that each
+      have their own customizations).</li>
+</ul>
+<p>
+Apache Tomcat 8.0.3 (beta) includes numerous fixes for issues identified in
+8.0.1 as well as a number of other enhancements and changes. The notable changes
+since 8.0.1 include:</p>
+<ul>
+  <li>Fix CVE-2014-0050, a DoS vulnerability related to multi-part processing.
+  </li>
+  <li>Fix WebDAV support broken by the resources refactoring.</li>
+  <li>Enable non-blocking reads to take place on non-container threads.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.0-doc/changelog.html#Tomcat_8.0.3_(markt)">Tomcat 8 changelog</a>.
+</p>
+
+<p>The purpose of this beta release is to give users an opportunity to test
+Tomcat 8 and to provide feedback to the Tomcat community. Although it is a beta
+release, it is expected to run stably and is being used in production at the
+ASF for the ASF&apos;s Jira instance. The beta status is primarily because the
+Tomcat developers feel more feedback is required before a stable release. It is
+also because 8.0.3 depends on a snapshot rather than a release build of Apache
+Commons DBCP2 and because there may be a small amount of further refactoring.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 8.0.1 (beta) Released" rtext="2014-02-02">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.0.1
+(beta) of Apache Tomcat. Tomcat 8 is aligned with Java EE 7. In addition to
+supporting updated versions of the Java EE specifications, Tomcat 8
+includes a number of improvements compared to Tomcat 7. The notable changes
+include:</p>
+<ul>
+  <li>Support for Java Servlet 3.1, JavaServer Pages 2.3, Java Unified
+      Expression Language 3.0 and Java WebSocket 1.0.</li>
+  <li>The default connector implementation is now the Java non-blocking
+      implementation (NIO) for both HTTP and AJP.</li>
+  <li>A new resources implementation that replaces Aliases, VirtualLoader, 
+      VirtualDirContext, JAR resources and external repositories with a single,
+      consistent approach for configuring additional web application resources.
+      The new resources implementation can also be used to implement overlays
+      (using a master WAR as the basis for multiple web applications that each
+      have their own customizations).</li>
+</ul>
+<p>
+Apache Tomcat 8.0.1 (beta) includes numerous fixes for issues identified in RC10
+as well as a number of other enhancements and changes. The notable changes since
+RC10 include:</p>
+<ul>
+  <li>Fix sendFile support for the NIO connector.</li>
+  <li>Move control of caching and linking options from the Context to the
+      WebResourceRoot to enable them to by changed while the web application is
+      running.</li>
+  <li>Add support for a dedicated listener for class loader binding and
+      unbinding events.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.0-doc/changelog.html#Tomcat_8.0.1_(markt)">Tomcat 8 changelog</a>.
+</p>
+
+<p>The purpose of this beta release is to give users an opportunity to test
+Tomcat 8 and to provide feedback to the Tomcat community. Although it is a beta
+release, it is expected to run stably and is being used in production at the
+ASF for the ASF&apos;s Jira instance. The beta status is primarily because the
+Tomcat developers feel more feedback is required before a stable release. It is
+also because 8.0.1 depends on a snapshot rather than a release build of Apache
+Commons DBCP2 and because there may be a small amount of further refactoring.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 6.0.39 Released" rtext="2014-01-31">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 6.0.39 of
+Apache Tomcat. This release includes a number of security and bug fixes over
+Apache Tomcat 6.0.37. The notable changes include:</p>
+<ul>
+<li>Various improvements to XML configuration file validation.</li>
+<li>Better adherence to RFC2616 for Content-Type and Content-Length headers.
+</li>
+<li>Avoid CVE-2013-1571 when generating Javadoc.</li>
+</ul>
+
+<p style="text-align: center;">
+<a href="download-60.cgi">Download</a> |
+<a href="tomcat-6.0-doc/changelog.html#Tomcat_6.0.39_(markt)">ChangeLog for 6.0.39</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.50 Released" rtext="2014-01-08">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.50 of
+Apache Tomcat. This release contains a number of bug fixes
+and improvements compared to version 7.0.47.
+</p>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.50_(violetagg)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.50_(violetagg)">ChangeLog for 7.0.50</a>
+</p>
+</section>
+
+<section name="Apache Standard Taglib 1.2.1 Released" rtext="2014-01-02">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.2.1 of 
+the Standard Taglib. This is the first official release of Apache's implementation 
+of the JSTL 1.2 specification. 
+</p>
+<p>
+Please see the <a href="taglibs/standard/">Standard Taglib site</a> for more details. 
+</p>
+<p style="text-align: center;">
+<a href="download-taglibs.cgi">Download</a>
+</p>
+</section>
+
+</body>
+</document>

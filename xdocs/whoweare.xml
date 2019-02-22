@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <title>Who We Are</title>
+  </properties>
+
+<body>
+
+<section name="Who We Are">
+<p>
+The Apache Tomcat Project operates on a meritocracy: the more you do,
+the more responsibility you will obtain. This page lists all of the
+people who have gone the extra mile and are Committers or members of
+the Project Management Committee (PMC). If you would like to help, please
+see the overview on <a href="getinvolved.html">getting
+involved</a>.
+</p>
+
+<p>
+We ask that you please do not send us emails privately asking for support. We
+are non-paid volunteers who help out with the project and we do not
+necessarily have the time or energy to help people on an individual
+basis. Instead, we have setup <a href="./lists.html">mailing
+lists</a> which contain hundreds of individuals who will help answer
+detailed requests for help. The benefit of using mailing lists over private
+communication is that it is a shared resource where others can also learn from
+common mistakes and as a community we all grow together.
+</p>
+
+<p>
+The following is a list of the Apache Tomcat PMC members and Committers with
+short bios for some of them.</p>
+
+<p>
+A complete list of all the Apache Committers is
+<a href="http://people.apache.org/committer-index.html">also available</a>.
+(It's a long list, so please be patient.)
+</p>
+
+</section>
+
+<section name="PMC Members &amp; Committers">
+
+<h4>PMC Chair</h4>
+<p><b>Mladen Turk</b> (mturk at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<h4>PMC Members &amp; Committers</h4>
+
+<p><b>Jean-Francois Arcand</b> (jfarcand at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Bill Barker</b> (billbarker at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Ognjen Blagojević</b> (ognjen at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Emmanuel Bourg</b> (ebourg at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Jeremy Boynes</b> (jboynes at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Jean-Frederic Clere</b> (jfclere at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Keiichi Fujino</b> (kfujino at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+
+<p><b>Tim Funk</b> (funkman at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Violeta Georgieva</b> (violetagg at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Henri Gomez</b> (hgomez at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Martin Grigorov</b> (mgrigorov at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Filip Hanik</b> (fhanik at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Jacob Hookom</b> (jhook at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Jim Jagielski</b> (jim at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Rainer Jung</b> (rjung at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Konstantin Kolinko</b> (kkolinko at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Olivier Lamy</b> (olamy at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Sylvain Laurent</b> (slaurent at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Remy Maucherat</b> (remm at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Costin Manolache</b> (costin at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Konstantin Preißer</b> (kpreisser at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Peter Rossbach</b> (pero at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>William A. Rowe Jr.</b> (wrowe at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Igal Sapir</b> (isapir at apache.org)<br /></p>
+<!--Your bio goes here-->
+
+<p><b>Christopher Schultz</b> (schultz at apache.org)<br /></p>
+<!--Your bio goes here-->
+
+<p><b>Felix Schumacher</b> (fschumacher at apache.org)<br /></p>
+<!--Your bio goes here-->
+
+<p><b>Coty Sutherland</b> (csutherl at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Eiji Takahashi</b> (eijit at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Mark Thomas</b> (markt at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Keith Wannamaker</b> (keith at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>André Warnier</b> (soliplaya at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Tim Whittington</b> (timw at apache.org)<br/></p>
+<!--Your bio goes here-->
+
+<p><b>Huxing Zhang</b> (huxing at apache.org)<br/></p>
+<!--Your bio goes here-->
+</section>
+
+<section name="Emeritus PMC members">
+
+<p><a href="http://www.apache.org/foundation/glossary.html#Emeritus">
+Emeritus</a> is defined in the Apache glossary.</p>
+
+<p>
+<p><b>Ian Darwin</b> (idarwin at apache.org)</p>
+</p>
+
+<p><b>Yoav Shapira</b> (yoavs at apache.org)</p>
+<!--
+<br/>
+Yoav Shapira contributes to numerous Apache and other
+open-source projects: you can read more about him at
+<a href="http://www.yoavshapira.com">YoavShapira.com</a>.</p>
+-->
+
+</section>
+
+<section name="Emeritus Committers">
+
+<p><a href="http://www.apache.org/foundation/glossary.html#Emeritus">
+Emeritus</a> is defined in the Apache glossary.</p>
+
+<p>
+<b>James Duncan Davidson</b> (duncan at apache.org),
+<b>Jon Scott Stevens</b> (jon at apache.org),
+<b>Sam Ruby</b> (rubys at apache.org),
+<b>Anil Vijendran</b> (akv at apache.org),
+<b>Jason Hunter</b> (jhunter at apache.org),
+<b>Preston Bannister</b> (preston at apache.org),
+<b>Daniel Ferrin</b> (shemnon at apache.org),
+<b>Gal Shachor</b> (shachor at apache.org),
+<b>Hans Bergsten</b> (bergsten at apache.org),
+<b>James Todd</b> (gonzo at apache.org),
+<b>Rain Mordani</b> (mode at apache.org),
+<b>Hans Granqvist</b> (har at apache.org),
+<b>Ian P. Springer</b> (ishp at apache.org),
+<b>Arun Jamwal</b> (arun at apache.org),
+<b>Craig R. McClanahan</b> (craigmcc at apache.org),
+<b>Jean-Luc Rochat</b> (jluc at apache.org),
+<b>Ignacio J. Ortega</b> (nacho at apache.org),
+<b>Andy Riedel</b> (ariedel at apache.org),
+<b>Justyna Horwat</b> (horwat at apache.org),
+<b>Ed Korthof</b> (ed at apache.org),
+<b>Alex Chaffee</b> (alex at apache.org),
+<b>Vasile Gaburici</b> (gaburici at apache.org),
+<b>Petr Jiricka</b> (jiricka at apache.org),
+<b>Pierre Delisle</b> (pierred at apache.org),
+<b>David Lawrence Isaacs</b> (larryi at apache.org),
+<b>Arieh Markel</b> (arieh at apache.org),
+<b>Marc A. Saegesser</b> (marcsaeg at apache.org),
+<b>Dan Milstein</b> (danmil at apache.org),
+<b>Shai Fultheim</b> (shai at apache.org),
+<b>Kief Morris</b> (kief at apache.org),
+<b>Mel Martinez</b> (melaquias at apache.org),
+<b>Mike Braden</b> (mbraden at apache.org),
+<b>Casey Lucas</b> (clucas at apache.org),
+<b>Bip Thelin</b> (bip at apache.org),
+<b>Kevin Seguin</b> (seguin at apache.org),
+<b>Michiel M. Anderson</b> (mmanders at apache.org),
+<b>Andy Armstrong</b> (andya at apache.org),
+<b>Christopher Cain</b> (ccain at apache.org),
+<b>Bojan Smojver</b> (bojan at apache.org),
+<b>Patrick H. Luby</b> (patrickl at apache.org),
+<b>Jazmin Jonson</b> (jazmin at apache.org),
+<b>Eric Rescorla</b> (ekr at apache.org),
+<b>Manveen Kaur</b> (manveen at apache.org),
+<b>Christopher K. St. John</b> (cks at apache.org),
+<b>Denis Benoit</b> (denisb at apache.org),
+<b>Dan Sandberg</b> (dsandberg at apache.org),
+<b>Bob Herrmann</b> (bobh at apache.org),
+<b>John Turner</b> (johnturner at apache.org),
+<b>Keith Eric Carmichael</b> (ecarmich at apache.org),
+<b>Guenter Knauf</b> (fuankg at apache.org),
+<b>Jean-Jacques Clar</b> (clar at apache.org),
+</p>
+
+</section>
+
+</body>
+</document>
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Apache Taglibs vulnerabilities</title>
+  </properties>
+
+  <body>
+
+    <section name="Table of Contents">
+      <toc/>
+    </section>
+
+    <section name="Apache Taglibs vulnerabilities">
+      <p>This page lists all security vulnerabilities fixed in released versions
+        of Apache Taglibs. Each vulnerability is given a
+        <a href="security-impact.html">security impact rating</a> by the Apache
+        Tomcat security team &#x2014; please note that this rating may vary from
+        platform to platform. We also list the versions of Apache Taglibs
+        the flaw is known to affect, and where a flaw has not been
+        verified list the version with a question mark.</p>
+
+      <p>This page has been created from a review of the Apache Tomcat archives
+        and the CVE list. Please send comments or corrections for these
+        vulnerabilities to the <a href="security.html">Tomcat
+          Security Team</a>.</p>
+
+    </section>
+
+    <section name="Fixed in Apache Standard Taglib 1.2.3" rtext="20 February 2015">
+
+      <p><strong>Important: Information Disclosure</strong>
+        <cve>CVE-2015-0254</cve></p>
+
+      <p>Apache Standard Taglibs before 1.2.3 allows remote attackers to execute
+        arbitrary code or conduct external XML entity (XXE) attacks via a crafted
+        XSLT extension in a JSTL XML tag.</p>
+
+      <p>This issue was identified by the David Jorm of IIX
+        and made public on 27 February 2015.</p>
+
+      <p>Affects: All versions prior to 1.2.3</p>
+
+    </section>
+
+  </body>
+</document>
+

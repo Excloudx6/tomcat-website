@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Welcome!</title>
+    <!-- Allows markt to monitor site via Google's webmaster tools -->
+    <!-- Please don't delete unless it is causing problems (in which case go ahead!) -->
+    <google-site-verification>nA9F0GvGNjVCU9W7HBziONQVx6FehvgQglI1X7WPfRw</google-site-verification>
+  </properties>
+
+<body>
+
+<section name="Apache Tomcat">
+
+<p>The Apache Tomcat<sup>&#174;</sup> software is an open source implementation
+of the Java Servlet, JavaServer Pages, Java Expression Language and Java
+WebSocket technologies. The Java Servlet, JavaServer Pages, Java Expression
+Language and Java WebSocket specifications are developed under the
+<a href="http://jcp.org/en/introduction/overview" rel="nofollow">Java Community
+Process</a>.
+</p>
+
+<p>The Apache Tomcat software is developed in an open and participatory
+environment and released under the
+<a href="http://www.apache.org/licenses/">Apache License version 2</a>. The
+Apache Tomcat project is intended to be a collaboration of the best-of-breed
+developers from around the world.  We invite you to participate in this open
+development project.  To learn more about getting involved,
+<a href="getinvolved.html">click here</a>.</p>
+
+<p>Apache Tomcat software powers numerous large-scale, mission-critical web
+applications across a diverse range of industries and organizations.  Some of
+these users and their stories are listed on the
+<a href="https://wiki.apache.org/tomcat/PoweredBy">PoweredBy</a> wiki page.</p>
+
+<p>Apache Tomcat, Tomcat, Apache, the Apache feather, and the Apache Tomcat
+project logo are trademarks of the Apache Software Foundation.</p>
+
+</section>
+
+<section name="Tomcat 7.0.93 Released" rtext="2019-02-21">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.93 of
+Apache Tomcat. This release contains a number of bug fixes and improvements
+compared to version 7.0.92.</p>
+<ul>
+<li>Update the packaged version of the Tomcat Native Library to 1.2.21 to pick
+    up the latest Windows binaries built with APR 1.6.5 and OpenSSL 1.1.1a and
+    to pick up the memory leak fixes when using NIO/NIO2 with OpenSSL.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.93_(violetagg)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 9.0.16 Released" rtext="2019-02-08">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 9.0.16
+of Apache Tomcat. The notable changes compared to 9.0.14 include:</p>
+<ul>
+<li>Update the packaged version of the Tomcat Native Library to 1.2.21 to pick
+    up the memory leak fixes when using NIO/NIO2 with OpenSSL.</li>
+<li>Remove extras (JMX remote listener and web services object factories) and
+    merge them back into the core build.</li>
+<li>Correct a regression in the fix for 53737 that did not correctly scan the
+    web application directory structure for JSPs.</li>
+<li>Improve HTTP/2 timeout handling</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-9.0-doc/changelog.html#Tomcat_9.0.16_(markt)">Tomcat 9
+changelog</a>.
+</p>
+
+<p><strong>Warning:</strong> There is a known regression in
+<code>catalina.sh</code> script. In configurations that use a PID file
+(configured via CATALINA_PID environment variable) a wrong PID value may
+be written, or the file is not created at all. See bug <bug>63041</bug>
+(and <bug>53930</bug>). The workaround is to use <code>catalina.sh</code>
+file from Tomcat 9.0.13.
+</p>
+
+<p style="text-align: center;">
+<a href="download-90.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 8.5.38 Released" rtext="2019-02-08">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.5.38
+of Apache Tomcat. Apache Tomcat 8.5.x replaces 8.0.x and includes new features
+pulled forward from Tomcat 9.0.x. The minimum Java version and implemented
+specification versions remain unchanged. The notable changes compared
+to 8.5.37 include:</p>
+<ul>
+<li>Update the packaged version of the Tomcat Native Library to 1.2.21 to pick
+    up the memory leak fixes when using NIO/NIO2 with OpenSSL.</li>
+<li>Correct a regression in the fix for 53737 that did not correctly scan the
+    web application directory structure for JSPs.</li>
+<li>Improve HTTP/2 timeout handling</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.5-doc/changelog.html#Tomcat_8.5.38_(markt)">Tomcat 8.5
+changelog</a>.
+</p>
+
+<p><strong>Warning:</strong> There is a known regression in
+<code>catalina.sh</code> script. In configurations that use a PID file
+(configured via CATALINA_PID environment variable) a wrong PID value may
+be written, or the file is not created at all. See bug <bug>63041</bug>
+(and <bug>53930</bug>). The workaround is to use <code>catalina.sh</code>
+file from Tomcat 8.5.35.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat Native 1.2.21 Released" rtext="2019-01-31">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.2.21 of
+Tomcat Native. The notable changes since 1.2.19 include:
+</p>
+<ul>
+  <li>Fixed memory leaks when using NIO/NIO2 with OpenSSL for TLS.</li>
+</ul>
+<p style="text-align: center;">
+<a href="download-native.cgi">Download</a> |
+<a href="native-doc/miscellaneous/changelog.html">ChangeLog for 1.2.21</a>
+</p>
+</section>
+
+<section name="Tomcat Connectors 1.2.46 Released" rtext="2018-10-13">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.2.46 of
+Apache Tomcat Connectors.
+This version fixes a number of bugs found in previous releases.
+</p>
+<p style="text-align: center;">
+<a href="download-connectors.cgi">Download</a> |
+<a href="connectors-doc/miscellaneous/changelog.html">ChangeLog for 1.2.46</a>
+</p>
+</section>
+
+<section name="Tomcat 8.0.53 Released" rtext="2018-07-05">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.0.53
+of Apache Tomcat. Apache Tomcat 8.0.53 includes fixes for issues identified in
+8.0.52 as well as other enhancements and changes. The notable changes compared
+to 8.0.52 include:</p>
+<ul>
+<li>Update the packaged version of the Tomcat Native Library to 1.2.17 to pick
+    up the latest Windows binaries built with APR 1.6.3 and OpenSSL 1.0.2o.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.0-doc/changelog.html#Tomcat_8.0.53_(violetagg)">Tomcat 8
+changelog</a>.
+</p>
+
+<p><strong>Note:</strong> Apache Tomcat 8.0.x has reached end of life.
+<a href="tomcat-80-eol.html">Read more...</a>
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat Native 1.1.34 Released" rtext="2015-12-15">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.1.34 of
+Tomcat Native. The notable changes since 1.1.33 include:
+</p>
+<ul>
+  <li>Unconditionally disable export Ciphers</li>
+  <li>Improve ephemeral key handling for DH and ECDH</li>
+  <li>Various fixes to build with newer OpenSSL versions</li>
+</ul>
+<p>Note that, unless a regression is discovered in 1.2.x, users should now be
+using 1.2.x in preference to 1.1.x.</p>
+<p style="text-align: center;">
+<a href="download-native.cgi">Download</a> |
+<a href="native-1.1-doc/miscellaneous/changelog.html">ChangeLog for 1.1.34</a>
+</p>
+</section>
+
+<section name="Apache Standard Taglib 1.2.5 Released" rtext="2015-03-17">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.2.5 of
+the Standard Taglib. This tag library provides Apache's implementation 
+of the JSTL 1.2 specification.
+</p>
+<p>
+Version 1.2.5 is a minor bug fix release reverting a change made in 1.2.1 where
+&lt;c:import&gt; modified the HTTP method during POST operations, and fixing an
+issues that resulted in an AccessControlException during startup unless
+permission was granted to read the accessExternalEntity property.
+</p>
+<p>
+Please see the <a href="taglibs.html">Taglibs section</a> for more details.
+</p>
+<p style="text-align: center;">
+<a href="download-taglibs.cgi">Download</a> |
+<a href="taglibs/CHANGES.txt">Changes</a>
+</p>
+</section>
+
+<section name="Tomcat Maven Plugin 2.2 Released" rtext="2013-11-11">
+<p>
+The Apache Tomcat team is pleased to announce the release of Tomcat Maven Plugin 2.2.
+Changelog available <a href="maven-plugin-2.2/jira-report.html" target="_blank">here</a>.
+</p>
+<p>
+The <a href="maven-plugin.html">Apache Tomcat Maven Plugin</a> provides goals
+to manipulate WAR projects within the Apache Tomcat servlet container.
+</p>
+<p>
+The binaries are available from Maven repositories. You should specify the
+version in your project's plugin configuration:
+</p>
+<source><![CDATA[<plugin>
+  <groupId>org.apache.tomcat.maven</groupId>
+  <artifactId>tomcat7-maven-plugin</artifactId>
+  <version>2.2</version>
+</plugin>]]></source>
+<p>or</p>
+<source><![CDATA[<plugin>
+  <groupId>org.apache.tomcat.maven</groupId>
+  <artifactId>tomcat6-maven-plugin</artifactId>
+  <version>2.2</version>
+</plugin>]]></source>
+</section>
+
+<section name="Old news">
+<p>
+  See <a href="oldnews.html"> former announcements.</a>
+</p>
+</section>
+
+</body>
+</document>

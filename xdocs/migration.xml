@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Migration Guide</title>
+  </properties>
+
+<body>
+
+<section name="Before upgrading or migrating">
+
+<p>When updating from one major Apache Tomcat version a newer one, please make
+sure that the JVM that is installed on your system supports at least the
+required Java version. While it is possible that older versions of Tomcat may
+not be compatible with newer JVMs, all the currently supported Apache Tomcat
+versions (7.0.x, 8.5.x and 9.0.x) are known to run correctly on Java 8 JVMs.</p>
+
+<p>When migrating from one major Tomcat version to another (e.g. from Tomcat 7
+to Tomcat 8, or from Tomcat 8 to Tomcat 8.5),
+you should not copy the configuration files from the old version
+to the new version. The recommended approach is to start with the default
+configuration of the new version of Apache Tomcat and to adjust it as necessary.
+</p>
+
+<p>When migrating from one minor release to another minor release within the
+same major release (e.g. from Tomcat 7.0.27 to Tomcat 7.0.28) you can retain the
+configuration files, but you should check to see if any defaults have changed
+and/or if any new elements have been added and adjust your configuration files
+accordingly.</p>
+</section>
+
+<section name="Migration Guides">
+
+<p>For upgrading between 9.0.x versions, see the
+<a href="migration-9.html#Upgrading_9.0.x">upgrading</a> section of the Tomcat
+9.0.x Migration Guide.</p>
+  
+<p>For migration from 8.0.x / 8.5.x to 9.0.x, see the
+<a href="migration-9.html">Tomcat 9.0.x Migration Guide</a>.</p>
+
+<p>For upgrading between 8.5.x versions, see the
+<a href="migration-85.html#Upgrading_8.5.x">upgrading</a> section of the Tomcat
+8.5.x Migration Guide.</p>
+
+<p>For migration from 8.0.x to 8.5.x, see the
+<a href="migration-85.html">Tomcat 8.5.x Migration Guide</a>.</p>
+
+<p>For upgrading between 8.0.x versions, see the
+<a href="migration-8.html#Upgrading_8.0.x">upgrading</a> section of the Tomcat
+8.0.x Migration Guide.</p>
+  
+<p>For migration from 7.0.x to 8.0.x, see the
+<a href="migration-8.html">Tomcat 8.0.x Migration Guide</a>.</p>
+
+<p>For upgrading between 7.0.x versions, see the
+<a href="migration-7.html#Upgrading_7.0.x">upgrading</a> section of the Tomcat
+7.0.x Migration Guide.</p>
+  
+<p>For migration from 6.0.x to 7.0.x, see the
+<a href="migration-7.html">Tomcat 7.0.x Migration Guide</a>.</p>
+
+<p>For upgrading between 6.0.x versions, see the
+<a href="migration-6.html#Upgrading_6.0.x">upgrading</a> section of the Tomcat
+6.0.x Migration Guide.</p>
+  
+<p>For migration from 5.5.x to 6.0.x, see the
+<a href="migration-6.html">Tomcat 6.0.x Migration Guide</a>.</p>
+
+</section>
+
+</body>
+</document>

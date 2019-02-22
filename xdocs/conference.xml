@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <title>TomcatCon</title>
+  </properties>
+
+<body>
+
+<section name="TomcatCon">
+
+<p>TomcatCon is the place for all users of Tomcat to expand their Tomcat
+   knowledge in areas such as networking, security, performance and deployment.
+   It also offers an opportunity to discuss the current Tomcat roadmap and
+   help inform future development.</p>
+
+</section>
+
+<section name="TomcatCon Montréal">
+
+<subsection name="When">
+
+<p>September 24 to 25, 2018.</p>
+
+<p><i>Note: The main conference is September 25 to 27, 2018. The Tomcat track
+   starts the day before.</i></p> 
+
+</subsection>
+
+<subsection name="Where">
+
+<p><a href="https://www.apachecon.com/acna18/venue.html">Montréal Marriott
+      Chateau Champlain</a>, Montréal, Canada, as part of
+      <a href="http://www.apachecon.com/acna18/">ApacheCon North
+      America 2018</a>.</p> 
+
+</subsection>
+
+<subsection name="What">
+
+<p>This is a two day track dedicated to Apache Tomcat that starts the day before
+   the main conference.</p>
+
+<p><a href="https://www.eventbrite.com/e/apachecon-north-america-2018-registration-43200327342">Registration</a>
+   for TomcatCon is open. Registration includes access to ApacheCon North
+   America.</p>
+
+</subsection>
+
+<subsection name="Schedule">
+
+<p>The full
+   <a href="http://apachecon.dukecon.org/acna/2018/#/schedule/2018-09-24">schedule</a>
+   is now available. There are two days of great content covering:</p>
+   <ul>
+     <li>roadmap</li>
+     <li>security</li>
+     <li>networking (reverse proxying, load-balancing, clustering)</li>
+     <li>performance and monitoring</li>
+   </ul>
+<p>See you there!</p>
+</subsection>
+
+</section>
+
+</body>
+</document>

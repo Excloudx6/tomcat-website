@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <title>Presentations</title>
+  </properties>
+
+<body>
+
+<section name="Presentations">
+
+<p>Apache Tomcat features regularly at ApacheCon and other conferences. Copies
+of many of these presentations are freely available online. This page provides
+links to these presentations where known. If you are aware of additional
+presentations then please do let us know via the
+<a href="lists.html#tomcat-users">Tomcat Users mailing list</a>.</p>
+
+<subsection name="Scheduled presentations">
+<p>After a successful TomcatCon London, we are currently planning the next
+events in the TomcatCon series. Follow the discussion on the
+<a href="lists.html#tomcat-users">users mailing list</a>.</p>
+</subsection>
+
+<subsection name="Future Topics">
+<p>The following suggestions have been received for future presentation topics.
+To add your idea to the list, e-mail the Tomcat <a href="lists.html">users
+mailing list</a>.</p>
+<ul>
+<li>how to set up Tomcat so as to make upgrades easier</li>
+<li>the relationship between Tomcat and the Java Servlet Specification</li>
+<li>for sysadmins : how to set up Tomcat logging</li>
+<li>tools and formulas for tuning Tomcat for specific load scenarios</li>
+<li>when and how to generate heap dumps, and how to (roughly) interpret them </li>
+<li>Hardening Tomcat to make it more secure</li>
+</ul>
+</subsection>
+
+<subsection name="ApacheCon NA 2018">
+<ul>
+  <li>
+    State of the Cat - Mark Thomas,
+    <a href="http://people.apache.org/~markt/presentations/2018-09-24-state-of-the-cat.pdf">slides</a>,
+    <a href="https://feathercast.apache.org/2018/09/25/state-of-the-cat-mark-thomas/">audio</a>
+  </li>
+  <li>
+    New and Upcoming - Rémy Maucherat,
+    <a href="https://apachecon.com/acna18/presentations/7b1817f0af115fdb6.zip">slides</a>,
+    <a href="https://feathercast.apache.org/2018/09/25/new-and-upcoming-tomcat-8-5-and-9-remy-maucherat/">audio</a>
+  </li>
+  <li>
+    Let's Encrypt Apache Tomcat - Christopher Schultz,
+    <a href="https://people.apache.org/~schultz/ApacheCon%20NA%202018/Let's%20Encrypt%20Apache%20Tomcat.pdf">slides</a>,
+    <a href="http://people.apache.org/~schultz/ApacheCon%20NA%202018/">sample code</a>,
+    <a href="https://feathercast.apache.org/2018/09/25/lets-encrypt-apache-tomcat-christopher-schultz/">audio</a>
+  </li>
+  <li>
+    HTTP/2 and SSL/TLS State of Art in Our Servers - Jean-Frederic Clere,
+    <a href="https://apachecon.com/acna18/presentations/128f6e0eb10dc70a6.zip">slides</a>,
+    <a href="https://feathercast.apache.org/2018/09/25/http-2-and-ssl-tls-state-of-art-in-our-servers-jean-frederic-clere/">audio</a>
+  </li>
+  <li>
+    Apache httpd reverse proxy and Tomcat - Jim Jagielski,
+    <a href="https://feathercast.apache.org/2018/09/25/apache-httpd-reverse-proxy-and-tomcat-jim-jagielski/">audio</a>
+  </li>
+  <li>
+    Routing CDN traffic at scale using Apache Tomcat - Jeff Elsloo,
+    <a href="https://feathercast.apache.org/2018/09/25/routing-cdn-traffic-at-scale-using-apache-tomcat-jeff-elsloo/">audio</a>
+  </li>
+  <li>
+    The Anatomy of a Secure Java Web Application Using Apache Fortress - Shawn McKinney,
+    <a href="https://apachecon.com/acna18/presentations/161fccca2985a4b0b.zip">slides</a>,
+    <a href="https://feathercast.apache.org/2018/09/25/the-anatomy-of-a-secure-java-web-application-using-apache-fortress-shawn-mckinney/">audio</a>
+  </li>
+  <li>
+    Deep dive into Tomcat Clustering - Keiichi Fujino,
+    <a href="https://apachecon.com/acna18/presentations/b2a85e754868e2b82.zip">slides</a>,
+    <a href="https://feathercast.apache.org/2018/09/26/deep-dive-into-tomcat-clustering-keiichi-fujino/">audio</a>
+  </li>
+  <li>
+    Improving NIO2 (and Tomcat) - Rémy Maucherat,
+    <a href="https://apachecon.com/acna18/presentations/c8e270be4e9cd1505.zip">slides</a>,
+    <a href="https://feathercast.apache.org/2018/09/26/improving-nio2-and-tomcat-remy-maucherat/">audio</a>
+  </li>
+  <li>
+    Tomcat: From a cluster to the cloud - Jean-Frederic Clere,
+    <a href="https://apachecon.com/acna18/presentations/3c256e67647cda833.zip">slides</a>,
+    <a href="https://feathercast.apache.org/2018/09/26/tomcat-from-a-cluster-to-the-cloud-jean-frederic-clere/">audio</a>
+  </li>
+  <li>
+    Tomcat Monitoring Alternatives, Pros and Cons - Charlie Arehart,
+    <a href="https://apachecon.com/acna18/presentations/52f241a1ac9ef234f.zip">slides</a>,
+    <a href="https://feathercast.apache.org/2018/09/26/tomcat-monitoring-alternatives-pros-and-cons-charlie-arehart/">audio</a>
+  </li>
+  <li>
+    Monitoring production webapps running in apache tomcat with MoSKito - Leon Rosenbergt,
+    <a href="https://apachecon.com/acna18/presentations/0745118b5ee397ec3.zip">slides</a>,
+    <a href="https://feathercast.apache.org/2018/09/26/monitoring-production-webapps-running-in-apache-tomcat-with-moskito-leon-rosenberg/">audio</a>
+  </li>
+</ul>
+</subsection>
+<subsection name="ApacheCon EU Roadshow 2018">
+<ul>
+  <li>
+    State of the Cat - Mark Thomas,
+    <a href="http://people.apache.org/~markt/presentations/2018-06-13-state-of-the-cat.pdf">slides</a>
+  </li>
+  <li>
+    Performance Troubleshooting using Java Thread Dumps - Rainer Jung,
+    <a href="http://home.apache.org/~rjung/presentations/2018-06-13-ApacheRoadShow-JavaThreadDumps.pdf">slides</a>
+  </li>
+  <li>
+    Apache Web Server 2.4 - 10 Must-know Configuration Features - Rainer Jung,
+    <a href="http://home.apache.org/~rjung/presentations/2018-06-14-ApacheRoadShow-WebServerConfgurationFeatures.pdf">slides</a>
+  </li>
+  <li>
+    Reactive Applications on Apache Tomcat - Violeta Georgieva,
+    <a href="http://home.apache.org/~violetagg/presentations/2018-06-13-Reactive-Applications-on-Apache-Tomcat.pdf">slides</a>
+  </li>
+</ul>
+</subsection>
+
+<subsection name="TomcatCon London 2017">
+<ul>
+  <li>
+    State of the Cat - Mark Thomas,
+    <a href="http://people.apache.org/~markt/presentations/2017-09-26-a-state-of-the-cat.pdf">slides</a>,
+    <a href="https://www.youtube.com/watch?v=gPqus5T5x-w&amp;t=2s">slides + audio</a>
+  </li>
+  <li>
+    New and upcoming - Rémy Maucherat,
+    <a href="articles/2017-09-26-new-remm.pdf">slides</a>,
+    <a href="https://www.youtube.com/watch?v=eVEmgPAaAF0">slides + audio</a>
+  </li>
+  <li>
+    Reverse Proxies, Load-Balancing &amp; Clustering - Part 1 - Mark Thomas,
+    <a href="http://people.apache.org/~markt/presentations/2017-09-26-b-clustering.pdf">slides</a>,
+    <a href="https://www.youtube.com/watch?v=2QYWp1k5QQM&amp;t=2200s">slides + audio</a>
+  </li>
+  <li>
+    Reverse Proxies, Load-Balancing &amp; Clustering - Part 2 - Mark Thomas,
+    <a href="http://people.apache.org/~markt/presentations/2017-09-26-b-clustering.pdf">slides</a>,
+    <a href="https://www.youtube.com/watch?v=6LoAdy9-jBI">slides + audio</a>
+  </li>
+  <li>
+    Tomcat from the Cluster to the Cloud - Jean-Frederic Clere,
+    <a href="https://www.slideshare.net/jfclere/tomcatcon-from-a-cluster-to-the-cloud">slides</a>
+  </li>
+</ul>
+</subsection>
+
+<subsection name="Webinar Series 2017">
+<ul>
+<li>Tomcat and MoSKito (Leon Rosenberg) <a href="https://www.youtube.com/watch?v=5RCkx-hGK1Q">video</a></li>
+</ul>
+</subsection>
+
+<subsection name="TomcatCon Miami 2017">
+<ul>
+  <li>
+    State of the Cat - Mark Thomas,
+    <a href="http://people.apache.org/~markt/presentations/2017-05-16-a-state-of-the-cat.pdf">slides</a>,
+    <a href="https://feathercast.apache.org/2017/05/30/apachecon-miami-2017-state-of-the-cat-mark-thomas-pivotal-tomcatcon-mark-thomas/">audio</a>
+  </li>
+  <li>
+    Seamless Upgrades for Credential Security in Apache Tomcat - Christopher Schultz,
+    <a href="http://people.apache.org/~schultz/ApacheCon%20NA%202017/Seamless%20Upgrades%20for%20Credential%20Security%20in%20Apache%20Tomcat.pdf">slides</a>,
+    <a href="http://people.apache.org/~schultz/ApacheCon%20NA%202017/">sample code</a>,
+    <a href="https://feathercast.apache.org/2017/05/30/apachecon-miami-2017-seamless-upgrades-for-credential-security-in-apache-tomcat-christopher-schultz/">audio</a>
+  </li>
+  <li>
+    Introduction to Tomcat and TLS - Mark Thomas,
+    <a href="http://people.apache.org/~markt/presentations/2017-05-16-b-tomcat-ssl.pdf">slides</a>,
+    <a href="https://feathercast.apache.org/2017/05/30/apachecon-miami-2017-apache-tomcat-and-ssl-mark-thomas/">audio</a>
+  </li>
+  <li>
+    Let's Encrypt Apache Tomcat - Christopher Schultz,
+    <a href="http://people.apache.org/~schultz/ApacheCon%20NA%202017/Let's%20Encrypt%20Apache%20Tomcat.pdf">slides</a>,
+    <a href="http://people.apache.org/~schultz/ApacheCon%20NA%202017/">sample code</a>,
+    <a href="https://feathercast.apache.org/2017/05/30/apachecon-miami-2017-lets-encrypt-apache-tomcat-christopher-schultz/">audio</a>
+  </li>
+  <li>
+    Securing Tomcat for your environment - Mark Thomas,
+    <a href="http://people.apache.org/~markt/presentations/2017-05-16-c-securing-tomcat.pdf">slides</a>,
+    <a href="https://feathercast.apache.org/2017/05/30/apachecon-miami-2017-securing-tomcat-for-your-environment-mark-thomas/">audio</a>
+  </li>
+  <li>
+    Tomcat and Proxies - Jean-Frederic Clere,
+    <a href="http://schd.ws/hosted_files/apachecon2017/38/TomcatProxies.pdf">slides</a>,
+    <a href="https://feathercast.apache.org/2017/05/30/apachecon-miami-2017-tomcat-and-proxies-jean-frederic-clere/">audio</a>
+  </li>
+  <li>
+    Load balancing - Mark Thomas,
+    <a href="http://people.apache.org/~markt/presentations/2017-05-17-d-tomcat-load-balancing.pdf">slides</a>,
+    <a href="https://feathercast.apache.org/2017/05/30/apachecon-miami-2017-tomcat-clustering-part-2-load-balancing-mark-thomas/">audio</a>
+  </li>
+  <li>
+    Tomcat Clustering - Keiichi Fujino,
+    <a href="http://events.linuxfoundation.org/sites/events/files/slides/TomcatCluster_3.pdf">slides</a>,
+    <a href="https://feathercast.apache.org/2017/05/30/apachecon-miami-2017-tomcat-clustering-keiichi-fujino/">audio</a>
+  </li>
+  <li>
+    The Challenges Tomcat Faces in High Throughput Production System - Huxing Zhang,
+    <a href="http://events.linuxfoundation.org/sites/events/files/slides/TomcatCon2017.pdf">slides</a>,
+    <a href="https://feathercast.apache.org/2017/05/30/apachecon-miami-2017-the-challenges-tomcat-faces-in-high-throughput-production-system-and-how-to-solve-it-huxing-zhang/">audio</a>
+  </li>
+  <li>
+    Using OpenSSL to Boost JSSE in Tomcat - Jean-Frederic Clere,
+    <a href="http://schd.ws/hosted_files/apachecon2017/93/TomcatOpenSSL.pdf">slides</a>
+  </li>
+  <li>
+    How I Stopped Worrying and Learned to Love Open Source - David Cleary,
+    <a href="http://events.linuxfoundation.org/sites/events/files/slides/StopWorrying.pdf">slides</a>,
+    <a href="https://www.youtube.com/watch?v=FjD268R-obs&amp;list=PLbzoR-pLrL6pLDCyPxByWQwYTL-JrF5Rp&amp;index=56">video</a>
+  </li>
+  <li>
+    Packaging Tomcat for Linux Distributions - Coty Sutherland,
+    <a href="http://schd.ws/hosted_files/apachecon2017/f1/packaging-tomcat-for-linux-distributions.pdf">slides</a>,
+    <a href="https://www.youtube.com/watch?v=OKs926hLIOo&amp;list=PLbzoR-pLrL6pLDCyPxByWQwYTL-JrF5Rp&amp;index=55">video</a>
+  </li>
+  <li>
+    Introduction to Spring Boot - Rossen Stoyanchev,
+    <a href="https://www.youtube.com/watch?v=Qk7AcXgv_lk&amp;list=PLbzoR-pLrL6pLDCyPxByWQwYTL-JrF5Rp&amp;index=54">video</a>
+  </li>
+  <li>
+    ASF Loves Tomcat and JavaEE: From Meecrowave to TomEE - Romain Manni-Bucau,
+    <a href="http://events.linuxfoundation.org/sites/events/files/slides/ASF%20loves%20Tomcat%20and%20EE-%20Meecrowave%20to%20TomEE.pdf">slides</a>,
+    <a href="https://www.youtube.com/watch?v=IQEGsSvAkIU&amp;list=PLbzoR-pLrL6pLDCyPxByWQwYTL-JrF5Rp&amp;index=53">video</a>
+  </li>
+  <li>
+    Jwala - Apache Tomcat and HTTPD Enterprise Manager - Steven Ger &amp; Arvindo Kinny,
+    <a href="http://schd.ws/hosted_files/apachecon2017/56/jwala-apachecon.pdf">slides</a>,
+    <a href="https://www.youtube.com/watch?v=LfXCrol8gHE&amp;list=PLbzoR-pLrL6pLDCyPxByWQwYTL-JrF5Rp&amp;index=52">video</a>
+  </li>
+  <li>
+    From a Cluster to the Cloud - Jean-Frederic Clere,
+    <a href="http://schd.ws/hosted_files/apachecon2017/c6/clusterCloud.pdf">slides</a>,
+    <a href="https://www.youtube.com/watch?v=9PN-JZje6ws&amp;index=51&amp;list=PLbzoR-pLrL6pLDCyPxByWQwYTL-JrF5Rp">video</a>
+  </li>
+  <li>
+    Wrap up - Mark Thomas,
+    <a href="http://people.apache.org/~markt/presentations/2017-05-18-e-wrapup.pdf">slides</a>,
+    <a href="https://www.youtube.com/watch?v=kpJVTp2kfmk&amp;index=50&amp;list=PLbzoR-pLrL6pLDCyPxByWQwYTL-JrF5Rp">video</a>
+  </li>
+</ul>
+</subsection>
+
+<subsection name="ApacheCon 2016">
+<ul>
+  <li>
+    Seamless Upgrades for Credential Security in Apache Tomcat - Christopher Schultz,
+    <a href="http://people.apache.org/~schultz/ApacheCon%20NA%202016/Seamless%20Upgrades%20for%20Credential%20Security%20in%20Apache%20Tomcat.pdf">slides</a>
+  </li>
+  <li>
+    Monitoring Apache Tomcat with JMX - Christopher Schultz,
+    <a href="http://people.apache.org/~schultz/ApacheCon%20NA%202016/Monitoring%20Apache%20Tomcat%20with%20JMX.pdf">slides</a>
+  </li>
+  <li>
+    Using OpenSSL to Boost JSSE in Tomcat - Jean-Frederic Clere,
+    <a href="http://schd.ws/hosted_files/apachecon2016/22/Using%20OpenSSL%20to%20Boost%20JSSE%20in%20Tomcat.pdf">slides</a>
+  </li>
+</ul>
+</subsection>
+
+<subsection name="Webinar Series 2016">
+<ul>
+<li>Connector selection: BIO vs NIO vs NIO2 vs APR (markt) <a href="https://www.youtube.com/watch?v=LBSWixIwMmU">video</a></li>
+<li>TLS key/certificate generation (markt) <a href="https://www.youtube.com/watch?v=I6TbMqH9WFg">video</a>,
+    <a href="http://home.apache.org/~markt/presentations/2016-01-25-TLS-key-certificate-generation/script.txt">script</a></li>
+<li>Introducing Apache Tomcat 8.5 (markt) <a href="https://www.youtube.com/watch?v=kBJCIpPLWm0">video</a></li>
+</ul>
+</subsection>
+
+<subsection name="Webinar Series 2015">
+<ul>
+<li>Tomcat 9: HTTP/2 Quick Start (markt), <a href="https://www.youtube.com/watch?v=oCFwgMvouis">video</a></li>
+<li>TLS Virtual Hosting (markt), <a href="https://www.youtube.com/watch?v=UnEcYYutbRg">video</a></li>
+</ul>
+</subsection>
+
+<subsection name="ApacheCon 2015">
+<ul>
+<li>Tomcat Clustering: Part 1 - Reverse Proxies (markt), <a href="2015-04-15-Tomcat-clustering-part-1-reverse-proxies.pdf">slides</a></li>
+<li>Tomcat Clustering: Part 2 - Load-balancing (markt), <a href="2015-04-15-Tomcat-clustering-part-2-load-balancing.pdf">slides</a></li>
+<li>Tomcat Clustering: Part 3 - Clustering (markt), <a href="2015-04-15-Tomcat-clustering-part-3-clustering.pdf">slides</a></li>
+  <li>
+    Load-balancing Tomcat with mod_jk - Christopher Schultz,
+    <a href="http://home.apache.org/~schultz/ApacheCon%20NA%202015/Load-balancing%20Tomcat%20with%20mod_jk.pdf">slides</a>
+  </li>
+  <li>
+    Monitoring Apache Tomcat with JMX - Christopher Schultz,
+    <a href="http://home.apache.org/~schultz/ApacheCon%20NA%202015/Monitoring%20Apache%20Tomcat%20with%20JMX.pdf">slides</a>
+  </li>
+</ul>
+</subsection>
+
+<subsection name="ApacheCon 2014">
+<ul>
+<li>Apache Tomcat and SSL – Mark Thomas,
+    <a href="https://home.apache.org/~markt/presentations/2014-04-09-Tomcat-SSL.pdf">slides</a>,
+    <a href="https://www.youtube.com/watch?v=rt7oZ-7QEEk">audio</a></li>
+<li>Monitoring Apache Tomcat – Christopher Schultz,
+    <a href="http://home.apache.org/~schultz/ApacheCon%20NA%202014/Monitoring%20Apache%20Tomcat%20with%20JMX.pdf">slides</a>,
+    <a href="https://www.youtube.com/watch?v=U2y_6j1Cgr8">audio</a></li>
+<li>Migrating to Apache Tomcat 8 – Mark Thomas,
+    <a href="https://home.apache.org/~markt/presentations/2014-04-09-Migrating-to-Apache-Tomcat-8.pdf">slides</a>,
+    <a href="https://www.youtube.com/watch?v=JrbH5zQusM0">audio</a></li>
+<li>Connecting Tomcat to the World: Performance and other considerations when
+    selecting a Tomcat connector – Christopher Schultz, Jean-Frederic Clere,
+    slides not available,
+    <a href="https://www.youtube.com/watch?v=KKVO_xgRKbA">audio</a></li>
+<li>A Practical use of Servlet 3.1: Implementing WebSocket – Mark Thomas,
+    <a href="https://home.apache.org/~markt/presentations/2014-04-09-WebSocket-on-Servlet31.pdf">slides</a>,
+    <a href="https://www.youtube.com/watch?v=9PbN2K8eO2w">audio</a></li>
+</ul>
+</subsection>
+
+<subsection name="Java One, September 2013 (San Francisco)">
+<ul>
+<li>Building WebSocket 1.0 on Servlet 3.1 (markt)
+<a href="https://home.apache.org/~markt/presentations/2013-09-XX-WebSocket-on-Servlet31.pdf">pdf</a></li>
+</ul>
+</subsection>
+
+<subsection name="Pivotal Open Source Hub, September 2013 (San Francisco)">
+<ul>
+<li>Apache Tomcat 8 (markt)
+<a href="https://home.apache.org/~markt/presentations/2013-09-Apache-Tomcat8.pdf">pdf</a></li>
+</ul>
+</subsection>
+
+<subsection name="ApacheCon North America, February 2013 (Portland)">
+<ul>
+<li>Apache Tomcat Clustering (markt)
+<a href="https://www.youtube.com/watch?v=rX1zm11AXcA">video</a>,
+<a href="https://home.apache.org/~markt/presentations/2013-02-Apache-Tomcat-Clustering.pdf">pdf</a></li>
+<li>Apache Tomcat 8 update (markt)
+<a href="https://www.youtube.com/watch?v=B57IRtUHMjg">video</a>,
+<a href="https://home.apache.org/~markt/presentations/2013-02-Apache-Tomcat8-preview.pdf">pdf</a></li>
+<li>The Good, the Bad and the Ugly: Security Vulnerability Reports from the
+Apache Tomcat project (markt)
+<a href="https://www.youtube.com/watch?v=SMSR3ahdPfU">video</a>,
+<a href="https://home.apache.org/~markt/presentations/2013-02-Apache-Tomcat-Security-Good-Bad-Ugly.pdf">pdf</a></li>
+<li>Monitoring Apache Tomcat and the Apache Web Server (rjung)
+<a href="https://www.youtube.com/watch?v=b2iQ7aohfhM">video</a></li>
+<li>Continuous Delivery with Maven, Puppet and Tomcat (Carlos Sanchez)
+<a href="https://www.youtube.com/watch?v=ieE2ye2u-cA">video</a></li>
+</ul>
+</subsection>
+
+<subsection name="ApacheCon Europe, October 2012 (Sinsheim)">
+<ul>
+<li>Apache Tomcat 8 Preview (markt)
+<a href="https://home.apache.org/~markt/presentations/2012-10-Apache-Tomcat8-preview.pdf">pdf</a></li>
+<li>Apache Tomcat Reverse Proxies (markt)
+<a href="https://home.apache.org/~markt/presentations/2012-10-Apache-Tomcat-Reverse-proxies.pdf">pdf</a>,
+<a href="https://home.apache.org/~markt/presentations/2012-10-Apache-Tomcat-Reverse-proxies-notes-rjung.txt">notes</a> (rjung)</li>
+</ul>
+</subsection>
+
+<subsection name="JavaOne, September 2010 (San Francisco)">
+<ul>
+<li>Memory Leaks (markt)
+<a href="https://home.apache.org/~markt/presentations/2010-08-05-Memory-Leaks-JavaOne-60mins.pdf">pdf</a></li>
+</ul>
+</subsection>
+
+</section>
+
+</body>
+</document>

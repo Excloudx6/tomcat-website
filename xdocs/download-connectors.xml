@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties><title>Tomcat Connectors (mod_jk) Downloads</title></properties>
+  <body>
+    <section name="Tomcat Connectors (mod_jk) Downloads">
+
+      <p>Use the links below to download the Apache Tomcat<sup>&#174;</sup> Connectors
+      software from one of our mirrors.  You <strong>must</strong>
+      <a href="#Verify_the_Integrity_of_the_Files">verify the integrity</a> of
+      the downloaded files using signatures downloaded from our main
+      distribution directory.</p>
+
+      <p>Only current recommended releases are available on the main
+      distribution site and its mirrors.  Older releases and the historical mod_jk2
+      are available from the
+      <a href="https://archive.apache.org/dist/tomcat/tomcat-connectors/">
+      archive download site</a>.</p>
+
+      <subsection name="Choose a Mirror">
+        <p>You are currently using <b>[preferred]</b>.  If you
+        encounter a problem with this mirror, please select another
+        mirror.  If all mirrors are failing, there are <i>backup</i>
+        mirrors (at the end of the mirrors list) that should be
+        available.<br/>
+        [if-any logo]
+          <a href="[link]" rel="nofollow"><img alt="Logo" src="[logo]"/></a>
+        [end]
+        </p><form action="[location]" method="get" id="SelectMirror"><p>
+        Other mirrors: <select name="Preferred">
+        [if-any http]
+          [for http]<option value="[http]">[http]</option>[end]
+        [end]
+        [if-any ftp]
+          [for ftp]<option value="[ftp]">[ftp]</option>[end]
+        [end]
+        [if-any backup]
+          [for backup]<option value="[backup]">[backup] (backup)</option>[end]
+        [end]
+        </select><input type="submit" value="Change"/></p></form>
+        <p>You may also consult the <a href="http://www.apache.org/mirrors/">complete
+        list of mirrors</a>.</p>
+      </subsection>
+
+      <subsection name="Tomcat Connectors JK 1.2">
+        <p>For more information concerning Tomcat Connectors (mod_jk), see the
+        <a href="http://tomcat.apache.org/connectors-doc/" class="name">Tomcat Connectors (mod_jk)</a> site.</p>
+        <ul class="downloads">
+          <li class="download">
+          <div class="links"><span class="label">Source (please choose the correct format for your platform)</span></div>
+          <ul>
+            <li class="download">
+              <a href="[preferred]tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.46-src.tar.gz" rel="nofollow">
+                JK 1.2.46 Source Release tar.gz
+              </a> (e.g. Unix, Linux, Mac OS)
+            <ul class="attributes">
+              <li>
+                [<a href="https://www.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.46-src.tar.gz.asc">PGP</a>],
+                [<a href="https://www.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.46-src.tar.gz.sha512">SHA512</a>]
+              </li>
+            </ul>
+            </li>
+            <li class="download">
+              <a href="[preferred]tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.46-src.zip" rel="nofollow">
+                JK 1.2.46 Source Release zip
+              </a> (e.g. Windows)
+            <ul class="attributes">
+              <li>
+                [<a href="https://www.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.46-src.zip.asc">PGP</a>],
+                [<a href="https://www.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.46-src.zip.sha512">SHA512</a>]
+              </li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+          <li class="download">
+            <a href="[preferred]tomcat/tomcat-connectors/jk/binaries/" rel="nofollow">Binary Releases for selected versions</a>
+          </li>
+          <li class="download">
+            <a href="[preferred]tomcat/tomcat-connectors/" rel="nofollow">Browse Download Area</a>
+          </li>
+          <li class="download">
+            <a href="https://archive.apache.org/dist/tomcat/tomcat-connectors/">Browse Archive</a>
+          </li>
+        </ul>
+
+        <p>tomcat-connectors-1.2.46-src.* is signed by Mark Thomas (<code>2F6059E7</code>).</p>
+
+      </subsection>
+
+      <subsection name="Verify the Integrity of the Files">
+        <p>You <strong>must</strong>
+        <a href="https://www.apache.org/info/verification.html">verify</a> the
+        integrity of the downloaded files. We provide OpenPGP signatures for
+        every release file. This signature should be matched against the
+        <a href="https://www.apache.org/dist/tomcat/tomcat-connectors/KEYS">KEYS</a> file
+        which contains the OpenPGP keys of Tomcat's Release Managers. We also
+        provide <code>SHA512</code> checksums for every release file. After you
+        download the file, you should calculate a checksum for your download,
+        and make sure it is the same as ours.
+        </p>
+      </subsection>
+
+    </section>
+  </body>
+</document>

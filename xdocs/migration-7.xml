@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Migration Guide - Tomcat 7.0.x</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="General">
+
+<p>Please read general <a href="migration.html">Migration Guide page</a> first,
+for common considerations that apply to migration or upgrade between versions
+of Apache Tomcat.</p>
+
+</section>
+
+<section name="Migrating from 6.0.x to 7.0.x">
+
+  <p> This section lists all the known changes between 6.0.x and 7.0.x which may
+  cause backwards compatibility problems when upgrading.</p>
+
+  <subsection name="Java 6 required">
+
+    <p>Apache Tomcat 7.0.x requires Java 6 or later. Apache Tomcat 6.0.x
+    required Java 5.</p>
+
+  </subsection>
+
+  <subsection name="Servlet 3.0 API">
+
+    <p>Apache Tomcat 7 supports Java Servlet 3.0, JavaServer Pages 2.2,
+    Expression Language 2.2 and WebSocket 1.1
+    <a href="https://wiki.apache.org/tomcat/Specifications">specifications</a>.
+    The changes between versions of specifications may be found in the
+    <em>Changes</em> appendix in each of specification documents.
+    </p>
+
+    <p>In JSP pages that use wildcard import syntax the new classes added in
+    Servlet API may conflict with ones in web applications.
+    For example, if package <code>"a"</code> contains class <code>Part</code>,
+    the following JSP page will cease to compile in Tomcat 7:</p>
+
+    <source><![CDATA[<%@page import="a.*"%>
+<% Part page = new Part(); %>]]></source>
+
+    <p>That happens because implicit import of <code>javax.servlet.http.*</code>
+    and explicit import of <code>a.*</code> will provide conflicting
+    definitions of class <code>Part</code> that was added in Servlet 3.0.
+    The solution is to use explicit import, <code>import="a.Part"</code>.</p>
+
+  </subsection>
+
+  <subsection name="Regular expressions">
+
+    <p>All configuration options that use regular expression now require a
+    single regular expression (using <code>java.util.regex</code>) rather than a
+    list of comma-separated or semi-colon-separated expressions.</p>
+
+    <p>This concerns the following:</p>
+
+    <ul>
+      <li><code>allow</code> and <code>deny</code> attributes in
+        RemoteAddrFilter, RemoteHostFilter
+        <a href="/tomcat-7.0-doc/config/filter.html">filters</a>
+        and in RemoteAddrValve, RemoteHostValve
+        <a href="/tomcat-7.0-doc/config/valve.html">valves</a>;
+      </li>
+      <li><code>internalProxies</code>, <code>trustedProxies</code> attributes in
+        <a href="/tomcat-7.0-doc/config/filter.html#Remote_IP_Filter">RemoteIpFilter</a>,
+        <a href="/tomcat-7.0-doc/config/valve.html#Remote_IP_Valve">RemoteIpValve</a>;
+      </li>
+      <li><code>filter</code> attribute in
+        <a href="/tomcat-7.0-doc/config/cluster-valve.html#org.apache.catalina.ha.tcp.ReplicationValve">
+        ReplicationValve</a>;</li>
+      <li><code>restrictedUserAgents</code>, <code>noCompressionUserAgents</code>
+        attributes in
+        <a href="/tomcat-7.0-doc/config/http.html">HTTP connectors</a>.</li>
+    </ul>
+
+    <p>Note that separate regular expressions can be concatenated using the
+     "<code>|</code>" operator (or). Using "<code>|</code>" works both in this
+     and in earlier Tomcat versions.</p>
+
+  </subsection>
+
+  <subsection name="Deployment">
+  
+    <p>XML context descriptors (<code>META-INF/context.xml</code> files)
+    are no longer copied from deployed WARs and directories to the host's
+    <code>xmlBase</code>. The default
+    Tomcat 6 behavior can be enabled by setting the <code>copyXML</code>
+    attribute of the <strong>Host</strong> element to <code>true</code>.</p>
+
+    <p>The WARs outside of the host's <code>appBase</code> are not unpacked,
+    regardless of the value of the <code>Host</code>'s <code>unpackWARs</code>
+    setting in versions 7.0.12 to 7.0.47 inclusive. Note that this unpacking is
+    only supported in 7.0.48 onwards. See issue
+    <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=51294#c1">51294</a>.
+    </p>
+  </subsection>
+  
+  <subsection name="Manager application">
+  
+    <p>The Manager application has been re-structured for Tomcat 7 onwards and
+    some URLs have changed. All URLs used to access the Manager application
+    should now start with one of the following options:</p>
+    
+    <ul>
+      <li>&lt;ContextPath&gt;/html for the HTML GUI</li>
+      <li>&lt;ContextPath&gt;/text for the text interface</li>
+      <li>&lt;ContextPath&gt;/jmxproxy for the JMX proxy</li>
+      <li>&lt;ContextPath&gt;/status for the status pages</li>
+    </ul>
+    
+   <p>Note that the URL for the text interface has changed from
+   &quot;&lt;ContextPath&gt;&quot; to &quot;&lt;ContextPath&gt;/text&quot;.</p>
+
+    <p>The roles required to use the Manager application were changed from the
+    single <code>manager</code> role to the following four roles. You will need to
+    assign the role(s) required for the functionality you wish to access.</p>
+    
+    <ul>
+      <li><code>manager-gui</code> - allows access to the HTML GUI
+          and the status pages</li>
+      <li><code>manager-script</code> - allows access to the text interface
+          and the status pages</li>
+      <li><code>manager-jmx</code> - allows access to the JMX proxy
+          and the status pages</li>
+      <li><code>manager-status</code> - allows access to
+          the status pages only</li>
+    </ul>
+
+    <p>The HTML interface is protected against CSRF but the text and JMX
+    interfaces are not. To maintain the CSRF protection:</p>
+    
+    <ul>
+      <li>users with the <code>manager-gui</code> role should not be granted
+          either the <code>manager-script</code> or <code>manager-jmx</code> roles.</li>
+      <li>if the Manager application is accessed through a browser by a user
+          who has <code>manager-script</code> or <code>manager-jmx</code> roles
+          (e.g. for testing the text or jmx interfaces since these interfaces
+          are intended for tools not humans) then all browser windows
+          must be closed afterwards to terminate the session.</li>
+    </ul>
+
+    <p>The roles command has been removed from the Manager application since it
+    did not work with the default configuration and most Realms do not support
+    providing a list of roles.</p>
+
+  </subsection>
+
+  <subsection name="Host Manager application">
+  
+    <p>The Host Manager application has been re-structured for Tomcat 7 onwards
+    and some URLs have changed. All URLs used to access the Host Manager
+    application should now start with one of the following options:</p>
+    
+    <ul>
+      <li>&lt;ContextPath&gt;/html for the HTML GUI</li>
+      <li>&lt;ContextPath&gt;/text for the text interface</li>
+    </ul>
+    
+   <p>Note that the URL for the text interface has changed from
+   &quot;&lt;ContextPath&gt;&quot; to &quot;&lt;ContextPath&gt;/text&quot;.</p>
+
+    <p>The roles required to use the Host Manager application were changed from
+    the single <code>admin</code> role to the following two roles. You will need to
+    assign the role(s) required for the functionality you wish to access.</p>
+    
+    <ul>
+      <li><code>admin-gui</code> - allows access to the HTML GUI
+          and the status pages</li>
+      <li><code>admin-script</code> - allows access to the text interface
+          and the status pages</li>
+    </ul>
+
+    <p>The HTML interface is protected against CSRF but the text interface is
+    not. To maintain the CSRF protection:</p>
+    
+    <ul>
+      <li>users with the <code>admin-gui</code> role should not be granted the
+          <code>admin-script</code> role.</li>
+      <li>if the Host Manager application is accessed through a browser
+          by a user who has <code>admin-script</code> role (e.g. for testing
+          the text interface since this interface is intended for tools
+          not humans) then all browser windows
+          must be closed afterwards to terminate the session.</li>
+    </ul>
+
+  </subsection>
+
+  <subsection name="Session manager configuration">
+    <p>A number of changes have been made to the session manager to improve the
+    performance of session generation and destruction including changes to
+    session ID generation. The session ID generation changes take advantages of
+    improvements in <code>java.secure.SecureRandom</code> since the session ID
+    generation was first written. The configuration changes are:</p>
+    
+    <ul>
+      <li><code>randomClass</code> attribute of <strong>Manager</strong>
+      has changed to <code>secureRandomClass</code> and the provided class
+      must extend <code>java.secure.SecureRandom</code></li>
+      <li>Two new properties <code>secureRandomAlgorithm</code> and
+      <code>secureRandomProvider</code> have been added to enable the selection
+      of a SecureRandom implementation.</li>
+      <li>The <code>algorithm</code> attribute has been removed</li>
+      <li>The <code>entropy</code> attribute has been removed</li>
+    </ul>
+
+    <p>One known issue with <code>java.secure.SecureRandom</code> is that
+    it initialization requires some random data from an entropy source. With
+    some entropy source implementations it may require some time to gather
+    enough random data. If initialization of session id generator takes
+    noticeable time (more than 100ms), a diagnostic message will be logged.
+    E.g.:</p>
+
+    <p>
+    <code><em>DATE</em> org.apache.catalina.util.SessionIdGenerator createSecureRandom</code><br />
+    <code>INFO: Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [406] milliseconds.</code>
+    </p>
+
+    <p>It is possible to change the entropy source used by JRE by defining
+    a system property. E.g.:<br />
+    <code>-Djava.security.egd=file:/dev/./urandom</code></p>
+
+    <p>The "/./" characters in the above value are to workaround
+    <a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6202721">JRE issue #6202721</a>.</p>
+  </subsection>
+  
+  <subsection name="Session cookie configuration">
+
+    <p>With the addition of <code>SessionCookieConfig</code> in the Servlet 3.0
+    specification, a number of session cookie configuration options have been
+    removed to reduce configuration and code complexity.</p>
+
+    <ul>
+      <li><strong>Connector</strong><code>.emptySessionPath</code>: This has been removed. An equivalent
+      effect can be obtained by configuring sessionCookiePath="/" in the global
+      context.xml (in <code>CATALINA_BASE/conf/context.xml</code>).</li>
+
+      <li><code>org.apache.catalina.SESSION_COOKIE_NAME</code> system property: This has been
+      removed. An equivalent effect can be obtained by configuring the
+      <code>sessionCookieName</code> attribute for the global context.xml
+      (in <code>CATALINA_BASE/conf/context.xml</code>).</li>
+
+      <li><code>org.apache.catalina.SESSION_PARAMETER_NAME</code> system property: This has
+      been removed. An equivalent effect can be obtained by configuring the
+      <code>sessionCookieName</code> attribute for the global context.xml
+      (in <code>CATALINA_BASE/conf/context.xml</code>).</li>
+
+      <li><strong>Context</strong><code>.disableURLRewriting</code>: This has
+      been removed. An equivalent effect can be obtained by configuring the
+      <code>session-config/tracking-mode</code> elements in a web application
+      or in the global <code>CATALINA_BASE/conf/web.xml</code> file.</li>
+    </ul>
+
+    <p>The session and SSO cookies in Tomcat 7 are being sent with HttpOnly
+    flag by default, to instruct browsers to prevent access to those cookies
+    from JavaScript. This is considered more secure, but it will prevent
+    JavaScripts from accessing the value of the cookie.
+    This feature can be controlled by <code>useHttpOnly</code> attribute
+    on the <strong>Context</strong> element.
+    (This feature is also implemented in latest versions of Tomcat 6.0
+    but is off by default. It can be enabled by setting
+    <code>useHttpOnly="true"</code> on <strong>Context</strong> element in
+    a web application or in the global
+    <code>CATALINA_BASE/conf/context.xml</code> file).</p>
+
+  </subsection>
+
+  <subsection name="Cookies">
+
+    <p>Tomcat no longer accepts non-specification compliant name-only cookies by
+    default. However, a new system property has been added,
+    <code>org.apache.tomcat.util.http.ServerCookie.ALLOW_NAME_ONLY</code>, that
+    can be used to accept name-only cookies.</p>
+
+    <p>If a cookie value or path contain characters that have to be quoted
+    (per RFC2109 specification), the cookie will be automatically converted
+    from "version 0" cookie into "version 1" cookie before sending it to
+    the client and those values will be surrounded by double quotes. What
+    characters need quoting is controlled by several <a
+    href="/tomcat-7.0-doc/config/systemprops.html">System properties</a>
+    such as
+    <code>org.apache.tomcat.util.http.ServerCookie.FWD_SLASH_IS_SEPARATOR</code>.
+    It is known that Internet Explorer has problem processing "version 1"
+    cookies. (Bug <bug>57872</bug>).
+    </p>
+
+  </subsection>
+
+  <subsection name="Request attributes">
+
+    <p>The custom request attribute
+    <code>javax.servlet.request.ssl_session</code> provided to access the SSL
+    session ID has been deprecated in favour of the new standard request
+    attribute that is defined in the Servlet specification,
+    <code>javax.servlet.request.ssl_session_id</code>. Support
+    for the custom attribute will be removed in Tomcat 8.</p>
+    
+  </subsection>
+
+  <subsection name="Comet">
+
+    <p>To enable Comet to work correctly when running under a security manager,
+    the Comet classes have been moved from the <code>org.apache.catalina</code>
+    package to the <code>org.apache.catalina.comet</code> package. Code that
+    uses Comet will need to be updated and recompiled to reflect the new
+    package name.</p>
+
+  </subsection>
+
+  <subsection name="XML validation">
+  
+    <p>The configuration of XML validation has been simplified. The
+    <code>xmlValidation</code> and <code>xmlNamespaceAware</code> attributes
+    have been removed from the <strong>Host</strong> element. These
+    attributes, along with <code>tldValidation</code> and
+    <code>tldNamespaceAware</code>, are now set per <strong>Context</strong>
+    element. The defaults (<code>false</code> for each attribute) have not been
+    changed. However, in line with the requirements of the Servlet
+    specification, if the
+    <code>org.apache.catalina.STRICT_SERVLET_COMPLIANCE</code> system
+    property is set to <code>true</code>, XML validation and namespace
+    awareness will be enabled by default.</p>
+
+  </subsection>
+
+  <subsection name="System properties">
+
+    <p>The <code>org.apache.catalina.STRICT_SERVLET_COMPLIANCE</code> system
+    property has been modified to provide greater control over its effects. Each
+    behavioural change is now controlled by a dedicated system property. The
+    default behaviour is unchanged. The
+    <code>org.apache.catalina.STRICT_SERVLET_COMPLIANCE</code> system property
+    now controls whether or not specification compliant defaults are used for
+    the other system properties. Even if
+    <code>org.apache.catalina.STRICT_SERVLET_COMPLIANCE</code> is
+    <code>true</code>, setting the individual system properties will always take
+    priority.</p>
+
+    <p>The <code>org.apache.coyote.MAX_TRAILER_SIZE</code> has been removed and
+    is replaced by the maxTrailerSize attribute of the
+    <strong>Connector</strong>.</p>
+
+  </subsection>
+
+  <subsection name="Processing of conf/web.xml file">
+
+  <p>Servlet 3.0 specification defines how web.xml file of an application
+  can be combined from web fragments and annotations. Processing of the
+  global <code>conf/web.xml</code> file that defines server-wide defaults
+  was changed as a result of implementing those rules.</p>
+
+  <p>One noticeable
+  difference is that Filters defined in the global <code>conf/web.xml</code>
+  now follow the ones defined in a web application, instead of preceding
+  them. See issues
+  <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=51754#c1">51754</a>
+  and
+  <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=52138#c4">52138</a>
+  for clarifications.</p>
+
+  </subsection>
+
+  <subsection name="Welcome files processing">
+
+  <p>The welcome file processing was changed to follow clarifications in the
+  Servlet 3.0 specification. If your list of welcome files includes ones that
+  are processed by a servlet (such as *.jsp), you may observe the change in
+  behaviour. See the <code>resourceOnlyServlets</code> option on
+  <strong>Context</strong>.
+  </p>
+
+  </subsection>
+
+  <subsection name="Annotation scanning">
+
+  <p>The annotation scanning required by the Servlet 3.0 specification
+  may have impact on the startup time of your web application, as well as
+  increase requirements on the memory needed to load scanned classes.
+  Note, that upon clarification from the Servlet EG, even applications
+  using Servlet 2.4 and older versions of specification are being scanned.
+  See issue
+  <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=53619">53619</a>
+  and related discussions on the users mailing list.
+  </p>
+
+  <p>There are several ways to deal with this issue. The recommended way is
+  to mark those applications that do not require annotation scanning as such.
+  It can be done in the <code>WEB-INF/web.xml</code> of your application by
+  the following steps:</p>
+
+  <ul>
+    <li>
+      Update the <code>web-app</code> element to indicate that the web
+      application is using specification version 3.0. You may copy the values
+      for the <code>version</code>, <code>xsi:schemaLocation</code>,
+      <code>xmlns</code> and <code>xmlns:xsi</code> attributes from the default
+      <code>conf/web.xml</code> file.
+    </li>
+    <li>
+      Add <code>metadata-complete="true"</code> attribute to the
+      <code>web-app</code> element.
+    </li>
+    <li>
+      Add an empty <code><![CDATA[<absolute-ordering />]]></code> element.
+    </li>
+  </ul>
+
+  <p>The <code>metadata-complete</code> attribute is supported starting with
+  Servlet 2.5 specification. The <code>absolute-ordering</code> element
+  requires Servlet 3.0.</p>
+
+  <p>The second way is to configure JarScanner component to ignore certain JAR
+  files according to their names. This is usually configured in the
+  <code>conf/catalina.properties</code> file. See documentation on the
+  <code>jarsToSkip</code> properties in the
+  <a href="/tomcat-7.0-doc/config/systemprops.html">System properties</a>
+  chapter of the Configuration Reference for details.
+  Starting with Tomcat 7.0.30 it is possible to separately configure
+  which JARs are skipped for Servlet 3.0 scanning (scanning for annotations
+  and web application fragments), TLD scanning (tag libraries) or both.
+  Further versions of Tomcat may provide better ways to control this feature.</p>
+
+  </subsection>
+
+  <subsection name="TLD processing">
+    <p>There have been a number of improvements to TLD processing. In addition
+    to some internal refactoring to improve consistency and reduce duplication,
+    there are a number of functional improvements. These are:</p>
+    <ul>
+      <li>EL processing within tag files is now consistent with the JSP version
+      declared for the tag file.</li>
+      <li>The requirements of section JSP.7.3.1 of the JSP specification are
+      now enforced and TLD files are not permitted to be placed in
+      <code>WEB-INF/lib</code> or <code>WEB-INF/classes</code>.</li>
+    </ul>
+  </subsection>
+  
+  <subsection name="Internal APIs">
+  
+    <p>Whilst the Tomcat 7 internal API is broadly compatible with Tomcat 6
+    there have been many changes at the detail level and they are not binary
+    compatible. Developers of custom components that interact with Tomcat&apos;s
+    internals should review the JavaDoc for the relevant API.</p>
+
+    <p>Of particular note are:</p>
+    <ul>
+      <li>A standard implementation of the Lifecycle interface that all
+      components extend.</li>
+      <li>Use of generics.</li>
+      <li>The use of Context name rather than Context path as the unique
+      identifier for a Context within a Host.</li>
+    </ul>
+
+  </subsection>
+
+  <subsection name="JSP compiler">
+
+  <p>Initialization parameter of <code>JspServlet</code> that controls
+  one of performance optimizations has been renamed from
+  <strong>genStrAsCharArray</strong> to <strong>genStringAsCharArray</strong>
+  and is now consistent with the name of related attribute in Jasper task
+  for Apache Ant.
+  </p>
+
+  </subsection>
+
+</section>
+
+<section name="Upgrading 7.0.x">
+  <subsection name="Tomcat 7.0.x noteable changes">
+    <p>The Tomcat developers aim for each patch release to be fully backwards
+       compatible with the previous release.  Occasionally, it is necessary to
+       break backwards compatibility in order to fix a bug. In most cases, these
+       changes will go unnoticed. This section lists changes that are not fully
+       backwards compatible and might cause breakage when upgrading.</p>
+    <ul>
+      <li>In 7.0.51 onwards, the web application class loader is now a higher
+          priority for loading classes than the system class loader.</li>
+      <li><p>In 7.0.63 onwards, the meaning of value 0 for <code>maxPostSize</code>
+        attribute on connectors was changed to mean a limit of zero rather
+        than no limit to align it with <code>maxSavePostSize</code> and to
+        be more intuitive.</p>
+        <p>Reference: <a href="tomcat-8.0-doc/config/http.html">HTTP connector</a>,
+        <a href="tomcat-8.0-doc/config/ajp.html">AJP connector</a>.</p>
+      </li>
+    </ul>
+  </subsection>
+  
+  <subsection name="Tomcat 7.0.x configuration file differences">
+
+    <p>When upgrading instances of Apache Tomcat from one version of Tomcat 7 to
+    another, particularly when using separate locations for $CATALINA_HOME and
+    $CATALINA_BASE, it is necessary to ensure that any changes in the
+    configuration files such as new attributes and changes to defaults are
+    applied as part of the upgrade. To assist with the identification of these
+    changes, the form below may be used to view the differences between the
+    configuration files in different versions of Tomcat 7.</p>
+  
+    <p>Select a configuration file, old version and new version from the boxes
+    below and then click &quot;View differences&quot; to see the differences.
+    The differences will be shown in a new tab/window.</p>
+
+    <script type="text/javascript"><![CDATA[
+    "use strict"; // Enable strict mode
+
+    document.addEventListener("DOMContentLoaded", function() {
+    var formSubmit = document.getElementById("tc7Submit");
+      formSubmit.addEventListener("submit", function() {
+        var revisions = {
+          "HEAD":"HEAD",
+          "7.0.0":"954232",
+          "7.0.2":"982035",
+          "7.0.4":"1022637",
+          "7.0.5":"1038717",
+          "7.0.6":"1057288",
+          "7.0.8":"1067169",
+          "7.0.10":"1078282",
+          "7.0.11":"1080182",
+          "7.0.12":"1087797",
+          "7.0.14":"1101230",
+          "7.0.16":"1134562",
+          "7.0.19":"1146504",
+          "7.0.20":"1155255",
+          "7.0.21":"1162976",
+          "7.0.22":"1176599",
+          "7.0.23":"1203305",
+          "7.0.25":"1232371",
+          "7.0.26":"1245466",
+          "7.0.27":"1307817",
+          "7.0.28":"1350468",
+          "7.0.29":"1356494",
+          "7.0.30":"1379863",
+          "7.0.32":"1393331",
+          "7.0.33":"1410718",
+          "7.0.34":"1416816",
+          "7.0.35":"1431695",
+          "7.0.37":"1445362",
+          "7.0.39":"1459741",
+          "7.0.40":"1479250",
+          "7.0.41":"1490220",
+          "7.0.42":"1498817",
+          "7.0.47":"1533319",
+          "7.0.50":"1552395",
+          "7.0.52":"1567856",
+          "7.0.53":"1581197",
+          "7.0.54":"1595997",
+          "7.0.55":"1611608",
+          "7.0.56":"1627729",
+          "7.0.57":"1635775",
+          "7.0.59":"1655365",
+          "7.0.61":"1669546",
+          "7.0.62":"1678231",
+          "7.0.63":"1688364",
+          "7.0.64":"1696589",
+          "7.0.65":"1707663",
+          "7.0.67":"1718339",
+          "7.0.68":"1729238",
+          "7.0.69":"1738539",
+          "7.0.70":"1748587",
+          "7.0.72":"1760687",
+          "7.0.73":"1768587",
+          "7.0.75":"1779379",
+          "7.0.76":"1786169",
+          "7.0.77":"1789168",
+          "7.0.78":"1794730",
+          "7.0.79":"1799944",
+          "7.0.81":"1804761",
+          "7.0.82":"1810087",
+          "7.0.84":"1821664",
+          "7.0.85":"1823510",
+          "7.0.86":"1828768",
+          "7.0.88":"1831087",
+          "7.0.90":"1834866",
+          "7.0.91":"1840853",
+          "7.0.92":"1846225",
+          "7.0.93":"1853723"
+        };
+
+        formSubmit.action = "http://svn.apache.org/viewvc/tomcat/tc7.0.x/trunk/" +
+          document.getElementById('select-filename').value;
+        formSubmit.elements['r1'].value = revisions[document.getElementById('select-r1').value]; 
+        formSubmit.elements['r2'].value = revisions[document.getElementById('select-r2').value]; 
+        return true;
+      }, false);
+    }, false);
+    ]]></script>
+
+
+    <p><label>Configuration file:
+    <select id="select-filename">
+    <option value="conf/catalina.policy">catalina.policy</option>
+    <option value="conf/catalina.properties">catalina.properties</option>
+    <option value="conf/context.xml">context.xml</option>
+    <option value="conf/logging.properties">logging.properties</option>
+    <option value="conf/server.xml">server.xml</option>
+    <option value="conf/tomcat-users.xml">tomcat-users.xml</option>
+    <option value="conf/web.xml">web.xml</option>
+    </select></label>
+    </p>
+    <p><label>Old version:
+    <select id="select-r1">
+    <option value="7.0.0">7.0.0</option>
+    <option value="7.0.2">7.0.2</option>
+    <option value="7.0.4">7.0.4</option>
+    <option value="7.0.5">7.0.5</option>
+    <option value="7.0.6">7.0.6</option>
+    <option value="7.0.8">7.0.8</option>
+    <option value="7.0.10">7.0.10</option>
+    <option value="7.0.11">7.0.11</option>
+    <option value="7.0.12">7.0.12</option>
+    <option value="7.0.14">7.0.14</option>
+    <option value="7.0.16">7.0.16</option>
+    <option value="7.0.19">7.0.19</option>
+    <option value="7.0.20">7.0.20</option>
+    <option value="7.0.21">7.0.21</option>
+    <option value="7.0.22">7.0.22</option>
+    <option value="7.0.23">7.0.23</option>
+    <option value="7.0.25">7.0.25</option>
+    <option value="7.0.26">7.0.26</option>
+    <option value="7.0.27">7.0.27</option>
+    <option value="7.0.28">7.0.28</option>
+    <option value="7.0.29">7.0.29</option>
+    <option value="7.0.30">7.0.30</option>
+    <option value="7.0.32">7.0.32</option>
+    <option value="7.0.33">7.0.33</option>
+    <option value="7.0.34">7.0.34</option>
+    <option value="7.0.35">7.0.35</option>
+    <option value="7.0.37">7.0.37</option>
+    <option value="7.0.39">7.0.39</option>
+    <option value="7.0.40">7.0.40</option>
+    <option value="7.0.41">7.0.41</option>
+    <option value="7.0.42">7.0.42</option>
+    <option value="7.0.47">7.0.47</option>
+    <option value="7.0.50">7.0.50</option>
+    <option value="7.0.52">7.0.52</option>
+    <option value="7.0.53">7.0.53</option>
+    <option value="7.0.54">7.0.54</option>
+    <option value="7.0.55">7.0.55</option>
+    <option value="7.0.56">7.0.56</option>
+    <option value="7.0.57">7.0.57</option>
+    <option value="7.0.59">7.0.59</option>
+    <option value="7.0.61">7.0.61</option>
+    <option value="7.0.62">7.0.62</option>
+    <option value="7.0.63">7.0.63</option>
+    <option value="7.0.64">7.0.64</option>
+    <option value="7.0.65">7.0.65</option>
+    <option value="7.0.67">7.0.67</option>
+    <option value="7.0.68">7.0.68</option>
+    <option value="7.0.69">7.0.69</option>
+    <option value="7.0.70">7.0.70</option>
+    <option value="7.0.72">7.0.72</option>
+    <option value="7.0.73">7.0.73</option>
+    <option value="7.0.75">7.0.75</option>
+    <option value="7.0.76">7.0.76</option>
+    <option value="7.0.77">7.0.77</option>
+    <option value="7.0.78">7.0.78</option>
+    <option value="7.0.79">7.0.79</option>
+    <option value="7.0.81">7.0.81</option>
+    <option value="7.0.82">7.0.82</option>
+    <option value="7.0.84">7.0.84</option>
+    <option value="7.0.85">7.0.85</option>
+    <option value="7.0.86">7.0.86</option>
+    <option value="7.0.88">7.0.88</option>
+    <option value="7.0.90">7.0.90</option>
+    <option value="7.0.91">7.0.91</option>
+    <option value="7.0.92" selected="selected">7.0.92</option>
+    <option value="7.0.93">7.0.93</option>
+    </select>,</label> <label>new version:
+    <select id="select-r2">
+    <option value="7.0.0">7.0.0</option>
+    <option value="7.0.2">7.0.2</option>
+    <option value="7.0.4">7.0.4</option>
+    <option value="7.0.5">7.0.5</option>
+    <option value="7.0.6">7.0.6</option>
+    <option value="7.0.8">7.0.8</option>
+    <option value="7.0.10">7.0.10</option>
+    <option value="7.0.11">7.0.11</option>
+    <option value="7.0.12">7.0.12</option>
+    <option value="7.0.14">7.0.14</option>
+    <option value="7.0.16">7.0.16</option>
+    <option value="7.0.19">7.0.19</option>
+    <option value="7.0.20">7.0.20</option>
+    <option value="7.0.21">7.0.21</option>
+    <option value="7.0.22">7.0.22</option>
+    <option value="7.0.23">7.0.23</option>
+    <option value="7.0.25">7.0.25</option>
+    <option value="7.0.26">7.0.26</option>
+    <option value="7.0.27">7.0.27</option>
+    <option value="7.0.28">7.0.28</option>
+    <option value="7.0.29">7.0.29</option>
+    <option value="7.0.30">7.0.30</option>
+    <option value="7.0.32">7.0.32</option>
+    <option value="7.0.33">7.0.33</option>
+    <option value="7.0.34">7.0.34</option>
+    <option value="7.0.35">7.0.35</option>
+    <option value="7.0.37">7.0.37</option>
+    <option value="7.0.39">7.0.39</option>
+    <option value="7.0.40">7.0.40</option>
+    <option value="7.0.41">7.0.41</option>
+    <option value="7.0.42">7.0.42</option>
+    <option value="7.0.47">7.0.47</option>
+    <option value="7.0.50">7.0.50</option>
+    <option value="7.0.52">7.0.52</option>
+    <option value="7.0.53">7.0.53</option>
+    <option value="7.0.54">7.0.54</option>
+    <option value="7.0.55">7.0.55</option>
+    <option value="7.0.56">7.0.56</option>
+    <option value="7.0.57">7.0.57</option>
+    <option value="7.0.59">7.0.59</option>
+    <option value="7.0.61">7.0.61</option>
+    <option value="7.0.62">7.0.62</option>
+    <option value="7.0.63">7.0.63</option>
+    <option value="7.0.64">7.0.64</option>
+    <option value="7.0.65">7.0.65</option>
+    <option value="7.0.67">7.0.67</option>
+    <option value="7.0.68">7.0.68</option>
+    <option value="7.0.69">7.0.69</option>
+    <option value="7.0.70">7.0.70</option>
+    <option value="7.0.72">7.0.72</option>
+    <option value="7.0.73">7.0.73</option>
+    <option value="7.0.75">7.0.75</option>
+    <option value="7.0.76">7.0.76</option>
+    <option value="7.0.77">7.0.77</option>
+    <option value="7.0.78">7.0.78</option>
+    <option value="7.0.79">7.0.79</option>
+    <option value="7.0.81">7.0.81</option>
+    <option value="7.0.82">7.0.82</option>
+    <option value="7.0.84">7.0.84</option>
+    <option value="7.0.85">7.0.85</option>
+    <option value="7.0.86">7.0.86</option>
+    <option value="7.0.88">7.0.88</option>
+    <option value="7.0.90">7.0.90</option>
+    <option value="7.0.91">7.0.91</option>
+    <option value="7.0.92">7.0.92</option>
+    <option value="7.0.93" selected="selected">7.0.93</option>
+    <option value="HEAD">trunk (unreleased)</option>
+    </select></label>
+    </p>
+
+    <form id="tc7Submit" action="to-be-replaced" method="get"
+          target="_blank">
+    <p>
+    <input type="hidden" name="diff_format" value="h"/>
+    <input type="hidden" name="r1"/><input type="hidden" name="r2"/>
+    <button>View Differences</button>
+    </p>
+    </form>
+    <p>You can also use Subversion command similar to the following (all on one line):</p>
+    <source>svn diff
+  --old=http://svn.apache.org/repos/asf/tomcat/tc7.0.x/tags/TOMCAT_7_0_27/conf/
+  --new=http://svn.apache.org/repos/asf/tomcat/tc7.0.x/tags/TOMCAT_7_0_28/conf/</source>
+  </subsection>
+  
+</section>
+
+</body>
+</document>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Apache Taglibs</title>
+  </properties>
+
+  <body>
+
+    <section name="Apache Taglibs">
+      <p>Apache Taglibs provides open source implementations of Tag Libraries for use with
+        Java Server Pages (JSPs). In particular, it hosts the Apache Standard Taglib, an
+        open source implementation of the
+        <a href="https://jcp.org/en/jsr/detail?id=52">Java Standard Tag Library (JSTL)</a>
+        specification.
+      </p>
+    </section>
+
+    <section name="Apache Standard Taglib">
+      <p>The Apache Standard Taglib implements JSTL 1.2 and supports request-time expressions
+        that are evaluated by the JSP container.
+      </p>
+
+      <p>In addition, compatibility for applications using 1.0 expression language tags can
+        be enabled in one of two ways:
+      </p>
+        <ul>
+          <li>Using the <b>-jstlel</b> jar supports JSTL 1.0 EL expressions by using the EL
+            implementation originally defined by JSTL itself.
+          </li>
+          <li>Using the <b>-compat</b> jar supports JSTL 1.0 EL expressions by using the
+            container's implementation of EL to take advantage of newer functionality and
+            potential performance improvements in more modern versions.
+          </li>
+        </ul>
+
+      <p style="text-align: center;">
+        <a href="download-taglibs.cgi">Download</a> |
+        <a href="taglibs/CHANGES.txt">Changes</a>
+      </p>
+
+      <p>Please see the <a href="https://www.apache.org/dist/tomcat/taglibs/taglibs-standard-1.2.5/README_bin.txt">README</a>
+      file for more detailed information on using the library.</p>
+
+      <p>For performance reasons the XML tags use Apache Xalan directly for evaluating XPath
+        expressions. The Xalan 2.7.1 implementation jars xalan.jar and serializer.jar must be
+        added to the classpath.
+      </p>
+
+      <p>The Standard Taglib jars may be packaged with a web-application in its /WEB-INF/lib
+        directory, or may be made available to all applications in a container by adding them
+        to the container's classpath.
+      </p>
+    </section>
+
+    <section name="Jakarta Taglibs">
+      <p>Apache Taglibs were originally developed as part of the Apache Jakarta project.
+        That project has
+        <a href="http://attic.apache.org/projects/jakarta-taglibs.html">officially been retired</a>
+        and the original tag libraries moved to the
+        <a href="http://attic.apache.org/">Apache Attic</a>.
+      </p>
+    </section>
+  </body>
+</document>
+

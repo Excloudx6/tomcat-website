@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <title>Apache Tomcat 7 Software Downloads</title>
+  </properties>
+  <body>
+    
+  <section name="Tomcat 7 Software Downloads">
+    <p>Welcome to the Apache Tomcat<sup>&#174;</sup> 7.x software download page. This page
+    provides download links for obtaining the latest version of Tomcat 7.0.x
+    software, as well as links to the archives of older releases.
+    </p>
+  </section>
+
+      <!-- Begin quick navigation section -->
+      <section name="Quick Navigation">
+<!--
+ Define variable to hold the current version number.
+ Documentation for ezt.py: https://code.google.com/p/ezt/wiki/Syntax
+-->
+[define v]7.0.93[end]
+        <a href="https://www.apache.org/dist/tomcat/tomcat-7/KEYS">KEYS</a> |
+        <a href="#[v]">[v]</a> |
+        <a href="[preferred]tomcat/tomcat-7/v[v]" rel="nofollow">Browse</a> |
+        <a href="https://archive.apache.org/dist/tomcat/tomcat-7">Archives</a>
+      </section>
+      <!-- End quick navigation section -->
+
+
+
+  <section name="Release Integrity">
+    <p>You <strong>must</strong>
+    <a href="https://www.apache.org/info/verification.html">verify</a> the
+    integrity of the downloaded files. We provide OpenPGP signatures for every
+    release file.  This signature should be matched against the
+    <a href="https://www.apache.org/dist/tomcat/tomcat-7/KEYS">KEYS</a> file
+    which contains the OpenPGP keys of Tomcat's Release Managers. We also
+    provide <code>SHA-512</code> checksums for every release file. After you
+    download the file, you should calculate a checksum for your download, and
+    make sure it is the same as ours.
+    </p>
+  </section>
+
+  <section name="Mirrors">
+    <!-- Note: the following CGI code is sensitive to line breaks.  Don't "prettify" it. -->   
+    <p>You are currently using <b>[preferred]</b>.  If you
+       encounter a problem with this mirror, please select another
+       mirror.  If all mirrors are failing, there are <i>backup</i>
+       mirrors (at the end of the mirrors list) that should be
+       available.<br/>[if-any logo]<a href="[link]" rel="nofollow"><img alt="Logo" src="[logo]"/></a>[end]</p><form action="[location]" method="get" id="SelectMirror"><p>
+       Other mirrors: <select name="Preferred">
+         [if-any http]
+           [for http]<option value="[http]">[http]</option>[end]
+         [end]
+         [if-any ftp]
+           [for ftp]<option value="[ftp]">[ftp]</option>[end]
+         [end]
+         [if-any backup]
+           [for backup]<option value="[backup]">[backup] (backup)</option>[end]
+           [end]
+         </select><input type="submit" value="Change"/></p></form>
+      <!-- End mirror list -->
+   
+  </section>
+  <!-- End mirrors section -->
+
+      <!-- Begin version [v] section -->
+      <section name="[v]">
+      <p>
+      Please see the 
+      <a href="[preferred]tomcat/tomcat-7/v[v]/README.html" rel="nofollow">README</a>
+      file for packaging information.  It explains what every distribution contains.
+      </p>
+
+      <subsection name="Binary Distributions">
+      <ul>
+        <li>Core:
+          <ul>
+          <li>
+            <a href="[preferred]tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v].zip" rel="nofollow">zip</a> 
+            (<a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v].zip.asc">pgp</a>, 
+            <a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v].zip.sha512">sha512</a>)
+          </li>
+          <li>
+            <a href="[preferred]tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v].tar.gz" rel="nofollow">tar.gz</a> 
+            (<a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v].tar.gz.asc">pgp</a>, 
+            <a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v].tar.gz.sha512">sha512</a>)
+          </li>
+          <li>
+            <a href="[preferred]tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v]-windows-x86.zip" rel="nofollow">32-bit Windows zip</a> 
+            (<a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v]-windows-x86.zip.asc">pgp</a>, 
+            <a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v]-windows-x86.zip.sha512">sha512</a>)
+          </li>
+          <li>
+            <a href="[preferred]tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v]-windows-x64.zip" rel="nofollow">64-bit Windows zip</a> 
+            (<a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v]-windows-x64.zip.asc">pgp</a>, 
+            <a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v]-windows-x64.zip.sha512">sha512</a>)
+          </li>
+          <li>
+            <a href="[preferred]tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v].exe" rel="nofollow">32-bit/64-bit Windows Service Installer</a> 
+            (<a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v].exe.asc">pgp</a>, 
+            <a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v].exe.sha512">sha512</a>)
+          </li>
+          </ul>
+        </li>
+        <li>Full documentation:
+          <ul>
+          <li>
+            <a href="[preferred]tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v]-fulldocs.tar.gz" rel="nofollow">tar.gz</a> 
+            (<a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v]-fulldocs.tar.gz.asc">pgp</a>, 
+            <a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v]-fulldocs.tar.gz.sha512">sha512</a>)
+          </li>
+          </ul>
+        </li>
+        <li>Deployer:
+          <ul>
+          <li>
+            <a href="[preferred]tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v]-deployer.zip" rel="nofollow">zip</a> 
+            (<a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v]-deployer.zip.asc">pgp</a>,  
+            <a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v]-deployer.zip.sha512">sha512</a>)
+          </li>
+          <li>
+            <a href="[preferred]tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v]-deployer.tar.gz" rel="nofollow">tar.gz</a> 
+            (<a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v]-deployer.tar.gz.asc">pgp</a>, 
+            <a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/apache-tomcat-[v]-deployer.tar.gz.sha512">sha512</a>)
+          </li>
+          </ul>
+        </li>
+        <li>Extras:
+          <ul>
+          <li>
+            <a href="[preferred]tomcat/tomcat-7/v[v]/bin/extras/catalina-jmx-remote.jar" rel="nofollow">JMX Remote jar</a> 
+            (<a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/extras/catalina-jmx-remote.jar.asc">pgp</a>, 
+            <a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/extras/catalina-jmx-remote.jar.sha512">sha512</a>)
+          </li>
+          <li>
+            <a href="[preferred]tomcat/tomcat-7/v[v]/bin/extras/catalina-ws.jar" rel="nofollow">Web services jar</a> 
+            (<a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/extras/catalina-ws.jar.asc">pgp</a>, 
+            <a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/extras/catalina-ws.jar.sha512">sha512</a>)
+          </li>
+          <li>
+            <a href="[preferred]tomcat/tomcat-7/v[v]/bin/extras/tomcat-juli-adapters.jar" rel="nofollow">JULI adapters jar</a> 
+            (<a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/extras/tomcat-juli-adapters.jar.asc">pgp</a>, 
+            <a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/extras/tomcat-juli-adapters.jar.sha512">sha512</a>)
+          </li>
+          <li>
+            <a href="[preferred]tomcat/tomcat-7/v[v]/bin/extras/tomcat-juli.jar" rel="nofollow">JULI log4j jar</a> 
+            (<a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/extras/tomcat-juli.jar.asc">pgp</a>, 
+            <a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/extras/tomcat-juli.jar.sha512">sha512</a>)
+          </li>
+          </ul>
+        </li>
+        <li>Embedded:
+          <ul>
+          <li>
+            <a href="[preferred]tomcat/tomcat-7/v[v]/bin/embed/apache-tomcat-[v]-embed.tar.gz" rel="nofollow">tar.gz</a> 
+            (<a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/embed/apache-tomcat-[v]-embed.tar.gz.asc">pgp</a>, 
+            <a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/embed/apache-tomcat-[v]-embed.tar.gz.sha512">sha512</a>)
+          </li>
+          <li>
+            <a href="[preferred]tomcat/tomcat-7/v[v]/bin/embed/apache-tomcat-[v]-embed.zip" rel="nofollow">zip</a> 
+            (<a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/embed/apache-tomcat-[v]-embed.zip.asc">pgp</a>, 
+            <a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/bin/embed/apache-tomcat-[v]-embed.zip.sha512">sha512</a>)
+          </li>
+          </ul>
+        </li>
+      </ul>
+      </subsection>
+      <!-- End of version [v] binary section -->
+ 
+      <!-- Begin version [v] source section -->
+      <subsection name="Source Code Distributions">
+      <ul>
+        <li>
+          <a href="[preferred]tomcat/tomcat-7/v[v]/src/apache-tomcat-[v]-src.tar.gz" rel="nofollow">tar.gz</a> 
+          (<a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/src/apache-tomcat-[v]-src.tar.gz.asc">pgp</a>, 
+          <a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/src/apache-tomcat-[v]-src.tar.gz.sha512">sha512</a>)
+        </li>
+        <li>
+          <a href="[preferred]tomcat/tomcat-7/v[v]/src/apache-tomcat-[v]-src.zip" rel="nofollow">zip</a> 
+          (<a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/src/apache-tomcat-[v]-src.zip.asc">pgp</a>, 
+          <a href="https://www.apache.org/dist/tomcat/tomcat-7/v[v]/src/apache-tomcat-[v]-src.zip.sha512">sha512</a>)
+        </li>
+      </ul>
+      </subsection>
+      <!-- End version [v] source section -->
+
+    </section>
+    <!-- End version [v] section -->
+
+</body>
+</document>

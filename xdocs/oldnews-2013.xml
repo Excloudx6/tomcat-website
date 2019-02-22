@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Old news!</title>
+  </properties>
+
+<body>
+
+<section name="Other news">
+<p>Announcements from other years can be found here:</p>
+<ul>
+  <li><a href="oldnews.html">year 2018</a></li>
+  <li><a href="oldnews-2017.html">year 2017</a></li>
+  <li><a href="oldnews-2016.html">year 2016</a></li>
+  <li><a href="oldnews-2015.html">year 2015</a></li>
+  <li><a href="oldnews-2014.html">year 2014</a></li>
+  <li>year 2013</li>
+  <li><a href="oldnews-2012.html">year 2012</a></li>
+  <li><a href="oldnews-2011.html">year 2011</a></li>
+  <li><a href="oldnews-2010.html">year 2010</a></li>
+</ul>
+</section>
+
+<section name="Tomcat 8.0.0-RC10 (alpha) Released" rtext="2013-12-26">
+<p>
+The Apache Tomcat Project is proud to announce the next release candidate for
+Apache Tomcat 8  - 8.0.0-RC10 (alpha). Tomcat 8 is aligned with Java EE 7. In
+addition to supporting updated versions of the Java EE specifications, Tomcat 8
+includes a number of improvements compared to Tomcat 7. The notable changes
+include:</p>
+<ul>
+  <li>Support for Java Servlet 3.1, JavaServer Pages 2.3, Java Unified
+      Expression Language 3.0 and Java WebSocket 1.0.</li>
+  <li>The default connector implementation is now the Java non-blocking
+      implementation (NIO) for both HTTP and AJP.</li>
+  <li>A new resources implementation that replaces Aliases, VirtualLoader, 
+      VirtualDirContext, JAR resources and external repositories with a single,
+      consistent approach for configuring additional web application resources.
+      The new resources implementation can also be used to implement overlays
+      (using a master WAR as the basis for multiple web applications that each
+      have their own customizations).</li>
+</ul>
+<p>
+Apache Tomcat 8.0.0-RC10 includes numerous fixes for issues identified in RC5 as
+well as a number of other enhancements and changes. The notable changes since
+RC5 include:</p>
+<ul>
+  <li>Extending the new resources implementation to include resource handling
+      for class loaders and the addition of a new feature to track the code
+      responsible for an open file.</li>
+  <li>Complete refactoring of TLD handling including the addition of caching of
+      parsed TLDs to improve performance.</li>
+  <li>Improvements to JMX MBeans including better visibility of DBCP connection
+      pools and improved organisation in the default JConsole view.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.0-doc/changelog.html">Tomcat 8 changelog</a>.
+</p>
+
+<p>The purpose of this release candidate is to give users an opportunity to test
+Tomcat 8 and provide feedback to the Tomcat community. It has been given an
+alpha status which means that it is not judged as being ready for production
+usage. The implementations of the 4 Java EE 7 specifications are all complete
+but there is a small amount of refactoring to be completed before the alpha
+label is removed.</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.47 Released" rtext="2013-10-24">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.47 of
+Apache Tomcat. This release contains a number of bug fixes
+and improvements compared to version 7.0.42. The notable changes include:
+</p>
+<ul>
+  <li>Back-port the JSR-356 Java WebSocket 1.0 implementation from Apache Tomcat 8.
+      Note that use of this functionality requires Java 7.</li>
+  <li>Deprecate the Apache Tomcat proprietary WebSocket API in favour of the new
+      JSR-356 implementation.</li>
+  <li>Add a drawing board example to the WebSocket examples.</li>
+  <li>The minimum required APR/native library version required if the APR/native
+      connector is used is now 1.1.29.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.47_(violetagg)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.47_(violetagg)">ChangeLog for 7.0.47</a>
+</p>
+</section>
+
+
+<section name="Tomcat 8.0.0-RC5 (alpha) Released" rtext="2013-10-20">
+<p>
+The Apache Tomcat Project is proud to announce the next release candidate for
+Apache Tomcat 8  - 8.0.0-RC5 (alpha). Tomcat 8 is aligned with Java EE 7. In
+addition to supporting updated versions of the Java EE specifications, Tomcat 8
+includes a number of improvements compared to Tomcat 7. The notable changes
+include:</p>
+<ul>
+  <li>Support for Java Servlet 3.1, JavaServer Pages 2.3, Java Unified
+      Expression Language 3.0 and Java WebSocket 1.0.</li>
+  <li>The default connector implementation is now the Java non-blocking
+      implementation (NIO) for both HTTP and AJP.</li>
+  <li>A new resources implementation that replaces Aliases, VirtualLoader, 
+      VirtualDirContext, JAR resources and external repositories with a single,
+      consistent approach for configuring additional web application resources.
+      The new resources implementation can also be used to implement overlays
+      (using a master WAR as the basis for multiple web applications that each
+      have their own customizations).</li>
+</ul>
+<p>
+Apache Tomcat 8.0.0-RC5 includes numerous fixes for issues identified in RC3 as
+well as a number of other enhancements and changes. The notable changes since
+RC1 include:</p>
+<ul>
+  <li>Improved stability of the APR/native connector when using WebSocket</li>
+  <li>Add a drawing board example to the WebSocket examples.</li>
+  <li>Add support for directly serving gzipped versions of a resource via the
+      default servlet.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.0-doc/changelog.html">Tomcat 8 changelog</a>.
+</p>
+
+<p>The purpose of this release candidate is to give users an opportunity to test
+Tomcat 8 and provide feedback to the Tomcat community. It has been given an
+alpha status which means that it is not judged as being ready for production
+usage. The implementations of the 4 Java EE 7 specifications are all complete
+but there is some internal refactoring to be completed before the alpha label
+is removed.</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat Native 1.1.29 Released" rtext="2013-10-15">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.1.29 of
+Tomcat Native.
+</p>
+<p style="text-align: center;">
+<a href="download-native.cgi">Download</a> |
+<a href="native-doc/miscellaneous/changelog.html">ChangeLog for 1.1.29</a>
+</p>
+</section>
+
+<section name="Tomcat 8.0.0-RC3 (alpha) Released" rtext="2013-09-23">
+<p>
+The Apache Tomcat Project is proud to announce the next release candidate for
+Apache Tomcat 8  - 8.0.0-RC3 (alpha). Tomcat 8 is aligned with Java EE 7. In
+addition to supporting updated versions of the Java EE specifications, Tomcat 8
+includes a number of improvements compared to Tomcat 7. The notable changes
+include:</p>
+<ul>
+  <li>Support for Java Servlet 3.1, JavaServer Pages 2.3, Java Unified
+      Expression Language 3.0 and Java WebSocket 1.0.</li>
+  <li>The default connector implementation is now the Java non-blocking
+      implementation (NIO) for both HTTP and AJP.</li>
+  <li>A new resources implementation that replaces Aliases, VirtualLoader, 
+      VirtualDirContext, JAR resources and external repositories with a single,
+      consistent approach for configuring additional web application resources.
+      The new resources implementation can also be used to implement overlays
+      (using a master WAR as the basis for multiple web applications that each
+      have their own customizations).</li>
+</ul>
+<p>
+Apache Tomcat 8.0.0-RC3 includes numerous fixes for issues identified in RC1 as
+well as a number of other enhancements and changes. The notable changes since
+RC1 include:</p>
+<ul>
+  <li>Switch to UTF-8 by default for connectors and example web applications.
+      </li>
+  <li>Switch to the asynchronous logger and one line formatter by default.</li>
+  <li>Add Servlet 3.1 non-blocking IO support to the AJP connectors.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.0-doc/changelog.html">Tomcat 8 changelog</a>.
+</p>
+
+<p>The purpose of this release candidate is to give users an opportunity to test
+Tomcat 8 and provide feedback to the Tomcat community. It has been given an
+alpha status which means that it is not judged as being ready for production
+usage. The implementations of the 4 Java EE 7 specifications are all complete
+but there is some internal refactoring to be completed before the alpha label
+is removed.</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 8.0.0-RC1 (alpha) Released" rtext="2013-08-05">
+<p>
+The Apache Tomcat Project is proud to announce the first release candidate for
+Apache Tomcat 8  - 8.0.0-RC1 (alpha). Tomcat 8 is aligned with Java EE 7. In
+addition to supporting updated versions of the Java EE specifications, Tomcat 8
+includes a number of improvements compared to Tomcat 7. The notable changes
+include:</p>
+<ul>
+  <li>Support for Java Servlet 3.1, JavaServer Pages 2.3, Java Unified
+      Expression Language 3.0 and Java WebSocket 1.0.</li>
+  <li>The default connector implementation is now the Java non-blocking
+      implementation (NIO) for both HTTP and AJP.</li>
+  <li>A new resources implementation that replaces Aliases, VirtualLoader, 
+      VirtualDirContext, JAR resources and external repositories with a single,
+      consistent approach for configuring additional web application resources.
+      The new resources implementation can also be used to implement overlays
+      (using a master WAR as the basis for multiple web applications that each
+      have their own customizations).</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.0-doc/changelog.html">Tomcat 8 changelog</a>.
+</p>
+
+<p>The purpose of this release candidate is to give users an opportunity to test
+Tomcat 8 and provide feedback to the Tomcat community. It has been given an
+alpha status which means that it is not judged as being ready for production
+usage. The implementations of the 4 Java EE 7 specifications are all complete
+but there is some internal refactoring to be completed before the alpha label
+is removed.</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+
+<section name="Tomcat 7.0.42 Released" rtext="2013-07-05">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.42 of
+Apache Tomcat. This release contains a number of bug fixes
+and improvements compared to version 7.0.41. The notable changes include:
+</p>
+<ul>
+  <li>Add support for time to first byte in the AccessLogValve. Patch provided
+      by Jeremy Boynes.</li>
+  <li>Correct a regression introduced in 7.0.39 (refactoring of base 64 encoding
+      and decoding) that broke the JNDI Realm when userPassword was set and
+      passwords were hashed with MD5 or SHA1.</li>
+  <li>Ensure that the build process produces Javadoc that is not vulnerable to
+      CVE-2013-1571. Based on a patch by Uwe Schindler.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.42_(markt)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.42_(markt)">ChangeLog for 7.0.42</a>
+</p>
+</section>
+
+
+<section name="Tomcat 7.0.41 Released" rtext="2013-06-10">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.41 of
+Apache Tomcat. This release contains a number of bug fixes
+and improvements compared to version 7.0.40. The notable changes include:
+</p>
+<ul>
+  <li>Add a Servlet Filter that implements
+      <a href="http://www.w3.org/TR/cors/" rel="nofollow">CORS</a>. Patch
+      provided by Mohit Soni.</li>
+  <li>Ensure that when Tomcat's anti-resource locking features are used that
+      the temporary copy of the web application and not the original is removed
+      when the web application stops.</li>
+  <li>Add support for the version attribute to the deploy command of the Ant
+      tasks for interfacing with the text based Manager application. Patch
+      provided by Sergey Tcherednichenko.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.41_(markt)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.41_(markt)">ChangeLog for 7.0.41</a>
+</p>
+</section>
+
+
+<section name="Tomcat 7.0.40 Released" rtext="2013-05-09">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.40 of
+Apache Tomcat. This release contains a security fix and a number of bug fixes
+and improvements compared to version 7.0.39. The notable changes include:
+</p>
+<ul>
+<li>A fix for CVE-2013-2071 (bug <bug>54178</bug>) an information disclosure
+    issue.</li>
+<li>Various fixes to stop Tomcat attempting to parse text that looks like an EL
+    expression in a JSP document as an EL expression when EL expressions are
+    either not permitted or not enabled.</li>
+<li>Improved handling and reporting if a ConcurrentModificationException occurs
+    while checking for memory leaks when a web application is being stopped.
+    </li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.40_(markt)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.40_(markt)">ChangeLog for 7.0.40</a>
+</p>
+</section>
+
+<section name="Tomcat 6.0.37 Released" rtext="2013-05-03">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 6.0.37 of
+Apache Tomcat. This release includes security and bug fixes over Apache Tomcat
+6.0.36.
+
+</p>
+<p style="text-align: center;">
+<a href="download-60.cgi">Download</a> |
+<a href="tomcat-6.0-doc/changelog.html#Tomcat_6.0.37_(jfclere)">ChangeLog for 6.0.37</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.39 Released" rtext="2013-03-26">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.39 of
+Apache Tomcat. This release contains a number of bug fixes and improvements
+compared to version 7.0.37. The notable changes include:
+</p>
+<ul>
+<li>There have been multiple improvements in the bytes to/from characters
+    conversion process. The core conversion process has been refactored to use
+    the NIO APIs. This has resulted in a number of improvements including
+    invalid UTF-8 byte sequences at the end of a series of bytes now trigger a
+    conversion error rather than being silently swallowed. Errors detected in
+    request URIs will be replaced with the replacement character (allowing the
+    application to respond to the invalid URI as it wishes) and errors in
+    request bodies will trigger an IOException. The use of the JVM provided
+    UTF-8 decoder has been replaced by a better UTF-8 decoder derived from
+    Apache Harmony. This improved decoder has earlier detection of error
+    conditions and more closely follows the Unicode specification regarding the
+    use of replacement characters.</li>
+<li>The annotation scanning process now provides more information if the scan
+    fails due to broken class dependencies. There is now enough information to
+    identify the class(es) at fault. The JAR scanning process that supports
+    annotation scanning has also seen multiple improvements and fixes including
+    the exclusion by default of the Bootstrap class path from the scan.</li>
+<li>Upgraded a number of Tomcat&apos;s dependencies including Commons Daemon to
+    1.0.14, Commons IO to 2.4 and Commons FileUpload to r1458500. A new
+    dependency on Commons Codec was added to replace Tomcat's internal Base64
+    encoder/decoder.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.39_(markt)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.39_(markt)">ChangeLog for 7.0.39</a>
+</p>
+</section>
+
+<section name="Tomcat Maven Plugin 2.1 Released" rtext="2013-02-25">
+<p>
+The Apache Tomcat team is pleased to
+<a href="http://mail-archives.apache.org/mod_mbox/tomcat-users/201302.mbox/%3CCAPoyBqQwb6wHOFnOn5Pd3BoQ-TsvYMu%2BYeAjxSzcZRaX2ZR-hw%40mail.gmail.com%3E">announce</a>
+the release of Tomcat Maven Plugin 2.1.
+</p>
+<p>
+The <a href="maven-plugin.html">Apache Tomcat Maven Plugin</a> provides goals
+to manipulate WAR projects within the Apache Tomcat servlet container.
+</p>
+<p>
+The binaries are available from Maven repositories. You should specify the
+version in your project's plugin configuration:
+</p>
+<source><![CDATA[<plugin>
+  <groupId>org.apache.tomcat.maven</groupId>
+  <artifactId>tomcat7-maven-plugin</artifactId>
+  <version>2.1</version>
+</plugin>]]></source>
+<p>or</p>
+<source><![CDATA[<plugin>
+  <groupId>org.apache.tomcat.maven</groupId>
+  <artifactId>tomcat6-maven-plugin</artifactId>
+  <version>2.1</version>
+</plugin>]]></source>
+</section>
+
+<section name="Tomcat 7.0.37 Released" rtext="2013-02-18">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.37 of
+Apache Tomcat. This release contains a small number of bug fixes and
+improvements compared to version 7.0.35. The notable changes include:
+</p>
+<ul>
+<li>Fix the regression in the JspC tool that is used to pre-compile JSP pages
+    introduced in 7.0.35. See
+    <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=54440">issue
+    54440</a> for details. Patch provided by Sheldon Shao.</li>
+<li>Improve handling of <code>ciphers</code> and
+    <code>sslEnabledProtocols</code> options for the BIO and NIO connectors. The
+    behaviour of each connector is now the same. The values provided are pruned
+    to those supported by the SSL implementation and when none of the remaining
+    values are supported a warning is issued and the connector configured with
+    an empty set of options (which essentially disables HTTPS support).</li>
+<li>Update to Commons Daemon 1.0.13.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.37_(markt)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.37_(markt)">ChangeLog for 7.0.37</a>
+</p>
+</section>
+
+
+<section name="Tomcat 7.0.35 Released" rtext="2013-01-16">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.35 of
+Apache Tomcat. This release contains a small number of bug fixes and
+improvements compared to version 7.0.34. The notable changes include:
+</p>
+<ul>
+<li>Integrate documentation of Tomcat 7 with Apache Comments System. People can
+    leave their comments when reading the <a
+    href="http://tomcat.apache.org/tomcat-7.0-doc/index.html">documentation</a>
+    online.
+    </li>
+<li>Improve detection of JAVA_HOME on OSX.</li>
+<li>Add support for auto-detection and configuration of JARs on the classpath
+    that provide tag plug-in implementations. Based on a patch by Sheldon
+    Shao.</li>
+</ul>
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.35_(markt)">Tomcat 7 changelog</a>.
+</p>
+
+<p><strong>Notice:</strong> The JspC tool that is used to pre-compile JSP pages
+is broken in this release. See
+<a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=54440">issue 54440</a>
+for details.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a> |
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.35_(markt)">ChangeLog for 7.0.35</a>
+</p>
+</section>
+
+<section name="Older news">
+<p>Announcements from previous years can be found here:</p>
+<ul>
+  <li><a href="oldnews-2012.html">year 2012</a></li>
+  <li><a href="oldnews-2011.html">year 2011</a></li>
+  <li><a href="oldnews-2010.html">year 2010</a></li>
+</ul>
+</section>
+
+</body>
+</document>

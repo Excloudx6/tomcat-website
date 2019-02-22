@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Team</author>
+    <title>Tomcat Maven Plugin</title>
+  </properties>
+
+  <body>
+
+    <section name="Maven Plugin">
+
+      <p>
+        The Apache Tomcat Maven Plugin provides goals to manipulate WAR
+        projects within the Apache Tomcat servlet container.
+        You can run your War Apache Maven project through
+        <a href="http://maven.apache.org/">Apache Maven</a> without
+        deploying your WAR file to an Apache Tomcat instance.
+      </p>
+      <p>
+        More details are available in the Maven generated site:
+      </p>
+      <ul>
+        <li><a href="maven-plugin-trunk/">Trunk documentation</a> (under development)</li>
+        <li><a href="maven-plugin-2.2/">Version 2.2</a> (released version: 2013-11-11)</li>
+        <li><a href="maven-plugin-2.1/">Version 2.1</a> (released version: 2013-02-25)</li>
+        <li><a href="maven-plugin-2.0/">Version 2.0</a> (released version: 2012-09-14)</li>
+        <li><a href="maven-plugin-2.0-beta-1/">Version 2.0-beta-1</a> (released version: 2012-02-01)</li>
+      </ul>
+      <subsection name="Sources">
+        <p>
+          Sources are located in the following svn path:
+           http://svn.apache.org/repos/asf/tomcat/maven-plugin/trunk/
+        </p>
+      </subsection>
+      <subsection name="Bug Tracker">
+        <p>
+          The Bug Tracker to use is the ASF Jira instance:
+          <a href="https://bz.apache.org/jira/browse/MTOMCAT">https://bz.apache.org/jira/browse/MTOMCAT</a>
+        </p>
+      </subsection>
+
+    </section>
+
+
+  </body>
+</document>
+

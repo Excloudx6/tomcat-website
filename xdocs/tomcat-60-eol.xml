@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>End of life for Apache Tomcat 6.0.x</title>
+  </properties>
+
+<body>
+
+<section name="End of life for Apache Tomcat 6.0.x" rtext="2015-06-03">
+<p>The Apache Tomcat team announces that support for Apache Tomcat 6.0.x
+will end on 31 December 2016.</p>
+
+<p>This means that after 31 December 2016:</p>
+<ul>
+  <li>releases from the 6.0.x branch are highly unlikely</li>
+  <li>bugs affecting only the 6.0.x branch will not be addressed</li>
+  <li>security vulnerability reports will not be checked against the 6.0.x
+    branch</li>
+</ul>
+
+<p>Three months later (i.e. some time after 30 March 2017)</p>
+<ul>
+  <li>the 6.0.x download pages will be removed</li>
+  <li>the latest 6.0.x release will be removed from the mirror system</li>
+  <li>the 6.0.x branch in svn will move from <code>/tomcat/tc6.0.x</code> to
+    <code>/tomcat/archive/tc6.0.x</code></li>
+  <li>the links to the 6.0.x documentation will be removed from
+    tomcat.apache.org</li>
+  <li>The bugzilla project for 6.0.x will be made read-only</li>
+</ul>
+
+<p>Note that all 6.0.x releases will always be available from the archive.</p>
+
+<p>It is anticipated that the final 6.0.x release will be made shortly
+before 31 December 2016.</p>
+
+</section>
+
+</body>
+</document>
+

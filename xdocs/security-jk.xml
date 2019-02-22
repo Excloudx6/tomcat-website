@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Apache Tomcat JK Connectors vulnerabilities</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+  <section name="Apache Tomcat JK Connectors vulnerabilities">
+    <p>This page lists all security vulnerabilities fixed in released versions
+       of Apache Tomcat Jk Connectors. Each vulnerability is given a
+       <a href="security-impact.html">security impact rating</a> by the Apache
+       Tomcat security team &#x2014; please note that this rating may vary from
+       platform to platform. We also list the versions of Apache Tomcat JK
+       Connectors the flaw is known to affect, and where a flaw has not been
+       verified list the version with a question mark.</p>
+
+    <p>This page has been created from a review of the Apache Tomcat archives
+       and the CVE list. Please send comments or corrections for these
+       vulnerabilities to the <a href="security.html">Tomcat
+       Security Team</a>.</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat JK Connector 1.2.46">
+
+    <p><i>Note: The issue below was fixed in Apache Tomcat JK Connector 1.2.45
+       but the release vote for the 1.2.45 release candidate did not pass.
+       Therefore, although users must download 1.2.46 to obtain a version that
+       includes the fix for this issue, version 1.2.45 is not included in the
+       list of affected versions.</i></p>
+
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2018-11759</cve></p>
+
+    <p>The Apache Web Server (httpd) specific code that normalised the requested 
+       path before matching it to the URI-worker map did not handle some edge
+       cases correctly. If only a sub-set of the URLs supported by Tomcat were
+       exposed via httpd, then it was possible for a specially constructed
+       request to expose application functionality through the reverse proxy
+       that was not intended for clients accessing the application via the
+       reverse proxy. It was also possible in some configurations for a
+       specially constructed request to bypass the access controls configured in
+       httpd. While there is some overlap between this issue and CVE-2018-1323,
+       they are not identical.</p>
+
+    <p>This was fixed in revisions <revlink rev="1838836">1838836</revlink>,
+       <revlink rev="1838857">1838857</revlink>,
+       <revlink rev="1838871">1838871</revlink>,
+       <revlink rev="1838882">1838882</revlink>,
+       <revlink rev="1840444">1840444</revlink>,
+       <revlink rev="1840445">1840445</revlink>,
+       <revlink rev="1840448">1840448</revlink>,
+       <revlink rev="1840449">1840449</revlink>,
+       <revlink rev="1840450">1840450</revlink>,
+       <revlink rev="1840451">1840451</revlink>,
+       <revlink rev="1840491">1840491</revlink>,
+       <revlink rev="1840588">1840588</revlink>,
+       <revlink rev="1840592">1840592</revlink>,
+       <revlink rev="1840603">1840603</revlink>,
+       <revlink rev="1840604">1840604</revlink>,
+       <revlink rev="1840610">1840610</revlink>,
+       <revlink rev="1840629">1840629</revlink> and
+       <revlink rev="1841463">1841463</revlink>.</p>
+
+    <p>Affects: JK 1.2.0-1.2.44</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat JK Connector 1.2.43">
+
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2018-1323</cve></p>
+
+    <p>The IIS/ISAPI specific code that normalised the requested path before
+       matching it to the URI-worker map did not handle some edge cases
+       correctly. If only a sub-set of the URLs supported by Tomcat were exposed
+       via IIS, then it was possible for a specially constructed request to
+       expose application functionality through the reverse proxy that was not
+       intended for clients accessing the application via the reverse proxy.</p>
+
+    <p>This was fixed in <revlink rev="1825658">revision 1825658</revlink>.</p>
+
+    <p>Affects: JK 1.2.0-1.2.42</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat JK Connector 1.2.42">
+
+    <p><strong>Moderate: Buffer Overflow</strong>
+       <cve>CVE-2016-6808</cve></p>
+
+    <p>The IIS/ISAPI specific code implements special handling when a virtual
+       host is present. The virtual host name and the URI are concatenated to
+       create a virtual host mapping rule. The length checks prior to writing
+       to the target buffer for this rule did not take account of the length of
+       the virtual host name, creating the potential for a buffer overflow.</p>
+
+    <p>It is not known if this overflow is exploitable.</p>
+
+    <p>This was fixed in <revlink rev="1762057">revision 1762057</revlink>.</p>
+
+    <p>Affects: JK 1.2.0-1.2.41</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat JK Connector 1.2.41">
+
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2014-8111</cve></p>
+
+    <p>Multiple adjacent slashes in a request URI were not collapsed to a single
+       slash before comparing the request URI to the configured mount and
+       unmount patterns. It is therefore possible for an attacker to use a
+       request URI containing multiple adjacent slashes to bypass the
+       restrictions of a <code>JkUnmount</code> directive. This may expose
+       application functionality through the reverse proxy that is not intended
+       for clients accessing the application via the reverse proxy.</p>
+
+    <p>As of mod_jk 1.2.41, slashes are collapsed by default. The behaviour is
+       now configurable via a new <code>JkOption</code> for httpd (values
+       <code>CollapseSlashesAll</code>, <code>CollapseSlashesNone</code> or
+       <code>CollapseSlashesUnmount</code>) and via a new property
+       <code>collapse_slashes</code> for IIS (values <code>all</code>,
+       <code>none</code>, <code>unmount</code>).</p>
+
+    <p>This was fixed in <revlink rev="1647017">revision 1647017</revlink>.</p>
+
+    <p>Affects: JK 1.2.0-1.2.40</p>
+
+  </section>
+  
+  <section name="Fixed in Apache Tomcat JK Connector 1.2.27">
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2008-5519</cve></p>
+
+    <p>Situations where faulty clients set Content-Length without providing
+       data, or where a user submits repeated requests very quickly, may permit
+       one user to view the response associated with a different user's request.
+       </p>
+
+    <p>This was fixed in <revlink rev="702540">revision 702540</revlink>.</p>
+
+    <p>Affects: JK 1.2.0-1.2.26<br/>
+       Source shipped with Tomcat 4.0.0-4.0.6, 4.1.0-4.1.36, 5.0.0-5.0.30,
+       5.5.0-5.5.27</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat JK Connector 1.2.23">
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2007-1860</cve></p>
+
+    <p>The issue is related to
+       <cve>CVE-2007-0450</cve>, the patch for which was insufficient.</p>
+
+    <p>When multiple components (firewalls, caches, proxies and Tomcat)
+       process a request, the request URL should not get decoded multiple times
+       in an iterative way by these components. Otherwise it might be possible
+       to pass access control rules implemented on front of the last component
+       by applying multiple URL encoding to the request.
+       </p>
+
+    <p>mod_jk before version 1.2.23 by default decoded request URLs inside Apache
+       httpd and forwarded the encoded URL to Tomcat, which itself did a second
+       decoding. This made it possible to pass a prefix JkMount for /someapp,
+       but actually access /otherapp on Tomcat. Starting with version 1.2.23
+       by default mod_jk forwards the original unchanged request URL to Tomcat.
+       You can achieve the same level of security for older versions by setting
+       the forwarding option "JkOption ForwardURICompatUnparsed".
+       </p>
+
+    <p>Please note, that your configuration might contain a different forwarding
+       JkOption. In this case, please consult the
+       <a href="http://tomcat.apache.org/connectors-doc/reference/apache.html#Forwarding">
+       forwarding documentation</a> concerning the security implications.
+       The new default setting is more secure than before, but it breaks
+       interoperability with mod_rewrite.
+       </p>
+
+    <p>Affects: JK 1.2.0-1.2.22 (httpd mod_jk module only)<br/>
+       Source shipped with Tomcat 4.0.0-4.0.6, 4.1.0-4.1.36, 5.0.0-5.0.30,
+       5.5.0-5.5.23</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat JK Connector 1.2.21">
+    <p><strong>Critical: Arbitrary code execution and denial of service</strong>
+       <cve>CVE-2007-0774</cve></p>
+
+    <p>An unsafe memory copy in the URI handler for the native JK connector
+       could result in a stack overflow condition which could be leveraged to
+       execute arbitrary code or crash the web server.</p>
+
+    <p>Affects: JK 1.2.19-1.2.20<br/>
+       Source shipped with: Tomcat 4.1.34, 5.5.20</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat JK Connector 1.2.16">
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2006-7197</cve></p>
+
+    <p>The Tomcat AJP connector contained a bug that sometimes set a too long
+       length for the chunks delivered by send_body_chunks AJP messages. Bugs of
+       this type can cause mod_jk to read beyond buffer boundaries and thus
+       reveal sensitive memory information to a client.</p>
+
+    <p>Affects: JK 1.2.0-1.2.15<br/>
+       Source shipped with: Tomcat 4.0.0-4.0.6, 4.1.0-4.1.32, 5.0.0-5.0.30,
+       5.5.0-5.5.16</p>
+
+  </section>
+
+</body>
+</document>
+

@@ -1,0 +1,218 @@
+<project name="build-site" default="docs" basedir=".">
+
+  <!-- ===================== Initialize Property Values ==================== -->
+
+  <!-- We read customizable properties from "build.properties.default"       -->
+  <!-- and also from "build.properties" if it exists.                        -->
+  <!-- The values in "build.properties" have stronger preference.            -->
+  <!-- If you want to customize your build, you can either change the values -->
+  <!-- directly in the default file, or create a new build.properties and    -->
+  <!-- set the values there. This way you don't have to change a file which  -->
+  <!-- is part of the original project source code.                          -->
+  <!-- See "build.properties.default" in the top level directory for some    -->
+  <!-- property values you may customize.                                    -->
+  <property file="${user.home}/build.properties"/>
+  <property file="build.properties"/>
+  <property file="build.properties.default"/>
+
+  <property name="force" value="false" />
+
+  <property name="docs.src"         location="xdocs"/>
+  <property name="docs.dest"        location="docs"/>
+  <property name="faq.src"          location="xdocs-faq"/>
+  <property name="faq.dest"         location="${docs.dest}/faq"/>
+
+  <target name="docs"
+          description="Render HTML Pages via XSLT">
+
+    <!-- Transform the xml files - requires Ant 1.6.2 -->
+
+    <!-- Transform the top-level directory -->
+    <echo message="Transforming the site documents..." />
+    <xslt basedir="${docs.src}"
+          destdir="${docs.dest}"
+          extension=".html"
+          style="${docs.src}/stylesheets/tomcat-site.xsl"
+          excludes="project.xml,sitemap.xml,sitemap-main.xml"
+          includes="*.xml"
+          force="${force}">
+      <param name="relative-path" expression="."/>
+    </xslt>
+
+    <!-- Copy static sitemap files -->
+    <echo message="Copying sitemap files..." />
+    <copy todir="${docs.dest}" filtering="no" overwrite="${force}">
+      <fileset dir="${docs.src}">
+        <include name="sitemap*.xml"/>
+        <include name="robots.txt"/>
+      </fileset>
+    </copy>
+
+    <!-- Copy static resource files -->
+    <echo message="Copying static resource files..." />
+    <copy todir="${docs.dest}/res" filtering="no" overwrite="${force}">
+      <fileset dir="${docs.src}/res">
+        <include name="**"/>
+      </fileset>
+    </copy>
+
+    <!-- Copy static PDFs -->
+    <echo message="Copying PDFs..." />
+    <copy todir="${docs.dest}" filtering="no" overwrite="${force}">
+      <fileset dir="${docs.src}">
+        <include name="**/*.pdf"/>
+      </fileset>
+    </copy>
+
+    <!-- Copy DOAP -->
+    <echo message="Copying DOAP..." />
+    <copy todir="${docs.dest}" filtering="no" overwrite="${force}">
+      <fileset dir="${docs.src}">
+        <include name="**/*.rdf"/>
+      </fileset>
+    </copy>
+
+    <!-- Copy download CGI scripts -->
+    <echo message="Copying CGI scripts..." />
+    <copy todir="${docs.dest}" filtering="no" overwrite="${force}">
+      <fileset dir="${docs.src}">
+        <include name="**/*.cgi"/>
+      </fileset>
+    </copy>
+
+    <!-- Copy favicon -->
+    <echo message="Copying favicon..." />
+    <copy todir="${docs.dest}" filtering="no" overwrite="${force}">
+      <fileset dir="${docs.src}">
+        <include name="**/*.ico"/>
+      </fileset>
+    </copy>
+
+  </target>
+
+  <target name="release-7"
+          depends="docs"
+          description="Used after a release to update the docs for Tomcat 7.0">
+
+    <!-- Download the latest version -->
+    <antcall target="downloadgz">
+      <param name="sourcefile" value="${tomcat70.loc}"/>
+      <param name="destfile" value="${tomcat70.home}/tomcat-7.0-doc/index.html"/>
+      <param name="destdir" value="${tomcat70.home}"/>
+    </antcall>
+
+    <!-- Delete the old version -->
+    <delete dir="${docs.dest}/tomcat-7.0-doc"/>
+
+    <!-- Copy the latest version -->
+    <copy todir="${docs.dest}/tomcat-7.0-doc" >
+      <fileset dir="${tomcat70.home}/tomcat-7.0-doc" >
+        <exclude name="/WEB-INF/**" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="release-85"
+          depends="docs"
+          description="Used after a release to update the docs for Tomcat 8.5">
+
+    <!-- Download the latest version -->
+    <antcall target="downloadgz">
+      <param name="sourcefile" value="${tomcat85.loc}"/>
+      <param name="destfile" value="${tomcat85.home}/tomcat-8.5-doc/index.html"/>
+      <param name="destdir" value="${tomcat85.home}"/>
+    </antcall>
+
+    <!-- Delete the old version -->
+    <delete dir="${docs.dest}/tomcat-8.5-doc"/>
+
+    <!-- Copy the latest version -->
+    <copy todir="${docs.dest}/tomcat-8.5-doc" >
+      <fileset dir="${tomcat85.home}/tomcat-8.5-doc" >
+        <exclude name="/WEB-INF/**" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="release-9"
+          depends="docs"
+          description="Used after a release to update the docs for Tomcat 9.0">
+
+    <!-- Download the latest version -->
+    <antcall target="downloadgz">
+      <param name="sourcefile" value="${tomcat90.loc}"/>
+      <param name="destfile" value="${tomcat90.home}/tomcat-9.0-doc/index.html"/>
+      <param name="destdir" value="${tomcat90.home}"/>
+    </antcall>
+
+    <!-- Delete the old version -->
+    <delete dir="${docs.dest}/tomcat-9.0-doc"/>
+
+    <!-- Copy the latest version -->
+    <copy todir="${docs.dest}/tomcat-9.0-doc" >
+      <fileset dir="${tomcat90.home}/tomcat-9.0-doc" >
+        <exclude name="/WEB-INF/**" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="release-native"
+          depends="docs"
+          description="Used after a 1.2.x release to update the docs for Tomcat Native">
+
+    <!-- Delete the old version -->
+    <delete dir="${docs.dest}/native-doc"/>
+
+    <!-- Update the Tomcat native docs -->
+    <ant dir="native-xdocs" antfile="build.xml" target="build-main">
+      <property name="build.dir" value="../docs" />
+      <property name="dist.name" value="native-doc" />
+    </ant>
+  </target>
+
+  <target name="release-jk"
+          depends="docs"
+          description="Used after a release to update the docs for Tomcat Connectors">
+
+    <!-- Delete the old version -->
+    <delete dir="${docs.dest}/connectors-doc"/>
+
+    <!-- Update the JK connectors docs -->
+    <ant dir="jk-xdocs" antfile="build.xml" target="build-main">
+      <property name="build.dir" value="../docs" />
+      <property name="dist.name" value="connectors-doc" />
+    </ant>
+  </target>
+
+  <!-- =============== Utility Targets to support downloads ================ -->
+
+  <target name="downloadgz" unless="exist" depends="setproxy,testexist">
+    <!-- Download and extract the package -->
+    <get src="${sourcefile}" dest="${base.path}/file.tar.gz" />
+    <gunzip src="${base.path}/file.tar.gz" dest="${base.path}/file.tar"/>
+    <untar src="${base.path}/file.tar" dest="${destdir}"/>
+    <delete file="${base.path}/file.tar"/>
+    <delete file="${base.path}/file.tar.gz"/>
+  </target>
+
+  <target name="setproxy" depends="proxyflags" if="useproxy">
+    <taskdef name="setproxy"
+            classname="org.apache.tools.ant.taskdefs.optional.net.SetProxy" />
+    <setproxy proxyhost="${proxy.host}" proxyport="${proxy.port}"
+              proxyuser="${proxy.user}" proxypassword="${proxy.password}" />
+    <echo message="Using ${proxy.host}:${proxy.port} to download ${sourcefile}"/>
+  </target>
+
+  <target name="proxyflags">
+    <!-- check proxy parameters. -->
+    <condition property="useproxy">
+      <equals arg1="${proxy.use}" arg2="on" />
+    </condition>
+  </target>
+
+  <target name="testexist">
+    <echo message="Testing  for ${destfile}"/>
+    <available file="${destfile}" property="exist"/>
+  </target>
+
+</project>

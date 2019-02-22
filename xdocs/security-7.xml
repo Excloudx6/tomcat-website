@@ -1,0 +1,1832 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Apache Tomcat 7 vulnerabilities</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+  <section name="Apache Tomcat 7.x vulnerabilities">
+    <p>This page lists all security vulnerabilities fixed in released versions
+       of Apache Tomcat 7.x. Each vulnerability is given a
+       <a href="security-impact.html">security impact rating</a> by the Apache
+       Tomcat security team &#x2014; please note that this rating may vary from
+       platform to platform. We also list the versions of Apache Tomcat the flaw
+       is known to affect, and where a flaw has not been verified list the
+       version with a question mark.</p>
+
+    <p><strong>Note:</strong> Vulnerabilities that are not Tomcat vulnerabilities
+       but have either been incorrectly reported against Tomcat or where Tomcat
+       provides a workaround are listed at the end of this page.</p>
+
+    <p>Please note that binary patches are never provided. If you need to
+       apply a source code patch, use the building instructions for the
+       Apache Tomcat version that you are using. For Tomcat 7.0 those are
+       <a href="/tomcat-7.0-doc/building.html"><code>building.html</code></a> and
+       <a href="/tomcat-7.0-doc/BUILDING.txt"><code>BUILDING.txt</code></a>.
+       Both files can be found in the <code>webapps/docs</code> subdirectory
+       of a binary distributive. You may also want to review the
+       <a href="/tomcat-7.0-doc/security-howto.html">Security Considerations</a>
+       page in the documentation.</p>
+
+    <p>If you need help on building or configuring Tomcat or other help on
+       following the instructions to mitigate the known vulnerabilities listed
+       here, please send your questions to the public
+       <a href="lists.html">Tomcat Users mailing list</a>
+    </p>
+
+    <p>If you have encountered an unlisted security vulnerability or other
+       unexpected behaviour that has <a href="security-impact.html">security
+       impact</a>, or if the descriptions here are incomplete,
+       please report them privately to the
+       <a href="security.html">Tomcat Security Team</a>. Thank you.
+    </p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.91" rtext="19 September 2018">
+  
+    <p><strong>Moderate: Open Redirect</strong>
+       <cve>CVE-2018-11784</cve></p>
+
+    <p>When the default servlet returned a redirect to a directory (e.g.
+       redirecting to <code>/foo/</code> when the user requested
+       <code>/foo</code>) a specially crafted URL could be used to cause the
+       redirect to be generated to any URI of the attackers choice.</p>
+
+    <p>This was fixed in revision <revlink rev="1840057">1840057</revlink>.</p>
+
+    <p>This issue was reported to the Apache Tomcat Security Team by Sergey
+       Bobrov on 28 August 2018 and made public on 3 October 2018.</p>
+
+    <p>Affects: 7.0.23 to 7.0.90</p>
+
+  </section>
+  
+  <section name="Fixed in Apache Tomcat 7.0.90" rtext="7 July 2018">
+
+    <p><strong>Low: host name verification missing in WebSocket client</strong>
+       <cve>CVE-2018-8034</cve></p>
+
+    <p>The host name verification when using TLS with the WebSocket client was
+       missing. It is now enabled by default.</p>
+
+    <p>This was fixed in revision <revlink rev="1833760">1833760</revlink>.</p>
+
+    <p>This issue was reported publicly on 11 June 2018 and formally announced as
+       a vulnerability on 22 July 2018.</p>
+
+    <p>Affects: 7.0.25 to 7.0.88</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.89" rtext="not released">
+  
+    <p><strong>Low: CORS filter has insecure defaults</strong>
+       <cve>CVE-2018-8014</cve></p>
+
+    <p>The defaults settings for the CORS filter are insecure and enable
+       <code>supportsCredentials</code> for all origins. It is expected that
+       users of the CORS filter will have configured it appropriately for their
+       environment rather than using it in the default configuration. Therefore,
+       it is expected that most users will not be impacted by this issue.</p>
+
+    <p>This was fixed in revision <revlink rev="1831730">1831730</revlink>.</p>
+
+    <p>This issue was reported publicly on 1 May 2018 and formally announced as
+       a vulnerability on 16 May 2018.</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.88" rtext="16 May 2018">
+
+    <p><strong>Important: A bug in the UTF-8 decoder can lead to DoS</strong>
+       <cve>CVE-2018-1336</cve></p>
+ 
+    <p>An improper handing of overflow in the UTF-8 decoder with
+       supplementary characters can lead to an infinite loop in the
+       decoder causing a Denial of Service.</p>
+
+    <p>This was fixed in revision <revlink rev="1830376">1830376</revlink>.</p>
+
+    <p>This issue was reported publicly on 6 April 2018 and formally announced as
+       a vulnerability on 22 July 2018.</p>
+
+    <p>Affects: 7.0.28 to 7.0.88</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.85" rtext="13 February 2018">
+  
+    <p><strong>Important: Security constraint annotations applied too
+       late</strong> <cve>CVE-2018-1305</cve></p>
+
+    <p>Security constraints defined by annotations of Servlets were only applied
+       once a Servlet had been loaded. Because security constraints defined in
+       this way apply to the URL pattern and any URLs below that point, it was
+       possible - depending on the order Servlets were loaded - for some
+       security constraints not to be applied. This could have exposed resources
+       to users who were not authorised to access them.</p>
+
+    <p>This was fixed in revisions <revlink rev="1823322">1823322</revlink> and
+       <revlink rev="1824360">1824360</revlink>.</p>
+
+    <p>This issue was identified by the Apache Tomcat Security on 1 February
+       2018 and made public on 23 February 2018.</p>
+
+    <p>Affects: 7.0.0 to 7.0.84</p>
+
+    <p><strong>Important: Security constraints mapped to context root are
+       ignored</strong> <cve>CVE-2018-1304</cve></p>
+
+    <p>The URL pattern of "" (the empty string) which exactly maps to the
+       context root was not correctly handled when used as part of a security
+       constraint definition. This caused the constraint to be ignored. It was,
+       therefore, possible for unauthorised users to gain access to web
+       application resources that should have been protected. Only security
+       constraints with a URL pattern of the empty string were affected.</p>
+
+    <p>This was fixed in revision <revlink rev="1823309">1823309</revlink>.</p>
+
+    <p>This issue was reported publicly as <bug>62067</bug> on 31 January 2018
+       and the security implications identified by the Apache Tomcat Security
+       Team the same day. It was made public on 23 February 2018.</p>
+
+    <p>Affects: 7.0.0 to 7.0.84</p>
+
+  </section>
+  
+  <section name="Fixed in Apache Tomcat 7.0.84" rtext="24 January 2018">
+
+    <p><strong>Low: Incorrectly documented CGI search algorithm</strong>
+       <cve>CVE-2017-15706</cve></p>
+
+    <p><i>Note: The issue below was fixed in Apache Tomcat 7.0.83 but the
+       release vote for the 7.0.83 release candidate did not pass. Therefore,
+       although users must download 7.0.84 to obtain a version that includes
+       the fix for this issue, version 7.0.83 is not included in the list of
+       affected versions.</i></p>
+
+    <p>As part of the fix for bug <bug>61201</bug>, the description of the
+       search algorithm used by the CGI Servlet to identify which script to
+       execute was updated. The update was not correct. As a result, some
+       scripts may have failed to execute as expected and other scripts may have
+       been executed unexpectedly. Note that the behaviour of the CGI servlet
+       has remained unchanged in this regard. It is only the documentation of
+       the behaviour that was wrong and has been corrected.</p>
+
+    <p>This was fixed in revision <revlink rev="1814828">1814828</revlink>.</p>
+
+    <p>This issue was reported to the Apache Tomcat Security Team by Jan Michael
+       Greiner on 17 September 2017 and made public on 31 January 2018.</p>
+
+    <p>Affects: 7.0.79 to 7.0.82</p>
+
+  </section>
+
+
+  <section name="Fixed in Apache Tomcat 7.0.82" rtext="4 October 2017">
+
+    <p><strong>Important: Remote Code Execution</strong>
+       <cve>CVE-2017-12617</cve></p>
+
+    <p>When running with HTTP PUTs enabled (e.g. via setting the
+       <code>readonly</code> initialisation parameter of the Default servlet to
+       false) it was possible to upload a JSP file to the server via a specially
+       crafted request. This JSP could then be requested and any code it
+       contained would be executed by the server.</p>
+
+    <p>This was fixed in revisions <revlink rev="1809978">1809978</revlink>,
+       <revlink rev="1809992">1809992</revlink>,
+       <revlink rev="1810014">1810014</revlink> and
+       <revlink rev="1810026">1810026</revlink>.</p>
+
+    <p>This issue was first reported publicly followed by multiple reports to
+       the Apache Tomcat Security Team on 20 September 2017.</p>
+
+    <p>Affects: 7.0.0 to 7.0.81</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.81" rtext="16 August 2017">
+
+    <p><strong>Important: Information Disclosure</strong>
+       <cve>CVE-2017-12616</cve></p>
+
+    <p>When using a VirtualDirContext it was possible to bypass security
+       constraints and/or view the source code of JSPs for resources served by
+       the VirtualDirContext using a specially crafted request.</p>
+
+    <p>This was fixed in revision <revlink rev="1804729">1804729</revlink>.</p>
+
+    <p>This issue was identified by the Tomcat Security Team on 10 August 2017
+       and made public on 19 September 2017.</p>
+
+    <p>Affects: 7.0.0 to 7.0.80</p>
+
+    <p><strong>Important: Remote Code Execution</strong>
+       <cve>CVE-2017-12615</cve></p>
+
+    <p><i>Note: The issue below was fixed in Apache Tomcat 7.0.80 but the
+       release vote for the 7.0.81 release candidate did not pass. Therefore,
+       although users must download 7.0.81 to obtain a version that includes
+       the fix for this issue, version 7.0.80 is not included in the list of
+       affected versions.</i></p>
+
+    <p>When running on Windows with HTTP PUTs enabled (e.g. via setting the
+       <code>readonly</code> initialisation parameter of the Default to false)
+       it was possible to upload a JSP file to the server via a specially
+       crafted request. This JSP could then be requested and any code it
+       contained would be executed by the server.</p>
+
+    <p>This was fixed in revisions <revlink rev="1804604">1804604</revlink> and
+       <revlink rev="1804729">1804729</revlink>.</p>
+
+    <p>This issue was reported responsibly to the Apache Tomcat Security Team by
+       iswin from 360-sg-lab (360观星实验室) on 26 July 2017 and made public on 19
+       September 2017.</p>
+
+    <p>Affects: 7.0.0 to 7.0.79</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.79" rtext="1 July 2017">
+
+    <p><strong>Moderate: Cache Poisoning</strong>
+       <cve>CVE-2017-7674</cve></p>
+
+    <p>The CORS Filter did not add an HTTP Vary header indicating that the
+       response varies depending on Origin. This permitted client and server
+       side cache poisoning in some circumstances.</p>
+
+    <p>This was fixed in revision <revlink rev="1795816">1795816</revlink>.</p>
+
+    <p>The issue was reported as bug <bug>61101</bug> on 16 May 2017. The full
+       implications of this issue were identified by the Tomcat Security Team
+       the same day. This issue was made public on 10 August 2017.</p>
+
+    <p>Affects: 7.0.41 to 7.0.78</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.78" rtext="16 May 2017">
+  
+    <p><strong>Important: Security Constraint Bypass</strong>
+       <cve>CVE-2017-5664</cve></p>
+
+    <p>The error page mechanism of the Java Servlet Specification requires that,
+       when an error occurs and an error page is configured for the error that
+       occurred, the original request and response are forwarded to the error
+       page. This means that the request is presented to the error page with the
+       original HTTP method.</p>
+
+   <p>If the error page is a static file, expected behaviour is to serve content
+      of the file as if processing a GET request, regardless of the actual HTTP
+      method. Tomcat's Default Servlet did not do this. Depending on the
+      original request this could lead to unexpected and undesirable results for
+      static error pages including, if the DefaultServlet is configured to
+      permit writes, the replacement or removal of the custom error page.</p>
+
+    <p>Notes for other user provided error pages:</p>
+    <ul>
+      <li>Unless explicitly coded otherwise, JSPs ignore the HTTP method.
+          JSPs used as error pages must ensure that they handle any error
+          dispatch as a GET request, regardless of the actual method.</li>
+      <li>By default, the response generated by a Servlet does depend on the
+          HTTP method. Custom Servlets used as error pages must ensure that
+          they handle any error dispatch as a GET request, regardless of the
+          actual method.</li>
+    </ul>
+
+    <p>This was fixed in revisions <revlink rev="1793471">1793471</revlink> and
+       <revlink rev="1793491">1793491</revlink>.</p>
+
+    <p>This issue was reported responsibly to the Apache Tomcat Security Team by
+       Aniket Nandkishor Kulkarni from Tata Consultancy Services Ltd, Mumbai,
+       India as a vulnerability that allowed the restrictions on OPTIONS and
+       TRACE requests to be bypassed on 21 April 2017. The full implications of
+       this issue were identified by the Tomcat Security Team on 24 April 2017.
+       This issue was made public on 6 June 2017.</p>
+
+    <p>Affects: 7.0.0 to 7.0.77</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.77" rtext="2 April 2017">
+
+  <p><strong>Important: Information Disclosure</strong>
+       <cve>CVE-2017-5647</cve></p>
+
+    <p>A bug in the handling of the pipelined requests when send file was used
+       resulted in the pipelined request being lost when send file processing of
+       the previous request completed. This could result in responses appearing
+       to be sent for the wrong request. For example, a user agent that sent
+       requests A, B and C could see the correct response for request A, the
+       response for request C for request B and no response for request C.</p>
+
+    <p>This was fixed in revision <revlink rev="1789008">1789008</revlink>.</p>
+
+    <p>This issue was identified by the Apache Tomcat Security Team on 20
+       March 2017 and made public on 10 April 2017.</p>
+
+    <p>Affects: 7.0.0 to 7.0.76</p>
+
+  </section>
+  
+  <section name="Fixed in Apache Tomcat 7.0.76" rtext="16 March 2017">
+
+  <p><strong>Low: Information Disclosure</strong>
+       <cve>CVE-2017-5648</cve></p>
+
+    <p>While investigating bug 60718, it was noticed that some calls to
+       application listeners did not use the appropriate facade object. When
+       running an untrusted application under a SecurityManager, it was
+       therefore possible for that untrusted application to retain a reference
+       to the request or response object and thereby access and/or modify
+       information associated with another web application.</p>
+
+    <p>This was fixed in revision <revlink rev="1785777">1785777</revlink>.</p>
+
+    <p>This issue was identified by the Apache Tomcat Security Team on 20
+       March 2017 and made public on 10 April 2017.</p>
+
+    <p>Affects: 7.0.0 to 7.0.75</p>
+
+  </section>
+  
+  <section name="Fixed in Apache Tomcat 7.0.75" rtext="24 January 2017">
+
+    <p><strong>Important: Information Disclosure</strong>
+       <cve>CVE-2016-8745</cve></p>
+
+    <p><i>Note: The issue below was fixed in Apache Tomcat 7.0.74 but the
+       release vote for the 7.0.74 release candidate did not pass. Therefore,
+       although users must download 7.0.75 to obtain a version that includes
+       the fix for this issue, version 7.0.74 is not included in the list of
+       affected versions.</i></p>
+
+    <p>A bug in the error handling of the send file code for the NIO HTTP
+       connector resulted in the current Processor object being added to the
+       Processor cache multiple times. This in turn meant that the same
+       Processor could be used for concurrent requests. Sharing a Processor can
+       result in information leakage between requests including, but not limited
+       to, session ID and the response body.</p>
+
+    <p>This was fixed in revision <revlink rev="1777471">1777471</revlink>.</p>
+
+    <p>This issue was identified as affecting 7.0.x by the Apache Tomcat Security
+       Team on 3 January 2016 and made public on 5 January 2017.</p>
+
+    <p>Affects: 7.0.0 to 7.0.73</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.73" rtext="14 November 2016">
+
+    <p><strong>Important: Remote Code Execution</strong>
+       <cve>CVE-2016-8735</cve></p>
+
+    <p>The <code>JmxRemoteLifecycleListener</code> was not updated to take
+       account of Oracle's fix for <cve>CVE-2016-3427</cve>. Therefore, Tomcat
+       installations using this listener remained vulnerable to a similar remote
+       code execution vulnerability. This issue has been rated as important
+       rather than critical due to the small number of installations using this
+       listener and that it would be highly unusual for the JMX ports to be
+       accessible to an attacker even when the listener is used.</p>
+
+    <p>This was fixed in revision <revlink rev="1767676">1767676</revlink>.</p>
+
+    <p>This issue was reported to the Apache Tomcat Security Team on 19 October
+       2016 and made public on 22 November 2016.</p>
+
+    <p>Affects: 7.0.0 to 7.0.72</p>
+
+    <p><strong>Important: Information Disclosure</strong>
+       <cve>CVE-2016-6816</cve></p>
+
+    <p>The code that parsed the HTTP request line permitted invalid characters.
+       This could be exploited, in conjunction with a proxy that also permitted
+       the invalid characters but with a different interpretation, to inject
+       data into the HTTP response. By manipulating the HTTP response the
+       attacker could poison a web-cache, perform an XSS attack and/or obtain
+       sensitive information from requests other then their own.</p>
+
+    <p>This was fixed in revision <revlink rev="1767675">1767675</revlink>.</p>
+
+    <p>This issue was reported to the Apache Tomcat Security Team on 11
+       October 2016 and made public on 22 November 2016.</p>
+
+    <p>Affects: 7.0.0 to 7.0.72</p>
+
+  </section>
+  
+  <section name="Fixed in Apache Tomcat 7.0.72" rtext="19 September 2016">
+  
+    <p><i>Note: The issues below were fixed in Apache Tomcat 7.0.71 but the
+       release vote for the 7.0.71 release candidate did not pass. Therefore,
+       although users must download 7.0.72 to obtain a version that includes
+       fixes for these issues, version 7.0.71 is not included in the list of
+       affected versions.</i></p>
+
+    <p><strong>Low: Unrestricted Access to Global Resources</strong>
+       <cve>CVE-2016-6797</cve></p>
+
+    <p>The ResourceLinkFactory did not limit web application access to global
+       JNDI resources to those resources explicitly linked to the web
+       application. Therefore, it was possible for a web application to access
+       any global JNDI resource whether an explicit ResourceLink had been
+       configured or not.</p>
+
+    <p>This was fixed in revision <revlink rev="1757275">1757275</revlink>.</p>
+
+    <p>This issue was identified by the Apache Tomcat Security Team on 18
+       January 2016 and made public on 27 October 2016.</p>
+
+    <p>Affects: 7.0.0 to 7.0.70</p>
+
+    <p><strong>Low: Security Manager Bypass</strong>
+       <cve>CVE-2016-6796</cve></p>
+
+    <p>A malicious web application was able to bypass a configured
+       SecurityManager via manipulation of the configuration parameters for the
+       JSP Servlet.</p>
+
+    <p>This was fixed in revisions <revlink rev="1758495">1758495</revlink> and
+       <revlink rev="1763236">1763236</revlink>.</p>
+
+    <p>This issue was identified by the Apache Tomcat Security Team on 27
+       December 2015 and made public on 27 October 2016.</p>
+
+    <p>Affects: 7.0.0 to 7.0.70</p>
+
+    <p><strong>Low: System Property Disclosure</strong>
+       <cve>CVE-2016-6794</cve></p>
+
+    <p>When a SecurityManager is configured, a web application's ability to read
+       system properties should be controlled by the SecurityManager. Tomcat's
+       system property replacement feature for configuration files could be used
+       by a malicious web application to bypass the SecurityManager and read
+       system properties that should not be visible.</p>
+
+    <p>This was fixed in revision <revlink rev="1754728">1754728</revlink>.</p>
+
+    <p>This issue was identified by the Apache Tomcat Security Team on 27
+       December 2015 and made public on 27 October 2016.</p>
+
+    <p>Affects: 7.0.0 to 7.0.70</p>
+
+    <p><strong>Low: Security Manager Bypass</strong>
+       <cve>CVE-2016-5018</cve></p>
+
+    <p>A malicious web application was able to bypass a configured
+       SecurityManager via a Tomcat utility method that was accessible to web
+       applications.</p>
+
+    <p>This was fixed in revisions <revlink rev="1754902">1754902</revlink> and
+       <revlink rev="1760309">1760309</revlink>.</p>
+
+    <p>This issue was discovered by Alvaro Munoz and Alexander Mirosh of the HP
+       Enterprise Security Team and reported to the Apache Tomcat Security Team
+       on 5 July 2016. It was made public on 27 October 2016.</p>
+
+    <p>Affects: 7.0.0 to 7.0.70</p>
+
+    <p><strong>Low: Timing Attack</strong>
+       <cve>CVE-2016-0762</cve></p>
+
+    <p>The Realm implementations did not process the supplied password if the
+       supplied user name did not exist. This made a timing attack possible to
+       determine valid user names. Note that the default configuration includes
+       the LockOutRealm which makes exploitation of this vulnerability
+       harder.</p>
+
+    <p>This was fixed in revision <revlink rev="1758502">1758502</revlink>.</p>
+
+    <p>This issue was identified by the Apache Tomcat Security Team on 1 January
+       2016 and made public on 27 October 2016.</p>
+
+    <p>Affects: 7.0.0 to 7.0.70</p>
+
+  </section>
+  
+  <section name="Fixed in Apache Tomcat 7.0.70" rtext="20 June 2016">
+  
+    <p><strong>Moderate: Denial of Service</strong>
+       <cve>CVE-2016-3092</cve></p>
+
+    <p>Apache Tomcat uses a package renamed copy of Apache Commons FileUpload to
+       implement the file upload requirements of the Servlet specification. A
+       denial of service vulnerability was identified in Commons FileUpload that
+       occurred when the length of the multipart boundary was just below the
+       size of the buffer (4096 bytes) used to read the uploaded file. This
+       caused the file upload process to take several orders of magnitude
+       longer than if the boundary was the typical tens of bytes long.</p>
+
+    <p>This was fixed in revision <revlink rev="1743742">1743742</revlink>.</p>
+
+    <p>This issue was identified by the TERASOLUNA Framework Development Team
+       and reported to the Apache Commons team via JPCERT on 9 May 2016. It was
+       made public on 21 June 2016.</p>
+
+    <p>Affects: 7.0.0 to 7.0.69</p>
+
+  </section>
+  
+  <section name="Fixed in Apache Tomcat 7.0.68" rtext="16 February 2016">
+
+    <p><strong>Low: Directory disclosure</strong>
+       <cve>CVE-2015-5345</cve></p>
+
+    <p>When accessing a directory protected by a security constraint with a URL
+       that did not end in a slash, Tomcat would redirect to the URL with the
+       trailing slash thereby confirming the presence of the directory before
+       processing the security constraint. It was therefore possible for a user
+       to determine if a directory existed or not, even if the user was not
+       permitted to view the directory. The issue also occurred at the root of a
+       web application in which case the presence of the web application was
+       confirmed, even if a user did not have access.</p>
+
+    <p>The solution was to implement the redirect in the DefaultServlet so that
+       any security constraints and/or security enforcing Filters were processed
+       before the redirect. The Tomcat team recognised that moving the redirect
+       could cause regressions so two new Context configuration options
+       (<code>mapperContextRootRedirectEnabled</code> and
+       <code>mapperDirectoryRedirectEnabled</code>) were introduced. The initial
+       default was <code>false</code> for both since this was more secure. 
+       However, due to regressions such as
+       <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=58765">Bug
+       58765</a> the default for <code>mapperContextRootRedirectEnabled</code>
+       was later changed to true since it was viewed that the regression was
+       more serious than the security risk associated with being able to
+       determine if a web application was deployed at a given path.</p>
+
+    <p>This was fixed in revisions <revlink rev="1715213">1715213</revlink>,
+       <revlink rev="1716860">1716860</revlink> and
+       <revlink rev="1717212">1717212</revlink>.</p>
+
+    <p>This issue was identified by Mark Koek of QCSec on 12 October 2015 and
+    made public on 22 February 2016.</p>
+
+    <p>Affects: 7.0.0 to 7.0.67</p>
+
+    <p><strong>Moderate: CSRF token leak</strong>
+       <cve>CVE-2015-5351</cve></p>
+
+    <p>The index page of the Manager and Host Manager applications included a
+       valid CSRF token when issuing a redirect as a result of an
+       unauthenticated request to the root of the web application. If an
+       attacker had access to the Manager or Host Manager applications
+       (typically these applications are only accessible to internal users, not
+       exposed to the Internet), this token could then be used by the attacker
+       to construct a CSRF attack.</p>
+
+    <p>This was fixed in revisions <revlink rev="1720661">1720661</revlink> and
+       <revlink rev="1720663">1720663</revlink>.</p>
+
+    <p>This issue was identified by the Tomcat security team on 8 December 2015
+       and made public on 22 February 2016.</p>
+
+    <p>Affects: 7.0.1 to 7.0.67</p>
+
+    <p><strong>Low: Security Manager bypass</strong>
+       <cve>CVE-2016-0706</cve></p>
+
+    <p>This issue only affects users running untrusted web applications under a
+       security manager.</p>
+       
+    <p>The internal StatusManagerServlet could be loaded by a malicious web
+       application when a security manager was configured. This servlet could
+       then provide the malicious web application with a list of all deployed
+       applications and a list of the HTTP request lines for all requests
+       currently being processed. This could have exposed sensitive information
+       from other web applications, such as session IDs, to the web
+       application.</p>
+
+    <p>This was fixed in revision <revlink rev="1722801">1722801</revlink>.</p>
+
+    <p>This issue was identified by the Tomcat security team on 27 December 2015
+       and made public on 22 February 2016.</p>
+
+    <p>Affects: 7.0.0 to 7.0.67</p>
+
+    <p><strong>Moderate: Security Manager bypass</strong>
+       <cve>CVE-2016-0714</cve></p>
+
+    <p>This issue only affects users running untrusted web applications under a
+       security manager.</p>
+       
+    <p>Tomcat provides several session persistence mechanisms. The
+       <code>StandardManager</code> persists session over a restart. The
+       <code>PersistentManager</code> is able to persist sessions to files, a
+       database or a custom <code>Store</code>. The cluster implementation
+       persists sessions to one or more additional nodes in the cluster. All of
+       these mechanisms could be exploited to bypass a security manager. Session
+       persistence is performed by Tomcat code with the permissions assigned to
+       Tomcat internal code. By placing a carefully crafted object into a
+       session, a malicious web application could trigger the execution of
+       arbitrary code.</p>
+
+    <p>This was fixed in revisions <revlink rev="1726923">1726923</revlink> and
+       <revlink rev="1727034">1727034</revlink>.</p>
+
+    <p>This issue was identified by the Tomcat security team on 12 November 2015
+       and made public on 22 February 2016.</p>
+
+    <p>Affects: 7.0.0 to 7.0.67</p>
+
+    <p><strong>Moderate: Security Manager bypass</strong>
+       <cve>CVE-2016-0763</cve></p>
+
+    <p>This issue only affects users running untrusted web applications under a
+       security manager.</p>
+       
+    <p><code>ResourceLinkFactory.setGlobalContext()</code> is a public method
+       and was accessible to web applications even when running under a security
+       manager. This allowed a malicious web application to inject a malicious
+       global context that could in turn be used to disrupt other web
+       applications and/or read and write data owned by other web
+       applications.</p>
+
+    <p>This was fixed in revision <revlink rev="1725931">1725931</revlink>.</p>
+
+    <p>This issue was identified by the Tomcat security team on 18 January 2016
+       and made public on 22 February 2016.</p>
+
+    <p>Affects: 7.0.0 to 7.0.67</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.67" rtext="10 December 2015">
+  
+  <p><i>Note: The issue below was fixed in Apache Tomcat 7.0.66 but the
+       release vote for the 7.0.66 release candidate did not pass. Therefore,
+       although users must download 7.0.67 to obtain a version that includes a
+       fix for this issue, version 7.0.66 is not included in the list of
+       affected versions.</i></p>
+
+    <p><strong>Low: Session Fixation</strong>
+       <cve>CVE-2015-5346</cve></p>
+
+    <p>When recycling the <code>Request</code> object to use for a new request,
+    the <code>requestedSessionSSL</code> field was not recycled. This meant that
+    a session ID provided in the next request to be processed using the recycled
+    <code>Request</code> object could be used when it should not have been. This
+    gave the client the ability to control the session ID. In theory, this could
+    have been used as part of a session fixation attack but it would have been
+    hard to achieve as the attacker would not have been able to force the victim
+    to use the 'correct' <code>Request</code> object. It was also necessary for
+    at least one web application to be configured to use the SSL session ID as
+    the HTTP session ID. This is not a common configuration.</p>
+
+    <p>This was fixed in revision <revlink rev="1713187">1713187</revlink>.</p>
+
+    <p>This issue was identified by the Tomcat security team on 22 June 2014
+       and made public on 22 February 2016.</p>
+
+    <p>Affects: 7.0.5 to 7.0.65</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.65" rtext="19 October 2015">
+
+    <p><strong>Low: Limited directory traversal</strong>
+       <cve>CVE-2015-5174</cve></p>
+
+    <p>This issue only affects users running untrusted web applications under a
+       security manager.</p>
+       
+    <p>When accessing resources via the <code>ServletContext</code> methods
+       <code>getResource()</code> <code>getResourceAsStream()</code> and
+       <code>getResourcePaths()</code> the paths should be limited to the
+       current web application. The validation was not correct and paths of the
+       form <code>"/.."</code> were not rejected. Note that paths starting with
+       <code>"/../"</code> were correctly rejected. This bug allowed malicious
+       web applications running under a security manager to obtain a directory
+       listing for the directory in which the web application had been deployed.
+       This should not be possible when running under a security manager.
+       Typically, the directory listing that would be exposed would be for
+       <code>$CATALINA_BASE/webapps.</code></p>
+
+    <p>This was fixed in revisions <revlink rev="1696284">1696284</revlink> and
+       <revlink rev="1700898">1700898</revlink>.</p>
+
+    <p>This issue was identified by the Tomcat security team on 12 August 2015
+       and made public on 22 February 2016.</p>
+
+    <p>Affects: 7.0.0 to 7.0.64</p>
+  
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.59" rtext="4 February 2015">
+
+  <p><i>Note: The issue below was fixed in Apache Tomcat 7.0.58 but the
+       release vote for the 7.0.58 release candidate did not pass. Therefore,
+       although users must download 7.0.59 to obtain a version that includes a
+       fix for this issue, versions 7.0.58 is not included in the list of
+       affected versions.</i></p>
+
+    <p><strong>Moderate: Security Manager bypass</strong>
+       <cve>CVE-2014-7810</cve></p>
+
+    <p>Malicious web applications could use expression language to bypass the
+       protections of a Security Manager as expressions were evaluated within a
+       privileged code section.</p>
+
+    <p>This was fixed in revisions <revlink rev="1644019">1644019</revlink> and
+       <revlink rev="1645644">1645644</revlink>.</p>
+
+    <p>This issue was identified by the Tomcat security team on 2 November 2014
+       and made public on 14 May 2015.</p>
+
+    <p>Affects: 7.0.0 to 7.0.57</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.55" rtext="27 July 2014">
+
+    <p><strong>Important: Request Smuggling</strong>
+       <cve>CVE-2014-0227</cve></p>
+
+    <p>It was possible to craft a malformed chunk as part of a chunked request
+       that caused Tomcat to read part of the request body as a new request.</p>
+
+    <p>This was fixed in revision <revlink rev="1601333">1601333</revlink>.</p>
+
+    <p>This issue was identified by the Tomcat security team on 30 May 2014
+       and made public on 9 February 2015.</p>
+
+    <p>Affects: 7.0.0 to 7.0.54</p>
+
+    <p><strong>Low: Denial of Service</strong>
+       <cve>CVE-2014-0230</cve></p>
+
+    <p>When a response for a request with a request body is returned to the user
+    agent before the request body is fully read, by default Tomcat swallows the
+    remaining request body so that the next request on the connection may be
+    processed. There was no limit to the size of request body that Tomcat would
+    swallow. This permitted a limited Denial of Service as Tomcat would never
+    close the connection and a processing thread would remain allocated to the
+    connection.</p>
+
+    <p>This was fixed in revision <revlink rev="1603781">1603781</revlink>
+    and improved in revisions <revlink rev="1603811">1603811</revlink>,
+    <revlink rev="1609176">1609176</revlink> and
+    <revlink rev="1659295">1659295</revlink>.</p>
+
+    <p>This issue was disclosed to the Tomcat security team by AntBean@secdig
+    from the Baidu Security Team on 4 June 2014 and made public on 9 April
+    2015.</p>
+
+    <p>Affects: 7.0.0 to 7.0.54</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.54" rtext="released 22 May 2014">
+
+    <p><strong>Low: Information Disclosure</strong>
+       <cve>CVE-2014-0119</cve></p>
+
+    <p>In limited circumstances it was possible for a malicious web application
+       to replace the XML parsers used by Tomcat to process XSLTs for the
+       default servlet, JSP documents, tag library descriptors (TLDs) and tag
+       plugin configuration files. The injected XML parser(s) could then bypass
+       the limits imposed on XML external entities and/or have visibility of the
+       XML files processed for other web applications deployed on the same
+       Tomcat instance.</p>
+
+    <p>This was fixed in revisions <revlink rev="1588199">1588199</revlink>,
+       <revlink rev="1589997">1589997</revlink>,
+       <revlink rev="1590028">1590028</revlink> and
+       <revlink rev="1590036">1590036</revlink>.</p>
+
+    <p>This issue was identified by the Tomcat security team on 12 April 2014
+       and made public on 27 May 2014.</p>
+
+    <p>Affects: 7.0.0-7.0.53</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.53" rtext="released 30 Mar 2014">
+
+    <p><strong>Important: Denial of Service</strong>
+       <cve>CVE-2014-0075</cve></p>
+
+    <p>It was possible to craft a malformed chunk size as part of a chucked
+       request that enabled an unlimited amount of data to be streamed to the
+       server, bypassing the various size limits enforced on a request. This
+       enabled a denial of service attack.</p>
+
+    <p>This was fixed in revision <revlink rev="1578341">1578341</revlink>.</p>
+
+    <p>This issue was reported to the Tomcat security team by David Jorm of the
+       Red Hat Security Response Team on 28 February 2014 and made public on 27
+       May 2014.</p>
+
+    <p>Affects: 7.0.0-7.0.52</p>
+
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2014-0096</cve></p>
+
+    <p>The default servlet allows web applications to define (at multiple
+       levels) an XSLT to be used to format a directory listing. When running
+       under a security manager, the processing of these was not subject to the
+       same constraints as the web application. This enabled a malicious web
+       application to bypass the file access constraints imposed by the security
+       manager via the use of external XML entities.</p>
+
+    <p>This was fixed in revisions <revlink rev="1578637">1578637</revlink> and
+       <revlink rev="1578655">1578655</revlink>.</p>
+
+    <p>This issue was identified by the Tomcat security team on 27 February 2014
+       and made public on 27 May 2014.</p>
+
+    <p>Affects: 7.0.0-7.0.52</p>
+
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2014-0099</cve></p>
+
+    <p>The code used to parse the request content length header did not check
+       for overflow in the result. This exposed a request smuggling
+       vulnerability when Tomcat was located behind a reverse proxy that
+       correctly processed the content length header.</p>
+
+    <p>This was fixed in revision <revlink rev="1578814">1578814</revlink>.</p>
+
+    <p>A test case that demonstrated the parsing bug was sent to the Tomcat
+       security team on 13 March 2014 but no context was provided. The security
+       implications were identified by the Tomcat security team the day the
+       report was received and made public on 27 May 2014.</p>
+
+    <p>Affects: 7.0.0-7.0.52</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.52" rtext="released 17 Feb 2014">
+
+    <p><i>Note: The issue below was fixed in Apache Tomcat 7.0.51 but the
+       release vote for the 7.0.51 release candidate did not pass. Therefore,
+       although users must download 7.0.52 to obtain a version that includes a
+       fix for this issue, version 7.0.51 is not included in the list of
+       affected versions.</i></p>
+
+    <p><strong>Important: Denial of Service</strong>
+       <cve>CVE-2014-0050</cve></p>
+
+    <p>It was possible to craft a malformed Content-Type header for a multipart
+       request that caused Apache Tomcat to enter an infinite loop. A malicious
+       user could, therefore, craft a malformed request that triggered a denial
+       of service.</p>
+    
+    <p>The root cause of this error was a bug in Apache Commons FileUpload.
+       Tomcat 7 uses a packaged renamed copy of Apache Commons FileUpload to
+       implement the requirement of the Servlet 3.0 specification to support the
+       processing of mime-multipart requests. Tomcat 7 was therefore affected by
+       this issue.</p>
+
+    <p>This was fixed in revision <revlink rev="1565169">1565169</revlink>.</p>
+
+    <p>This issue was reported to the Apache Software Foundation on 04 Feb 2014
+       and accidently made public on 06 Feb 2014.</p>
+
+    <p>Affects: 7.0.0-7.0.50</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.50" rtext="released 08 Jan 2014">
+
+  <p><i>Note: The issues below were fixed in Apache Tomcat 7.0.48 but the
+       release votes for 7.0.48 to 7.0.49 did not pass.
+       Therefore, although users must download 7.0.50 to obtain a version
+       that includes fixes for these issues, versions 7.0.48 to 7.0.49 are
+       not included in the list of affected versions.</i></p>
+
+    <p><strong>Important: Denial of service</strong>
+       <cve>CVE-2013-4322</cve></p>
+
+    <p>The fix for CVE-2012-3544 was not complete. It did not cover the
+       following cases:</p>
+    <ul>
+      <li>chunk extensions were not limited</li>
+      <li>whitespace after the : in a trailing header was not limited</li>
+    </ul>
+
+    <p>This was fixed in revisions <revlink rev="1521864">1521864</revlink> and
+    <revlink rev="1549523">1549523</revlink>.</p>
+
+    <p>The first part of this issue was identified by the Apache Tomcat security
+       team on 27 August 2013 and the second part by Saran Neti of TELUS
+       Security Labs on 5 November 2013. It was made public on 25 February 2014.
+       </p>
+
+    <p>Affects: 7.0.0 to 7.0.47</p>
+
+    <p><strong>Low: Information disclosure</strong>
+       <cve>CVE-2013-4590</cve></p>
+
+    <p>Application provided XML files such as web.xml, context.xml, *.tld,
+       *.tagx and *.jspx allowed XXE which could be used to expose Tomcat
+       internals to an attacker. This vulnerability only occurs when Tomcat is
+       running web applications from untrusted sources such as in a shared
+       hosting environment.</p>
+
+    <p>This was fixed in revision <revlink rev="1549529">1549529</revlink>.</p>
+
+    <p>This issue was identified by the Apache Tomcat security team on 29
+       October 2013 and made public on 25 February 2014.</p>
+
+    <p>Affects: 7.0.0 to 7.0.47</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.47" rtext="released 24 Oct 2013">
+
+  <p><i>Note: The issue below was fixed in Apache Tomcat 7.0.43 but the
+       release votes for 7.0.43 to 7.0.46 did not pass.
+       Therefore, although users must download 7.0.47 to obtain a version
+       that includes a fix for this issue, versions 7.0.43 to 7.0.46 are not
+       included in the list of affected versions.</i></p>
+
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2013-4286</cve></p>
+
+    <p>The fix for CVE-2005-2090 was not complete. It did not cover the
+       following cases:</p>
+    <ul>
+      <li>content-length header with chunked encoding over any HTTP connector
+      </li>
+      <li>multiple content-length headers over any AJP connector</li>
+    </ul>
+
+    <p>Requests with multiple content-length headers or with a content-length
+       header when chunked encoding is being used should be rejected as invalid.
+       When multiple components (firewalls, caches, proxies and Tomcat) process
+       a sequence of requests where one or more requests contain either multiple
+       content-length headers or a content-length header when chunked encoding
+       is being used and several components do not reject the request and make
+       different decisions as to which content-length header to use an attacker
+       can poison a web-cache, perform an XSS attack and obtain sensitive
+       information from requests other then their own. Tomcat now rejects
+       requests with multiple content-length headers or with a content-length
+       header when chunked encoding is being used.</p>
+    
+    <p>This was fixed in revision <revlink rev="1521854">1521854</revlink>.</p>
+
+    <p>This issue was identified by the Apache Tomcat security team on 15 August
+       2013 and made public on 25 February 2014.</p>
+
+    <p>Affects: 7.0.0 to 7.0.42</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.40" rtext="released 9 May 2013">
+
+    <p><strong>Moderate: Information disclosure</strong>
+       <cve>CVE-2013-2071</cve></p>
+
+    <p>Bug <bug>54178</bug> described a scenario where elements of a previous
+       request may be exposed to a current request. This was very difficult to
+       exploit deliberately but fairly likely to happen unexpectedly if an
+       application used AsyncListeners that threw RuntimeExceptions.</p>
+
+    <p>This was fixed in revision <revlink rev="1471372">1471372</revlink>.</p>
+
+    <p>The root cause of the problem was identified as a Tomcat bug on 2 April
+       2013. The Tomcat security team identified the security implications on
+       24 April 2013 and made those details public on 10 May 2013.</p>
+
+    <p>Affects: 7.0.0-7.0.39</p>
+
+    <p><strong>Important: Remote Code Execution</strong>
+       <cve>CVE-2013-4444</cve></p>
+
+    <p>In very limited circumstances, it was possible for an attacker to upload
+       a malicious JSP to a Tomcat server and then trigger the execution of that
+       JSP. While Remote Code Execution would normally be viewed as a critical
+       vulnerability, the circumstances under which this is possible are, in the
+       view of the Tomcat security team, sufficiently limited that this
+       vulnerability is viewed as important.</p>
+
+    <p>For this attack to succeed all of the following requirements must be
+       met:</p>
+
+    <ol>
+      <li>Using Oracle Java 1.7.0 update 25 or earlier (or any other Java
+          implementation where java.io.File is vulnerable to null byte
+          injection).</li>
+      <li>A web application must be deployed to a vulnerable version of
+          Tomcat.</li>
+      <li>The web application must use the Servlet 3.0 File Upload feature.</li>
+      <li>A file location within a deployed web application must be writeable by
+          the user the Tomcat process is running as. The Tomcat security
+          documentation recommends against this.</li>
+      <li>A custom listener for JMX connections (e.g. the JmxRemoteListener that
+          is not enabled by default) must be configured and be able to load
+          classes from Tomcat's common class loader (i.e. the custom JMX
+          listener must be placed in Tomcat's lib directory).</li>
+      <li>The custom JMX listener must be bound to an address other than
+          localhost for a remote attack (it is bound to localhost by default).
+          If the custom JMX listener is bound to localhost, a local attack will
+          still be possible.</li>
+    </ol>
+
+    <p>Note that requirements 2 and 3 may be replaced with the following
+       requirement:</p>
+
+    <ol start="7">
+      <li>A web application is deployed that uses Apache Commons File Upload
+          1.2.1 or earlier.</li>
+    </ol>
+
+    <p>In this case (requirements 1, 4, 5, 6 and 7 met) a similar vulnerability
+       may exist on any Servlet container, not just Apache Tomcat.</p>
+
+    <p>This was fixed in revision <revlink rev="1470437">1470437</revlink>.</p>
+
+    <p>This issue was identified by Pierre Ernst of the VMware Security
+       Engineering, Communications and Response group (vSECR)  and reported to
+       the Tomcat security team via the Pivotal security team on 5 September
+       2014. It was made public on 10 September 2014.</p>
+
+    <p>Affects: 7.0.0 to 7.0.39</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.33" rtext="released 21 Nov 2012">
+
+    <p><strong>Important: Session fixation</strong>
+       <cve>CVE-2013-2067</cve></p>
+
+    <p>FORM authentication associates the most recent request requiring
+       authentication with the current session. By repeatedly sending a request
+       for an authenticated resource while the victim is completing the login
+       form, an attacker could inject a request that would be executed using
+       the victim's credentials.</p>
+
+    <p>This was fixed in revision <revlink rev="1408044">1408044</revlink>.</p>
+
+    <p>This issue was identified by the Tomcat security team on 15 Oct 2012 and
+       made public on 10 May 2013.</p>
+
+    <p>Affects: 7.0.0-7.0.32</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.32" rtext="released 9 Oct 2012">
+
+    <p><strong>Important: Bypass of CSRF prevention filter</strong>
+       <cve>CVE-2012-4431</cve></p>
+
+    <p>The CSRF prevention filter could be bypassed if a request was made to a
+       protected resource without a session identifier present in the request.
+    </p>
+
+    <p>This was fixed in revision <revlink rev="1393088">1393088</revlink>.</p>
+
+    <p>This issue was identified by the Tomcat security team on 8 September 2012
+       and made public on 4 December 2012.</p>
+
+    <p>Affects: 7.0.0-7.0.31</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.30" rtext="released 6 Sep 2012">
+
+    <p><strong>Important: Denial of service</strong>
+       <cve>CVE-2012-3544</cve></p>
+
+    <p>When processing a request submitted using the chunked transfer encoding,
+       Tomcat ignored but did not limit any extensions that were included. This
+       allows a client to perform a limited DOS by streaming an unlimited
+       amount of data to the server.</p>
+
+    <p>This was fixed in revisions <revlink rev="1378702">1378702</revlink> and
+       <revlink rev="1378921">1378921</revlink>.</p>
+
+    <p>This issue was reported to the Tomcat security team on 10 November 2011
+       and made public on 10 May 2013.</p>
+
+    <p>Affects: 7.0.0-7.0.29</p>
+
+    <p><strong>Moderate: DIGEST authentication weakness</strong>
+       <cve>CVE-2012-3439</cve></p>
+
+    <p>Three weaknesses in Tomcat's implementation of DIGEST authentication
+       were identified and resolved:
+    </p>
+    <ol>
+      <li>Tomcat tracked client rather than server nonces and nonce count.</li>
+      <li>When a session ID was present, authentication was bypassed.</li>
+      <li>The user name and password were not checked before when indicating
+          that a nonce was stale.</li>
+    </ol>
+    <p>
+      These issues reduced the security of DIGEST authentication making
+      replay attacks possible in some circumstances.
+    </p>
+
+    <p>This was fixed in revision <revlink rev="1377807">1377807</revlink>.</p>
+
+    <p>The first issue was reported by Tilmann Kuhn to the Tomcat security team
+       on 19 July 2012. The second and third issues were discovered by the
+       Tomcat security team during the resulting code review. All three issues
+       were made public on 5 November 2012.</p>
+
+    <p>Affects: 7.0.0-7.0.29</p>
+
+    <p><strong>Important: Bypass of security constraints</strong>
+       <cve>CVE-2012-3546</cve></p>
+
+    <p>When using FORM authentication it was possible to bypass the security
+       constraint checks in the FORM authenticator by appending
+       <code>/j_security_check</code> to the end of the URL if some other
+       component (such as the Single-Sign-On valve) had called
+       <code>request.setUserPrincipal()</code> before the call to
+       <code>FormAuthenticator#authenticate()</code>.
+    </p>
+
+    <p>This was fixed in revision <revlink rev="1377892">1377892</revlink>.</p>
+
+    <p>This issue was identified by the Tomcat security team on 13 July 2012 and
+       made public on 4 December 2012.</p>
+
+    <p>Affects: 7.0.0-7.0.29</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.28" rtext="released 19 Jun 2012">
+
+    <p><strong>Important: Denial of service</strong>
+       <cve>CVE-2012-2733</cve></p>
+
+    <p>The checks that limited the permitted size of request headers were
+       implemented too late in the request parsing process for the HTTP NIO
+       connector. This enabled a malicious user to trigger an
+       OutOfMemoryError by sending a single request with very large headers.
+    </p>
+
+    <p>This was fixed in revision <revlink rev="1350301">1350301</revlink>.</p>
+
+    <p>This was reported by Josh Spiewak to the Tomcat security team on 4 June
+       2012 and made public on 5 November 2012.</p>
+
+    <p>Affects: 7.0.0-7.0.27</p>
+
+    <p><strong>Important: Denial of service</strong>
+       <cve>CVE-2012-4534</cve></p>
+
+    <p>When using the NIO connector with sendfile and HTTPS enabled, if a client
+       breaks the connection while reading the response an infinite loop is
+       entered leading to a denial of service. This was originally reported as
+       <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=52858">bug
+       52858</a>.
+    </p>
+
+    <p>This was fixed in revision <revlink rev="1340218">1340218</revlink>.</p>
+
+    <p>The security implications of this bug were reported to the Tomcat
+       security team by Arun Neelicattu of the Red Hat Security Response Team on
+       3 October 2012 and made public on 4 December 2012.</p>
+
+    <p>Affects: 7.0.0-7.0.27</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.23" rtext="released 25 Nov 2011">
+
+    <p><strong>Important: Denial of service</strong>
+       <cve>CVE-2012-0022</cve></p>
+
+    <p>Analysis of the recent hash collision vulnerability identified unrelated
+       inefficiencies with Apache Tomcat's handling of large numbers of
+       parameters and parameter values. These inefficiencies could allow an
+       attacker, via a specially crafted request, to cause large amounts of CPU
+       to be used which in turn could create a denial of service. The issue was
+       addressed by modifying the Tomcat parameter handling code to efficiently
+       process large numbers of parameters and parameter values.</p>
+
+    <p>This was fixed in revisions <revlink rev="1189899">1189899</revlink>,
+       <revlink rev="1190372">1190372</revlink>,
+       <revlink rev="1190482">1190482</revlink>,
+       <revlink rev="1194917">1194917</revlink>,
+       <revlink rev="1195225">1195225</revlink>,
+       <revlink rev="1195226">1195226</revlink>,
+       <revlink rev="1195537">1195537</revlink>,
+       <revlink rev="1195909">1195909</revlink>,
+       <revlink rev="1195944">1195944</revlink>,
+       <revlink rev="1195951">1195951</revlink>,
+       <revlink rev="1195977">1195977</revlink> and
+       <revlink rev="1198641">1198641</revlink>.</p>
+
+    <p>This was identified by the Tomcat security team on 21 October 2011 and
+       made public on 17 January 2012.</p>
+
+    <p>Affects: 7.0.0-7.0.22</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.22" rtext="released 1 Oct 2011">
+
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2011-3375</cve></p>
+
+    <p>For performance reasons, information parsed from a request is often
+       cached in two places: the internal request object and the internal
+       processor object. These objects are not recycled at exactly the same
+       time. When certain errors occur that needed to be added to the access
+       log, the access logging process triggers the re-population of the request
+       object after it has been recycled. However, the request object was not
+       recycled before being used for the next request. That lead to information
+       leakage (e.g. remote IP address, HTTP headers) from the previous request
+       to the next request. The issue was resolved be ensuring that the request
+       and response objects were recycled after being re-populated to generate
+       the necessary access log entries.</p>
+
+    <p>This was fixed in <revlink rev="1176592">revision 1176592</revlink>.</p>
+
+    <p>This was identified by the Tomcat security team on 22 September 2011 and
+       made public on 17 January 2012.</p>
+
+    <p>Affects: 7.0.0-7.0.21</p>
+
+    <p><strong>Low: Privilege Escalation</strong>
+       <cve>CVE-2011-3376</cve></p>
+
+    <p>This issue only affects environments running web applications that are
+       not trusted (e.g. shared hosting environments). The Servlets that
+       implement the functionality of the Manager application that ships with
+       Apache Tomcat should only be available to Contexts (web applications)
+       that are marked as privileged. However, this check was not being made.
+       This allowed an untrusted web application to use the functionality of the
+       Manager application. This could be used to obtain information on running
+       web applications as well as deploying additional web applications.
+    </p>
+
+    <p>This was fixed in <revlink rev="1176588">revision 1176588</revlink>.</p>
+
+    <p>This was identified by Ate Douma on 27 September 2011 and made public
+       on 8 November 2011.</p>
+
+    <p>Affects: 7.0.0-7.0.21</p>
+  
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.21" rtext="released 1 Sep 2011">
+
+    <p><strong>Important: Authentication bypass and information disclosure
+       </strong>
+       <cve>CVE-2011-3190</cve></p>
+
+    <p>Apache Tomcat supports the AJP protocol which is used with reverse
+       proxies to pass requests and associated data about the request from the
+       reverse proxy to Tomcat. The AJP protocol is designed so that when a
+       request includes a request body, an unsolicited AJP message is sent to
+       Tomcat that includes the first part (or possibly all) of the request
+       body. In certain circumstances, Tomcat did not process this message as a
+       request body but as a new request. This permitted an attacker to have
+       full control over the AJP message permitting authentication bypass and
+       information disclosure. This vulnerability only occurs when all of the
+       following are true:
+    </p>
+       <ul>
+         <li>The org.apache.jk.server.JkCoyoteHandler AJP connector is not used
+         </li>
+         <li>POST requests are accepted</li>
+         <li>The request body is not processed</li>
+       </ul>
+
+    <p>This was fixed in <revlink rev="1162958">revision 1162958</revlink>.</p>
+
+    <p>This was reported publicly on 20th August 2011.</p>
+
+    <p>Affects: 7.0.0-7.0.20</p>
+  
+    <p>Mitigation options:</p>  
+    <ul>
+      <li>Upgrade to Tomcat 7.0.21</li>
+      <li>Apply the appropriate <revlink rev="1162958">patch</revlink></li>
+      <li>Configure both Tomcat and the reverse proxy to use a shared secret.<br />
+       (It is "<code>requiredSecret</code>" attribute in AJP &lt;Connector&gt;,
+       "<code>worker.<i>workername</i>.secret</code>" directive for mod_jk.
+       The mod_proxy_ajp module currently does not support shared secrets).</li>
+    </ul>
+
+    <p>References:</p>
+    <ul>
+      <li><a href="/tomcat-7.0-doc/config/ajp.html">AJP Connector documentation (Tomcat 7.0)</a></li>
+      <li><a href="/connectors-doc/reference/workers.html">workers.properties configuration (mod_jk)</a></li>
+    </ul>
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.20" rtext="released 11 Aug 2011">
+
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2011-2729</cve></p>
+
+    <p>Due to a bug in the capabilities code, jsvc (the service wrapper for
+       Linux that is part of the Commons Daemon project) does not drop
+       capabilities allowing the application to access files and directories
+       owned by superuser. This vulnerability only occurs when all of the
+       following are true:
+    </p>
+       <ul>
+         <li>Tomcat is running on a Linux operating system</li>
+         <li>jsvc was compiled with libcap</li>
+         <li>-user parameter is used</li>
+       </ul>
+    <p>
+       Affected Tomcat versions shipped with source files for jsvc that included
+       this vulnerability.
+    </p>
+
+    <p>This was fixed in <revlink rev="1153379">revision 1153379</revlink>.</p>
+
+    <p>This was identified by Wilfried Weissmann on 20 July 2011 and made public
+       on 12 August 2011.</p>
+
+    <p>Affects: 7.0.0-7.0.19</p>
+  
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.19" rtext="released 19 Jul 2011">
+
+    <p><strong>Low: Information disclosure</strong>
+       <cve>CVE-2011-2526</cve></p>
+
+    <p>Tomcat provides support for sendfile with the HTTP NIO and HTTP APR
+       connectors. sendfile is used automatically for content served via the
+       DefaultServlet and deployed web applications may use it directly via
+       setting request attributes. These request attributes were not validated.
+       When running under a security manager, this lack of validation allowed a
+       malicious web application to do one or more of the following that would
+       normally be prevented by a security manager:
+    </p>
+       <ul>
+         <li>return files to users that the security manager should make
+             inaccessible</li>
+         <li>terminate (via a crash) the JVM</li>
+       </ul>
+       <p>Additionally, these vulnerabilities only occur when all of the following
+       are true:</p>
+       <ul>
+         <li>untrusted web applications are being used</li>
+         <li>the SecurityManager is used to limit the untrusted web applications
+             </li>
+         <li>the HTTP NIO or HTTP APR connector is used</li>
+         <li>sendfile is enabled for the connector (this is the default)</li>
+       </ul>
+
+    <p>This was fixed in revisions
+       <revlink rev="1145383">1145383</revlink>,
+       <revlink rev="1145489">1145489</revlink>,
+       <revlink rev="1145571">1145571</revlink>,
+       <revlink rev="1145694">1145694</revlink> and
+       <revlink rev="1146005">1146005</revlink>.</p>
+
+    <p>This was identified by the Tomcat security team on 7 July 2011 and
+       made public on 13 July 2011.</p>
+
+    <p>Affects: 7.0.0-7.0.18</p>
+  
+    <p><i>Note: The issues below were fixed in Apache Tomcat 7.0.17 but the
+       release votes for the 7.0.17 and 7.0.18 release candidates did not pass.
+       Therefore, although users must download 7.0.19 to obtain a version that
+       includes a fix for these issues, versions 7.0.17 and 7.0.18 are not
+       included in the list of affected versions.</i></p>
+
+    <p><strong>Low: Information disclosure</strong>
+       <cve>CVE-2011-2204</cve></p>
+
+    <p>When using the MemoryUserDatabase (based on tomcat-users.xml) and
+       creating users via JMX, an exception during the user creation process may
+       trigger an error message in the JMX client that includes the user&apos;s
+       password. This error message is also written to the Tomcat logs. User
+       passwords are visible to administrators with JMX access and/or
+       administrators with read access to the tomcat-users.xml file. Users that
+       do not have these permissions but are able to read log files may be able
+       to discover a user&apos;s password.</p>
+
+    <p>This was fixed in <revlink rev="1140070">revision 1140070</revlink>.</p>
+
+    <p>This was identified by Polina Genova on 14 June 2011 and
+       made public on 27 June 2011.</p>
+
+    <p>Affects: 7.0.0-7.0.16</p>
+  
+    <p><strong>Low: Information disclosure</strong>
+       <cve>CVE-2011-2481</cve></p>
+
+    <p>The re-factoring of XML validation for Tomcat 7.0.x re-introduced the
+       vulnerability previously reported as <cve>CVE-2009-0783</cve>.
+       This was initially
+       <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=51395">
+       reported</a> as a memory leak. If a web application is the first web
+       application loaded, this bugs allows that web application to potentially
+       view and/or alter the web.xml, context.xml and tld files of other web
+       applications deployed on the Tomcat instance.</p>
+
+    <p>This was first fixed in
+       <revlink rev="1137753">revision 1137753</revlink>, 
+       but reverted in <revlink rev="1138776">revision 1138776</revlink> and
+       finally fixed in <revlink rev="1138788">revision 1138788</revlink>.</p>
+
+    <p>This was identified by the Tomcat security team on 20 June 2011 and
+       made public on 12 August 2011.</p>
+
+    <p>Affects: 7.0.0-7.0.16</p>
+  
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.14" rtext="released 12 May 2011">
+
+    <p><strong>Important: Security constraint bypass</strong>
+       <cve>CVE-2011-1582</cve></p>
+
+    <p>An error in the fixes for CVE-2011-1088/CVE-2011-1183 meant that security
+       constraints configured via annotations were ignored on the first request
+       to a Servlet. Subsequent requests were secured correctly.</p>
+
+    <p>This was fixed in <revlink rev="1100832">revision 1100832</revlink>.</p>
+
+    <p>This was identified by the Tomcat security team on 13 April 2011 and
+       made public on 17 May 2011.</p>
+
+    <p>Affects: 7.0.12-7.0.13</p>
+  
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.12" rtext="released 6 Apr 2011">
+
+    <p><strong>Important: Information disclosure</strong>
+       <cve>CVE-2011-1475</cve></p>
+
+    <p>Changes introduced to the HTTP BIO connector to support Servlet 3.0
+       asynchronous requests did not fully account for HTTP pipelining. As a
+       result, when using HTTP pipelining a range of unexpected behaviours
+       occurred including the mixing up of responses between requests. While
+       the mix-up in responses was only observed between requests from the same
+       user, a mix-up of responses for requests from different users may also be
+       possible.</p>
+
+    <p>This was fixed in revisions <revlink rev="1086349">1086349</revlink> and
+       <revlink rev="1086352">1086352</revlink>.
+       (Note: HTTP pipelined requests are still likely to fail with the
+       HTTP BIO connector but will do so in a secure manner.)</p>
+
+    <p>This was reported publicly on the Tomcat Bugzilla issue tracker on 22 Mar
+       2011.</p>
+
+    <p>Affects: 7.0.0-7.0.11</p>
+
+    <p><strong>Moderate: Multiple weaknesses in HTTP DIGEST authentication</strong>
+       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-1184"
+       rel="nofollow">CVE-2011-1184</a></p>
+
+    <p>Note: Mitre elected to break this issue down into multiple issues and
+       have allocated the following additional references to parts of this
+       issue:
+       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-5062"
+       rel="nofollow">CVE-2011-5062</a>,
+       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-5063"
+       rel="nofollow">CVE-2011-5063</a> and
+       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-5064"
+       rel="nofollow">CVE-2011-5064</a>. The Apache Tomcat security team will
+       continue to treat this as a single issue using the reference
+       <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-1184"
+       rel="nofollow">CVE-2011-1184</a>.</p>
+
+    <p>The implementation of HTTP DIGEST authentication was discovered to have
+       several weaknesses:
+    </p>
+       <ul>
+         <li>replay attacks were permitted</li>
+         <li>server nonces were not checked</li>
+         <li>client nonce counts were not checked</li>
+         <li>qop values were not checked</li>
+         <li>realm values were not checked</li>
+         <li>the server secret was hard-coded to a known string</li>
+       </ul>
+     <p>
+       The result of these weaknesses is that DIGEST authentication was only as
+       secure as BASIC authentication.
+    </p>
+
+    <p>This was fixed in <revlink rev="1087655">revision 1087655</revlink>.</p>
+
+    <p>This was identified by the Tomcat security team on 16 March 2011 and
+       made public on 26 September 2011.</p>
+
+    <p>Affects: 7.0.0-7.0.11</p>
+
+    <p><strong>Important: Security constraint bypass</strong>
+       <cve>CVE-2011-1183</cve></p>
+
+    <p>A regression in the fix for CVE-2011-1088 meant that security constraints
+       were ignored when no login configuration was present in the web.xml and
+       the web application was marked as meta-data complete.</p>
+
+    <p>This was fixed in <revlink rev="1087643">revision 1087643</revlink>.</p>
+
+    <p>This was identified by the Tomcat security team on 17 March 2011 and
+       made public on 6 April 2011.</p>
+
+    <p>Affects: 7.0.11</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.11" rtext="released 11 Mar 2011">
+
+    <p><strong>Important: Security constraint bypass</strong>
+       <cve>CVE-2011-1088</cve></p>
+
+    <p>When a web application was started, <code>ServletSecurity</code>
+       annotations were ignored. This meant that some areas of the application
+       may not have been protected as expected. This was partially fixed in
+       Apache Tomcat 7.0.10 and fully fixed in 7.0.11.</p>
+
+    <p>This was fixed in revisions <revlink rev="1076586">1076586</revlink>,
+       <revlink rev="1076587">1076587</revlink>,
+       <revlink rev="1077995">1077995</revlink> and
+       <revlink rev="1079752">1079752</revlink>.</p>
+
+    <p>This was reported publicly on the Tomcat users mailing list on 2 Mar
+       2011.</p>
+
+    <p>Affects: 7.0.0-7.0.10</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.8" rtext="released 5 Feb 2011">
+
+    <p><i>Note: The issue below was fixed in Apache Tomcat 7.0.7 but the
+       release vote for the 7.0.7 release candidate did not pass. Therefore,
+       although users must download 7.0.8 to obtain a version that includes a
+       fix for this issue, version 7.0.7 is not included in the list of
+       affected versions.</i></p>
+
+    <p><strong>Important: Remote Denial Of Service</strong>
+       <cve>CVE-2011-0534</cve></p>
+
+    <p>The NIO connector expands its buffer endlessly during request line
+       processing. That behaviour can be used for a denial of service attack
+       using a carefully crafted request.</p>
+
+    <p>This was fixed in <revlink rev="1065939">revision 1065939</revlink>.</p>
+
+    <p>This was identified by the Tomcat security team on 27 Jan 2011 and
+       made public on 5 Feb 2011.</p>
+
+    <p>Affects: 7.0.0-7.0.6</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.6" rtext="released 14 Jan 2011">
+  
+    <p><strong>Low: Cross-site scripting</strong>
+       <cve>CVE-2011-0013</cve></p>
+
+    <p>The HTML Manager interface displayed web application provided data, such
+       as display names, without filtering. A malicious web application could
+       trigger script execution by an administrative user when viewing the
+       manager pages.</p>
+
+    <p>This was fixed in <revlink rev="1057279">revision 1057279</revlink>.</p>
+
+    <p>This was identified by the Tomcat security team on 12 Nov 2010 and
+       made public on 5 Feb 2011.</p>
+
+    <p>Affects: 7.0.0-7.0.5</p>
+  
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.5" rtext="released 1 Dec 2010">
+  
+    <p><strong>Low: Cross-site scripting</strong>
+       <cve>CVE-2010-4172</cve></p>
+
+    <p>The Manager application used the user provided parameters sort and
+       orderBy directly without filtering thereby permitting cross-site
+       scripting. The CSRF protection, which is enabled by default, prevents an
+       attacker from exploiting this.</p>
+
+    <p>This was fixed in <revlink rev="1037778">revision 1037778</revlink>.</p>
+
+    <p>This was first reported to the Tomcat security team on 15 Nov 2010 and
+       made public on 22 Nov 2010.</p>
+
+    <p>Affects: 7.0.0-7.0.4</p>
+  
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.4" rtext="released 21 Oct 2010">
+
+    <p><strong>Low: SecurityManager file permission bypass</strong>
+       <cve>CVE-2010-3718</cve></p>
+
+    <p>When running under a SecurityManager, access to the file system is
+       limited but web applications are granted read/write permissions to the
+       work directory. This directory is used for a variety of temporary files
+       such as the intermediate files generated when compiling JSPs to Servlets.
+       The location of the work directory is specified by a ServletContect
+       attribute that is meant to be read-only to web applications. However,
+       due to a coding error, the read-only setting was not applied. Therefore,
+       a malicious web application may modify the attribute before Tomcat
+       applies the file permissions. This can be used to grant read/write
+       permissions to any area on the file system which a malicious web
+       application may then take advantage of. This vulnerability is only
+       applicable when hosting web applications from untrusted sources such as
+       shared hosting environments.</p>
+
+    <p>This was fixed in <revlink rev="1022134">revision 1022134</revlink>.</p>
+
+    <p>This was discovered by the Tomcat security team on 12 Oct 2010 and
+       made public on 5 Feb 2011.</p>
+
+    <p>Affects: 7.0.0-7.0.3</p>
+  
+  </section>
+
+  <section name="Fixed in Apache Tomcat 7.0.2" rtext="released 11 Aug 2010">
+  
+    <p><i>Note: The issue below was fixed in Apache Tomcat 7.0.1 but the
+       release vote for the 7.0.1 release candidate did not pass. Therefore,
+       although users must download 7.0.2 to obtain a version that includes a
+       fix for this issue, version 7.0.2 is not included in the list of
+       affected versions.</i></p>
+         
+    <p><strong>Important: Remote Denial Of Service and Information Disclosure
+       Vulnerability</strong>
+       <cve>CVE-2010-2227</cve></p>
+
+    <p>Several flaws in the handling of the 'Transfer-Encoding' header were
+       found that prevented the recycling of a buffer. A remote attacker could
+       trigger this flaw which would cause subsequent requests to fail and/or
+       information to leak between requests. This flaw is mitigated if Tomcat is
+       behind a reverse proxy (such as Apache httpd 2.2) as the proxy should
+       reject the invalid transfer encoding header.</p>
+       
+    <p>This was fixed in <revlink rev="958911">revision 958911</revlink>.</p>
+
+    <p>This was first reported to the Tomcat security team on 14 Jun 2010 and
+       made public on 9 Jul 2010.</p>
+
+    <p>Affects: 7.0.0</p>
+
+  </section>
+
+  <section name="Not a vulnerability in Tomcat">
+  
+    <p><strong>Important: Denial of Service</strong>
+       <cve>CVE-2017-6056</cve></p>
+
+    <p>In February 2015 a single user reported high CPU usage (<bug>57544</bug>)
+       which was traced to a tight loop. However, it was not clear how the
+       conditions necessary to enter the loop were being created. There was no
+       evidence that indicated that the loop was user triggerable. The only
+       potential paths identified by code inspection depended on application
+       bugs (retaining references to request objects and accessing after the
+       request had completed).</p>
+
+    <p>It was (and still is) believed that an application bug was the most
+       likely root cause. Therefore, <bug>57544</bug> was not treated as a DoS
+       vulnerability.</p>
+
+    <p>In November 2016, <cve>CVE-2016-6816</cve> was announced. When downstream
+       distributions, notably Debian, back-ported the fix for
+       <cve>CVE-2016-6816</cve> they inadvertently make it trivial for users to
+       trigger the tight loop from <bug>57544</bug>. This made a DoS attack
+       trivial to mount and resulted in multiple reports of problems including
+       <bug>60578</bug> and <bug>60581</bug>.</p>
+
+    <p>Tomcat releases from the Apache Software Foundation were not affected as
+       the ASF did not release any versions that contained the fix for
+       <cve>CVE-2016-6816</cve> but not the fix for <bug>57544</bug>.</p>
+
+    <p>This issue was first announced on 13 February 2017.</p>
+
+    <p>Affects: Debian, Ubuntu and potentially other downstream
+       distributions.</p>
+    
+    <p><strong>Low: Denial Of Service</strong>
+       <cve>CVE-2012-5568</cve></p>
+
+    <p>Sending an HTTP request 1 byte at a time will consume a thread from the
+       connection pool until the request has been fully processed if using the
+       BIO or APR/native HTTP connectors. Multiple requests may be used to
+       consume all threads in the connection pool thereby creating a denial of
+       service.</p>
+
+    <p>Since the relationship between the client side resources and server side
+       resources is a linear one, this issue is not something that the Tomcat
+       Security Team views as a vulnerability. This is a generic DoS problem and
+       there is no magic solution. This issue has been discussed several times
+       on the Tomcat mailing lists. The best place to start to review these
+       discussions is the report for
+       <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=54263">bug
+       54236</a>.</p>
+
+    <p>This was first discussed on the public Tomcat users mailing list on 19
+       June 2009.</p>
+
+    <p>Affects: 7.0.0-7.0.x</p>
+
+    <p><strong>Important: Remote Denial Of Service</strong>
+       <cve>CVE-2010-4476</cve></p>
+
+    <p>A JVM bug could cause Double conversion to hang JVM when accessing to a
+       form based security constrained page or any page that calls
+       javax.servlet.ServletRequest.getLocale() or
+       javax.servlet.ServletRequest.getLocales(). A specially crafted request
+       can be used to trigger a denial of service.
+    </p>
+
+    <p>A work-around for this JVM bug was provided in 
+       <revlink rev="1066244">revision 1066244</revlink>.</p>
+
+    <p>This was first reported to the Tomcat security team on 01 Feb 2011 and
+       made public on 31 Jan 2011.</p>
+
+    <p>Affects: 7.0.0-7.0.6</p>
+
+    <p><strong>Moderate: TLS SSL Man In The Middle</strong>
+       <cve>CVE-2009-3555</cve></p>
+
+    <p>A vulnerability exists in the TLS protocol that allows an attacker to
+       inject arbitrary requests into an TLS stream during renegotiation.</p>
+    
+    <p>The TLS implementation used by Tomcat varies with connector. The blocking
+       IO (BIO) and non-blocking (NIO) connectors use the JSSE implementation
+       provided by the JVM. The APR/native connector uses OpenSSL.</p>
+       
+    <p>The BIO connector is vulnerable if the JSSE version used is vulnerable.
+       To workaround a vulnerable version of JSSE, use the connector attribute
+       <code>allowUnsafeLegacyRenegotiation</code>. It should be set to
+       <code>false</code> (the default) to protect against this vulnerability.
+       </p>
+       
+    <p>The NIO connector prior to 7.0.10 is not vulnerable as it does not
+       support renegotiation.</p>
+       
+    <p>The NIO connector is vulnerable from version 7.0.10 onwards if the JSSE
+       version used is vulnerable. To workaround a vulnerable version of JSSE,
+       use the connector attribute <code>allowUnsafeLegacyRenegotiation</code>.
+       It should be set to <code>false</code> (the default) to protect against
+       this vulnerability.</p>
+       
+    <p>The APR/native workarounds are detailed on the
+       <a href="security-native.html">APR/native connector security page</a>.
+       </p>
+       
+    <p>Users should be aware that the impact of disabling renegotiation will
+       vary with both application and client. In some circumstances disabling
+       renegotiation may result in some clients being unable to access the
+       application.</p>
+
+    <p>This was worked-around in
+       <revlink rev="882320">revision 891292</revlink>.</p>
+
+    <p>Support for the new TLS renegotiation protocol (RFC 5746) that does not
+       have this security issue:</p>
+
+    <ul>
+      <li>For connectors using JSSE implementation provided by JVM:
+        Added in Tomcat 7.0.8.<br />
+        Requires JRE that supports RFC 5746. For Oracle JRE that is
+        <a rel="nofollow"
+        href="http://www.oracle.com/technetwork/java/javase/documentation/tlsreadme2-176330.html">known</a>
+        to be 6u22 or later.
+      </li>
+      <li>For connectors using APR and OpenSSL:<br />
+        TBD. See
+        <a href="security-native.html">APR/native connector security page</a>.
+      </li>
+    </ul>
+
+    <p><strong>Important: Remote Memory Read</strong>
+       <cve>CVE-2014-0160</cve> (a.k.a. "Heartbleed")</p>
+
+    <p>A bug in certain versions of <a href="www.openssl.org">OpenSSL</a>
+        can allow an unauthenticated remote user to read certain contents of
+        the server's memory. Binary versions of tcnative 1.1.24 - 1.1.29
+        include this vulnerable version of OpenSSL. tcnative 1.1.30 and later
+        ship with patched versions of OpenSSL.</p>
+
+    <p>An explanation of how to deterine whether you are vulnerable and what
+        steps to take, see the Tomcat Wiki's
+        <a href="https://wiki.apache.org/tomcat/Security/Heartbleed">Heartbleed</a>
+        page.</p>
+
+    <p>This issue was first announced on 7 April 2014.</p>
+
+    <p>Affects: OpenSSL 1.0.1-1.0.1f, tcnative 1.1.24-1.1.29</p>
+
+  </section>
+  
+</body>
+</document>
+

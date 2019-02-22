@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Apache Tomcat APR/native Connector vulnerabilities</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+  <section name="Apache Tomcat APR/native Connector vulnerabilities">
+    <p>This page lists all security vulnerabilities fixed in released versions
+       of Apache Tomcat APR/native Connector. Each vulnerability is given a
+       <a href="security-impact.html">security impact rating</a> by the Apache
+       Tomcat security team &#x2014; please note that this rating may vary from
+       platform to platform. We also list the versions of Apache Tomcat APR/native
+       Connectors the flaw is known to affect, and where a flaw has not been
+       verified list the version with a question mark.</p>
+
+    <p><strong>Note:</strong> Vulnerabilities that are not Tomcat vulnerabilities
+       but have either been incorrectly reported against Tomcat or where Tomcat
+       provides a workaround are listed at the end of this page.</p>
+
+    <p>This page has been created from a review of the Apache Tomcat archives
+       and the CVE list. Please send comments or corrections for these
+       vulnerabilities to the <a href="security.html">Tomcat
+       Security Team</a>.</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat Native Connector 1.2.17">
+
+    <p><strong>Moderate: Mishandled OCSP invalid response</strong>
+       <cve>CVE-2018-8019</cve></p>
+    <p>When using an OCSP responder Tomcat Native did not correctly handle
+       invalid responses.  This allowed for revoked client certificates to
+       be incorrectly identified.  It was therefore possible for users to
+       authenticate with revoked certificates when using mutual TLS.</p>
+
+    <p>This was fixed in revision <revlink rev="1832832">1832832</revlink>.</p>
+
+    <p>Affects: 1.2.0 to 1.2.16 and 1.1.23 to 1.1.34</p>
+
+    <p><strong>Important:  Mishandled OCSP responses can allow clients to
+       authenticate with revoked certificates</strong>
+       <cve>CVE-2018-8020</cve></p>
+
+    <p>Apache Tomcat Native has a flaw that does not properly check OCSP
+       pre-produced responses, which are lists (multiple entries) of
+       certificate statuses. Subsequently, revoked client certificates may not be
+       properly identified, allowing for users to authenticate with revoked
+       certicates to connections that require mutual TLS.</p>
+
+    <p>This was fixed in revision <revlink rev="1832863">1832863</revlink>.</p>
+
+    <p>Affects: 1.2.0 to 1.2.16 and 1.1.23 to 1.1.34</p>
+
+  </section>
+
+  <section name="Fixed in Apache Tomcat Native Connector 1.2.16">
+
+    <p><i>Note: The issue below was fixed in Apache Tomcat Native Connector
+       1.2.15 but the release vote for the 1.2.15 release candidate did not
+       pass. Therefore, although users must download 1.2.16 to obtain a version
+       that includes the fix for this issue, version 1.2.15 is not included in
+       the list of affected versions.</i></p>
+
+    <p><strong>Moderate: OCSP check omitted</strong>
+       <cve>CVE-2017-15698</cve></p>
+
+    <p>When parsing the AIA-Extension field of a client certificate, the Apache
+       Tomcat Native Connector did not correctly handle fields longer than 127
+       bytes. The result of the parsing error was to skip the OCSP check. It was
+       therefore possible for client certificates that should have been rejected
+       (if the OCSP check had been made) to be accepted. Users not using OCSP
+       checks are not affected by this vulnerability.
+    </p>
+
+    <p>This was fixed in revisions <revlink rev="1815200">1815200</revlink> and
+       <revlink rev="1815218">1815218</revlink>.</p>
+
+    <p>This issue was reported to the Apache Tomcat Security Team by Jonas
+       Klempel on 6 November 2017 and made public on 31 January 2018.</p>
+
+    <p>Affects: 1.2.0 to 1.2.14 and 1.1.23 to 1.1.34</p>
+
+  </section>
+
+  <section name="Not a vulnerability in the Apache Tomcat APR/native Connector">
+    <p><strong>TLS SSL Man In The Middle</strong>
+       <cve>CVE-2009-3555</cve></p>
+
+    <p>A vulnerability exists in the TLS protocol that allows an attacker to
+       inject arbitrary requests into an TLS stream during renegotiation.</p>
+    
+    <p>The TLS implementation used by Tomcat varies with connector. The
+       APR/native connector uses OpenSSL.</p>
+       
+    <p>The APR/native connector is vulnerable if the OpenSSL version used is
+       vulnerable. Note: Building with OpenSSL 0.9.8l will disable all
+       renegotiation and protect against this vulnerability.</p>
+
+    <p>From 1.1.18 onwards, client initiated renegotiations are rejected to
+       provide partial protection against this vulnerability with any OpenSSL
+       version.</p>
+       
+    <p>Users should be aware that the impact of disabling renegotiation will
+       vary with both application and client. In some circumstances disabling
+       renegotiation may result in some clients being unable to access the
+       application.</p>
+
+    <p><strong>Important: Remote Memory Read</strong>
+       <cve>CVE-2014-0160</cve> (a.k.a. "Heartbleed")</p>
+
+    <p>A bug in certain versions of <a href="www.openssl.org">OpenSSL</a>
+        can allow an unauthenticated remote user to read certain contents of
+        the server's memory. Binary versions of tcnative 1.1.24 - 1.1.29
+        include this vulnerable version of OpenSSL. tcnative 1.1.30 and later
+        ship with patched versions of OpenSSL.</p>
+
+    <p>An explanation of how to deterine whether you are vulnerable and what
+        steps to take, see the Tomcat Wiki's
+        <a href="https://wiki.apache.org/tomcat/Security/Heartbleed">Heartbleed</a>
+        page.</p>
+
+    <p>This issue was first announced on 7 April 2014.</p>
+
+    <p>Affects: OpenSSL 1.0.1-1.0.1f, tcnative 1.1.24-1.1.29</p>
+  </section>
+</body>
+</document>
+

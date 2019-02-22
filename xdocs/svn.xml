@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <title>Subversion Repository Access</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Subversion">
+
+<p>All of the Apache Tomcat source code, documentation and this web site are
+managed under version control using <a href="http://subversion.apache.org/">Subversion</a>.
+This page explains the structure of the Apache Tomcat Subversion repository.
+The page assumes you are familiar with the general
+<a href="http://www.apache.org/dev/version-control.html#anon-svn">Apache
+guidance for Subversion</a>.</p>
+
+<p>All Subversion links on this page use anonymous access.</p>
+
+</section>
+
+<section name="Repository Structure">
+
+<p>The root of the repository is
+<a href="http://svn.apache.org/repos/asf/tomcat">
+http://svn.apache.org/repos/asf/tomcat</a>.</p>
+
+<p><em>Note:</em> there is also ViewVC-powered
+<a href="http://svn.apache.org/viewvc/tomcat/">web view of the repository</a>.</p>
+
+<p>The directories below this level are:</p>
+<table class="defaultTable noHighlight">
+  <tr>
+    <th>Directory</th><th>Contents</th>
+  </tr>
+  <tr>
+    <td><a href="http://svn.apache.org/repos/asf/tomcat/archive">
+        <code>/archive/</code></a></td>
+    <td>Modules that are no longer maintained</td>
+  </tr>
+  <tr>
+    <td><a href="http://svn.apache.org/repos/asf/tomcat/jk">
+        <code>/jk/</code></a></td>
+    <td>The native source code for the Tomcat Connectors. This includes
+        mod_jk, isapi and nsapi. The current code is in
+        <a href="http://svn.apache.org/repos/asf/tomcat/jk/trunk">
+        <code>/jk/trunk/</code></a>.</td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap;"><a href="http://svn.apache.org/repos/asf/tomcat/maven-plugin">
+        <code>/maven-plugin/</code></a></td>
+    <td>The Apache Tomcat Maven Plugin source code and website.</td>
+  </tr>
+  <tr>
+    <td><a href="http://svn.apache.org/repos/asf/tomcat/native">
+        <code>/native/</code></a></td>
+    <td>The native source code for the Tomcat Native/APR Connector.
+    The current code is in
+    <a href="http://svn.apache.org/repos/asf/tomcat/native/branches/1.1.x">
+    <code>/native/branches/1.1.x/</code></a> (1.1.x) and
+    <a href="http://svn.apache.org/repos/asf/tomcat/native/trunk">
+    <code>/native/trunk/</code></a> (1.2.x).
+    </td>
+  </tr>
+  <tr>
+    <td><a href="http://svn.apache.org/repos/asf/tomcat/sandbox">
+        <code>/sandbox/</code></a></td>
+    <td>An area where Tomcat committers can experiment with new ideas.</td>
+  </tr>
+  <tr>
+    <td><a href="http://svn.apache.org/repos/asf/tomcat/site">
+        <code>/site/</code></a></td>
+    <td>The Apache Tomcat website.</td>
+  </tr>
+  <tr>
+    <td><a href="http://svn.apache.org/repos/asf/tomcat/taglibs">
+        <code>/taglibs/</code></a></td>
+    <td>The Apache Taglibs source code and website.</td>
+  </tr>
+  <tr>
+    <td><a href="http://svn.apache.org/repos/asf/tomcat/tags">
+        <code>/tags/</code></a></td>
+    <td>Tags for the primary development branch. Mainly used for modules.</td>
+  </tr>
+  <tr>
+    <td><a href="http://svn.apache.org/repos/asf/tomcat/tc7.0.x">
+        <code>/tc7.0.x/</code></a></td>
+    <td>The stable Tomcat 7.0.x release branch. See
+        <a href="http://svn.apache.org/repos/asf/tomcat/tc7.0.x/trunk">
+        <code>/tc7.0.x/trunk/</code></a>.</td>
+  </tr>
+  <tr>
+    <td><a href="http://svn.apache.org/repos/asf/tomcat/tc8.5.x">
+        <code>/tc8.5.x/</code></a></td>
+    <td>The Tomcat 8.5.x release branch. See
+        <a href="http://svn.apache.org/repos/asf/tomcat/tc8.5.x/trunk">
+        <code>/tc8.5.x/trunk/</code></a>.</td>
+  </tr>
+  <tr>
+    <td><a href="http://svn.apache.org/repos/asf/tomcat/trunk">
+        <code>/trunk/</code></a></td>
+    <td>The primary development branch. Tomcat 9.0.x.
+        Changes are first implemented here, then backported to other
+        branches.</td>
+  </tr>
+</table>
+
+<subsection name="Line endings">
+
+<p>The repositories are configured so that when you check out from svn, you get
+the line ending appropriate for your platform for all files. The thinking behind
+this is that, for example, if you need to fix a typo in a .bat file from MacOS,
+it is easier if the .bat file has MacOS line-endings.</p>
+
+<p>When you build locally, line-endings are not changed. The expectation is that
+the source has the correct line-endings for your platform so all the files that
+matter on your platform will have the correct line endings. When you are on
+Windows it doesn't matter if the .sh files have Windows line-endings since
+you'll never use them on Windows.</p>
+
+</subsection>
+
+</section>
+
+<section name="Git Mirror">
+
+<p>The Apache Software Foundation provides read-only Git mirrors for
+its projects. See <a href="http://git.apache.org/">http://git.apache.org/</a> </p>
+
+<p><em>Several notes for the users of Git</em>:</p>
+
+<ol>
+  <li>The Git repositories at <a href="http://git.apache.org/">http://git.apache.org/</a>
+    and their clones at GitHub are only mirrors. The official code repository
+    is the Subversion one, documented above.</li>
+  <li>To propose a patch, please follow general patch submission guidelines,
+    documented on the <a href="bugreport.html">Bug Database</a> page.</li>
+</ol>
+</section>
+
+</body>
+</document>

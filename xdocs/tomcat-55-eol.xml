@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>End of life for Apache Tomcat 5.5.x</title>
+  </properties>
+
+<body>
+
+<section name="End of life for Apache Tomcat 5.5.x" rtext="2011-08-10">
+<p>The Apache Tomcat team announces that support for Apache Tomcat 5.5.x
+will end on 30 September 2012.</p>
+
+<p>This means that after 30 September 2012:</p>
+<ul>
+  <li>releases from the 5.5.x branch are highly unlikely</li>
+  <li>bugs affecting only the 5.5.x branch will not be addressed</li>
+  <li>security vulnerability reports will not be checked against the 5.5.x
+    branch</li>
+</ul>
+
+<p>Three months later (i.e. after 31 December 2012)</p>
+<ul>
+  <li>the 5.5.x download pages will be removed</li>
+  <li>the latest 5.5.x release will be removed from the mirror system</li>
+  <li>the 5.5.x branch in svn will move from <code>/tomcat/tc5.5.x</code> to
+    <code>/tomcat/archive/tc5.5.x</code></li>
+  <li>the links to the 5.5.x documentation will be removed from
+    tomcat.apache.org</li>
+  <li>The bugzilla project for 5.5.x will be made read-only</li>
+</ul>
+
+<p>Note that all 5.5.x releases will always be available from the archive.</p>
+
+<p>It is anticipated that the final 5.5.x release will be made shortly
+before 30 September 2012.</p>
+
+</section>
+
+</body>
+</document>
+

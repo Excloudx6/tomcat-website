@@ -1,0 +1,895 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Old news!</title>
+  </properties>
+
+<body>
+
+<section name="Older news">
+<p>Announcements from previous years can be found here:</p>
+<ul>
+  <li>year 2018</li>
+  <li><a href="oldnews-2017.html">year 2017</a></li>
+  <li><a href="oldnews-2016.html">year 2016</a></li>
+  <li><a href="oldnews-2015.html">year 2015</a></li>
+  <li><a href="oldnews-2014.html">year 2014</a></li>
+  <li><a href="oldnews-2013.html">year 2013</a></li>
+  <li><a href="oldnews-2012.html">year 2012</a></li>
+  <li><a href="oldnews-2011.html">year 2011</a></li>
+  <li><a href="oldnews-2010.html">year 2010</a></li>
+</ul>
+</section>
+
+<section name="Tomcat 8.5.37 Released" rtext="2018-12-18">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.5.37
+of Apache Tomcat. Apache Tomcat 8.5.x replaces 8.0.x and includes new features
+pulled forward from Tomcat 9.0.x. The minimum Java version and implemented
+specification versions remain unchanged. The notable changes compared
+to 8.5.35 include:</p>
+<ul>
+<li>Implement the requirements of section 8.2.2 2.c of the Servlet specification
+    and prevent a web application from deploying if it has fragments with
+    duplicate names and is configured to use relative ordering of
+    fragments.</li>
+<li>The default Servlet no longer overrides a previously set content-type.</li>
+<li>Update the packaged version of the Tomcat Native Library to 1.2.19 to pick
+    up the latest Windows binaries built with APR 1.6.5 and OpenSSL 1.1.1a.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.5-doc/changelog.html#Tomcat_8.5.37_(markt)">Tomcat 8.5
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 9.0.14 Released" rtext="2018-12-12">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 9.0.14
+of Apache Tomcat. The notable changes compared to 9.0.13 include:</p>
+<ul>
+<li>Significant expansion of localisation support with the addition of Brazilian
+    Portuguese, Korean and Chinese (simplified) as well as the expansion of
+    coverage for existing languages.</li>
+<li>Refactor back ground processing and various independent thread pools to use
+    a common executor.</li>
+<li>Update the packaged version of the Tomcat Native Library to 1.2.19 to pick
+    up the latest Windows binaries built with APR 1.6.5 and OpenSSL 1.1.1a.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-9.0-doc/changelog.html#Tomcat_9.0.14_(markt)">Tomcat 9
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-90.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat Native 1.2.19 Released" rtext="2018-12-04">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.2.19 of
+Tomcat Native. The notable changes since 1.2.18 include:
+</p>
+<ul>
+  <li>Fixed memory leaks when using OCSP checks.</li>
+  <li>Windows binaries built with APR 1.6.5 and OpenSSL 1.0.2q.</li>
+  <li>Windows binaries built with APR 1.6.5 and OpenSSL 1.1.1a.</li>
+</ul>
+<p style="text-align: center;">
+<a href="download-native.cgi">Download</a> |
+<a href="native-doc/miscellaneous/changelog.html">ChangeLog for 1.2.19</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.92 Released" rtext="2018-11-15">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.92 of
+Apache Tomcat. This release contains a number of bug fixes and improvements
+compared to version 7.0.91.</p>
+<ul>
+<li>Support for TLSv1.3 when used with a JRE or OpenSSL version that supports
+    it</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.92_(violetagg)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 9.0.13 Released" rtext="2018-11-07">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 9.0.13
+of Apache Tomcat. The notable changes compared to 9.0.12 include:</p>
+<ul>
+<li>support for TLSv1.3 when used with a JRE or OpenSSL version that supports
+    it</li>
+<li>added support for encrypting cluster traffic</li>
+<li>added automatic reloading of tomcat-users.xml after a change</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-9.0-doc/changelog.html#Tomcat_9.0.13_(markt)">Tomcat 9
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-90.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 8.5.35 Released" rtext="2018-11-07">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.5.35
+of Apache Tomcat. Apache Tomcat 8.5.x replaces 8.0.x and includes new features
+pulled forward from Tomcat 9.0.x. The minimum Java version and implemented
+specification versions remain unchanged. The notable changes compared
+to 8.5.34 include:</p>
+<ul>
+<li>support for TLSv1.3 when used with a JRE or OpenSSl version that supports
+    it</li>
+<li>multiple improvements to the RewriteValve</li>
+<li>correct several regressions in the JSP compiler</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.5-doc/changelog.html#Tomcat_8.5.35_(markt)">Tomcat 8.5
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat Native 1.2.18 Released" rtext="2018-10-20">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.2.18 of
+Tomcat Native. The notable changes since 1.2.17 include:
+</p>
+<ul>
+  <li>Windows binaries built with APR 1.6.5 and OpenSSL 1.0.2p.</li>
+  <li>Windows binaries built with APR 1.6.5 and OpenSSL 1.1.1.</li>
+  <li>TLSv1.3 support when built with OpenSSL 1.1.1</li>
+</ul>
+<p style="text-align: center;">
+<a href="download-native.cgi">Download</a> |
+<a href="native-doc/miscellaneous/changelog.html">ChangeLog for 1.2.18</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.91 Released" rtext="2018-09-19">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.91 of
+Apache Tomcat. This release contains a number of bug fixes and improvements
+compared to version 7.0.90.</p>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.91_(violetagg)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 9.0.12 Released" rtext="2018-09-10">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 9.0.12
+of Apache Tomcat. The notable changes compared to 9.0.11 include:</p>
+<ul>
+<li>Fix multiple issues associated with using the asynchronous Servlet API in
+    combination with HTTP/2.</li>
+<li>Add recursion to rewrite substitution parsing.</li>
+<li>Expand the information in the documentation web application regarding the
+    use of CATALINA_HOME and CATALINA_BASE. Patch provided by Marek
+    Czernek.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-9.0-doc/changelog.html#Tomcat_9.0.12_(markt)">Tomcat 9
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-90.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 8.5.34 Released" rtext="2018-09-10">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.5.34
+of Apache Tomcat. Apache Tomcat 8.5.x replaces 8.0.x and includes new features
+pulled forward from Tomcat 9.0.x. The minimum Java version and implemented
+specification versions remain unchanged. The notable changes compared
+to 8.5.33 include:</p>
+<ul>
+<li>Fix multiple issues associated with using the asynchronous Servlet API in
+    combination with HTTP/2.</li>
+<li>Add recursion to rewrite substitution parsing.</li>
+<li>Expand the information in the documentation web application regarding the
+    use of CATALINA_HOME and CATALINA_BASE. Patch provided by Marek
+    Czernek.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.5-doc/changelog.html#Tomcat_8.5.34_(markt)">Tomcat 8.5
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat Connectors 1.2.44 Released" rtext="2018-09-01">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.2.44 of
+Apache Tomcat Connectors.
+This version fixes a number of bugs found in previous releases.
+</p>
+<p style="text-align: center;">
+<a href="download-connectors.cgi">Download</a> |
+<a href="connectors-doc/miscellaneous/changelog.html">ChangeLog for 1.2.44</a>
+</p>
+</section>
+
+<section name="Tomcat 9.0.11 Released" rtext="2018-08-17">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 9.0.11
+of Apache Tomcat. The notable changes compared to 9.0.10 include:</p>
+<ul>
+<li>Correctly decode URL paths (<code>+</code> should not be decoded to a space
+    in the path) in the RequestDispatcher and the web application class
+    loader.</li>
+<li>Add a default location for the native library:
+    <code>${catalina.home}/bin</code></li>
+<li>Make the Jasper (JSP Engine) Java file generation process multi-threaded.
+    By default, one thread will be used per core. Based on a patch by Dan
+    Fabulich.</li>
+</ul>
+
+<p>
+<strong>Note:</strong> A number of known issues remain using Servlet
+asynchronous support with HTTP/2. These will be fixed in the next release.
+</p>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-9.0-doc/changelog.html#Tomcat_9.0.11_(markt)">Tomcat 9
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-90.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 8.5.33 Released" rtext="2018-08-17">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.5.33
+of Apache Tomcat. Apache Tomcat 8.5.x replaces 8.0.x and includes new features
+pulled forward from Tomcat 9.0.x. The minimum Java version and implemented
+specification versions remain unchanged. The notable changes compared
+to 8.5.32 include:</p>
+<ul>
+<li>Correctly decode URL paths (<code>+</code> should not be decoded to a space
+    in the path) in the RequestDispatcher and the web application class
+    loader.</li>
+<li>When pre-compiling with JspC, report all compilation errors rather
+    than stopping after the first error. A new option <code>-failFast</code>
+    can be used to restore the previous behaviour of stopping after the first
+    error. Based on a patch provided by Marc Pompl.</li>
+<li>Make the Jasper (JSP Engine) Java file generation process multi-threaded.
+    By default, one thread will be used per core. Based on a patch by Dan
+    Fabulich.</li>
+</ul>
+
+<p>
+<strong>Note:</strong> A number of known issues remain using Servlet
+asynchronous support with HTTP/2. These will be fixed in the next release.
+</p>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.5-doc/changelog.html#Tomcat_8.5.33_(markt)">Tomcat 8.5
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.90 Released" rtext="2018-07-06">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.90 of
+Apache Tomcat. This release contains a number of bug fixes and improvements
+compared to version 7.0.88. The notable changes compared to 7.0.88 include:</p>
+<ul>
+<li>Add the RemoteCIDRFilter and RemoteCIDRValve that can be used to allow/deny
+    requests based on IPv4 and/or IPv6 client address where the IP ranges are
+    defined using CIDR notation. Based on a patch by Francis Galiegue.</li>
+<li>Update the packaged version of the Tomcat Native Library to 1.2.17 to pick
+    up the latest Windows binaries built with APR 1.6.3 and OpenSSL 1.0.2o.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.90_(violetagg)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 9.0.10 Released" rtext="2018-06-25">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 9.0.10
+of Apache Tomcat. The notable changes compared to 9.0.8 include:</p>
+<ul>
+<li>Add the RemoteCIDRFilter and RemoteCIDRValve that can be used to allow/deny
+    requests based on IPv4 and/or IPv6 client address where the IP ranges are
+    defined using CIDR notation. Based on a patch by Francis Galiegue.</li>
+<li>Use NIO2 API for websockets writes.</li>
+<li>Update the packaged version of the Tomcat Native Library to 1.2.17 to pick
+    up the latest Windows binaries built with APR 1.6.3 and OpenSSL 1.0.2o.</li>
+<li>Correct a regression in the Host validation by removing the requirement that
+    the final component of a FQDN must be alphabetic.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-9.0-doc/changelog.html#Tomcat_9.0.10_(markt)">Tomcat 9
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-90.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 8.5.32 Released" rtext="2018-06-25">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.5.32
+of Apache Tomcat. Apache Tomcat 8.5.x is intended to replace 8.0.x and includes
+new features pulled forward from Tomcat 9.0.x. The minimum Java version and
+implemented specification versions remain unchanged. The notable changes
+compared to 8.5.31 include:</p>
+<ul>
+<li>Add the RemoteCIDRFilter and RemoteCIDRValve that can be used to allow/deny
+    requests based on IPv4 and/or IPv6 client address where the IP ranges are
+    defined using CIDR notation. Based on a patch by Francis Galiegue.</li>
+<li>Update the packaged version of the Tomcat Native Library to 1.2.17 to pick
+    up the latest Windows binaries built with APR 1.6.3 and OpenSSL 1.0.2o.</li>
+<li>Correct a regression in the Host validation by removing the requirement that
+    the final component of a FQDN must be alphabetic.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.5-doc/changelog.html#Tomcat_8.5.32_(markt)">Tomcat 8.5
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat Native 1.2.17 Released" rtext="2018-06-13">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.2.17 of
+Tomcat Native. The notable changes since 1.2.16 include:
+</p>
+<ul>
+  <li>Windows binaries built with APR 1.6.3 and OpenSSL 1.0.2o.</li>
+  <li>Fixes for OCSP support and CRL file handling.</li>
+</ul>
+<p>Note that users should now be using 1.2.x in preference to 1.1.x.</p>
+<p style="text-align: center;">
+<a href="download-native.cgi">Download</a> |
+<a href="native-doc/miscellaneous/changelog.html">ChangeLog for 1.2.17</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.88 Released" rtext="2018-05-11">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.88 of
+Apache Tomcat. This release contains a number of bug fixes and improvements
+compared to version 7.0.86. The notable changes compared to 7.0.86 include:</p>
+<ul>
+<li>Correct a regression in handling of DataSource resources that do not specify
+    a factory.</li>
+<li>Implement configuration options to work-around specification non-compliant
+    user agents (including all the major browsers) that do not correctly %nn
+    encode URI paths and query strings as required by RFC 7230 and RFC 3986</li>
+<li>Enable the CrawlerSessionManagerValve to correctly handle bots that crawl
+    multiple hosts and/or web applications when the Valve is configured on a
+    Host or an Engine.</li>
+<li>Add support for annotation scanning of classes built with Java 11 EA</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.88_(violetagg)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 8.0.52 Released" rtext="2018-05-08">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.0.52
+of Apache Tomcat. Apache Tomcat 8.0.52 includes fixes for issues identified in
+8.0.51 as well as other enhancements and changes. The notable changes compared
+to 8.0.51 include:</p>
+<ul>
+<li>Implement configuration options to work-around specification non-compliant
+    user agents (including all the major browsers) that do not correctly %nn
+    encode URI paths and query strings as required by RFC 7230 and RFC 3986</li>
+<li>Enable the CrawlerSessionManagerValve to correctly handle bots that crawl
+    multiple hosts and/or web applications when the Valve is configured on a
+    Host or an Engine.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.0-doc/changelog.html#Tomcat_8.0.52_(violetagg)">Tomcat 8
+changelog</a>.
+</p>
+
+<p><strong>Note:</strong> End of life date for Apache Tomcat 8.0.x is announced.
+<a href="tomcat-80-eol.html">Read more...</a>
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 9.0.8 Released" rtext="2018-05-03">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 9.0.8
+of Apache Tomcat. The notable changes compared to 9.0.7 include:</p>
+<ul>
+<li>Implement configuration options to work-around specification non-compliant
+    user agents (including all the major browsers) that do not correctly %nn
+    encode URI paths and query strings as required by RFC 7230 and RFC 3986</li>
+<li>Enable the CrawlerSessionManagerValve to correctly handle bots that crawl
+    multiple hosts and/or web applications when the Valve is configured on a
+    Host or an Engine.</li>
+<li>Add support for annotation scanning of classes built with Java 11 EA</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-9.0-doc/changelog.html#Tomcat_9.0.8_(markt)">Tomcat 9
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-90.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 8.5.31 Released" rtext="2018-05-03">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.5.31
+of Apache Tomcat. Apache Tomcat 8.5.x is intended to replace 8.0.x and includes
+new features pulled forward from Tomcat 9.0.x. The minimum Java version and
+implemented specification versions remain unchanged. The notable changes
+compared to 8.5.30 include:</p>
+<ul>
+<li>Implement configuration options to work-around specification non-compliant
+    user agents (including all the major browsers) that do not correctly %nn
+    encode URI paths and query strings as required by RFC 7230 and RFC 3986</li>
+<li>Enable the CrawlerSessionManagerValve to correctly handle bots that crawl
+    multiple hosts and/or web applications when the Valve is configured on a
+    Host or an Engine.</li>
+<li>Add support for annotation scanning of classes built with Java 11 EA</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.5-doc/changelog.html#Tomcat_8.5.31_(markt)">Tomcat 8.5
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.86 Released" rtext="2018-04-13">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.86 of
+Apache Tomcat. This release contains a number of bug fixes and improvements
+compared to version 7.0.85. The notable changes compared to 7.0.85 include:</p>
+<ul>
+<li>Add support for the maxDays attribute to the <code>AccessLogValve</code> and
+    <code>ExtendedAccessLogValve</code>. This allows the maximum number of days
+    for which rotated access logs should be retained before deletion to be
+    defined.</li>
+<li>Avoid infinite recursion, when trying to validate a session while loading
+    it with PersistentManager.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.86_(violetagg)">Tomcat 7 changelog</a>.
+</p>
+
+<p><strong>Warning:</strong> There is a regression in handling of DataSource
+resources that do not specify a factory. A simple configuration workaround
+is available. See bug <bug>62316</bug>. This will be fixed in 7.0.87.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 8.0.51 Released" rtext="2018-04-13">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.0.51
+of Apache Tomcat. Apache Tomcat 8.0.51 includes fixes for issues identified in
+8.0.50 as well as other enhancements and changes. The notable changes compared
+to 8.0.50 include:</p>
+<ul>
+<li>Avoid infinite recursion, when trying to validate a session while loading
+    it with PersistentManager.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.0-doc/changelog.html#Tomcat_8.0.51_(violetagg)">Tomcat 8
+changelog</a>.
+</p>
+
+<p><strong>Note:</strong> End of life date for Apache Tomcat 8.0.x is announced.
+<a href="tomcat-80-eol.html">Read more...</a>
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 9.0.7 Released" rtext="2018-04-07">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 9.0.7
+of Apache Tomcat. The notable changes compared to 9.0.6 include:</p>
+<ul>
+<li>Add support for the maxDays attribute to the <code>AccessLogValve</code> and
+    <code>ExtendedAccessLogValve</code>. This allows the maximum number of days
+    for which rotated access logs should be retained before deletion to be
+    defined.</li>
+<li>Avoid infinite recursion, when trying to validate a session while loading
+    it with PersistentManager.</li>
+<li>Correct two protocol errors with HTTP/2 PUSH_PROMISE frames.</li>
+<li>The OpenSSL engine SSL session will now ignore invalid accesses.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-9.0-doc/changelog.html#Tomcat_9.0.7_(markt)">Tomcat 9
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-90.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 8.5.30 Released" rtext="2018-04-07">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.5.30
+of Apache Tomcat. Apache Tomcat 8.5.x is intended to replace 8.0.x and includes
+new features pulled forward from Tomcat 9.0.x. The minimum Java version and
+implemented specification versions remain unchanged. The notable changes
+compared to 8.5.29 include:</p>
+<ul>
+<li>Add support for the maxDays attribute to the <code>AccessLogValve</code> and
+    <code>ExtendedAccessLogValve</code>. This allows the maximum number of days
+    for which rotated access logs should be retained before deletion to be
+    defined.</li>
+<li>Avoid infinite recursion, when trying to validate a session while loading
+    it with PersistentManager.</li>
+<li>Correct two protocol errors with HTTP/2 PUSH_PROMISE frames.</li>
+<li>The OpenSSL engine SSL session will now ignore invalid accesses.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.5-doc/changelog.html#Tomcat_8.5.30_(markt)">Tomcat 8.5
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 9.0.6 Released" rtext="2018-03-08">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 9.0.6
+of Apache Tomcat. The notable changes compared to 9.0.5 include:</p>
+<ul>
+<li>TLS stability improvements.</li>
+<li>Add the ability to specify static HTML responses for specific error
+    codes and/or exception types with the ErrorReportValve.</li>
+<li>Add an async HTTP/2 parser for NIO2.</li>
+<li>Add documentation for the Host Manager web application.
+    Patch provided by Marek Czernek.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-9.0-doc/changelog.html#Tomcat_9.0.6_(markt)">Tomcat 9
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-90.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 8.5.29 Released" rtext="2018-03-08">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.5.29
+of Apache Tomcat. Apache Tomcat 8.5.x is intended to replace 8.0.x and includes
+new features pulled forward from Tomcat 9.0.x. The minimum Java version and
+implemented specification versions remain unchanged. The notable changes
+compared to 8.5.28 include:</p>
+<ul>
+<li>TLS stability improvements.</li>
+<li>Correct a regression in the fix for <bug>60276</bug> that meant compression
+    was applied to all MIME types. Patch provided by Stefan Knoblich.</li>
+<li>Add documentation for the Host Manager web application.
+    Patch provided by Marek Czernek.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.5-doc/changelog.html#Tomcat_8.5.29_(markt)">Tomcat 8.5
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat Connectors 1.2.43 Released" rtext="2018-03-06">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 1.2.43 of
+Apache Tomcat Connectors.
+This version fixes a number of bugs found in previous releases.
+</p>
+<p style="text-align: center;">
+<a href="download-connectors.cgi">Download</a> |
+<a href="connectors-doc/miscellaneous/changelog.html">ChangeLog for 1.2.43</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.85 Released" rtext="2018-02-13">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.85 of
+Apache Tomcat. This release contains a number of bug fixes and improvements
+compared to version 7.0.84.</p>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.85_(violetagg)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 8.0.50 Released" rtext="2018-02-13">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.0.50
+of Apache Tomcat. Apache Tomcat 8.0.50 includes fixes for issues identified in
+8.0.49 as well as other enhancements and changes.</p>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.0-doc/changelog.html#Tomcat_8.0.50_(violetagg)">Tomcat 8
+changelog</a>.
+</p>
+
+<p><strong>Note:</strong> End of life date for Apache Tomcat 8.0.x is announced.
+<a href="tomcat-80-eol.html">Read more...</a>
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 9.0.5 Released" rtext="2018-02-11">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 9.0.5
+of Apache Tomcat. The notable changes compared to 9.0.4 include:</p>
+<ul>
+<li>Refactor error handling to enable errors that occur before processing is
+    passed to the application to be handled by the application provided error
+    handling and/or the container provided error handling (ErrorReportValve)
+    as appropriate.</li>
+<li>Enable strict validation of the provided host name and port for all
+    connectors. Requests with invalid host names and/or ports will be rejected
+    with a 400 response.</li>
+<li>Enhance the JMX support for jdbc-pool in order to expose PooledConnection
+    and JdbcInterceptors.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-9.0-doc/changelog.html#Tomcat_9.0.5_(markt)">Tomcat 9
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-90.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 8.5.28 Released" rtext="2018-02-11">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.5.28
+of Apache Tomcat. Apache Tomcat 8.5.x is intended to replace 8.0.x and includes
+new features pulled forward from Tomcat 9.0.x. The minimum Java version and
+implemented specification versions remain unchanged. The notable changes
+compared to 8.5.27 include:</p>
+<ul>
+<li>Fix truncated request input streams when using NIO2 with TLS.</li>
+<li>Improved error handling and reporting for TLS configuration.</li>
+<li>Enhance the JMX support for jdbc-pool in order to expose
+    PooledConnection and JdbcInterceptors.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.5-doc/changelog.html#Tomcat_8.5.28_(markt)">Tomcat 8.5
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 7.0.84 Released" rtext="2018-01-24">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 7.0.84 of
+Apache Tomcat. This release contains a number of bug fixes and improvements
+compared to version 7.0.82. The notable changes compared to 7.0.82 include:
+</p>
+<ul>
+<li>Java 9 is fully supported</li>
+<li>Updated the packaged version of the Tomcat Native Library to 1.2.16 to pick
+    up the latest Windows binaries built with APR 1.6.3 and OpenSSL 1.0.2m</li>
+<li>Add a new system property
+    (org.apache.jasper.runtime.BodyContentImpl.BUFFER_SIZE) to control the
+    size of the buffer used by Jasper when buffering tag bodies.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.84_(violetagg)">Tomcat 7 changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-70.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 8.0.49 Released" rtext="2018-01-24">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.0.49
+of Apache Tomcat. Apache Tomcat 8.0.49 includes fixes for issues identified in
+8.0.48 as well as other enhancements and changes. The notable changes
+compared to 8.0.48 include:</p>
+<ul>
+<li>Add a new system property
+    (org.apache.jasper.runtime.BodyContentImpl.BUFFER_SIZE) to control the
+    size of the buffer used by Jasper when buffering tag bodies.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.0-doc/changelog.html#Tomcat_8.0.49_(violetagg)">Tomcat 8
+changelog</a>.
+</p>
+
+<p><strong>Note:</strong> End of life date for Apache Tomcat 8.0.x is announced.
+<a href="tomcat-80-eol.html">Read more...</a>
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 8.5.27 Released" rtext="2018-01-22">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 8.5.27
+of Apache Tomcat. Apache Tomcat 8.5.x is intended to replace 8.0.x and includes
+new features pulled forward from Tomcat 9.0.x. The minimum Java version and
+implemented specification versions remain unchanged. The notable changes
+compared to 8.5.24 include:</p>
+<ul>
+<li>Add support for GZIP compression with HTTP/2</li>
+<li>Expand the TLS functionality exposed via the Manager application</li>
+<li>Return a simple, plain text error message if a client attempts to make
+    a plain text HTTP connection to a TLS enabled NIO or NIO2 Connector.</li>
+<li>Add a new system property
+    (org.apache.jasper.runtime.BodyContentImpl.BUFFER_SIZE) to control the
+    size of the buffer used by Jasper when buffering tag bodies.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-8.5-doc/changelog.html#Tomcat_8.5.27_(markt)">Tomcat 8.5
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-80.cgi">Download</a>
+</p>
+</section>
+
+<section name="Tomcat 9.0.4 Released" rtext="2018-01-22">
+<p>
+The Apache Tomcat Project is proud to announce the release of version 9.0.4
+of Apache Tomcat. This is the first stable release of the 9.0.x series. The
+notable changes compared to 9.0.2 include:</p>
+<ul>
+<li>Modify the Default and WebDAV Servlets so that a 405 status code is returned
+    for PUT and DELETE requests when disabled via the readonly initialisation
+    parameter.</li>
+<li>Add support for GZIP compression with HTTP/2</li>
+<li>Expand the TLS functionality exposed via the Manager application</li>
+<li>Return a simple, plain text error message if a client attempts to make a
+    plain text HTTP connection to a TLS enabled NIO or NIO2 Connector.</li>
+</ul>
+
+<p>
+Full details of these changes, and all the other changes, are available in the
+<a href="tomcat-9.0-doc/changelog.html#Tomcat_9.0.4_(markt)">Tomcat 9
+changelog</a>.
+</p>
+
+<p style="text-align: center;">
+<a href="download-90.cgi">Download</a>
+</p>
+</section>
+
+</body>
+</document>

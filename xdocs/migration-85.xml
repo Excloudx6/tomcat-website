@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <author>Apache Tomcat Project</author>
+    <title>Migration Guide - Tomcat 8.5.x</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="General">
+
+<p>Please read general <a href="migration.html">Migration Guide page</a> first,
+for common considerations that apply to migration or upgrade between versions
+of Apache Tomcat.</p>
+
+</section>
+
+<section name="Migrating from 8.0.x to 8.5.x">
+
+  <p> This section lists all the known changes between 8.0.x and 8.5.x which may
+  cause backwards compatibility problems when upgrading.</p>
+
+  <subsection name="BIO connector removed">
+
+    <p>The Java blocking IO implementation (BIO) for both HTTP and AJP has been
+    removed. Users are recommended to switch to the Java non-blocking IO
+    implementation (NIO). As of Tomcat 8.5.17, if a BIO Connector is explicitly
+    configured, rather than failing to start the Connector, Tomcat will
+    automatically switch the Connector to use the NIO implementation and log a
+    warning.</p>
+
+  </subsection>
+
+  <subsection name="HTTP connector changes">
+    <p>
+      HTTP reason phrases have been <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=60362">removed by default</a>,
+      but can be re-enabled using the <source>sendReasonPhrase</source>
+      <a href="https://tomcat.apache.org/tomcat-8.5-doc/config/http.html#Common_Attributes">configuration attribute</a>.
+    </p>
+  </subsection>
+  <subsection name="Comet support removed">
+
+    <p>Comet support has been removed without a direct replacement. Applications
+    using Comet are recommended to migrate to WebSockets.</p>
+
+  </subsection>
+
+  <subsection name="HTTP/2 support added">
+
+    <p>HTTP/2 is supported for h2 (over TLS, negotiated via ALPN) and h2c (clear
+    text, negotiated via HTTP/1.1 upgrade). HTTP/2 needs to be explicitly
+    enabled for a connector. To enable it, insert
+    <source><![CDATA[<UpgradeProtocol className="org.apache.coyote.http2.Http2Protocol" />]]></source>
+    inside the connector for which you wish to enable HTTP/2. Note that to
+    enable HTTP/2 for a secure NIO or NIO2 connector, those connectors must be
+    using the OpenSSL engine for TLS.</p>
+
+  </subsection>
+
+  <subsection name="TLS virtual hosting and multiple certificate support added">
+
+    <p>Tomcat 8.5 supports multiple TLS virtual hosts for a single connector with
+    each virtual host able to support multiple certificates. Virtual host
+    definitions are nested inside the Connector element with the default
+    specified using the <strong>defaultSSLHostConfigName</strong> attribute on the
+    Connector if more than one virtual host is specified. Certificate
+    definitions are nested inside the virtual host.</p>
+    
+    <p>The following example shows how to use this to configure a single
+    APR/native connector for multiple TLS virtual hosts with each host having
+    both an RSA and EC certificate.
+    
+<source><![CDATA[
+<Connector port="8443"
+           protocol="org.apache.coyote.http11.Http11AprProtocol"
+           maxThreads="150"
+           SSLEnabled="true"
+           defaultSSLHostConfigName="openoffice.apache.org" >
+    <SSLHostConfig hostName="openoffice.apache.org" >
+        <Certificate certificateKeyFile="conf/openoffice.apache.org-rsa-key.pem"
+                     certificateFile="conf/openoffice.apache.org-rsa-cert.pem"
+                     type="RSA" />
+        <Certificate certificateKeyFile="conf/openoffice.apache.org-ec-key.pem"
+                     certificateFile="conf/openoffice.apache.org-ec-cert.pem"
+                     type="EC" />
+    </SSLHostConfig>
+    <SSLHostConfig hostName="www.openoffice.org" >
+        <Certificate certificateKeyFile="conf/www.openoffice.org-rsa-key.pem"
+                     certificateFile="conf/www.openoffice.org-rsa-cert.pem"
+                     type="RSA" />
+        <Certificate certificateKeyFile="conf/www.openoffice.org-ec-key.pem"
+                     certificateFile="conf/www.openoffice.org-ec-cert.pem"
+                     type="EC" />
+    </SSLHostConfig>
+</Connector>
+]]></source></p>
+
+  </subsection>
+
+  <subsection name="Internal APIs">
+  
+    <p>Whilst the Tomcat 8.5 internal API is broadly compatible with Tomcat 8.0
+    there have been many changes at the detail level and they are not binary
+    compatible. Developers of custom components that interact with Tomcat&apos;s
+    internals should review the JavaDoc for the relevant API.</p>
+
+    <p>Of particular note are:</p>
+    <ul>
+      <li>Significant refactoring has taken place throughout the connectors to
+          reduce duplicate code and to align behaviour across
+          implementations.</li>
+      <li>The deprecated <code>digest</code> attribute has been removed from the
+          <code>Realm</code>. This must now be configured via a
+          <code>CredentialHandler</code>.</li>
+      <li>The <code>AuthenticatorBase</code> implementation has been changed to
+          call <code>doAuthenticate()</code> rather than
+          <code>authenticate()</code> on sub-classes.</li>
+    </ul>
+
+  </subsection>
+  
+  <subsection name="JSR-77 implementation removed">
+
+    <p>The JSR-77 implementation is incomplete and has been removed in 8.5.x.
+    Specifically, the following methods that exposed to JMX have been removed.
+    </p>
+
+    <ul>
+      <li><code>StandardContext.getServlets()</code></li>
+      <li><code>StandardContext.isStateManageable()</code></li>
+      <li><code>StandardContext.getDeploymentDescriptor()</code></li>
+      <li><code>StandardWrapper.isStateManageable()</code></li>
+    </ul>
+  </subsection>
+
+  <subsection name="Clustering">
+
+    <p><code>MessageDispatch15Interceptor</code> had been used to add the Java 5
+    features to MessageDispatchInterceptor.
+    <code>MessageDispatch15Interceptor</code> has been removed in Tomcat 8.5.x
+    by merging the Java 5 features to <code>MessageDispatchInterceptor</code>.
+    </p>
+
+  </subsection>
+
+  <subsection name="InstanceListener removed">
+
+    <p>The support of InstanceListener has been removed in 8.5.x.
+    Specifically, the following classes have been removed.
+    </p>
+
+    <ul>
+      <li><code>org.apache.catalina.InstanceListener</code></li>
+      <li><code>org.apache.catalina.InstanceEvent</code></li>
+      <li><code>org.apache.catalina.util.InstanceSupport</code></li>
+    </ul>
+  </subsection>
+
+  <subsection name="SessionManager">
+
+    <p>The following session manager attributes have been completely removed in
+    8.5.</p>
+
+    <ul>
+      <li><code>distributable</code></li>
+      <li><code>maxInactiveInterval</code></li>
+      <li><code>sessionIdLength</code></li>
+    </ul>
+
+    <p>The replacements are as follows:</p>
+    <ul>
+      <li>The <code>distributable</code> attribute has been deprecated in 8.0
+          and specified value is ignored. This should be configured via the
+          Context. The value is inherited based on the presence or absence of
+          the <code>&lt;distributable /&gt;</code> element in
+          <code>/WEB-INF/web.xml.</code></li>
+      <li>The <code>maxInactiveInterval</code> attribute has been deprecated in
+          8.0. If the value is specified, a warning log is issued. This should
+          be configured via the Context. The value is inherited based on the
+          value of the <code>&lt;session-timeout&gt;</code> element in
+          <code>/WEB-INF/web.xml</code>.</li>
+      <li>The <code>sessionIdLength</code> attribute of <code>Manager</code> has
+          been replaced by <code>sessionIdLength</code> attribute of
+          <code>SessionIdGenerator</code>.</li>
+    </ul>
+  </subsection>
+
+  <subsection name="Cookies">
+  
+    <p>The default <code>CookieProcessor</code> is now the
+    <code>Rfc6265CookieProcessor</code>. The <code>CookieProcessor</code> is
+    configurable per <code>Context</code> and the
+    <code>LegacyCookieProcessor</code> may be used to obtain the 8.0.x
+    behaviour.</p>
+
+  </subsection>
+
+  <subsection name="Web applications">
+  
+    <p>The Manager and HostManager web applications are configured by default
+       with a <code>RemoteAddrValve</code> that limits access to those
+       applications to connections from localhost.</p>
+
+  </subsection>
+
+  <subsection name="Context configurations">
+
+    <p>The <code>clearReferencesStatic</code> attribute has been removed in
+    8.5.x.</p>
+
+  </subsection>
+
+</section>
+
+<section name="Upgrading 8.5.x">
+  <p>When upgrading instances of Apache Tomcat from one version of Tomcat 8 to
+  another, particularly when using separate locations for $CATALINA_HOME and
+  $CATALINA_BASE, it is necessary to ensure that any changes in the
+  configuration files such as new attributes and changes to defaults are applied
+  as part of the upgrade. To assist with the identification of these changes,
+  the form below may be used to view the differences between the configuration
+  files in different versions of Tomcat 8.</p>
+
+  <subsection name="Tomcat 8.5.x noteable changes">
+    <p>The Tomcat developers aim for each patch release to be fully backwards
+       compatible with the previous release.  Occasionally, it is necessary to
+       break backwards compatibility in order to fix a bug. In most cases, these
+       changes will go unnoticed. This section lists changes that are not fully
+       backwards compatible and might cause breakage when upgrading.</p>
+    <ul>
+      <li>None.</li>
+    </ul>
+  </subsection>
+  
+  <subsection name="Tomcat 8.5.x configuration file differences">
+
+    <p>Select a configuration file, old version and new version from the boxes
+    below and then click &quot;View differences&quot; to see the differences.
+    The differences will be shown in a new tab/window.</p>
+
+    <script type="text/javascript"><![CDATA[
+    "use strict"; // Enable strict mode
+
+    document.addEventListener("DOMContentLoaded", function() {
+    var formSubmit = document.getElementById("tc8Submit");
+      formSubmit.addEventListener("submit", function() {
+        var revisions = {
+          "HEAD":"HEAD",
+          "8.5.0":"1735438",
+          "8.5.2":"1743439",
+          "8.5.3":"1747521",
+          "8.5.4":"1751624",
+          "8.5.5":"1758670",
+          "8.5.6":"1763654",
+          "8.5.8":"1767971",
+          "8.5.9":"1772784",
+          "8.5.11":"1778198",
+          "8.5.12":"1786041",
+          "8.5.13":"1788935",
+          "8.5.14":"1791243",
+          "8.5.15":"1794013",
+          "8.5.16":"1799487",
+          "8.5.20":"1803930",
+          "8.5.21":"1808282",
+          "8.5.23":"1809969",
+          "8.5.24":"1816448",
+          "8.5.27":"1821550",
+          "8.5.28":"1823407",
+          "8.5.29":"1825889",
+          "8.5.30":"1828275",
+          "8.5.31":"1830392",
+          "8.5.32":"1833943",
+          "8.5.33":"1837884",
+          "8.5.34":"1840071",
+          "8.5.35":"1845673",
+          "8.5.37":"1848752",
+          "8.5.38":"1852987"
+        };
+
+        formSubmit.action = "http://svn.apache.org/viewvc/tomcat/tc8.5.x/trunk/" +
+          document.getElementById('select-filename').value;
+        formSubmit.elements['r1'].value = revisions[document.getElementById('select-r1').value]; 
+        formSubmit.elements['r2'].value = revisions[document.getElementById('select-r2').value]; 
+        return true;
+      }, false);
+    }, false);
+    ]]></script>
+
+
+    <p><label>Configuration file:
+    <select id="select-filename">
+    <option value="conf/catalina.policy">catalina.policy</option>
+    <option value="conf/catalina.properties">catalina.properties</option>
+    <option value="conf/context.xml">context.xml</option>
+    <option value="conf/logging.properties">logging.properties</option>
+    <option value="conf/server.xml">server.xml</option>
+    <option value="conf/tomcat-users.xml">tomcat-users.xml</option>
+    <option value="conf/web.xml">web.xml</option>
+    </select></label>
+    </p>
+    <p><label>Old version:
+    <select id="select-r1">
+    <option value="8.5.0">8.5.0</option>
+    <option value="8.5.2">8.5.2</option>
+    <option value="8.5.3">8.5.3</option>
+    <option value="8.5.4">8.5.4</option>
+    <option value="8.5.5">8.5.5</option>
+    <option value="8.5.6">8.5.6</option>
+    <option value="8.5.8">8.5.8</option>
+    <option value="8.5.9">8.5.9</option>
+    <option value="8.5.11">8.5.11</option>
+    <option value="8.5.12">8.5.12</option>
+    <option value="8.5.13">8.5.13</option>
+    <option value="8.5.14">8.5.14</option>
+    <option value="8.5.15">8.5.15</option>
+    <option value="8.5.16">8.5.16</option>
+    <option value="8.5.20">8.5.20</option>
+    <option value="8.5.21">8.5.21</option>
+    <option value="8.5.23">8.5.23</option>
+    <option value="8.5.24">8.5.24</option>
+    <option value="8.5.27">8.5.27</option>
+    <option value="8.5.28">8.5.28</option>
+    <option value="8.5.29">8.5.29</option>
+    <option value="8.5.30">8.5.30</option>
+    <option value="8.5.31">8.5.31</option>
+    <option value="8.5.32">8.5.32</option>
+    <option value="8.5.33">8.5.33</option>
+    <option value="8.5.34">8.5.34</option>
+    <option value="8.5.35">8.5.35</option>
+    <option value="8.5.37" selected="selected">8.5.37</option>
+    <option value="8.5.38">8.5.38</option>
+    </select>,</label> <label>new version:
+    <select id="select-r2">
+    <option value="8.5.0">8.5.0</option>
+    <option value="8.5.2">8.5.2</option>
+    <option value="8.5.3">8.5.3</option>
+    <option value="8.5.4">8.5.4</option>
+    <option value="8.5.5">8.5.5</option>
+    <option value="8.5.6">8.5.6</option>
+    <option value="8.5.8">8.5.8</option>
+    <option value="8.5.9">8.5.9</option>
+    <option value="8.5.11">8.5.11</option>
+    <option value="8.5.12">8.5.12</option>
+    <option value="8.5.13">8.5.13</option>
+    <option value="8.5.14">8.5.14</option>
+    <option value="8.5.15">8.5.15</option>
+    <option value="8.5.16">8.5.16</option>
+    <option value="8.5.20">8.5.20</option>
+    <option value="8.5.21">8.5.21</option>
+    <option value="8.5.23">8.5.23</option>
+    <option value="8.5.24">8.5.24</option>
+    <option value="8.5.27">8.5.27</option>
+    <option value="8.5.28">8.5.28</option>
+    <option value="8.5.29">8.5.29</option>
+    <option value="8.5.30">8.5.30</option>
+    <option value="8.5.31">8.5.31</option>
+    <option value="8.5.32">8.5.32</option>
+    <option value="8.5.33">8.5.33</option>
+    <option value="8.5.34">8.5.34</option>
+    <option value="8.5.35">8.5.35</option>
+    <option value="8.5.37">8.5.37</option>
+    <option value="8.5.38" selected="selected">8.5.38</option>
+    <option value="HEAD">trunk (unreleased)</option>
+    </select></label>
+    </p>
+
+    <form id="tc8Submit" action="to-be-replaced" method="get"
+          target="_blank">
+    <p>
+    <input type="hidden" name="diff_format" value="h"/>
+    <input type="hidden" name="r1"/><input type="hidden" name="r2"/>
+    <button>View Differences</button>
+    </p>
+    </form>
+    <p>You can also use Subversion command similar to the following (all on one line):</p>
+    <source>svn diff
+  --old=http://svn.apache.org/repos/asf/tomcat/tc8.5.x/tags/TOMCAT_8_5_0/conf/
+  --new=http://svn.apache.org/repos/asf/tomcat/tc8.5.x/tags/TOMCAT_8_5_2/conf/</source>
+  </subsection>
+  
+</section>
+
+</body>
+</document>
