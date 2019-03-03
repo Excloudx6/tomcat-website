@@ -311,58 +311,17 @@ of Apache Tomcat.</p>
     below and then click &quot;View differences&quot; to see the differences.
     The differences will be shown in a new tab/window.</p>
 
-    <script type="text/javascript"><![CDATA[
-    "use strict"; // Enable strict mode
+    <p><b>Note:</b> If there are no differences you will see an error page.</p>
 
-    document.addEventListener("DOMContentLoaded", function() {
-    var formSubmit = document.getElementById("tc9Submit");
-      formSubmit.addEventListener("submit", function() {
-        var revisions = {
-          "HEAD":"HEAD",
-          "9.0.0.M1":"1714130",
-          "9.0.0.M3":"1728005",
-          "9.0.0.M4":"1734692",
-          "9.0.0.M6":"1743436",
-          "9.0.0.M8":"1747242",
-          "9.0.0.M9":"1751366",
-          "9.0.0.M10":"1758617",
-          "9.0.0.M11":"1763638",
-          "9.0.0.M13":"1767969",
-          "9.0.0.M15":"1772668",
-          "9.0.0.M17":"1778197",
-          "9.0.0.M18":"1785983",
-          "9.0.0.M19":"1788896",
-          "9.0.0.M20":"1791176",
-          "9.0.0.M21":"1793917",
-          "9.0.0.M22":"1799415",
-          "9.0.0.M26":"1803915",
-          "9.0.1":"1809848",
-          "9.0.2":"1816351",
-          "9.0.4":"1821547",
-          "9.0.5":"1823394",
-          "9.0.6":"1825860",
-          "9.0.7":"1828274",
-          "9.0.8":"1830389",
-          "9.0.10":"1833930",
-          "9.0.11":"1837880",
-          "9.0.12":"1840069",
-          "9.0.13":"1845587",
-          "9.0.14":"1848363",
-          "9.0.16":"1852937"
-        };
+    <form action="https://gitbox.apache.org/repos/asf"
+          method="get"
+          target="_blank">
 
-        formSubmit.action = "http://svn.apache.org/viewvc/tomcat/trunk/" +
-          document.getElementById('select-filename').value;
-        formSubmit.elements['r1'].value = revisions[document.getElementById('select-r1').value]; 
-        formSubmit.elements['r2'].value = revisions[document.getElementById('select-r2').value]; 
-        return true;
-      }, false);
-    }, false);
-    ]]></script>
-
+    <input type="hidden" name="p" value="tomcat.git"/>
+    <input type="hidden" name="a" value="blobdiff"/>
 
     <p><label>Configuration file:
-    <select id="select-filename">
+    <select name="f">
     <option value="conf/catalina.policy">catalina.policy</option>
     <option value="conf/catalina.properties">catalina.properties</option>
     <option value="conf/context.xml">context.xml</option>
@@ -373,7 +332,7 @@ of Apache Tomcat.</p>
     </select></label>
     </p>
     <p><label>Old version:
-    <select id="select-r1">
+    <select name="hpb">
     <option value="9.0.0.M1">9.0.0.M1</option>
     <option value="9.0.0.M3">9.0.0.M3</option>
     <option value="9.0.0.M4">9.0.0.M4</option>
@@ -405,7 +364,7 @@ of Apache Tomcat.</p>
     <option value="9.0.14" selected="selected">9.0.14</option>
     <option value="9.0.16">9.0.16</option>
     </select>,</label> <label>new version:
-    <select id="select-r2">
+    <select name="hb">
     <option value="9.0.0.M1">9.0.0.M1</option>
     <option value="9.0.0.M3">9.0.0.M3</option>
     <option value="9.0.0.M4">9.0.0.M4</option>
@@ -440,18 +399,13 @@ of Apache Tomcat.</p>
     </select></label>
     </p>
 
-    <form id="tc9Submit" action="to-be-replaced" method="get"
-          target="_blank">
     <p>
-    <input type="hidden" name="diff_format" value="h"/>
-    <input type="hidden" name="r1"/><input type="hidden" name="r2"/>
     <button>View Differences</button>
     </p>
     </form>
-    <p>You can also use Subversion command similar to the following (all on one line):</p>
-    <source>svn diff
-  --old=http://svn.apache.org/repos/asf/tomcat/tags/TOMCAT_9_0_2/conf/
-  --new=http://svn.apache.org/repos/asf/tomcat/tags/TOMCAT_9_0_4/conf/</source>
+    <p>You can also use a Git command similar to the following from within a
+       working copy:</p>
+    <source>git diff 9.0.0 9.0.12 -- conf/</source>
   </subsection>
   
 </section>

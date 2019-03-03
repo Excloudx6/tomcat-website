@@ -508,95 +508,18 @@ of Apache Tomcat.</p>
     <p>Select a configuration file, old version and new version from the boxes
     below and then click &quot;View differences&quot; to see the differences.
     The differences will be shown in a new tab/window.</p>
+    
+    <p><b>Note:</b> If there are no differences you will see an error page.</p>
 
-    <script type="text/javascript"><![CDATA[
-    "use strict"; // Enable strict mode
+    <form action="https://gitbox.apache.org/repos/asf"
+          method="get"
+          target="_blank">
 
-    document.addEventListener("DOMContentLoaded", function() {
-    var formSubmit = document.getElementById("tc7Submit");
-      formSubmit.addEventListener("submit", function() {
-        var revisions = {
-          "HEAD":"HEAD",
-          "7.0.0":"954232",
-          "7.0.2":"982035",
-          "7.0.4":"1022637",
-          "7.0.5":"1038717",
-          "7.0.6":"1057288",
-          "7.0.8":"1067169",
-          "7.0.10":"1078282",
-          "7.0.11":"1080182",
-          "7.0.12":"1087797",
-          "7.0.14":"1101230",
-          "7.0.16":"1134562",
-          "7.0.19":"1146504",
-          "7.0.20":"1155255",
-          "7.0.21":"1162976",
-          "7.0.22":"1176599",
-          "7.0.23":"1203305",
-          "7.0.25":"1232371",
-          "7.0.26":"1245466",
-          "7.0.27":"1307817",
-          "7.0.28":"1350468",
-          "7.0.29":"1356494",
-          "7.0.30":"1379863",
-          "7.0.32":"1393331",
-          "7.0.33":"1410718",
-          "7.0.34":"1416816",
-          "7.0.35":"1431695",
-          "7.0.37":"1445362",
-          "7.0.39":"1459741",
-          "7.0.40":"1479250",
-          "7.0.41":"1490220",
-          "7.0.42":"1498817",
-          "7.0.47":"1533319",
-          "7.0.50":"1552395",
-          "7.0.52":"1567856",
-          "7.0.53":"1581197",
-          "7.0.54":"1595997",
-          "7.0.55":"1611608",
-          "7.0.56":"1627729",
-          "7.0.57":"1635775",
-          "7.0.59":"1655365",
-          "7.0.61":"1669546",
-          "7.0.62":"1678231",
-          "7.0.63":"1688364",
-          "7.0.64":"1696589",
-          "7.0.65":"1707663",
-          "7.0.67":"1718339",
-          "7.0.68":"1729238",
-          "7.0.69":"1738539",
-          "7.0.70":"1748587",
-          "7.0.72":"1760687",
-          "7.0.73":"1768587",
-          "7.0.75":"1779379",
-          "7.0.76":"1786169",
-          "7.0.77":"1789168",
-          "7.0.78":"1794730",
-          "7.0.79":"1799944",
-          "7.0.81":"1804761",
-          "7.0.82":"1810087",
-          "7.0.84":"1821664",
-          "7.0.85":"1823510",
-          "7.0.86":"1828768",
-          "7.0.88":"1831087",
-          "7.0.90":"1834866",
-          "7.0.91":"1840853",
-          "7.0.92":"1846225",
-          "7.0.93":"1853723"
-        };
-
-        formSubmit.action = "http://svn.apache.org/viewvc/tomcat/tc7.0.x/trunk/" +
-          document.getElementById('select-filename').value;
-        formSubmit.elements['r1'].value = revisions[document.getElementById('select-r1').value]; 
-        formSubmit.elements['r2'].value = revisions[document.getElementById('select-r2').value]; 
-        return true;
-      }, false);
-    }, false);
-    ]]></script>
-
+    <input type="hidden" name="p" value="tomcat.git"/>
+    <input type="hidden" name="a" value="blobdiff"/>
 
     <p><label>Configuration file:
-    <select id="select-filename">
+    <select name="f">
     <option value="conf/catalina.policy">catalina.policy</option>
     <option value="conf/catalina.properties">catalina.properties</option>
     <option value="conf/context.xml">context.xml</option>
@@ -607,7 +530,7 @@ of Apache Tomcat.</p>
     </select></label>
     </p>
     <p><label>Old version:
-    <select id="select-r1">
+    <select name="hpb">
     <option value="7.0.0">7.0.0</option>
     <option value="7.0.2">7.0.2</option>
     <option value="7.0.4">7.0.4</option>
@@ -675,7 +598,7 @@ of Apache Tomcat.</p>
     <option value="7.0.92" selected="selected">7.0.92</option>
     <option value="7.0.93">7.0.93</option>
     </select>,</label> <label>new version:
-    <select id="select-r2">
+    <select name="hb">
     <option value="7.0.0">7.0.0</option>
     <option value="7.0.2">7.0.2</option>
     <option value="7.0.4">7.0.4</option>
@@ -746,18 +669,13 @@ of Apache Tomcat.</p>
     </select></label>
     </p>
 
-    <form id="tc7Submit" action="to-be-replaced" method="get"
-          target="_blank">
     <p>
-    <input type="hidden" name="diff_format" value="h"/>
-    <input type="hidden" name="r1"/><input type="hidden" name="r2"/>
     <button>View Differences</button>
     </p>
     </form>
-    <p>You can also use Subversion command similar to the following (all on one line):</p>
-    <source>svn diff
-  --old=http://svn.apache.org/repos/asf/tomcat/tc7.0.x/tags/TOMCAT_7_0_27/conf/
-  --new=http://svn.apache.org/repos/asf/tomcat/tc7.0.x/tags/TOMCAT_7_0_28/conf/</source>
+    <p>You can also use a Git command similar to the following from within a
+       working copy:</p>
+    <source>git diff 7.0.0 7.0.80 -- conf/</source>
   </subsection>
   
 </section>

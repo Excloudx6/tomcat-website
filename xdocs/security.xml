@@ -14,12 +14,12 @@
        particular vulnerability you should upgrade to an Apache Tomcat version
        where that vulnerability has been fixed.</p>
        
-    <p>Source patches, usually in the form of references to SVN commits, may be
+    <p>Source patches, usually in the form of references to commits, may be
        provided in either in a vulnerability announcement and/or the
        vulnerability details listed on these pages. These source patches may be
        used by users wishing to build their own local version of Tomcat with just
        that security patch rather than upgrade. Please note that an exercise is
-       currently underway to add links to the svn commits for all the
+       currently underway to add links to the commits for all the
        vulnerabilities listed on these pages.</p>
        
     <p>Lists of security problems fixed in released versions of Apache Tomcat

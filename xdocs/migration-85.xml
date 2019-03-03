@@ -243,57 +243,17 @@ of Apache Tomcat.</p>
     below and then click &quot;View differences&quot; to see the differences.
     The differences will be shown in a new tab/window.</p>
 
-    <script type="text/javascript"><![CDATA[
-    "use strict"; // Enable strict mode
+    <p><b>Note:</b> If there are no differences you will see an error page.</p>
 
-    document.addEventListener("DOMContentLoaded", function() {
-    var formSubmit = document.getElementById("tc8Submit");
-      formSubmit.addEventListener("submit", function() {
-        var revisions = {
-          "HEAD":"HEAD",
-          "8.5.0":"1735438",
-          "8.5.2":"1743439",
-          "8.5.3":"1747521",
-          "8.5.4":"1751624",
-          "8.5.5":"1758670",
-          "8.5.6":"1763654",
-          "8.5.8":"1767971",
-          "8.5.9":"1772784",
-          "8.5.11":"1778198",
-          "8.5.12":"1786041",
-          "8.5.13":"1788935",
-          "8.5.14":"1791243",
-          "8.5.15":"1794013",
-          "8.5.16":"1799487",
-          "8.5.20":"1803930",
-          "8.5.21":"1808282",
-          "8.5.23":"1809969",
-          "8.5.24":"1816448",
-          "8.5.27":"1821550",
-          "8.5.28":"1823407",
-          "8.5.29":"1825889",
-          "8.5.30":"1828275",
-          "8.5.31":"1830392",
-          "8.5.32":"1833943",
-          "8.5.33":"1837884",
-          "8.5.34":"1840071",
-          "8.5.35":"1845673",
-          "8.5.37":"1848752",
-          "8.5.38":"1852987"
-        };
+    <form action="https://gitbox.apache.org/repos/asf"
+          method="get"
+          target="_blank">
 
-        formSubmit.action = "http://svn.apache.org/viewvc/tomcat/tc8.5.x/trunk/" +
-          document.getElementById('select-filename').value;
-        formSubmit.elements['r1'].value = revisions[document.getElementById('select-r1').value]; 
-        formSubmit.elements['r2'].value = revisions[document.getElementById('select-r2').value]; 
-        return true;
-      }, false);
-    }, false);
-    ]]></script>
-
+    <input type="hidden" name="p" value="tomcat.git"/>
+    <input type="hidden" name="a" value="blobdiff"/>
 
     <p><label>Configuration file:
-    <select id="select-filename">
+    <select name="f">
     <option value="conf/catalina.policy">catalina.policy</option>
     <option value="conf/catalina.properties">catalina.properties</option>
     <option value="conf/context.xml">context.xml</option>
@@ -304,7 +264,7 @@ of Apache Tomcat.</p>
     </select></label>
     </p>
     <p><label>Old version:
-    <select id="select-r1">
+    <select name="hpb">
     <option value="8.5.0">8.5.0</option>
     <option value="8.5.2">8.5.2</option>
     <option value="8.5.3">8.5.3</option>
@@ -335,7 +295,7 @@ of Apache Tomcat.</p>
     <option value="8.5.37" selected="selected">8.5.37</option>
     <option value="8.5.38">8.5.38</option>
     </select>,</label> <label>new version:
-    <select id="select-r2">
+    <select name="hb">
     <option value="8.5.0">8.5.0</option>
     <option value="8.5.2">8.5.2</option>
     <option value="8.5.3">8.5.3</option>
@@ -369,18 +329,13 @@ of Apache Tomcat.</p>
     </select></label>
     </p>
 
-    <form id="tc8Submit" action="to-be-replaced" method="get"
-          target="_blank">
     <p>
-    <input type="hidden" name="diff_format" value="h"/>
-    <input type="hidden" name="r1"/><input type="hidden" name="r2"/>
     <button>View Differences</button>
     </p>
     </form>
-    <p>You can also use Subversion command similar to the following (all on one line):</p>
-    <source>svn diff
-  --old=http://svn.apache.org/repos/asf/tomcat/tc8.5.x/tags/TOMCAT_8_5_0/conf/
-  --new=http://svn.apache.org/repos/asf/tomcat/tc8.5.x/tags/TOMCAT_8_5_2/conf/</source>
+    <p>You can also use a Git command similar to the following from within a
+       working copy:</p>
+    <source>git diff 8.5.0 8.5.20 -- conf/</source>
   </subsection>
   
 </section>

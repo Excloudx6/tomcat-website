@@ -203,7 +203,7 @@ problem you are having before reporting a bug.</p>
         <a href="https://tomcat.apache.org/tomcat-9.0-doc/changelog.html">changelog.html</a>
       </td>
       <td>
-        <a href="https://svn.apache.org/repos/asf/tomcat/trunk/webapps/docs/changelog.xml">changelog.xml</a>
+        <a href="https://ci.apache.org/projects/tomcat/tomcat9/docs/changelog.html">changelog.html - CI</a>
       </td>
     </tr>
 
@@ -213,7 +213,7 @@ problem you are having before reporting a bug.</p>
         <a href="https://tomcat.apache.org/tomcat-8.5-doc/changelog.html">changelog.html</a>
       </td>
       <td>
-        <a href="https://svn.apache.org/repos/asf/tomcat/tc8.5.x/trunk/webapps/docs/changelog.xml">changelog.xml</a>
+        <a href="https://ci.apache.org/projects/tomcat/tomcat85/docs/changelog.html">changelog.html - CI</a>
       </td>
     </tr>
 
@@ -223,7 +223,7 @@ problem you are having before reporting a bug.</p>
         <a href="https://tomcat.apache.org/tomcat-7.0-doc/changelog.html">changelog.html</a>
       </td>
       <td>
-        <a href="https://svn.apache.org/repos/asf/tomcat/tc7.0.x/trunk/webapps/docs/changelog.xml">changelog.xml</a>
+        <a href="https://ci.apache.org/projects/tomcat/tomcat7/docs/changelog.html">changelog.html - CI</a>
       </td>
     </tr>
 
@@ -393,7 +393,9 @@ bug in your web application.</p>
     "<code>enhancement</code>".
   </p>
 
-  <p>To propose a patch, attach it to a Bugzilla issue. 
+  <p>For components available via GitHub you may provide a proposed patch as a
+    pull request. Alternatively, you can attach your proposed patch to a
+    Bugzilla issue. 
     When providing a patch, please mention to which version of the source code it
     applies. Any patches are welcome, but we prefer the ones that use the
     <a href="http://en.wikipedia.org/wiki/Diff#Unified_format" rel="nofollow">
@@ -404,7 +406,7 @@ bug in your web application.</p>
   <p>To patch and build Apache Tomcat see the following references:</p>
 
   <ul>
-    <li><a href="svn.html">Subversion repository structure</a> of Apache Tomcat</li>
+    <li><a href="source.html">Repository access </a> for Apache Tomcat</li>
     <li>Read BUILDING.txt in the source distribution</li>
   </ul>
 

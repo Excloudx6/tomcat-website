@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^/svn.html /source.html [R=301]
