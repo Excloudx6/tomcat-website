@@ -107,7 +107,7 @@ Tomcat questions to Eric or Rick themselves!</strong></p>
   server.</li>
 </ol>
 
-<table class="defaultTable">
+<table class="table">
  <tr>
   <td>Volume:</td>
   <td>High</td>
@@ -179,7 +179,7 @@ other project announcements.</p>
 <p><em>Note</em>: You may be also interested in
 <a href="https://www.apache.org/foundation/mailinglists.html#foundation-announce">ASF news and announcements list</a>.</p>
 
-<table class="defaultTable">
+<table class="table">
  <tr>
   <td>Volume:</td>
   <td>Low</td>
@@ -244,7 +244,7 @@ the place to ask about problems writing JSPs, servlets or web applications.
 for discussion of changes to the Apache Tomcat source code and related
 issues. Other questions will be ignored.</p>
 
-<table class="defaultTable">
+<table class="table">
  <tr>
   <td>Volume:</td>
   <td>High</td>
@@ -321,7 +321,7 @@ a good forum for asking questions about how custom tag libraries operate,
 and how they can be used.
 </p>
 
-<table class="defaultTable">
+<table class="table">
  <tr>
   <td>Volume:</td>
   <td>Low</td>

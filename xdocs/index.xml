@@ -13,6 +13,10 @@
 
 <section name="Apache Tomcat">
 
+<div class="float-lg-right announce-right">
+  <img src="https://apache.org/images/ApacheCon2019-IsComing.jpg" title="ApacheCon 2019 is coming!" style="display: block; margin: 0 auto;"/>
+</div>
+
 <p>The Apache Tomcat<sup>&#174;</sup> software is an open source implementation
 of the Java Servlet, JavaServer Pages, Java Expression Language and Java
 WebSocket technologies. The Java Servlet, JavaServer Pages, Java Expression

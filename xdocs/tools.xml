@@ -22,7 +22,7 @@ and a committer should be able to fix it for you.</p>
 </section>
 
 <section name="Apache Tools">
-<table class="defaultTable">
+<table class="table">
 <tr>
   <td><a href="http://ant.apache.org/">
       <img src="http://ant.apache.org/images/ant_logo_medium.gif" alt="Apache Ant"/></a></td>
@@ -33,7 +33,7 @@ and a committer should be able to fix it for you.</p>
 </section>
 
 <section name="Open Source Tools">
-<table class="defaultTable">
+<table class="table">
 <tr>
   <td><a href="http://www.eclipse.org/" rel="nofollow">
       <img src="res/images/eclipse.gif" alt="Eclipse"/></a></td>
@@ -76,7 +76,7 @@ and a committer should be able to fix it for you.</p>
 </section>
 
 <section name="Commercial Tools">
-<table class="defaultTable">
+<table class="table">
 <tr>
   <td><a href="http://www.yourkit.com/" rel="nofollow">
       <img src="res/images/yjp.gif" alt="YourKit"/></a></td>

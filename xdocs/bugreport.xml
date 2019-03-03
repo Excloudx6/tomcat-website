@@ -190,7 +190,7 @@ problem you are having before reporting a bug.</p>
 
     <p>Links:</p>
 
-    <table class="detail-table">
+    <table class="table table-striped">
     <tr>
       <th><strong>Product</strong></th>
       <th><strong>Changelog (released)</strong></th>

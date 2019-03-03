@@ -18,7 +18,7 @@ mapping between <a href="https://wiki.apache.org/tomcat/Specifications">the spec
 and the respective Apache Tomcat versions is:
 </p>
 
-<table class="detail-table">
+<table class="table table-striped">
 
 <tr>
   <th><strong>Servlet Spec</strong></th>

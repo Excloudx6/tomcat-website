@@ -32,7 +32,7 @@
     <xslt basedir="${docs.src}"
           destdir="${docs.dest}"
           extension=".html"
-          style="${docs.src}/stylesheets/tomcat-site.xsl"
+          style="${docs.src}/xsl/tomcat-site.xsl"
           excludes="project.xml,sitemap.xml,sitemap-main.xml"
           includes="*.xml"
           force="${force}">

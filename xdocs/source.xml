@@ -2,7 +2,7 @@
 <document>
 
   <properties>
-    <title>Subversion Repository Access</title>
+    <title>Repository Access</title>
   </properties>
 
 <body>
@@ -11,20 +11,62 @@
 <toc/>
 </section>
 
-<section name="Subversion">
+<section name="Version Control">
 
-<p>All of the Apache Tomcat source code, documentation and this web site are
-managed under version control using <a href="http://subversion.apache.org/">Subversion</a>.
-This page explains the structure of the Apache Tomcat Subversion repository.
-The page assumes you are familiar with the general
-<a href="http://www.apache.org/dev/version-control.html#anon-svn">Apache
-guidance for Subversion</a>.</p>
+<p>The Apache Tomcat project is in the process of migrating from Subversion to
+Git for version control. The following components have been migrated:
+</p>
+<ul>
+<li>Apache Tomcat 9.0.x</li>
+<li>Apache Tomcat 8.5.x</li>
+<li>Apache Tomcat 7.0.x</li>
+</ul>
+<p>The following components currently use Subversion as the primary version
+control system:</p>
+<ul>
+<li>Tomcat Connectors *</li>
+<li>Tomcat Maven plugin *</li>
+<li>Tomcat Native *</li>
+<li>Tomcat web site</li>
+<li>Taglibs</li>
+<li>archive</li>
+</ul>
+<p>The Subversion repositories marked with a * are also mirrored to a Git repository.</p>
+</section>
 
-<p>All Subversion links on this page use anonymous access.</p>
+<section name="Git">
+
+<p>The ASF operates a dual master system for repositories that use Git as their
+primary version control system. This means committers may commit to either
+gitbox.apache.org or GitHub.</p>
+
+<p>For repositories that are mirrored to Git from Subversion, the mirrors may be
+found at git.apache.org or GitHub and are read-only for everyone.</p>
 
 </section>
 
-<section name="Repository Structure">
+<section name="tomcat.git">
+
+<p>This the Git repository that contains the Apache Tomcat source code. There
+are currently three branches:</p>
+<ul>
+<li>master</li>
+<li>8.5.x</li>
+<li>7.0.x</li>
+</ul>
+<p>master is the primary development branch. Apache Tomcat 9.0.x releases are
+tagged from this branch. Development work generally occurs in this branch
+first.</p>
+<p>8.5.x is the stable release branch for Apache Tomcat 8.5.x. Generally, fixes
+are cherry picked from master into this branch.</p>
+<p>7.0.x is the stable release branch for Apache Tomcat 7.0.x. Generally, fixes
+are cherry picked from 8.5.x into this branch.</p>
+<p>A web based view of this repository is available via
+<a href="https://gitbox.apache.org/repos/asf?p=tomcat.git">GitBox</a> or
+<a href="https://github.com/apache/tomcat">GitHub</a>.</p>
+</section>
+
+<section name="Subversion Repository">
 
 <p>The root of the repository is
 <a href="http://svn.apache.org/repos/asf/tomcat">
@@ -87,27 +129,6 @@ http://svn.apache.org/repos/asf/tomcat</a>.</p>
         <code>/tags/</code></a></td>
     <td>Tags for the primary development branch. Mainly used for modules.</td>
   </tr>
-  <tr>
-    <td><a href="http://svn.apache.org/repos/asf/tomcat/tc7.0.x">
-        <code>/tc7.0.x/</code></a></td>
-    <td>The stable Tomcat 7.0.x release branch. See
-        <a href="http://svn.apache.org/repos/asf/tomcat/tc7.0.x/trunk">
-        <code>/tc7.0.x/trunk/</code></a>.</td>
-  </tr>
-  <tr>
-    <td><a href="http://svn.apache.org/repos/asf/tomcat/tc8.5.x">
-        <code>/tc8.5.x/</code></a></td>
-    <td>The Tomcat 8.5.x release branch. See
-        <a href="http://svn.apache.org/repos/asf/tomcat/tc8.5.x/trunk">
-        <code>/tc8.5.x/trunk/</code></a>.</td>
-  </tr>
-  <tr>
-    <td><a href="http://svn.apache.org/repos/asf/tomcat/trunk">
-        <code>/trunk/</code></a></td>
-    <td>The primary development branch. Tomcat 9.0.x.
-        Changes are first implemented here, then backported to other
-        branches.</td>
-  </tr>
 </table>
 
 <subsection name="Line endings">
@@ -125,22 +146,6 @@ you'll never use them on Windows.</p>
 
 </subsection>
 
-</section>
-
-<section name="Git Mirror">
-
-<p>The Apache Software Foundation provides read-only Git mirrors for
-its projects. See <a href="http://git.apache.org/">http://git.apache.org/</a> </p>
-
-<p><em>Several notes for the users of Git</em>:</p>
-
-<ol>
-  <li>The Git repositories at <a href="http://git.apache.org/">http://git.apache.org/</a>
-    and their clones at GitHub are only mirrors. The official code repository
-    is the Subversion one, documented above.</li>
-  <li>To propose a patch, please follow general patch submission guidelines,
-    documented on the <a href="bugreport.html">Bug Database</a> page.</li>
-</ol>
 </section>
 
 </body>
