@@ -46,7 +46,6 @@
     <xsl:variable name="src-asf-logo">
       <xsl:value-of select="$asf-logo"/>
     </xsl:variable>
-
     <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;
     </xsl:text>
 
@@ -61,57 +60,59 @@
        In XHTML, this is not needed as the encoding will be
        specified in the XML declaration.
   -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     
-    <xsl:apply-templates select="meta"/>
-    <title><xsl:value-of select="$project/title"/>&#174; - <xsl:value-of select="properties/title"/></title>
-    <xsl:for-each select="properties/author">
-      <xsl:variable name="name">
-        <xsl:value-of select="."/>
-      </xsl:variable>
-      <xsl:variable name="email">
-        <xsl:value-of select="@email"/>
-      </xsl:variable>
-      <meta name="author" content="{$name}"/>
-      <!-- Don't publish e-mail addresses
-      <meta name="email" content="{$email}"/>
-       -->
-    </xsl:for-each>
-    <xsl:for-each select="properties/google-site-verification">
-      <meta name="google-site-verification" content="{.}"/>
-    </xsl:for-each>
-    <xsl:if test="properties/base">
-      <base href="{properties/base/@href}"/>
-    </xsl:if>
+  <xsl:apply-templates select="meta"/>
+  
+  <title><xsl:value-of select="$project/title"/>&#174; - <xsl:value-of select="properties/title"/></title>
+  <xsl:for-each select="properties/author">
+    <xsl:variable name="name">
+      <xsl:value-of select="."/>
+    </xsl:variable>
+    <xsl:variable name="email">
+      <xsl:value-of select="@email"/>
+    </xsl:variable>
+    <meta name="author" content="{$name}"/>
+    <!-- Don't publish e-mail addresses
+    <meta name="email" content="{$email}"/>
+     -->
+  </xsl:for-each>
+  <xsl:for-each select="properties/google-site-verification">
+    <meta name="google-site-verification" content="{.}"/>
+  </xsl:for-each>
+  <xsl:if test="properties/base">
+    <base href="{properties/base/@href}"/>
+  </xsl:if>
 
-    <link rel="stylesheet" href="res/css/bootstrap.css"/>
-    <link rel="stylesheet" href="res/css/tomcat.css"/>
-    <script>
-      var windowFontSize = 16;
-      function setFontsize(val){
-        windowFontSize = val;
-        if (window.localStorage){
-          window.localStorage.setItem("font-size", val);
-        }
-        document.getElementsByTagName("html")[0].style = "font-size: " + val + "px;";
-      }
-
+  <link rel="stylesheet" href="res/css/bootstrap.css"/>
+  <link rel="stylesheet" href="res/css/tomcat.css"/>
+  <script>
+    var windowFontSize = 16;
+    function setFontsize(val){
+      windowFontSize = val;
       if (window.localStorage){
-        var val = window.localStorage.getItem("font-size");
-        if (val){
-          setFontsize(val);
-        }
+        window.localStorage.setItem("font-size", val);
       }
-    </script>
-  </head>
-  <body>
-    <!-- Header -->
+      document.getElementsByTagName("html")[0].style = "font-size: " + val + "px;";
+    }
+    if (window.localStorage){
+      var val = window.localStorage.getItem("font-size");
+      if (val){
+        setFontsize(val);
+      }
+    }
+  </script>
+</head>
+<body>
+<!-- Header -->
 
 <!-- header-begin !-->
 <div class="container topbar">
   <div class="row">
     <div class="col">
-      <img src="res/img/tomcat-logo-tm.svg" id="tomcat-logo" alt="Apache Tomcat logo"/>
+      <a href="https://tomcat.apache.org/">
+        <img src="res/img/tomcat-logo-tm.svg" id="tomcat-logo" alt="Apache Tomcat logo"/>
+      </a>
     </div>
     <div class="col">
       <a href="https://www.apache.org/" target="_blank">
@@ -120,13 +121,15 @@
       </a>
     </div>
     <div class="col">
-      <img src="res/img/SupportApache-small.png" class="asf-logo ml-4 float-right" alt="Support Apache"/>
+      <a href="https://www.apache.org/foundation/contributing.html" target="_blank">
+        <img src="res/img/SupportApache-small.png" class="asf-logo ml-4 float-right" alt="Support Apache"/>
+      </a>
     </div>
   </div>
 </div>
 <header class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
   <div class="container">
-    <a class="navbar-brand" href="https://tomcat.apache.org/" style="padding: 0;">
+    <a class="navbar-brand pad0" href="https://tomcat.apache.org/">
       <div class="navbar-brand-name">Apache Tomcat</div>
       <div class="navbar-logo"><img src="res/img/tomcat-logo-tm.svg" alt="Apache Tomcat logo"/></div>
     </a>
@@ -215,9 +218,10 @@
           </div>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search" style="margin-right: -2rem;"/>
-        <button class="btn btn-light my-2 my-sm-0" type="submit" style="pointer-events: none;"><img src="res/img/search.svg" class="fa-search"/></button>
+      <form class="form-inline my-2 my-lg-0" action="https://www.google.com/search" method="get">
+        <input value="tomcat.apache.org" name="sitesearch" type="hidden"/>
+        <input id="search" name="q" class="form-control" type="search" placeholder="Search" aria-label="Search"/>
+        <button class="btn btn-light my-2 my-sm-0 no-pointer-events" type="submit"><img src="res/img/search.svg" class="fa"/></button>
       </form>
     </div>
   </div><!-- .container !-->
@@ -228,13 +232,10 @@
 
 
 
-
 <xsl:apply-templates select="body/section"/>
 
 
-
-  <!-- Footer -->
-
+<!-- Footer -->
 </div><!-- .content !-->
 
 <!-- footer-begin !-->
@@ -254,23 +255,30 @@
         <hr class="clearfix w-100 d-md-none pb-3"/>
         <div class="col-md-3 mb-md-0 mb-3">
             <label for="fontSize">Change font size: </label>
-            <div style="white-space: nowrap;">
-              <span style="line-height: 30px; font-size: 12px; vertical-align: text-bottom;">A</span>
+            <div class="nowrap">
+              <span class="font-sizer-label">A</span>
               <input type="range" id="font-size" min="12" max="20" step="1" value="16"/>
-              <span style="line-height: 30px; font-size: 20px; vertical-align: text-bottom;">A</span>
+              <span class="font-sizer-label large">A</span>
             </div>
           </div>
           <div class="col-md-3 mb-md-0 mb-3"></div>
       </div>
     </div>
+
+    <div class="row footer-links mt-4">
+      <div class="col-md-2"></div>
+      <xsl:apply-templates select="$project/body/nav" mode="footer"/>
+    </div>
+
     <hr/>
+
     <p>Apache Tomcat, Tomcat, Apache, the Apache feather, and the Apache Tomcat project's logo are registered trademarks or trademarks of the Apache Software Foundation.</p>
   </footer>
 </div><!-- .container !-->
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="res/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="res/js/popper.min.js"></script>
+    <script src="res/js/bootstrap.min.js"></script>
     <script src="res/js/tomcat.js"></script>
   </body>
 </html>
@@ -278,20 +286,18 @@
 
 </xsl:template>
 
-
-<!-- Process a menu for the navigation bar -->
-<xsl:template match="menu">
-<div>
-  <h2><xsl:value-of select="@name"/></h2>
-  <ul>
-    <xsl:apply-templates select="item"/>
-  </ul>
-</div>
+<!-- process footer nav titles -->
+<xsl:template match="nav" mode="footer">
+  <xsl:variable name="title" select="@name" mode="footer"/>
+  <xsl:variable name="id" select="translate($title, ' ', '-')" mode="footer"/>
+  <div class="col-md-2">
+    <div class="bold" id="{$id}"><xsl:value-of select="$title"/></div>
+    <xsl:apply-templates select="navitem" mode="footer"/>
+  </div>
 </xsl:template>
 
-
-<!-- Process a menu item for the navigation bar -->
-<xsl:template match="item">
+<!-- process footer nav items -->
+<xsl:template match="navitem" mode="footer">
   <xsl:variable name="href">
     <xsl:choose>
       <xsl:when test="starts-with(@href, 'http://')">
@@ -313,177 +319,178 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-  <li><a href="{$href}"><xsl:value-of select="@name"/></a></li>
+  <div>
+    <a href="{$href}"><xsl:value-of select="@name"/></a>
+  </div>
 </xsl:template>
 
-  <!-- Process <a> links -->
-  <xsl:template match="a[@href]">
-    <xsl:variable name="href">
-      <xsl:choose>
-        <xsl:when test="starts-with(@href, 'http://')">
-            <xsl:value-of select="@href"/>
-        </xsl:when>
-        <xsl:when test="starts-with(@href, 'https://')">
-            <xsl:value-of select="@href"/>
-        </xsl:when>
-        <xsl:when test="contains(@href, '.cgi')">
-            <xsl:text>https://tomcat.apache.org/</xsl:text><xsl:value-of select="@href"/>
-        </xsl:when>
-        <xsl:otherwise>
-            <xsl:value-of select="@href"/>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-    <xsl:copy>
-      <xsl:attribute name="href"><xsl:value-of select="$href"/></xsl:attribute>
-      <xsl:apply-templates select="@*[name()!='href']|*|text()"/>
-    </xsl:copy>
-  </xsl:template>
 
-  <!-- Process a documentation section -->
-  <xsl:template match="section">
-    <xsl:variable name="name2">
-      <xsl:choose>
-        <xsl:when test="@anchor">
-          <xsl:value-of select="@anchor" />
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="@name"/>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-    <xsl:variable name="name">
-      <xsl:value-of select="translate($name2, ' #', '__')"/>
-    </xsl:variable>
+<!-- Process <a> links -->
+<xsl:template match="a[@href]">
+  <xsl:variable name="href">
+    <xsl:choose>
+      <xsl:when test="starts-with(@href, 'http://')">
+          <xsl:value-of select="@href"/>
+      </xsl:when>
+      <xsl:when test="starts-with(@href, 'https://')">
+          <xsl:value-of select="@href"/>
+      </xsl:when>
+      <xsl:when test="contains(@href, '.cgi')">
+          <xsl:text>https://tomcat.apache.org/</xsl:text><xsl:value-of select="@href"/>
+      </xsl:when>
+      <xsl:otherwise>
+          <xsl:value-of select="@href"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:copy>
+    <xsl:attribute name="href"><xsl:value-of select="$href"/></xsl:attribute>
+    <xsl:apply-templates select="@*[name()!='href']|*|text()"/>
+  </xsl:copy>
+</xsl:template>
 
-    <!-- Section heading -->
-    <h3 id="{$name}">
-      <xsl:if test="@rtext">
-        <!-- Additional right-aligned text cell in section heading. -->
-        <span class="pull-right">
-          <xsl:value-of select="@rtext"/>
-        </span><xsl:text>&#x20;</xsl:text> <!-- Ensure a space follows after </span> -->
-      </xsl:if>
+<!-- Process a documentation section -->
+<xsl:template match="section">
+  <xsl:variable name="name2">
+    <xsl:choose>
+      <xsl:when test="@anchor">
+        <xsl:value-of select="@anchor" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="@name"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:variable name="name">
+    <xsl:value-of select="translate($name2, ' #', '__')"/>
+  </xsl:variable>
+
+  <!-- Section heading -->
+  <h3 id="{$name}">
+    <xsl:if test="@rtext">
+      <!-- Additional right-aligned text cell in section heading. -->
+      <span class="pull-right">
+        <xsl:value-of select="@rtext"/>
+      </span><xsl:text>&#x20;</xsl:text> <!-- Ensure a space follows after </span> -->
+    </xsl:if>
+    <xsl:value-of select="@name"/>
+  </h3>
+  <!-- Section body -->
+  <div class="text">
+    <xsl:apply-templates/>
+  </div>
+</xsl:template>
+
+<!-- Process a documentation subsection -->
+<xsl:template match="subsection">
+  <xsl:variable name="name2">
+    <xsl:choose>
+      <xsl:when test="@anchor">
+        <xsl:value-of select="@anchor" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:if test="
+            count(//*[self::section or self::subsection][@name=current()/@name]) &gt; 1
+            ">
+          <xsl:value-of select="concat(parent::*[self::section or self::subsection]/@name, '/')"/>
+        </xsl:if>
+        <xsl:value-of select="@name"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:variable name="name">
+    <xsl:value-of select="translate($name2, ' #', '__')"/>
+  </xsl:variable>
+
+  <div class="subsection">
+    <!-- Subsection heading -->
+    <!-- TODO: When a <subsection> is nested in another <subsection>,
+         the output should be <h5>, not <h4>. Same with <h6>. -->
+    <h4 id="{$name}">
       <xsl:value-of select="@name"/>
-    </h3>
-    <!-- Section body -->
+    </h4>
+    <!-- Subsection body -->
     <div class="text">
       <xsl:apply-templates/>
     </div>
-
-  </xsl:template>
-
-
-  <!-- Process a documentation subsection -->
-  <xsl:template match="subsection">
-    <xsl:variable name="name2">
-      <xsl:choose>
-        <xsl:when test="@anchor">
-          <xsl:value-of select="@anchor" />
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:if test="
-              count(//*[self::section or self::subsection][@name=current()/@name]) &gt; 1
-              ">
-            <xsl:value-of select="concat(parent::*[self::section or self::subsection]/@name, '/')"/>
-          </xsl:if>
-          <xsl:value-of select="@name"/>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-    <xsl:variable name="name">
-      <xsl:value-of select="translate($name2, ' #', '__')"/>
-    </xsl:variable>
-
-    <div class="subsection">
-      <!-- Subsection heading -->
-      <!-- TODO: When a <subsection> is nested in another <subsection>,
-           the output should be <h5>, not <h4>. Same with <h6>. -->
-      <h4 id="{$name}">
-        <xsl:value-of select="@name"/>
-      </h4>
-      <!-- Subsection body -->
-      <div class="text">
-        <xsl:apply-templates/>
-      </div>
-    </div>
-
-  </xsl:template>
-
-
-  <!-- Generate table of contents -->
-  <xsl:template match="toc">
-    <ul><xsl:apply-templates mode="toc" select="following::section"/></ul>
-  </xsl:template>
-
-  <xsl:template mode="toc" match="section|subsection">
-    <xsl:variable name="name2">
-      <xsl:choose>
-        <xsl:when test="@anchor">
-          <xsl:value-of select="@anchor" />
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:if test="local-name()='subsection' and
-              count(//*[self::section or self::subsection][@name=current()/@name]) &gt; 1
-              ">
-            <xsl:value-of select="concat(parent::*[self::section or self::subsection]/@name, '/')"/>
-          </xsl:if>
-          <xsl:value-of select="@name"/>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-    <xsl:variable name="name">
-      <xsl:value-of select="translate($name2, ' #', '__')"/>
-    </xsl:variable>
-    <li><a href="#{$name}"><xsl:value-of select="@name"/></a>
-    <xsl:if test="subsection">
-      <ol><xsl:apply-templates mode="toc" select="subsection"/></ol>
-    </xsl:if>
-    </li>
-  </xsl:template>
-
-  <!-- Process a source code example -->
-  <xsl:template match="source">
-  <div class="codeBox">
-    <pre>
-      <xsl:if test="@wrapped='true'">
-        <xsl:attribute name="class">wrap</xsl:attribute>
-      </xsl:if>
-      <code><xsl:apply-templates/></code>
-    </pre>
   </div>
-  </xsl:template>
 
-  <!-- Link to a bug report -->
-  <xsl:template match="bug">
-      <xsl:variable name="link"><xsl:value-of select="$buglink"/><xsl:value-of select="text()"/></xsl:variable>
-      <a href="{$link}"><xsl:apply-templates/></a>
-  </xsl:template>
+</xsl:template>
 
-  <!-- Link to a SVN revision report -->
-  <xsl:template match="rev">
-      <xsl:variable name="link"><xsl:value-of select="$revlink"/><xsl:value-of select="text()"/></xsl:variable>
-      <a href="{$link}">r<xsl:apply-templates/></a>
-  </xsl:template>
 
-  <!-- Link to a SVN revision report -->
-  <!-- It is similat to <rev> tag, but allows arbitrary text inside -->
-  <xsl:template match="revlink">
-      <xsl:variable name="link"><xsl:value-of select="$revlink"/><xsl:value-of select="@rev"/></xsl:variable>
-      <a href="{$link}"><xsl:apply-templates/></a>
-  </xsl:template>
+<!-- Generate table of contents -->
+<xsl:template match="toc">
+  <ul><xsl:apply-templates mode="toc" select="following::section"/></ul>
+</xsl:template>
 
-  <!-- Link to a CVE report -->
-  <xsl:template match="cve">
-      <xsl:variable name="link"><xsl:value-of select="$cvelink"/><xsl:value-of select="text()"/></xsl:variable>
-      <a href="{$link}" rel="nofollow"><xsl:apply-templates/></a>
-  </xsl:template>
+<xsl:template mode="toc" match="section|subsection">
+  <xsl:variable name="name2">
+    <xsl:choose>
+      <xsl:when test="@anchor">
+        <xsl:value-of select="@anchor" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:if test="local-name()='subsection' and
+            count(//*[self::section or self::subsection][@name=current()/@name]) &gt; 1
+            ">
+          <xsl:value-of select="concat(parent::*[self::section or self::subsection]/@name, '/')"/>
+        </xsl:if>
+        <xsl:value-of select="@name"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:variable name="name">
+    <xsl:value-of select="translate($name2, ' #', '__')"/>
+  </xsl:variable>
+  <li><a href="#{$name}"><xsl:value-of select="@name"/></a>
+  <xsl:if test="subsection">
+    <ol><xsl:apply-templates mode="toc" select="subsection"/></ol>
+  </xsl:if>
+  </li>
+</xsl:template>
 
-  <!-- Process everything else by just passing it through -->
-  <xsl:template match="*|@*">
-    <xsl:copy>
-      <xsl:apply-templates select="@*|*|text()"/>
-    </xsl:copy>
-  </xsl:template>
+<!-- Process a source code example -->
+<xsl:template match="source">
+<div class="codeBox">
+  <pre>
+    <xsl:if test="@wrapped='true'">
+      <xsl:attribute name="class">wrap</xsl:attribute>
+    </xsl:if>
+    <code><xsl:apply-templates/></code>
+  </pre>
+</div>
+</xsl:template>
+
+<!-- Link to a bug report -->
+<xsl:template match="bug">
+    <xsl:variable name="link"><xsl:value-of select="$buglink"/><xsl:value-of select="text()"/></xsl:variable>
+    <a href="{$link}"><img src="res/img/bug.svg" class="fa mr-1"/><xsl:apply-templates/></a>
+</xsl:template>
+
+<!-- Link to a SVN revision report -->
+<xsl:template match="rev">
+    <xsl:variable name="link"><xsl:value-of select="$revlink"/><xsl:value-of select="text()"/></xsl:variable>
+    <a href="{$link}">r<xsl:apply-templates/></a>
+</xsl:template>
+
+<!-- Link to a SVN revision report -->
+<!-- It is similat to <rev> tag, but allows arbitrary text inside -->
+<xsl:template match="revlink">
+    <xsl:variable name="link"><xsl:value-of select="$revlink"/><xsl:value-of select="@rev"/></xsl:variable>
+    <a href="{$link}"><xsl:apply-templates/></a>
+</xsl:template>
+
+<!-- Link to a CVE report -->
+<xsl:template match="cve">
+    <xsl:variable name="link"><xsl:value-of select="$cvelink"/><xsl:value-of select="text()"/></xsl:variable>
+    <a href="{$link}" rel="nofollow"><xsl:apply-templates/></a>
+</xsl:template>
+
+<!-- Process everything else by just passing it through -->
+<xsl:template match="*|@*">
+  <xsl:copy>
+    <xsl:apply-templates select="@*|*|text()"/>
+  </xsl:copy>
+</xsl:template>
 
 </xsl:stylesheet>

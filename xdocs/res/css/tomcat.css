@@ -22,6 +22,12 @@ h3 { margin-top: 1rem; }
 
 img { max-width: 100% !important; }
 
+.no-pointer-events { pointer-events: none; }
+
+.nowrap { white-space: nowrap; }
+
+.pad0 { padding: 0; }
+
 .topbar img {
   display: block;
   height: 92px;
@@ -75,6 +81,7 @@ img { max-width: 100% !important; }
 #search {
   width: 2rem;
   transition: width 0.4s;
+  margin-right: -2rem;
 }
 
 #search:focus {
@@ -103,9 +110,22 @@ code {
   margin-top: -10px;
 }
 
-.fa-search {
+.bold { font-weight: bold; }
+
+.fa {
+  vertical-align: bottom;
   width: 16px;
   height: 24px;
+}
+
+.font-sizer-label {
+  line-height: 30px; 
+  font-size: 12px; 
+  vertical-align: text-bottom;
+}
+
+.font-sizer-label.large {
+  font-size: 20px; 
 }
 
 .inline { display: inline; }

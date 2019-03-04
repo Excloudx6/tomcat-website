@@ -5,73 +5,69 @@
     <title>Apache Tomcat</title>
 
     <body>
-    <menu name="Apache Tomcat">
-        <item name="Home"                     href="/index.html"/>
-        <item name="Taglibs"                  href="/taglibs.html"/>
-        <item name="Maven Plugin"             href="/maven-plugin.html"/>
-    </menu>
+
+    <nav name="Download">
+        <navitem name="Which version?"          href="/whichversion.html"/>
+        <div class="dropdown-divider"></div>
+        <navitem name="Tomcat 9"                href="/download-90.cgi"/>
+        <navitem name="Tomcat 8"                href="/download-80.cgi"/>
+        <navitem name="Tomcat 7"                href="/download-70.cgi"/>
+        <div class="dropdown-divider"></div>
+        <navitem name="Tomcat Connectors"       href="/download-connectors.cgi"/>
+        <navitem name="Tomcat Native"           href="/download-native.cgi"/>
+        <navitem name="Taglibs"                 href="/download-taglibs.cgi"/>
+        <navitem name="Archives"                href="https://archive.apache.org/dist/tomcat/"/>
+    </nav>
+    <nav name="Docs">
+        <navitem name="Tomcat 9.0"              href="/tomcat-9.0-doc/index.html"/>
+        <navitem name="Tomcat 8.5"              href="/tomcat-8.5-doc/index.html"/>
+        <navitem name="Tomcat 7.0"              href="/tomcat-7.0-doc/index.html"/>
+        <navitem name="Tomcat Connectors"       href="/connectors-doc/"/>
+        <navitem name="Tomcat Native"           href="/native-doc/"/>
+        <navitem name="Wiki"                    href="https://wiki.apache.org/tomcat/FrontPage"/>
+        <navitem name="Migration Guide"         href="/migration.html"/>
+        <navitem name="Presentations"           href="/presentations.html"/>
+        <navitem name="Taglibs"                 href="taglibs.html"/>
+        <navitem name="Maven Plugin"            href="maven-plugin.html"/>
+        <navitem name="Blog"                    href="https://blogs.apache.org/tomcat/"/>
+    </nav>
+    <nav name="Problems?">
+        <navitem name="Security Reports" href="security.html"/>
+        <navitem name="Find Help" href="findhelp.html"/>
+        <navitem name="FAQ" href="https://wiki.apache.org/tomcat/FAQ"/>
+        <navitem name="Mailing Lists" href="lists.html"/>
+        <navitem name="Bug Database" href="bugreport.html"/>
+        <navitem name="IRC" href="irc.html"/>
+    </nav>
+    <nav name="Get Involved">
+        <navitem name="Overview" href="getinvolved.html"/>
+        <navitem name="Source Code" href="source.html"/>
+        <navitem name="Buildbot" href="ci.html"/>
+        <navitem name="Tools" href="tools.html"/>
+    </nav>
+    <nav name="About">
+        <!-- 
+            <navitem name="North America"            href="/conference.html"/> 
+        -->
+        <navitem name="Who We Are" href="whoweare.html"/>
+        <navitem name="Swag" href="https://www.redbubble.com/people/comworks/30885254-apache-tomcat"/>
+        <navitem name="Heritage" href="heritage.html"/>
+        <navitem name="Resources" href="resources.html"/>
+        <navitem name="Contact" href="contact.html"/>
+        <div class="dropdown-divider"></div>
+        <navitem name="Apache Software Foundation" href="https://tomcat.apache.org/"/>
+        <navitem name="Legal" href="legal.html"/>
+        <navitem name="Support Apache" href="https://www.apache.org/foundation/contributing.html"/>
+        <navitem name="Sponsorship" href="https://www.apache.org/foundation/sponsorship.html"/>
+        <navitem name="Thanks" href="https://www.apache.org/foundation/thanks.html"/>
+        <navitem name="License" href="https://www.apache.org/licenses/"/>
+    </nav>
 
 <!--
     <menu name="TomcatCon">
         <item name="North America"            href="/conference.html"/>
     </menu>
 -->
-    <menu name="Download">
-        <item name="Which version?"           href="/whichversion.html"/>
-        <item name="Tomcat 9"                 href="/download-90.cgi"/>
-        <item name="Tomcat 8"                 href="/download-80.cgi"/>
-        <item name="Tomcat 7"                 href="/download-70.cgi"/>
-        <item name="Tomcat Connectors"        href="/download-connectors.cgi"/>
-        <item name="Tomcat Native"            href="/download-native.cgi"/>
-        <item name="Taglibs"                  href="/download-taglibs.cgi"/>
-        <item name="Archives"                 href="https://archive.apache.org/dist/tomcat/"/>
-    </menu>
 
-    <menu name="Documentation">
-        <item name="Tomcat 9.0"               href="/tomcat-9.0-doc/index.html"/>
-        <item name="Tomcat 8.5"               href="/tomcat-8.5-doc/index.html"/>
-        <item name="Tomcat 7.0"               href="/tomcat-7.0-doc/index.html"/>
-        <item name="Tomcat Connectors"        href="/connectors-doc/"/>
-        <item name="Tomcat Native"            href="/native-doc/"/>
-        <item name="Wiki"                     href="https://wiki.apache.org/tomcat/FrontPage"/>
-        <item name="Migration Guide"          href="/migration.html"/>
-        <item name="Presentations"            href="/presentations.html"/>
-    </menu>
-
-    <menu name="Problems?">
-        <item name="Security Reports"         href="/security.html"/>
-        <item name="Find help"                href="/findhelp.html"/>
-        <item name="FAQ"                      href="https://wiki.apache.org/tomcat/FAQ"/>
-        <item name="Mailing Lists"            href="/lists.html"/>
-        <item name="Bug Database"             href="/bugreport.html"/>
-        <item name="IRC"                      href="/irc.html"/>
-    </menu>
-
-    <menu name="Get Involved">
-        <item name="Overview"                 href="/getinvolved.html"/>
-        <item name="Source code"              href="/svn.html"/>
-        <item name="Buildbot"                 href="/ci.html"/>
-        <item name="Tools"                    href="/tools.html"/>
-    </menu>
-
-    <menu name="Media">
-        <item name="Twitter"                  href="https://twitter.com/theapachetomcat"/>
-        <item name="YouTube"                  href="https://www.youtube.com/c/ApacheTomcatOfficial"/>
-        <item name="Blog"                     href="https://blogs.apache.org/tomcat/"/>
-    </menu>
-
-    <menu name="Misc">
-        <item name="Who We Are"               href="/whoweare.html"/>
-        <item name="Swag"                     href="https://www.redbubble.com/people/comdev/works/30885254-apache-tomcat"/>
-        <item name="Heritage"                 href="/heritage.html"/>
-        <item name="Apache Home"              href="http://www.apache.org"/>
-        <item name="Resources"                href="/resources.html"/>
-        <item name="Contact"                  href="/contact.html"/>
-        <item name="Legal"                    href="/legal.html"/>
-        <item name="Support Apache"           href="https://www.apache.org/foundation/contributing.html"/>
-        <item name="Sponsorship"              href="https://www.apache.org/foundation/sponsorship.html"/>
-        <item name="Thanks"                   href="http://www.apache.org/foundation/thanks.html"/>
-        <item name="License"                  href="http://www.apache.org/licenses/"/>
-    </menu>
   </body>
 </project>

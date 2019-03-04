@@ -59,8 +59,8 @@ Full details of these changes, and all the other changes, are available in the
 <a href="tomcat-7.0-doc/changelog.html#Tomcat_7.0.93_(violetagg)">Tomcat 7 changelog</a>.
 </p>
 
-<p style="text-align: center;">
-<a href="download-70.cgi">Download</a>
+<p class="text-center">
+<a href="download-70.cgi"><img src="res/img/download.svg" class="fa"/> Download</a>
 </p>
 </section>
 
@@ -92,8 +92,8 @@ be written, or the file is not created at all. See bug <bug>63041</bug>
 file from Tomcat 9.0.13.
 </p>
 
-<p style="text-align: center;">
-<a href="download-90.cgi">Download</a>
+<p class="text-center">
+<a href="download-90.cgi"><img src="res/img/download.svg" class="fa"/> Download</a>
 </p>
 </section>
 
@@ -126,8 +126,8 @@ be written, or the file is not created at all. See bug <bug>63041</bug>
 file from Tomcat 8.5.35.
 </p>
 
-<p style="text-align: center;">
-<a href="download-80.cgi">Download</a>
+<p class="text-center">
+<a href="download-80.cgi"><img src="res/img/download.svg" class="fa"/> Download</a>
 </p>
 </section>
 
@@ -139,8 +139,8 @@ Tomcat Native. The notable changes since 1.2.19 include:
 <ul>
   <li>Fixed memory leaks when using NIO/NIO2 with OpenSSL for TLS.</li>
 </ul>
-<p style="text-align: center;">
-<a href="download-native.cgi">Download</a> |
+<p class="text-center">
+<a href="download-native.cgi"><img src="res/img/download.svg" class="fa"/> Download</a> |
 <a href="native-doc/miscellaneous/changelog.html">ChangeLog for 1.2.21</a>
 </p>
 </section>
@@ -151,8 +151,8 @@ The Apache Tomcat Project is proud to announce the release of version 1.2.46 of
 Apache Tomcat Connectors.
 This version fixes a number of bugs found in previous releases.
 </p>
-<p style="text-align: center;">
-<a href="download-connectors.cgi">Download</a> |
+<p class="text-center">
+<a href="download-connectors.cgi"><img src="res/img/download.svg" class="fa"/> Download</a> |
 <a href="connectors-doc/miscellaneous/changelog.html">ChangeLog for 1.2.46</a>
 </p>
 </section>
@@ -178,8 +178,8 @@ changelog</a>.
 <a href="tomcat-80-eol.html">Read more...</a>
 </p>
 
-<p style="text-align: center;">
-<a href="download-80.cgi">Download</a>
+<p class="text-center">
+<a href="download-80.cgi"><img src="res/img/download.svg" class="fa"/> Download</a>
 </p>
 </section>
 
@@ -195,8 +195,8 @@ Tomcat Native. The notable changes since 1.1.33 include:
 </ul>
 <p>Note that, unless a regression is discovered in 1.2.x, users should now be
 using 1.2.x in preference to 1.1.x.</p>
-<p style="text-align: center;">
-<a href="download-native.cgi">Download</a> |
+<p class="text-center">
+<a href="download-native.cgi"><img src="res/img/download.svg" class="fa"/> Download</a> |
 <a href="native-1.1-doc/miscellaneous/changelog.html">ChangeLog for 1.1.34</a>
 </p>
 </section>
@@ -216,8 +216,8 @@ permission was granted to read the accessExternalEntity property.
 <p>
 Please see the <a href="taglibs.html">Taglibs section</a> for more details.
 </p>
-<p style="text-align: center;">
-<a href="download-taglibs.cgi">Download</a> |
+<p class="text-center">
+<a href="download-taglibs.cgi"><img src="res/img/download.svg" class="fa"/> Download</a> |
 <a href="taglibs/CHANGES.txt">Changes</a>
 </p>
 </section>
