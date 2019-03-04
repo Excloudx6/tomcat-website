@@ -27,40 +27,40 @@
         <navitem name="Wiki"                    href="https://wiki.apache.org/tomcat/FrontPage"/>
         <navitem name="Migration Guide"         href="/migration.html"/>
         <navitem name="Presentations"           href="/presentations.html"/>
-        <navitem name="Taglibs"                 href="taglibs.html"/>
-        <navitem name="Maven Plugin"            href="maven-plugin.html"/>
+        <navitem name="Taglibs"                 href="/taglibs.html"/>
+        <navitem name="Maven Plugin"            href="/maven-plugin.html"/>
         <navitem name="Blog"                    href="https://blogs.apache.org/tomcat/"/>
     </nav>
     <nav name="Problems?">
-        <navitem name="Security Reports" href="security.html"/>
-        <navitem name="Find Help" href="findhelp.html"/>
-        <navitem name="FAQ" href="https://wiki.apache.org/tomcat/FAQ"/>
-        <navitem name="Mailing Lists" href="lists.html"/>
-        <navitem name="Bug Database" href="bugreport.html"/>
-        <navitem name="IRC" href="irc.html"/>
+        <navitem name="Security Reports"        href="/security.html"/>
+        <navitem name="Find Help"               href="/findhelp.html"/>
+        <navitem name="FAQ"                     href="https://wiki.apache.org/tomcat/FAQ"/>
+        <navitem name="Mailing Lists"           href="/lists.html"/>
+        <navitem name="Bug Database"            href="/bugreport.html"/>
+        <navitem name="IRC"                     href="/irc.html"/>
     </nav>
     <nav name="Get Involved">
-        <navitem name="Overview" href="getinvolved.html"/>
-        <navitem name="Source Code" href="source.html"/>
-        <navitem name="Buildbot" href="ci.html"/>
-        <navitem name="Tools" href="tools.html"/>
+        <navitem name="Overview"                href="/getinvolved.html"/>
+        <navitem name="Source Code"             href="/source.html"/>
+        <navitem name="Buildbot"                href="/ci.html"/>
+        <navitem name="Tools"                   href="/tools.html"/>
     </nav>
     <nav name="About">
         <!-- 
             <navitem name="North America"            href="/conference.html"/> 
         -->
-        <navitem name="Who We Are" href="whoweare.html"/>
-        <navitem name="Swag" href="https://www.redbubble.com/people/comworks/30885254-apache-tomcat"/>
-        <navitem name="Heritage" href="heritage.html"/>
-        <navitem name="Resources" href="resources.html"/>
-        <navitem name="Contact" href="contact.html"/>
+        <navitem name="Who We Are"              href="/whoweare.html"/>
+        <navitem name="Swag"                    href="https://www.redbubble.com/people/comworks/30885254-apache-tomcat"/>
+        <navitem name="Heritage"                href="/heritage.html"/>
+        <navitem name="Resources"               href="/resources.html"/>
+        <navitem name="Contact"                 href="/contact.html"/>
         <div class="dropdown-divider"></div>
         <navitem name="Apache Software Foundation" href="https://tomcat.apache.org/"/>
-        <navitem name="Legal" href="legal.html"/>
-        <navitem name="Support Apache" href="https://www.apache.org/foundation/contributing.html"/>
-        <navitem name="Sponsorship" href="https://www.apache.org/foundation/sponsorship.html"/>
-        <navitem name="Thanks" href="https://www.apache.org/foundation/thanks.html"/>
-        <navitem name="License" href="https://www.apache.org/licenses/"/>
+        <navitem name="Legal"                   href="/legal.html"/>
+        <navitem name="Support Apache"          href="https://www.apache.org/foundation/contributing.html"/>
+        <navitem name="Sponsorship"             href="https://www.apache.org/foundation/sponsorship.html"/>
+        <navitem name="Thanks"                  href="https://www.apache.org/foundation/thanks.html"/>
+        <navitem name="License"                 href="https://www.apache.org/licenses/"/>
     </nav>
 
 <!--

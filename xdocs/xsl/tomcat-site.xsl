@@ -61,7 +61,8 @@
        specified in the XML declaration.
   -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    
+  <link rel="icon" href="res/img/tomcat-logo-tm-square.png"/>
+
   <xsl:apply-templates select="meta"/>
   
   <title><xsl:value-of select="$project/title"/>&#174; - <xsl:value-of select="properties/title"/></title>
@@ -104,8 +105,6 @@
   </script>
 </head>
 <body>
-<!-- Header -->
-
 <!-- header-begin !-->
 <div class="container topbar">
   <div class="row">
@@ -155,12 +154,10 @@
 <div id="content" class="container">
 
 
-
 <xsl:apply-templates select="body/section"/>
 
 
-<!-- Footer -->
-</div><!-- .content !-->
+</div><!-- #content !-->
 
 <!-- footer-begin !-->
 <div class="container">
