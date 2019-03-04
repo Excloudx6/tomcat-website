@@ -138,85 +138,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbar-supported-content">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Download
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
-            <a class="dropdown-item" href="whichversion.html">Which Version?</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="download-90.cgi">Tomcat 9</a>
-            <a class="dropdown-item" href="download-80.cgi">Tomcat 8</a>
-            <a class="dropdown-item" href="download-70.cgi">Tomcat 7</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="download-connectors.cgi">Connectors</a>
-            <a class="dropdown-item" href="download-native.cgi">Tomcat Native</a>
-            <a class="dropdown-item" href="download-taglibs.cgi">Taglibs</a>
-            <a class="dropdown-item" href="https://archive.apache.org/dist/tomcat/">Archives</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Docs
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
-            <a class="dropdown-item" href="tomcat-9.0-doc/index.html">Tomcat 9.0</a>
-            <a class="dropdown-item" href="tomcat-8.5-doc/index.html">Tomcat 8.5</a>
-            <a class="dropdown-item" href="tomcat-7.0-doc/index.html">Tomcat 7.0</a>
-            <a class="dropdown-item" href="connectors-doc/index.html">Connectors</a>
-            <a class="dropdown-item" href="native-doc/index.html">Tomcat Native</a>
-            <a class="dropdown-item" href="taglibs.html">Taglibs</a>
-            <a class="dropdown-item" href="maven-plugin.html">Maven Plugin</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="https://wiki.apache.org/tomcat/FrontPage">Wiki</a>
-            <a class="dropdown-item" href="migration.html">Migration Guide</a>
-            <a class="dropdown-item" href="presentations.html">Presentations</a>
-            <a class="dropdown-item" href="https://blogs.apache.org/tomcat/">Blog</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Problems?
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
-            <a class="dropdown-item" href="security.html">Security Reports</a>
-            <a class="dropdown-item" href="findhelp.html">Find Help</a>
-            <a class="dropdown-item" href="https://wiki.apache.org/tomcat/FAQ">FAQ</a>
-            <a class="dropdown-item" href="lists.html">Mailing Lists</a>
-            <a class="dropdown-item" href="bugreport.html">Bug Database</a>
-            <a class="dropdown-item" href="irc.html">IRC</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Get Involved
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
-            <a class="dropdown-item" href="getinvolved.html">Overview</a>
-            <a class="dropdown-item" href="source.html">Source Code</a>
-            <a class="dropdown-item" href="ci.html">Buildbot</a>
-            <a class="dropdown-item" href="tools.html">Tools</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            About
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
-            <a class="dropdown-item" href="whoweare.html">Who We Are</a>
-            <a class="dropdown-item" href="https://www.redbubble.com/people/comdev/works/30885254-apache-tomcat">Swag</a>
-            <a class="dropdown-item" href="heritage.html">Heritage</a>
-            <a class="dropdown-item" href="resources.html">Resources</a>
-            <a class="dropdown-item" href="contact.html">Contact</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="https://tomcat.apache.org/">Apache Software Foundation</a>
-            <a class="dropdown-item" href="legal.html">Legal</a>
-            <a class="dropdown-item" href="https://www.apache.org/foundation/contributing.html">Support Apache</a>
-            <a class="dropdown-item" href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a>
-            <a class="dropdown-item" href="https://www.apache.org/foundation/thanks.html">Thanks</a>
-            <a class="dropdown-item" href="https://www.apache.org/licenses/">License</a>
-          </div>
-        </li>
+        
+        <xsl:apply-templates select="$project/body/nav" mode="header"/>
+
       </ul>
       <form class="form-inline my-2 my-lg-0" action="https://www.google.com/search" method="get">
         <input value="tomcat.apache.org" name="sitesearch" type="hidden"/>
@@ -267,7 +191,9 @@
 
     <div class="row footer-links mt-4">
       <div class="col-md-2"></div>
+
       <xsl:apply-templates select="$project/body/nav" mode="footer"/>
+    
     </div>
 
     <hr/>
@@ -286,6 +212,40 @@
 
 </xsl:template>
 
+<!-- process header nav titles -->
+<xsl:template match="nav" mode="header">
+  <xsl:variable name="title" select="@name" mode="footer"/>
+  <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <xsl:value-of select="$title"/>
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
+    <xsl:apply-templates select="navitem" mode="header"/>
+  </div>
+</li>
+</xsl:template>
+
+<!-- process header nav items -->
+<xsl:template match="navitem" mode="header">
+  <xsl:variable name="href">
+    <xsl:choose>
+      <xsl:when test="starts-with(@href, 'http://')">
+        <xsl:value-of select="@href"/>
+      </xsl:when>
+      <xsl:when test="starts-with(@href, 'https://')">
+        <xsl:value-of select="@href"/>
+      </xsl:when>
+      <xsl:when test="contains(@href, '.cgi')">
+        <xsl:text>https://tomcat.apache.org</xsl:text><xsl:value-of select="@href"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$relative-path"/><xsl:value-of select="@href"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <a class="dropdown-item" href="{$href}"><xsl:value-of select="@name"/></a>
+</xsl:template>
+
 <!-- process footer nav titles -->
 <xsl:template match="nav" mode="footer">
   <xsl:variable name="title" select="@name" mode="footer"/>
@@ -301,13 +261,13 @@
   <xsl:variable name="href">
     <xsl:choose>
       <xsl:when test="starts-with(@href, 'http://')">
-          <xsl:value-of select="@href"/>
+        <xsl:value-of select="@href"/>
       </xsl:when>
       <xsl:when test="starts-with(@href, 'https://')">
-          <xsl:value-of select="@href"/>
+        <xsl:value-of select="@href"/>
       </xsl:when>
       <xsl:when test="contains(@href, '.cgi')">
-          <xsl:text>https://tomcat.apache.org</xsl:text><xsl:value-of select="@href"/>
+        <xsl:text>https://tomcat.apache.org</xsl:text><xsl:value-of select="@href"/>
       </xsl:when>
 <!--
       <xsl:when test="starts-with(@href, '/site')">
@@ -315,7 +275,7 @@
       </xsl:when>
 -->
       <xsl:otherwise>
-          <xsl:value-of select="$relative-path"/><xsl:value-of select="@href"/>
+        <xsl:value-of select="$relative-path"/><xsl:value-of select="@href"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
