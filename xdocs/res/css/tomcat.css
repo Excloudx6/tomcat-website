@@ -16,11 +16,16 @@
 */
 html { font-size: 16px; }
 
+body { color: #333; }
+
+
 #content { padding: 0.25rem; }
 
 h3 { margin-top: 1rem; }
 
 img { max-width: 100% !important; }
+
+.pull-right { float: right; }   /* TODO: replace with .float-right */
 
 .no-pointer-events { pointer-events: none; }
 
